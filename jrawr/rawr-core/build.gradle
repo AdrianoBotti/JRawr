@@ -1,0 +1,7 @@
+dependencies {
+    implementation libs.commons.math3
+
+    testImplementation libs.junit.jupiter
+    testRuntimeOnly libs.junit.platform.launcher
+    testImplementation libs.assertj.core
+}

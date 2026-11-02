@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Saved talent-spec browser/library. Loaded into its own #specs-modal root so the optimizer
+     form underneath stays untouched. -->
+<div class="modal-backdrop specs-backdrop" data-modal="specs" th:fragment="specsModal">
+    <div class="modal card specs-modal" role="dialog" aria-modal="true" aria-labelledby="specs-title">
+        <header class="modal-head">
+            <h2 id="specs-title">Talent Specs</h2>
+            <button class="icon-btn" type="button" title="Close" aria-label="Close"
+                    data-modal-close>&#215;</button>
+        </header>
+        <div th:replace="~{:: specsBody}"></div>
+    </div>
+</div>
+
+<div id="specs-body" class="modal-body specs-body" th:fragment="specsBody">
+
+    <p class="hint specs-intro">
+        These are the candidate specs for the optimizer's talent and glyph search, plus your current build.
+        <strong>Apply</strong> loads one into the character; the current build is always the
+        optimizer's mutation base. Saved specs persist to your talent library.
+    </p>
+
+    <form class="specs-save dialog-card" hx-post="/character/specs/save" hx-target="#specs-body"
+          hx-swap="outerHTML" th:if="${!#strings.isEmpty(character.currentModel)}">
+        <label class="field">
+            <span class="field-label">Save current build</span>
+            <div class="specs-save-row">
+                <input type="text" name="name" maxlength="40" placeholder="Spec name…"
+                       autocomplete="off" spellcheck="false" required/>
+                <button class="btn btn-small" type="submit">Save</button>
+            </div>
+        </label>
+    </form>
+
+    <div class="inline-error" th:if="${specError != null}" th:text="${specError}">error</div>
+    <div class="inline-message" th:if="${specMessage != null}" th:text="${specMessage}">message</div>
+
+    <div class="specs-list-head" th:if="${!#lists.isEmpty(specViews)}">
+        <h3 class="dialog-section-title">Available specs</h3>
+        <span class="hint"
+              th:text="|${#lists.size(specViews)} ${#lists.size(specViews) == 1 ? 'spec' : 'specs'}|">3 specs</span>
+    </div>
+    <ul class="spec-list" th:if="${!#lists.isEmpty(specViews)}">
+        <li class="spec-row" th:each="spec : ${specViews}"
+            th:classappend="${spec.current} ? 'is-current' : ''">
+            <div class="spec-info">
+                <div class="spec-title">
+                    <span class="spec-source" th:classappend="'spec-source-' + ${spec.source}"
+                          th:text="${spec.source}">shipped</span>
+                    <span class="spec-name" th:text="${spec.name}">Arcane</span>
+                    <span class="spec-in-use" th:if="${spec.current and spec.source != 'current'}">In use</span>
+                </div>
+                <div class="spec-meta">
+                    <code class="spec-split" th:text="${spec.split()}">57/3/11</code>
+                    <span class="spec-glyphs" th:if="${!#strings.isEmpty(spec.glyphSummary)}"
+                          th:text="${spec.glyphSummary}">Glyph of Fireball</span>
+                    <span class="spec-glyphs spec-glyphs-empty"
+                          th:if="${#strings.isEmpty(spec.glyphSummary)}">no glyphs</span>
+                </div>
+            </div>
+
+            <div class="spec-actions" th:unless="${spec.source == 'current'}">
+                <form class="spec-apply" hx-post="/character/specs/apply" hx-target="#specs-body"
+                      hx-swap="outerHTML">
+                    <input type="hidden" name="key" th:value="${spec.key}"/>
+                    <label class="spec-glyph-check" title="Also load the glyphs stored in this spec.">
+                        <input type="checkbox" name="includeGlyphs"/>
+                        <span>Glyphs</span>
+                    </label>
+                    <button class="btn btn-small" type="submit">Apply</button>
+                </form>
+
+                <form class="spec-toggle" hx-post="/character/specs/toggle" hx-target="#specs-body"
+                      hx-swap="outerHTML" hx-trigger="change">
+                    <input type="hidden" name="key" th:value="${spec.key}"/>
+                    <label class="spec-toggle-label"
+                           title="Include this spec in the optimizer's talent and glyph search.">
+                        <input type="checkbox" name="enabled" th:checked="${spec.enabled}"/>
+                        <span>Optimize</span>
+                    </label>
+                </form>
+
+                <th:block th:if="${spec.customIndex >= 0}">
+                    <form class="spec-rename" hx-post="/character/specs/rename"
+                          hx-target="#specs-body" hx-swap="outerHTML">
+                        <input type="hidden" name="index" th:value="${spec.customIndex}"/>
+                        <input class="spec-rename-input" type="text" name="name" maxlength="40"
+                               th:value="${spec.name}" autocomplete="off" spellcheck="false"
+                               aria-label="Rename spec"/>
+                        <button class="btn btn-small" type="submit" title="Rename">Rename</button>
+                    </form>
+                    <form class="spec-delete" hx-post="/character/specs/delete"
+                          hx-target="#specs-body" hx-swap="outerHTML"
+                          hx-confirm="Delete this saved spec?">
+                        <input type="hidden" name="index" th:value="${spec.customIndex}"/>
+                        <button class="btn btn-small btn-danger" type="submit">Delete</button>
+                    </form>
+                </th:block>
+            </div>
+        </li>
+    </ul>
+    <p class="empty-state" th:if="${#lists.isEmpty(specViews)}">
+        No specs are available for this class.
+    </p>
+
+</div>
+
+<!-- Apply result: swap the specs body plus out-of-band refresh the talent/glyph panels and the
+     rating/stats columns the applied spec affects. -->
+<th:block th:fragment="specsApplySwap">
+    <div th:replace="~{:: specsBody}"></div>
+    <th:block th:replace="~{fragments/talents :: talentOob}"></th:block>
+    <th:block th:replace="~{fragments/talents :: glyphOob}"></th:block>
+    <th:block th:replace="~{fragments/paperdoll :: ratingOob}"></th:block>
+    <th:block th:replace="~{fragments/stats :: statsOob}"></th:block>
+</th:block>
+
+</body>
+</html>

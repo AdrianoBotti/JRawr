@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- File > Import modal. -->
+<div class="modal-backdrop" data-modal="import" th:fragment="importModal">
+    <div class="modal card" role="dialog" aria-modal="true" aria-labelledby="import-title">
+        <header class="modal-head">
+            <h2 id="import-title">Import</h2>
+            <button class="icon-btn" type="button" title="Close" aria-label="Close" data-modal-close>&#215;</button>
+        </header>
+        <div class="modal-body">
+            <div th:replace="~{:: importForm}"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Character import form. Submitting POSTs to /character (textarea or file upload) and redirects
+     into the editor. -->
+<div class="import-panel" th:fragment="importForm">
+    <div class="pending-import" th:if="${pendingMissingCount != null and pendingMissingCount > 0}">
+        <h3 class="import-heading">Missing items</h3>
+        <p class="hint">
+            This character references <strong th:text="${pendingMissingCount}">3</strong>
+            <span th:text="${pendingMissingCount == 1 ? 'item' : 'items'}">items</span>
+            that are not in the local item cache:
+            <code class="pending-ids" th:text="${pendingMissingText}">1, 2, 3</code>
+        </p>
+        <p class="hint" th:if="${not #strings.isEmpty(itemSourceTemplate)}">
+            They can be fetched by ID from the configured item source
+            <code th:text="${itemSourceTemplate}">https://wotlkdb.com/?item={id}&amp;xml</code>
+            (change it in Tools &#8594; Item editor). Fetching contacts the source once for each
+            item and can take a few seconds.
+        </p>
+        <div class="inline-error" th:if="${pendingImportError != null}"
+             th:text="${pendingImportError}">Some items could not be fetched.</div>
+        <div class="form-actions pending-actions">
+            <form method="post" action="/character/fetch-missing">
+                <button class="btn btn-primary" type="submit">Fetch and import</button>
+            </form>
+            <form method="post" action="/character/import-pending">
+                <button class="btn" type="submit">Import without fetching</button>
+            </form>
+            <form method="post" action="/character/cancel-pending">
+                <button class="btn" type="submit">Cancel</button>
+            </form>
+        </div>
+        <hr class="import-sep"/>
+    </div>
+
+    <div class="error-banner" th:if="${param.error != null}">
+        <span th:if="${param.error[0] == 'missing-character-xml'}">Paste the XML or choose a file.</span>
+        <span th:if="${param.error[0] == 'unknown-model'}">The character file's model is not supported yet.</span>
+        <span th:if="${param.error[0] == 'invalid-character-xml'}">That XML could not be parsed.</span>
+        <span th:if="${param.error[0] == 'file-too-large'}">The uploaded file is larger than 10 MB.</span>
+    </div>
+
+    <form method="post" action="/character" enctype="multipart/form-data" class="import-form">
+        <label class="field">
+            <span class="field-label">Character XML</span>
+            <textarea id="characterXml" name="characterXml" rows="12" spellcheck="false"
+                      placeholder="&lt;Character&gt;…&lt;/Character&gt;"></textarea>
+        </label>
+        <label class="field">
+            <span class="field-label">…or upload a file</span>
+            <span class="import-file-row">
+                <input type="file" id="file" name="file" accept=".xml,text/xml" hidden
+                       onchange="document.getElementById('file-name').textContent = this.files.length ? this.files[0].name : '';"/>
+                <span class="file-pick">
+                    <label class="btn file-btn" for="file">Choose file…</label>
+                    <span class="file-name" id="file-name"></span>
+                </span>
+                <button class="btn btn-primary" type="submit">Import into editor</button>
+            </span>
+        </label>
+    </form>
+
+</div>
+
+</body>
+</html>

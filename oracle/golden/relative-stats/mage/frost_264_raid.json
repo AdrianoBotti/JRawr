@@ -1,0 +1,106 @@
+{
+  "model": "Mage",
+  "fixture": "frost_264_raid",
+  "relativeStats": [
+    {
+      "name": " Crit Rating",
+      "description": "If you had 1 more Crit Rating",
+      "baseStat": null,
+      "overallPoints": 0.604492188,
+      "subPoints": [
+        0.604492188,
+        0
+      ]
+    },
+    {
+      "name": " Haste Rating",
+      "description": "If you had 1 more Haste Rating",
+      "baseStat": null,
+      "overallPoints": 1.53417969,
+      "subPoints": [
+        1.53417969,
+        0
+      ]
+    },
+    {
+      "name": " Health",
+      "description": "If you had 1 more Health",
+      "baseStat": null,
+      "overallPoints": 9.99902622E-05,
+      "subPoints": [
+        0,
+        9.99902622E-05
+      ]
+    },
+    {
+      "name": " Hit Rating",
+      "description": "If you had 1 more Hit Rating",
+      "baseStat": null,
+      "overallPoints": 3.40039063,
+      "subPoints": [
+        3.40039063,
+        0
+      ]
+    },
+    {
+      "name": " Intellect",
+      "description": "If you had 1 more Intellect",
+      "baseStat": null,
+      "overallPoints": 0.183112666,
+      "subPoints": [
+        0.183112666,
+        0
+      ]
+    },
+    {
+      "name": " Spell Fire Damage",
+      "description": "If you had 1 more Spell Fire Damage",
+      "baseStat": null,
+      "overallPoints": 0.00464862259,
+      "subPoints": [
+        0.00464862259,
+        0
+      ]
+    },
+    {
+      "name": " Spell Frost Damage",
+      "description": "If you had 1 more Spell Frost Damage",
+      "baseStat": null,
+      "overallPoints": 1.671875,
+      "subPoints": [
+        1.671875,
+        0
+      ]
+    },
+    {
+      "name": " Spell Power",
+      "description": "If you had 1 more Spell Power",
+      "baseStat": null,
+      "overallPoints": 1.67578125,
+      "subPoints": [
+        1.67578125,
+        0
+      ]
+    },
+    {
+      "name": " Spirit",
+      "description": "If you had 1 more Spirit",
+      "baseStat": null,
+      "overallPoints": 0.365737289,
+      "subPoints": [
+        0.365737289,
+        0
+      ]
+    },
+    {
+      "name": " Stamina",
+      "description": "If you had 1 more Stamina",
+      "baseStat": null,
+      "overallPoints": 0.000999083626,
+      "subPoints": [
+        0,
+        0.000999083626
+      ]
+    }
+  ]
+}

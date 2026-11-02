@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!--
+  htmx response for the identity form: swap the whole Build card (identity + tabs + panels) and
+  out-of-band refresh the top-bar character name. Ratings/stats are part of the card.
+-->
+<th:block th:fragment="characterSwap">
+    <section id="paperdoll" class="card paperdoll">
+        <div th:replace="~{fragments/paperdoll :: paperdollBody}"></div>
+    </section>
+    <th:block th:replace="~{:: topbarCharacterName('true')}"></th:block>
+</th:block>
+
+<!-- Top-bar character name (out-of-band swap target for meta changes). -->
+<span id="topbar-character-name" class="topbar-character-name" th:fragment="topbarCharacterName(oob)"
+      th:attr="hx-swap-oob=${oob}"
+      th:text="${#strings.isEmpty(character.name) ? 'Unnamed character' : character.name}">Unnamed character</span>
+
+<!--
+  Identity strip: name, race, class/model and professions. Always visible at the top of the Build
+  card so the build's identity stays in view on every tab. The form posts to /character/meta and
+  swaps the whole Build card (hx-target="#paperdoll").
+-->
+<form class="identity-strip meta-form" th:fragment="identityStrip"
+      method="post" action="/character/meta"
+      hx-post="/character/meta" hx-target="#paperdoll" hx-swap="outerHTML"
+      hx-trigger="change" autocomplete="off">
+    <div class="identity-top">
+        <div class="character-avatar" aria-hidden="true"
+             th:classappend="'class-' + ${#strings.toLowerCase(character.characterClass.name())}">
+            <span class="character-avatar-initial"
+                  th:text="${#strings.isEmpty(character.name) ? '?' : #strings.substring(character.name, 0, 1)}">Y</span>
+            <span class="character-avatar-level" th:text="${character.level}">80</span>
+        </div>
+        <input class="identity-name" type="text" name="name" maxlength="40"
+               th:value="${character.name}" placeholder="Character name"
+               aria-label="Character name" spellcheck="false"/>
+    </div>
+    <div class="identity-fields">
+        <label class="identity-field">
+            <span class="identity-label">Race</span>
+            <select name="race">
+                <option th:each="r : ${raceOptions}" th:value="${r.value()}"
+                        th:selected="${r.value() == character.race.name()}"
+                        th:text="${r.label()}">Human</option>
+            </select>
+        </label>
+        <label class="identity-field">
+            <span class="identity-label">Class / model</span>
+            <select name="model">
+                <option value="" disabled
+                        th:selected="${#strings.isEmpty(character.currentModel)}"
+                        th:text="'Choose model…'">Choose model…</option>
+                <optgroup th:each="g : ${modelGroups}" th:label="${g.classLabel()}">
+                    <option th:each="m : ${g.models()}" th:value="${m.value()}"
+                            th:selected="${m.value() == character.currentModel}"
+                            th:text="${m.label()}">Arcane / Fire / Frost</option>
+                </optgroup>
+            </select>
+        </label>
+        <label class="identity-field">
+            <span class="identity-label">Primary profession</span>
+            <select name="primaryProfession">
+                <option th:each="p : ${professionOptions}" th:value="${p.value()}"
+                        th:selected="${p.value() == character.primaryProfession.name()}"
+                        th:text="${p.label()}">None</option>
+            </select>
+        </label>
+        <label class="identity-field">
+            <span class="identity-label">Secondary profession</span>
+            <select name="secondaryProfession">
+                <option th:each="p : ${professionOptions}" th:value="${p.value()}"
+                        th:selected="${p.value() == character.secondaryProfession.name()}"
+                        th:text="${p.label()}">None</option>
+            </select>
+        </label>
+    </div>
+</form>
+
+<!--
+  Advanced build options (simulation setup): model options and boss/encounter, kept out of the
+  primary tabs but one predictable place.
+-->
+<details class="menu advanced-menu" th:fragment="advancedMenu">
+    <summary class="advanced-menu-toggle" title="Advanced build options" aria-label="Advanced">
+        <span class="advanced-menu-label">Advanced</span>
+    </summary>
+    <div class="menu-panel advanced-panel">
+        <button class="menu-item options-open" type="button" aria-label="Model options"
+                th:disabled="${#strings.isEmpty(character.currentModel)}"
+                hx-get="/character/options" hx-target="#modal" hx-swap="innerHTML">Model options…</button>
+        <button class="menu-item boss-open" type="button" aria-label="Boss / encounter options"
+                th:disabled="${#strings.isEmpty(character.currentModel)}"
+                hx-get="/character/boss" hx-target="#modal" hx-swap="innerHTML">Boss / encounter…</button>
+        <button class="menu-item item-pool-cta" type="button" aria-label="Custom item pool"
+                th:disabled="${#strings.isEmpty(character.currentModel)}"
+                hx-get="/character/availability" hx-target="#availability-modal" hx-swap="innerHTML">Item pool…</button>
+    </div>
+</details>
+
+</body>
+</html>

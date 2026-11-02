@@ -1,0 +1,3840 @@
+== 80|80|0|0|0|0|0|0
+F Miss 3D4CCCCD
+F Dodge 3D4CCCCD
+F Parry 00000000
+F Glancing 3DCCCCCD
+F Block 00000000
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|0|0|0|0|0.1
+F Miss 3D4CCCCD
+F Dodge 3D4CCCCD
+F Parry 00000000
+F Glancing 3DCCCCCD
+F Block 00000000
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|0|0|0|0.02|0
+F Miss 3D4CCCCD
+F Dodge 3CF5C290
+F Parry 00000000
+F Glancing 3DCCCCCD
+F Block 00000000
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|0|0|0|0.02|0.1
+F Miss 3D4CCCCD
+F Dodge 3CF5C290
+F Parry 00000000
+F Glancing 3DCCCCCD
+F Block 00000000
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|0|0|0.03|0|0
+F Miss 3CA3D70B
+F Dodge 3D4CCCCD
+F Parry 00000000
+F Glancing 3DCCCCCD
+F Block 00000000
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|0|0|0.03|0|0.1
+F Miss 3CA3D70B
+F Dodge 3D4CCCCD
+F Parry 00000000
+F Glancing 3DCCCCCD
+F Block 00000000
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|0|0|0.03|0.02|0
+F Miss 3CA3D70B
+F Dodge 3CF5C290
+F Parry 00000000
+F Glancing 3DCCCCCD
+F Block 00000000
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|0|0|0.03|0.02|0.1
+F Miss 3CA3D70B
+F Dodge 3CF5C290
+F Parry 00000000
+F Glancing 3DCCCCCD
+F Block 00000000
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|0|0.5|0|0|0
+F Miss 3D4CCCCD
+F Dodge 3D4CCCCD
+F Parry 3CCCCCCD
+F Glancing 3DCCCCCD
+F Block 3CCCCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|0|0.5|0|0|0.1
+F Miss 3D4CCCCD
+F Dodge 3D4CCCCD
+F Parry 3CCCCCCD
+F Glancing 3DCCCCCD
+F Block 3CCCCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|0|0.5|0|0.02|0
+F Miss 3D4CCCCD
+F Dodge 3CF5C290
+F Parry 3C75C290
+F Glancing 3DCCCCCD
+F Block 3CCCCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|0|0.5|0|0.02|0.1
+F Miss 3D4CCCCD
+F Dodge 3CF5C290
+F Parry 3C75C290
+F Glancing 3DCCCCCD
+F Block 3CCCCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|0|0.5|0.03|0|0
+F Miss 3CA3D70B
+F Dodge 3D4CCCCD
+F Parry 3CCCCCCD
+F Glancing 3DCCCCCD
+F Block 3CCCCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|0|0.5|0.03|0|0.1
+F Miss 3CA3D70B
+F Dodge 3D4CCCCD
+F Parry 3CCCCCCD
+F Glancing 3DCCCCCD
+F Block 3CCCCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|0|0.5|0.03|0.02|0
+F Miss 3CA3D70B
+F Dodge 3CF5C290
+F Parry 3C75C290
+F Glancing 3DCCCCCD
+F Block 3CCCCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|0|0.5|0.03|0.02|0.1
+F Miss 3CA3D70B
+F Dodge 3CF5C290
+F Parry 3C75C290
+F Glancing 3DCCCCCD
+F Block 3CCCCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|0|1|0|0|0
+F Miss 3D4CCCCD
+F Dodge 3D4CCCCD
+F Parry 3D4CCCCD
+F Glancing 3DCCCCCD
+F Block 3D4CCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|0|1|0|0|0.1
+F Miss 3D4CCCCD
+F Dodge 3D4CCCCD
+F Parry 3D4CCCCD
+F Glancing 3DCCCCCD
+F Block 3D4CCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|0|1|0|0.02|0
+F Miss 3D4CCCCD
+F Dodge 3CF5C290
+F Parry 3CF5C290
+F Glancing 3DCCCCCD
+F Block 3D4CCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|0|1|0|0.02|0.1
+F Miss 3D4CCCCD
+F Dodge 3CF5C290
+F Parry 3CF5C290
+F Glancing 3DCCCCCD
+F Block 3D4CCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|0|1|0.03|0|0
+F Miss 3CA3D70B
+F Dodge 3D4CCCCD
+F Parry 3D4CCCCD
+F Glancing 3DCCCCCD
+F Block 3D4CCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|0|1|0.03|0|0.1
+F Miss 3CA3D70B
+F Dodge 3D4CCCCD
+F Parry 3D4CCCCD
+F Glancing 3DCCCCCD
+F Block 3D4CCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|0|1|0.03|0.02|0
+F Miss 3CA3D70B
+F Dodge 3CF5C290
+F Parry 3CF5C290
+F Glancing 3DCCCCCD
+F Block 3D4CCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|0|1|0.03|0.02|0.1
+F Miss 3CA3D70B
+F Dodge 3CF5C290
+F Parry 3CF5C290
+F Glancing 3DCCCCCD
+F Block 3D4CCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|1|0|0|0|0
+F Miss 3D4CCCCD
+F Dodge 3D4CCCCD
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|1|0|0|0|0.1
+F Miss 3D4CCCCD
+F Dodge 3D4CCCCD
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|1|0|0|0.02|0
+F Miss 3D4CCCCD
+F Dodge 3CF5C290
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|1|0|0|0.02|0.1
+F Miss 3D4CCCCD
+F Dodge 3CF5C290
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|1|0|0.03|0|0
+F Miss 3CA3D70B
+F Dodge 3D4CCCCD
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|1|0|0.03|0|0.1
+F Miss 3CA3D70B
+F Dodge 3D4CCCCD
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|1|0|0.03|0.02|0
+F Miss 3CA3D70B
+F Dodge 3CF5C290
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|1|0|0.03|0.02|0.1
+F Miss 3CA3D70B
+F Dodge 3CF5C290
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|1|0.5|0|0|0
+F Miss 3D4CCCCD
+F Dodge 3D4CCCCD
+F Parry 3CCCCCCD
+F Glancing 00000000
+F Block 3CCCCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|1|0.5|0|0|0.1
+F Miss 3D4CCCCD
+F Dodge 3D4CCCCD
+F Parry 3CCCCCCD
+F Glancing 00000000
+F Block 3CCCCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|1|0.5|0|0.02|0
+F Miss 3D4CCCCD
+F Dodge 3CF5C290
+F Parry 3C75C290
+F Glancing 00000000
+F Block 3CCCCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|1|0.5|0|0.02|0.1
+F Miss 3D4CCCCD
+F Dodge 3CF5C290
+F Parry 3C75C290
+F Glancing 00000000
+F Block 3CCCCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|1|0.5|0.03|0|0
+F Miss 3CA3D70B
+F Dodge 3D4CCCCD
+F Parry 3CCCCCCD
+F Glancing 00000000
+F Block 3CCCCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|1|0.5|0.03|0|0.1
+F Miss 3CA3D70B
+F Dodge 3D4CCCCD
+F Parry 3CCCCCCD
+F Glancing 00000000
+F Block 3CCCCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|1|0.5|0.03|0.02|0
+F Miss 3CA3D70B
+F Dodge 3CF5C290
+F Parry 3C75C290
+F Glancing 00000000
+F Block 3CCCCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|1|0.5|0.03|0.02|0.1
+F Miss 3CA3D70B
+F Dodge 3CF5C290
+F Parry 3C75C290
+F Glancing 00000000
+F Block 3CCCCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|1|1|0|0|0
+F Miss 3D4CCCCD
+F Dodge 3D4CCCCD
+F Parry 3D4CCCCD
+F Glancing 00000000
+F Block 3D4CCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|1|1|0|0|0.1
+F Miss 3D4CCCCD
+F Dodge 3D4CCCCD
+F Parry 3D4CCCCD
+F Glancing 00000000
+F Block 3D4CCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|1|1|0|0.02|0
+F Miss 3D4CCCCD
+F Dodge 3CF5C290
+F Parry 3CF5C290
+F Glancing 00000000
+F Block 3D4CCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|1|1|0|0.02|0.1
+F Miss 3D4CCCCD
+F Dodge 3CF5C290
+F Parry 3CF5C290
+F Glancing 00000000
+F Block 3D4CCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|1|1|0.03|0|0
+F Miss 3CA3D70B
+F Dodge 3D4CCCCD
+F Parry 3D4CCCCD
+F Glancing 00000000
+F Block 3D4CCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|1|1|0.03|0|0.1
+F Miss 3CA3D70B
+F Dodge 3D4CCCCD
+F Parry 3D4CCCCD
+F Glancing 00000000
+F Block 3D4CCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|1|1|0.03|0.02|0
+F Miss 3CA3D70B
+F Dodge 3CF5C290
+F Parry 3CF5C290
+F Glancing 00000000
+F Block 3D4CCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|0|1|1|0.03|0.02|0.1
+F Miss 3CA3D70B
+F Dodge 3CF5C290
+F Parry 3CF5C290
+F Glancing 00000000
+F Block 3D4CCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|0|0|0|0|0
+F Miss 3E75C28F
+F Dodge 3D4CCCCD
+F Parry 00000000
+F Glancing 3DCCCCCD
+F Block 00000000
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|0|0|0|0|0.1
+F Miss 3E75C28F
+F Dodge 3D4CCCCD
+F Parry 00000000
+F Glancing 3DCCCCCD
+F Block 00000000
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|0|0|0|0.02|0
+F Miss 3E75C28F
+F Dodge 3CF5C290
+F Parry 00000000
+F Glancing 3DCCCCCD
+F Block 00000000
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|0|0|0|0.02|0.1
+F Miss 3E75C28F
+F Dodge 3CF5C290
+F Parry 00000000
+F Glancing 3DCCCCCD
+F Block 00000000
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|0|0|0.03|0|0
+F Miss 3E570A3D
+F Dodge 3D4CCCCD
+F Parry 00000000
+F Glancing 3DCCCCCD
+F Block 00000000
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|0|0|0.03|0|0.1
+F Miss 3E570A3D
+F Dodge 3D4CCCCD
+F Parry 00000000
+F Glancing 3DCCCCCD
+F Block 00000000
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|0|0|0.03|0.02|0
+F Miss 3E570A3D
+F Dodge 3CF5C290
+F Parry 00000000
+F Glancing 3DCCCCCD
+F Block 00000000
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|0|0|0.03|0.02|0.1
+F Miss 3E570A3D
+F Dodge 3CF5C290
+F Parry 00000000
+F Glancing 3DCCCCCD
+F Block 00000000
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|0|0.5|0|0|0
+F Miss 3E75C28F
+F Dodge 3D4CCCCD
+F Parry 3CCCCCCD
+F Glancing 3DCCCCCD
+F Block 3CCCCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|0|0.5|0|0|0.1
+F Miss 3E75C28F
+F Dodge 3D4CCCCD
+F Parry 3CCCCCCD
+F Glancing 3DCCCCCD
+F Block 3CCCCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|0|0.5|0|0.02|0
+F Miss 3E75C28F
+F Dodge 3CF5C290
+F Parry 3C75C290
+F Glancing 3DCCCCCD
+F Block 3CCCCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|0|0.5|0|0.02|0.1
+F Miss 3E75C28F
+F Dodge 3CF5C290
+F Parry 3C75C290
+F Glancing 3DCCCCCD
+F Block 3CCCCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|0|0.5|0.03|0|0
+F Miss 3E570A3D
+F Dodge 3D4CCCCD
+F Parry 3CCCCCCD
+F Glancing 3DCCCCCD
+F Block 3CCCCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|0|0.5|0.03|0|0.1
+F Miss 3E570A3D
+F Dodge 3D4CCCCD
+F Parry 3CCCCCCD
+F Glancing 3DCCCCCD
+F Block 3CCCCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|0|0.5|0.03|0.02|0
+F Miss 3E570A3D
+F Dodge 3CF5C290
+F Parry 3C75C290
+F Glancing 3DCCCCCD
+F Block 3CCCCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|0|0.5|0.03|0.02|0.1
+F Miss 3E570A3D
+F Dodge 3CF5C290
+F Parry 3C75C290
+F Glancing 3DCCCCCD
+F Block 3CCCCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|0|1|0|0|0
+F Miss 3E75C28F
+F Dodge 3D4CCCCD
+F Parry 3D4CCCCD
+F Glancing 3DCCCCCD
+F Block 3D4CCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|0|1|0|0|0.1
+F Miss 3E75C28F
+F Dodge 3D4CCCCD
+F Parry 3D4CCCCD
+F Glancing 3DCCCCCD
+F Block 3D4CCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|0|1|0|0.02|0
+F Miss 3E75C28F
+F Dodge 3CF5C290
+F Parry 3CF5C290
+F Glancing 3DCCCCCD
+F Block 3D4CCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|0|1|0|0.02|0.1
+F Miss 3E75C28F
+F Dodge 3CF5C290
+F Parry 3CF5C290
+F Glancing 3DCCCCCD
+F Block 3D4CCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|0|1|0.03|0|0
+F Miss 3E570A3D
+F Dodge 3D4CCCCD
+F Parry 3D4CCCCD
+F Glancing 3DCCCCCD
+F Block 3D4CCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|0|1|0.03|0|0.1
+F Miss 3E570A3D
+F Dodge 3D4CCCCD
+F Parry 3D4CCCCD
+F Glancing 3DCCCCCD
+F Block 3D4CCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|0|1|0.03|0.02|0
+F Miss 3E570A3D
+F Dodge 3CF5C290
+F Parry 3CF5C290
+F Glancing 3DCCCCCD
+F Block 3D4CCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|0|1|0.03|0.02|0.1
+F Miss 3E570A3D
+F Dodge 3CF5C290
+F Parry 3CF5C290
+F Glancing 3DCCCCCD
+F Block 3D4CCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|1|0|0|0|0
+F Miss 3D4CCCCD
+F Dodge 3D4CCCCD
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|1|0|0|0|0.1
+F Miss 3D4CCCCD
+F Dodge 3D4CCCCD
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|1|0|0|0.02|0
+F Miss 3D4CCCCD
+F Dodge 3CF5C290
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|1|0|0|0.02|0.1
+F Miss 3D4CCCCD
+F Dodge 3CF5C290
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|1|0|0.03|0|0
+F Miss 3CA3D70B
+F Dodge 3D4CCCCD
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|1|0|0.03|0|0.1
+F Miss 3CA3D70B
+F Dodge 3D4CCCCD
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|1|0|0.03|0.02|0
+F Miss 3CA3D70B
+F Dodge 3CF5C290
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|1|0|0.03|0.02|0.1
+F Miss 3CA3D70B
+F Dodge 3CF5C290
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|1|0.5|0|0|0
+F Miss 3D4CCCCD
+F Dodge 3D4CCCCD
+F Parry 3CCCCCCD
+F Glancing 00000000
+F Block 3CCCCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|1|0.5|0|0|0.1
+F Miss 3D4CCCCD
+F Dodge 3D4CCCCD
+F Parry 3CCCCCCD
+F Glancing 00000000
+F Block 3CCCCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|1|0.5|0|0.02|0
+F Miss 3D4CCCCD
+F Dodge 3CF5C290
+F Parry 3C75C290
+F Glancing 00000000
+F Block 3CCCCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|1|0.5|0|0.02|0.1
+F Miss 3D4CCCCD
+F Dodge 3CF5C290
+F Parry 3C75C290
+F Glancing 00000000
+F Block 3CCCCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|1|0.5|0.03|0|0
+F Miss 3CA3D70B
+F Dodge 3D4CCCCD
+F Parry 3CCCCCCD
+F Glancing 00000000
+F Block 3CCCCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|1|0.5|0.03|0|0.1
+F Miss 3CA3D70B
+F Dodge 3D4CCCCD
+F Parry 3CCCCCCD
+F Glancing 00000000
+F Block 3CCCCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|1|0.5|0.03|0.02|0
+F Miss 3CA3D70B
+F Dodge 3CF5C290
+F Parry 3C75C290
+F Glancing 00000000
+F Block 3CCCCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|1|0.5|0.03|0.02|0.1
+F Miss 3CA3D70B
+F Dodge 3CF5C290
+F Parry 3C75C290
+F Glancing 00000000
+F Block 3CCCCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|1|1|0|0|0
+F Miss 3D4CCCCD
+F Dodge 3D4CCCCD
+F Parry 3D4CCCCD
+F Glancing 00000000
+F Block 3D4CCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|1|1|0|0|0.1
+F Miss 3D4CCCCD
+F Dodge 3D4CCCCD
+F Parry 3D4CCCCD
+F Glancing 00000000
+F Block 3D4CCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|1|1|0|0.02|0
+F Miss 3D4CCCCD
+F Dodge 3CF5C290
+F Parry 3CF5C290
+F Glancing 00000000
+F Block 3D4CCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|1|1|0|0.02|0.1
+F Miss 3D4CCCCD
+F Dodge 3CF5C290
+F Parry 3CF5C290
+F Glancing 00000000
+F Block 3D4CCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|1|1|0.03|0|0
+F Miss 3CA3D70B
+F Dodge 3D4CCCCD
+F Parry 3D4CCCCD
+F Glancing 00000000
+F Block 3D4CCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|1|1|0.03|0|0.1
+F Miss 3CA3D70B
+F Dodge 3D4CCCCD
+F Parry 3D4CCCCD
+F Glancing 00000000
+F Block 3D4CCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|1|1|0.03|0.02|0
+F Miss 3CA3D70B
+F Dodge 3CF5C290
+F Parry 3CF5C290
+F Glancing 00000000
+F Block 3D4CCCCD
+F Crit 00000000
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|80|1|1|1|0.03|0.02|0.1
+F Miss 3CA3D70B
+F Dodge 3CF5C290
+F Parry 3CF5C290
+F Glancing 00000000
+F Block 3D4CCCCD
+F Crit 3DCCCCCD
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|0|0|0|0|0
+F Miss 3D54FDF4
+F Dodge 3D6147AE
+F Parry 00000000
+F Glancing 3E19999A
+F Block 00000000
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|0|0|0|0|0.1
+F Miss 3D54FDF4
+F Dodge 3D6147AE
+F Parry 00000000
+F Glancing 3E19999A
+F Block 00000000
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|0|0|0|0.02|0
+F Miss 3D54FDF4
+F Dodge 3D0F5C29
+F Parry 00000000
+F Glancing 3E19999A
+F Block 00000000
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|0|0|0|0.02|0.1
+F Miss 3D54FDF4
+F Dodge 3D0F5C29
+F Parry 00000000
+F Glancing 3E19999A
+F Block 00000000
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|0|0|0.03|0|0
+F Miss 3CB43959
+F Dodge 3D6147AE
+F Parry 00000000
+F Glancing 3E19999A
+F Block 00000000
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|0|0|0.03|0|0.1
+F Miss 3CB43959
+F Dodge 3D6147AE
+F Parry 00000000
+F Glancing 3E19999A
+F Block 00000000
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|0|0|0.03|0.02|0
+F Miss 3CB43959
+F Dodge 3D0F5C29
+F Parry 00000000
+F Glancing 3E19999A
+F Block 00000000
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|0|0|0.03|0.02|0.1
+F Miss 3CB43959
+F Dodge 3D0F5C29
+F Parry 00000000
+F Glancing 3E19999A
+F Block 00000000
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|0|0.5|0|0|0
+F Miss 3D54FDF4
+F Dodge 3D6147AE
+F Parry 3CE147AE
+F Glancing 3E19999A
+F Block 3CD4FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|0|0.5|0|0|0.1
+F Miss 3D54FDF4
+F Dodge 3D6147AE
+F Parry 3CE147AE
+F Glancing 3E19999A
+F Block 3CD4FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|0|0.5|0|0.02|0
+F Miss 3D54FDF4
+F Dodge 3D0F5C29
+F Parry 3C8F5C29
+F Glancing 3E19999A
+F Block 3CD4FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|0|0.5|0|0.02|0.1
+F Miss 3D54FDF4
+F Dodge 3D0F5C29
+F Parry 3C8F5C29
+F Glancing 3E19999A
+F Block 3CD4FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|0|0.5|0.03|0|0
+F Miss 3CB43959
+F Dodge 3D6147AE
+F Parry 3CE147AE
+F Glancing 3E19999A
+F Block 3CD4FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|0|0.5|0.03|0|0.1
+F Miss 3CB43959
+F Dodge 3D6147AE
+F Parry 3CE147AE
+F Glancing 3E19999A
+F Block 3CD4FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|0|0.5|0.03|0.02|0
+F Miss 3CB43959
+F Dodge 3D0F5C29
+F Parry 3C8F5C29
+F Glancing 3E19999A
+F Block 3CD4FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|0|0.5|0.03|0.02|0.1
+F Miss 3CB43959
+F Dodge 3D0F5C29
+F Parry 3C8F5C29
+F Glancing 3E19999A
+F Block 3CD4FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|0|1|0|0|0
+F Miss 3D54FDF4
+F Dodge 3D6147AE
+F Parry 3D6147AE
+F Glancing 3E19999A
+F Block 3D54FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|0|1|0|0|0.1
+F Miss 3D54FDF4
+F Dodge 3D6147AE
+F Parry 3D6147AE
+F Glancing 3E19999A
+F Block 3D54FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|0|1|0|0.02|0
+F Miss 3D54FDF4
+F Dodge 3D0F5C29
+F Parry 3D0F5C29
+F Glancing 3E19999A
+F Block 3D54FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|0|1|0|0.02|0.1
+F Miss 3D54FDF4
+F Dodge 3D0F5C29
+F Parry 3D0F5C29
+F Glancing 3E19999A
+F Block 3D54FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|0|1|0.03|0|0
+F Miss 3CB43959
+F Dodge 3D6147AE
+F Parry 3D6147AE
+F Glancing 3E19999A
+F Block 3D54FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|0|1|0.03|0|0.1
+F Miss 3CB43959
+F Dodge 3D6147AE
+F Parry 3D6147AE
+F Glancing 3E19999A
+F Block 3D54FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|0|1|0.03|0.02|0
+F Miss 3CB43959
+F Dodge 3D0F5C29
+F Parry 3D0F5C29
+F Glancing 3E19999A
+F Block 3D54FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|0|1|0.03|0.02|0.1
+F Miss 3CB43959
+F Dodge 3D0F5C29
+F Parry 3D0F5C29
+F Glancing 3E19999A
+F Block 3D54FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|1|0|0|0|0
+F Miss 3D54FDF4
+F Dodge 3D6147AE
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|1|0|0|0|0.1
+F Miss 3D54FDF4
+F Dodge 3D6147AE
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|1|0|0|0.02|0
+F Miss 3D54FDF4
+F Dodge 3D0F5C29
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|1|0|0|0.02|0.1
+F Miss 3D54FDF4
+F Dodge 3D0F5C29
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|1|0|0.03|0|0
+F Miss 3CB43959
+F Dodge 3D6147AE
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|1|0|0.03|0|0.1
+F Miss 3CB43959
+F Dodge 3D6147AE
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|1|0|0.03|0.02|0
+F Miss 3CB43959
+F Dodge 3D0F5C29
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|1|0|0.03|0.02|0.1
+F Miss 3CB43959
+F Dodge 3D0F5C29
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|1|0.5|0|0|0
+F Miss 3D54FDF4
+F Dodge 3D6147AE
+F Parry 3CE147AE
+F Glancing 00000000
+F Block 3CD4FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|1|0.5|0|0|0.1
+F Miss 3D54FDF4
+F Dodge 3D6147AE
+F Parry 3CE147AE
+F Glancing 00000000
+F Block 3CD4FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|1|0.5|0|0.02|0
+F Miss 3D54FDF4
+F Dodge 3D0F5C29
+F Parry 3C8F5C29
+F Glancing 00000000
+F Block 3CD4FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|1|0.5|0|0.02|0.1
+F Miss 3D54FDF4
+F Dodge 3D0F5C29
+F Parry 3C8F5C29
+F Glancing 00000000
+F Block 3CD4FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|1|0.5|0.03|0|0
+F Miss 3CB43959
+F Dodge 3D6147AE
+F Parry 3CE147AE
+F Glancing 00000000
+F Block 3CD4FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|1|0.5|0.03|0|0.1
+F Miss 3CB43959
+F Dodge 3D6147AE
+F Parry 3CE147AE
+F Glancing 00000000
+F Block 3CD4FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|1|0.5|0.03|0.02|0
+F Miss 3CB43959
+F Dodge 3D0F5C29
+F Parry 3C8F5C29
+F Glancing 00000000
+F Block 3CD4FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|1|0.5|0.03|0.02|0.1
+F Miss 3CB43959
+F Dodge 3D0F5C29
+F Parry 3C8F5C29
+F Glancing 00000000
+F Block 3CD4FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|1|1|0|0|0
+F Miss 3D54FDF4
+F Dodge 3D6147AE
+F Parry 3D6147AE
+F Glancing 00000000
+F Block 3D54FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|1|1|0|0|0.1
+F Miss 3D54FDF4
+F Dodge 3D6147AE
+F Parry 3D6147AE
+F Glancing 00000000
+F Block 3D54FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|1|1|0|0.02|0
+F Miss 3D54FDF4
+F Dodge 3D0F5C29
+F Parry 3D0F5C29
+F Glancing 00000000
+F Block 3D54FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|1|1|0|0.02|0.1
+F Miss 3D54FDF4
+F Dodge 3D0F5C29
+F Parry 3D0F5C29
+F Glancing 00000000
+F Block 3D54FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|1|1|0.03|0|0
+F Miss 3CB43959
+F Dodge 3D6147AE
+F Parry 3D6147AE
+F Glancing 00000000
+F Block 3D54FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|1|1|0.03|0|0.1
+F Miss 3CB43959
+F Dodge 3D6147AE
+F Parry 3D6147AE
+F Glancing 00000000
+F Block 3D54FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|1|1|0.03|0.02|0
+F Miss 3CB43959
+F Dodge 3D0F5C29
+F Parry 3D0F5C29
+F Glancing 00000000
+F Block 3D54FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|0|1|1|0.03|0.02|0.1
+F Miss 3CB43959
+F Dodge 3D0F5C29
+F Parry 3D0F5C29
+F Glancing 00000000
+F Block 3D54FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|0|0|0|0|0
+F Miss 3E77CED9
+F Dodge 3D6147AE
+F Parry 00000000
+F Glancing 3E19999A
+F Block 00000000
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|0|0|0|0|0.1
+F Miss 3E77CED9
+F Dodge 3D6147AE
+F Parry 00000000
+F Glancing 3E19999A
+F Block 00000000
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|0|0|0|0.02|0
+F Miss 3E77CED9
+F Dodge 3D0F5C29
+F Parry 00000000
+F Glancing 3E19999A
+F Block 00000000
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|0|0|0|0.02|0.1
+F Miss 3E77CED9
+F Dodge 3D0F5C29
+F Parry 00000000
+F Glancing 3E19999A
+F Block 00000000
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|0|0|0.03|0|0
+F Miss 3E591687
+F Dodge 3D6147AE
+F Parry 00000000
+F Glancing 3E19999A
+F Block 00000000
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|0|0|0.03|0|0.1
+F Miss 3E591687
+F Dodge 3D6147AE
+F Parry 00000000
+F Glancing 3E19999A
+F Block 00000000
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|0|0|0.03|0.02|0
+F Miss 3E591687
+F Dodge 3D0F5C29
+F Parry 00000000
+F Glancing 3E19999A
+F Block 00000000
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|0|0|0.03|0.02|0.1
+F Miss 3E591687
+F Dodge 3D0F5C29
+F Parry 00000000
+F Glancing 3E19999A
+F Block 00000000
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|0|0.5|0|0|0
+F Miss 3E77CED9
+F Dodge 3D6147AE
+F Parry 3CE147AE
+F Glancing 3E19999A
+F Block 3CD4FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|0|0.5|0|0|0.1
+F Miss 3E77CED9
+F Dodge 3D6147AE
+F Parry 3CE147AE
+F Glancing 3E19999A
+F Block 3CD4FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|0|0.5|0|0.02|0
+F Miss 3E77CED9
+F Dodge 3D0F5C29
+F Parry 3C8F5C29
+F Glancing 3E19999A
+F Block 3CD4FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|0|0.5|0|0.02|0.1
+F Miss 3E77CED9
+F Dodge 3D0F5C29
+F Parry 3C8F5C29
+F Glancing 3E19999A
+F Block 3CD4FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|0|0.5|0.03|0|0
+F Miss 3E591687
+F Dodge 3D6147AE
+F Parry 3CE147AE
+F Glancing 3E19999A
+F Block 3CD4FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|0|0.5|0.03|0|0.1
+F Miss 3E591687
+F Dodge 3D6147AE
+F Parry 3CE147AE
+F Glancing 3E19999A
+F Block 3CD4FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|0|0.5|0.03|0.02|0
+F Miss 3E591687
+F Dodge 3D0F5C29
+F Parry 3C8F5C29
+F Glancing 3E19999A
+F Block 3CD4FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|0|0.5|0.03|0.02|0.1
+F Miss 3E591687
+F Dodge 3D0F5C29
+F Parry 3C8F5C29
+F Glancing 3E19999A
+F Block 3CD4FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|0|1|0|0|0
+F Miss 3E77CED9
+F Dodge 3D6147AE
+F Parry 3D6147AE
+F Glancing 3E19999A
+F Block 3D54FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|0|1|0|0|0.1
+F Miss 3E77CED9
+F Dodge 3D6147AE
+F Parry 3D6147AE
+F Glancing 3E19999A
+F Block 3D54FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|0|1|0|0.02|0
+F Miss 3E77CED9
+F Dodge 3D0F5C29
+F Parry 3D0F5C29
+F Glancing 3E19999A
+F Block 3D54FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|0|1|0|0.02|0.1
+F Miss 3E77CED9
+F Dodge 3D0F5C29
+F Parry 3D0F5C29
+F Glancing 3E19999A
+F Block 3D54FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|0|1|0.03|0|0
+F Miss 3E591687
+F Dodge 3D6147AE
+F Parry 3D6147AE
+F Glancing 3E19999A
+F Block 3D54FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|0|1|0.03|0|0.1
+F Miss 3E591687
+F Dodge 3D6147AE
+F Parry 3D6147AE
+F Glancing 3E19999A
+F Block 3D54FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|0|1|0.03|0.02|0
+F Miss 3E591687
+F Dodge 3D0F5C29
+F Parry 3D0F5C29
+F Glancing 3E19999A
+F Block 3D54FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|0|1|0.03|0.02|0.1
+F Miss 3E591687
+F Dodge 3D0F5C29
+F Parry 3D0F5C29
+F Glancing 3E19999A
+F Block 3D54FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|1|0|0|0|0
+F Miss 3D54FDF4
+F Dodge 3D6147AE
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|1|0|0|0|0.1
+F Miss 3D54FDF4
+F Dodge 3D6147AE
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|1|0|0|0.02|0
+F Miss 3D54FDF4
+F Dodge 3D0F5C29
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|1|0|0|0.02|0.1
+F Miss 3D54FDF4
+F Dodge 3D0F5C29
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|1|0|0.03|0|0
+F Miss 3CB43959
+F Dodge 3D6147AE
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|1|0|0.03|0|0.1
+F Miss 3CB43959
+F Dodge 3D6147AE
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|1|0|0.03|0.02|0
+F Miss 3CB43959
+F Dodge 3D0F5C29
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|1|0|0.03|0.02|0.1
+F Miss 3CB43959
+F Dodge 3D0F5C29
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|1|0.5|0|0|0
+F Miss 3D54FDF4
+F Dodge 3D6147AE
+F Parry 3CE147AE
+F Glancing 00000000
+F Block 3CD4FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|1|0.5|0|0|0.1
+F Miss 3D54FDF4
+F Dodge 3D6147AE
+F Parry 3CE147AE
+F Glancing 00000000
+F Block 3CD4FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|1|0.5|0|0.02|0
+F Miss 3D54FDF4
+F Dodge 3D0F5C29
+F Parry 3C8F5C29
+F Glancing 00000000
+F Block 3CD4FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|1|0.5|0|0.02|0.1
+F Miss 3D54FDF4
+F Dodge 3D0F5C29
+F Parry 3C8F5C29
+F Glancing 00000000
+F Block 3CD4FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|1|0.5|0.03|0|0
+F Miss 3CB43959
+F Dodge 3D6147AE
+F Parry 3CE147AE
+F Glancing 00000000
+F Block 3CD4FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|1|0.5|0.03|0|0.1
+F Miss 3CB43959
+F Dodge 3D6147AE
+F Parry 3CE147AE
+F Glancing 00000000
+F Block 3CD4FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|1|0.5|0.03|0.02|0
+F Miss 3CB43959
+F Dodge 3D0F5C29
+F Parry 3C8F5C29
+F Glancing 00000000
+F Block 3CD4FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|1|0.5|0.03|0.02|0.1
+F Miss 3CB43959
+F Dodge 3D0F5C29
+F Parry 3C8F5C29
+F Glancing 00000000
+F Block 3CD4FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|1|1|0|0|0
+F Miss 3D54FDF4
+F Dodge 3D6147AE
+F Parry 3D6147AE
+F Glancing 00000000
+F Block 3D54FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|1|1|0|0|0.1
+F Miss 3D54FDF4
+F Dodge 3D6147AE
+F Parry 3D6147AE
+F Glancing 00000000
+F Block 3D54FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|1|1|0|0.02|0
+F Miss 3D54FDF4
+F Dodge 3D0F5C29
+F Parry 3D0F5C29
+F Glancing 00000000
+F Block 3D54FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|1|1|0|0.02|0.1
+F Miss 3D54FDF4
+F Dodge 3D0F5C29
+F Parry 3D0F5C29
+F Glancing 00000000
+F Block 3D54FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|1|1|0.03|0|0
+F Miss 3CB43959
+F Dodge 3D6147AE
+F Parry 3D6147AE
+F Glancing 00000000
+F Block 3D54FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|1|1|0.03|0|0.1
+F Miss 3CB43959
+F Dodge 3D6147AE
+F Parry 3D6147AE
+F Glancing 00000000
+F Block 3D54FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|1|1|0.03|0.02|0
+F Miss 3CB43959
+F Dodge 3D0F5C29
+F Parry 3D0F5C29
+F Glancing 00000000
+F Block 3D54FDF4
+F Crit BBC49BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|81|1|1|1|0.03|0.02|0.1
+F Miss 3CB43959
+F Dodge 3D0F5C29
+F Parry 3D0F5C29
+F Glancing 00000000
+F Block 3D54FDF4
+F Crit 3DC08313
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|0|0|0|0|0
+F Miss 3D5D2F1B
+F Dodge 3D75C28F
+F Parry 00000000
+F Glancing 3E4CCCCD
+F Block 00000000
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|0|0|0|0|0.1
+F Miss 3D5D2F1B
+F Dodge 3D75C28F
+F Parry 00000000
+F Glancing 3E4CCCCD
+F Block 00000000
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|0|0|0|0.02|0
+F Miss 3D5D2F1B
+F Dodge 3D23D70A
+F Parry 00000000
+F Glancing 3E4CCCCD
+F Block 00000000
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|0|0|0|0.02|0.1
+F Miss 3D5D2F1B
+F Dodge 3D23D70A
+F Parry 00000000
+F Glancing 3E4CCCCD
+F Block 00000000
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|0|0|0.03|0|0
+F Miss 3CC49BA7
+F Dodge 3D75C28F
+F Parry 00000000
+F Glancing 3E4CCCCD
+F Block 00000000
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|0|0|0.03|0|0.1
+F Miss 3CC49BA7
+F Dodge 3D75C28F
+F Parry 00000000
+F Glancing 3E4CCCCD
+F Block 00000000
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|0|0|0.03|0.02|0
+F Miss 3CC49BA7
+F Dodge 3D23D70A
+F Parry 00000000
+F Glancing 3E4CCCCD
+F Block 00000000
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|0|0|0.03|0.02|0.1
+F Miss 3CC49BA7
+F Dodge 3D23D70A
+F Parry 00000000
+F Glancing 3E4CCCCD
+F Block 00000000
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|0|0.5|0|0|0
+F Miss 3D5D2F1B
+F Dodge 3D75C28F
+F Parry 3CF5C28F
+F Glancing 3E4CCCCD
+F Block 3CDD2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|0|0.5|0|0|0.1
+F Miss 3D5D2F1B
+F Dodge 3D75C28F
+F Parry 3CF5C28F
+F Glancing 3E4CCCCD
+F Block 3CDD2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|0|0.5|0|0.02|0
+F Miss 3D5D2F1B
+F Dodge 3D23D70A
+F Parry 3CA3D70A
+F Glancing 3E4CCCCD
+F Block 3CDD2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|0|0.5|0|0.02|0.1
+F Miss 3D5D2F1B
+F Dodge 3D23D70A
+F Parry 3CA3D70A
+F Glancing 3E4CCCCD
+F Block 3CDD2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|0|0.5|0.03|0|0
+F Miss 3CC49BA7
+F Dodge 3D75C28F
+F Parry 3CF5C28F
+F Glancing 3E4CCCCD
+F Block 3CDD2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|0|0.5|0.03|0|0.1
+F Miss 3CC49BA7
+F Dodge 3D75C28F
+F Parry 3CF5C28F
+F Glancing 3E4CCCCD
+F Block 3CDD2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|0|0.5|0.03|0.02|0
+F Miss 3CC49BA7
+F Dodge 3D23D70A
+F Parry 3CA3D70A
+F Glancing 3E4CCCCD
+F Block 3CDD2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|0|0.5|0.03|0.02|0.1
+F Miss 3CC49BA7
+F Dodge 3D23D70A
+F Parry 3CA3D70A
+F Glancing 3E4CCCCD
+F Block 3CDD2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|0|1|0|0|0
+F Miss 3D5D2F1B
+F Dodge 3D75C28F
+F Parry 3D75C28F
+F Glancing 3E4CCCCD
+F Block 3D5D2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|0|1|0|0|0.1
+F Miss 3D5D2F1B
+F Dodge 3D75C28F
+F Parry 3D75C28F
+F Glancing 3E4CCCCD
+F Block 3D5D2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|0|1|0|0.02|0
+F Miss 3D5D2F1B
+F Dodge 3D23D70A
+F Parry 3D23D70A
+F Glancing 3E4CCCCD
+F Block 3D5D2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|0|1|0|0.02|0.1
+F Miss 3D5D2F1B
+F Dodge 3D23D70A
+F Parry 3D23D70A
+F Glancing 3E4CCCCD
+F Block 3D5D2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|0|1|0.03|0|0
+F Miss 3CC49BA7
+F Dodge 3D75C28F
+F Parry 3D75C28F
+F Glancing 3E4CCCCD
+F Block 3D5D2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|0|1|0.03|0|0.1
+F Miss 3CC49BA7
+F Dodge 3D75C28F
+F Parry 3D75C28F
+F Glancing 3E4CCCCD
+F Block 3D5D2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|0|1|0.03|0.02|0
+F Miss 3CC49BA7
+F Dodge 3D23D70A
+F Parry 3D23D70A
+F Glancing 3E4CCCCD
+F Block 3D5D2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|0|1|0.03|0.02|0.1
+F Miss 3CC49BA7
+F Dodge 3D23D70A
+F Parry 3D23D70A
+F Glancing 3E4CCCCD
+F Block 3D5D2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|1|0|0|0|0
+F Miss 3D5D2F1B
+F Dodge 3D75C28F
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|1|0|0|0|0.1
+F Miss 3D5D2F1B
+F Dodge 3D75C28F
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|1|0|0|0.02|0
+F Miss 3D5D2F1B
+F Dodge 3D23D70A
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|1|0|0|0.02|0.1
+F Miss 3D5D2F1B
+F Dodge 3D23D70A
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|1|0|0.03|0|0
+F Miss 3CC49BA7
+F Dodge 3D75C28F
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|1|0|0.03|0|0.1
+F Miss 3CC49BA7
+F Dodge 3D75C28F
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|1|0|0.03|0.02|0
+F Miss 3CC49BA7
+F Dodge 3D23D70A
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|1|0|0.03|0.02|0.1
+F Miss 3CC49BA7
+F Dodge 3D23D70A
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|1|0.5|0|0|0
+F Miss 3D5D2F1B
+F Dodge 3D75C28F
+F Parry 3CF5C28F
+F Glancing 00000000
+F Block 3CDD2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|1|0.5|0|0|0.1
+F Miss 3D5D2F1B
+F Dodge 3D75C28F
+F Parry 3CF5C28F
+F Glancing 00000000
+F Block 3CDD2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|1|0.5|0|0.02|0
+F Miss 3D5D2F1B
+F Dodge 3D23D70A
+F Parry 3CA3D70A
+F Glancing 00000000
+F Block 3CDD2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|1|0.5|0|0.02|0.1
+F Miss 3D5D2F1B
+F Dodge 3D23D70A
+F Parry 3CA3D70A
+F Glancing 00000000
+F Block 3CDD2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|1|0.5|0.03|0|0
+F Miss 3CC49BA7
+F Dodge 3D75C28F
+F Parry 3CF5C28F
+F Glancing 00000000
+F Block 3CDD2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|1|0.5|0.03|0|0.1
+F Miss 3CC49BA7
+F Dodge 3D75C28F
+F Parry 3CF5C28F
+F Glancing 00000000
+F Block 3CDD2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|1|0.5|0.03|0.02|0
+F Miss 3CC49BA7
+F Dodge 3D23D70A
+F Parry 3CA3D70A
+F Glancing 00000000
+F Block 3CDD2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|1|0.5|0.03|0.02|0.1
+F Miss 3CC49BA7
+F Dodge 3D23D70A
+F Parry 3CA3D70A
+F Glancing 00000000
+F Block 3CDD2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|1|1|0|0|0
+F Miss 3D5D2F1B
+F Dodge 3D75C28F
+F Parry 3D75C28F
+F Glancing 00000000
+F Block 3D5D2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|1|1|0|0|0.1
+F Miss 3D5D2F1B
+F Dodge 3D75C28F
+F Parry 3D75C28F
+F Glancing 00000000
+F Block 3D5D2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|1|1|0|0.02|0
+F Miss 3D5D2F1B
+F Dodge 3D23D70A
+F Parry 3D23D70A
+F Glancing 00000000
+F Block 3D5D2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|1|1|0|0.02|0.1
+F Miss 3D5D2F1B
+F Dodge 3D23D70A
+F Parry 3D23D70A
+F Glancing 00000000
+F Block 3D5D2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|1|1|0.03|0|0
+F Miss 3CC49BA7
+F Dodge 3D75C28F
+F Parry 3D75C28F
+F Glancing 00000000
+F Block 3D5D2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|1|1|0.03|0|0.1
+F Miss 3CC49BA7
+F Dodge 3D75C28F
+F Parry 3D75C28F
+F Glancing 00000000
+F Block 3D5D2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|1|1|0.03|0.02|0
+F Miss 3CC49BA7
+F Dodge 3D23D70A
+F Parry 3D23D70A
+F Glancing 00000000
+F Block 3D5D2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|0|1|1|0.03|0.02|0.1
+F Miss 3CC49BA7
+F Dodge 3D23D70A
+F Parry 3D23D70A
+F Glancing 00000000
+F Block 3D5D2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|0|0|0|0|0
+F Miss 3E79DB23
+F Dodge 3D75C28F
+F Parry 00000000
+F Glancing 3E4CCCCD
+F Block 00000000
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|0|0|0|0|0.1
+F Miss 3E79DB23
+F Dodge 3D75C28F
+F Parry 00000000
+F Glancing 3E4CCCCD
+F Block 00000000
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|0|0|0|0.02|0
+F Miss 3E79DB23
+F Dodge 3D23D70A
+F Parry 00000000
+F Glancing 3E4CCCCD
+F Block 00000000
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|0|0|0|0.02|0.1
+F Miss 3E79DB23
+F Dodge 3D23D70A
+F Parry 00000000
+F Glancing 3E4CCCCD
+F Block 00000000
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|0|0|0.03|0|0
+F Miss 3E5B22D1
+F Dodge 3D75C28F
+F Parry 00000000
+F Glancing 3E4CCCCD
+F Block 00000000
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|0|0|0.03|0|0.1
+F Miss 3E5B22D1
+F Dodge 3D75C28F
+F Parry 00000000
+F Glancing 3E4CCCCD
+F Block 00000000
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|0|0|0.03|0.02|0
+F Miss 3E5B22D1
+F Dodge 3D23D70A
+F Parry 00000000
+F Glancing 3E4CCCCD
+F Block 00000000
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|0|0|0.03|0.02|0.1
+F Miss 3E5B22D1
+F Dodge 3D23D70A
+F Parry 00000000
+F Glancing 3E4CCCCD
+F Block 00000000
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|0|0.5|0|0|0
+F Miss 3E79DB23
+F Dodge 3D75C28F
+F Parry 3CF5C28F
+F Glancing 3E4CCCCD
+F Block 3CDD2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|0|0.5|0|0|0.1
+F Miss 3E79DB23
+F Dodge 3D75C28F
+F Parry 3CF5C28F
+F Glancing 3E4CCCCD
+F Block 3CDD2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|0|0.5|0|0.02|0
+F Miss 3E79DB23
+F Dodge 3D23D70A
+F Parry 3CA3D70A
+F Glancing 3E4CCCCD
+F Block 3CDD2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|0|0.5|0|0.02|0.1
+F Miss 3E79DB23
+F Dodge 3D23D70A
+F Parry 3CA3D70A
+F Glancing 3E4CCCCD
+F Block 3CDD2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|0|0.5|0.03|0|0
+F Miss 3E5B22D1
+F Dodge 3D75C28F
+F Parry 3CF5C28F
+F Glancing 3E4CCCCD
+F Block 3CDD2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|0|0.5|0.03|0|0.1
+F Miss 3E5B22D1
+F Dodge 3D75C28F
+F Parry 3CF5C28F
+F Glancing 3E4CCCCD
+F Block 3CDD2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|0|0.5|0.03|0.02|0
+F Miss 3E5B22D1
+F Dodge 3D23D70A
+F Parry 3CA3D70A
+F Glancing 3E4CCCCD
+F Block 3CDD2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|0|0.5|0.03|0.02|0.1
+F Miss 3E5B22D1
+F Dodge 3D23D70A
+F Parry 3CA3D70A
+F Glancing 3E4CCCCD
+F Block 3CDD2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|0|1|0|0|0
+F Miss 3E79DB23
+F Dodge 3D75C28F
+F Parry 3D75C28F
+F Glancing 3E4CCCCD
+F Block 3D5D2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|0|1|0|0|0.1
+F Miss 3E79DB23
+F Dodge 3D75C28F
+F Parry 3D75C28F
+F Glancing 3E4CCCCD
+F Block 3D5D2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|0|1|0|0.02|0
+F Miss 3E79DB23
+F Dodge 3D23D70A
+F Parry 3D23D70A
+F Glancing 3E4CCCCD
+F Block 3D5D2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|0|1|0|0.02|0.1
+F Miss 3E79DB23
+F Dodge 3D23D70A
+F Parry 3D23D70A
+F Glancing 3E4CCCCD
+F Block 3D5D2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|0|1|0.03|0|0
+F Miss 3E5B22D1
+F Dodge 3D75C28F
+F Parry 3D75C28F
+F Glancing 3E4CCCCD
+F Block 3D5D2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|0|1|0.03|0|0.1
+F Miss 3E5B22D1
+F Dodge 3D75C28F
+F Parry 3D75C28F
+F Glancing 3E4CCCCD
+F Block 3D5D2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|0|1|0.03|0.02|0
+F Miss 3E5B22D1
+F Dodge 3D23D70A
+F Parry 3D23D70A
+F Glancing 3E4CCCCD
+F Block 3D5D2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|0|1|0.03|0.02|0.1
+F Miss 3E5B22D1
+F Dodge 3D23D70A
+F Parry 3D23D70A
+F Glancing 3E4CCCCD
+F Block 3D5D2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|1|0|0|0|0
+F Miss 3D5D2F1B
+F Dodge 3D75C28F
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|1|0|0|0|0.1
+F Miss 3D5D2F1B
+F Dodge 3D75C28F
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|1|0|0|0.02|0
+F Miss 3D5D2F1B
+F Dodge 3D23D70A
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|1|0|0|0.02|0.1
+F Miss 3D5D2F1B
+F Dodge 3D23D70A
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|1|0|0.03|0|0
+F Miss 3CC49BA7
+F Dodge 3D75C28F
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|1|0|0.03|0|0.1
+F Miss 3CC49BA7
+F Dodge 3D75C28F
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|1|0|0.03|0.02|0
+F Miss 3CC49BA7
+F Dodge 3D23D70A
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|1|0|0.03|0.02|0.1
+F Miss 3CC49BA7
+F Dodge 3D23D70A
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|1|0.5|0|0|0
+F Miss 3D5D2F1B
+F Dodge 3D75C28F
+F Parry 3CF5C28F
+F Glancing 00000000
+F Block 3CDD2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|1|0.5|0|0|0.1
+F Miss 3D5D2F1B
+F Dodge 3D75C28F
+F Parry 3CF5C28F
+F Glancing 00000000
+F Block 3CDD2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|1|0.5|0|0.02|0
+F Miss 3D5D2F1B
+F Dodge 3D23D70A
+F Parry 3CA3D70A
+F Glancing 00000000
+F Block 3CDD2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|1|0.5|0|0.02|0.1
+F Miss 3D5D2F1B
+F Dodge 3D23D70A
+F Parry 3CA3D70A
+F Glancing 00000000
+F Block 3CDD2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|1|0.5|0.03|0|0
+F Miss 3CC49BA7
+F Dodge 3D75C28F
+F Parry 3CF5C28F
+F Glancing 00000000
+F Block 3CDD2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|1|0.5|0.03|0|0.1
+F Miss 3CC49BA7
+F Dodge 3D75C28F
+F Parry 3CF5C28F
+F Glancing 00000000
+F Block 3CDD2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|1|0.5|0.03|0.02|0
+F Miss 3CC49BA7
+F Dodge 3D23D70A
+F Parry 3CA3D70A
+F Glancing 00000000
+F Block 3CDD2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|1|0.5|0.03|0.02|0.1
+F Miss 3CC49BA7
+F Dodge 3D23D70A
+F Parry 3CA3D70A
+F Glancing 00000000
+F Block 3CDD2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|1|1|0|0|0
+F Miss 3D5D2F1B
+F Dodge 3D75C28F
+F Parry 3D75C28F
+F Glancing 00000000
+F Block 3D5D2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|1|1|0|0|0.1
+F Miss 3D5D2F1B
+F Dodge 3D75C28F
+F Parry 3D75C28F
+F Glancing 00000000
+F Block 3D5D2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|1|1|0|0.02|0
+F Miss 3D5D2F1B
+F Dodge 3D23D70A
+F Parry 3D23D70A
+F Glancing 00000000
+F Block 3D5D2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|1|1|0|0.02|0.1
+F Miss 3D5D2F1B
+F Dodge 3D23D70A
+F Parry 3D23D70A
+F Glancing 00000000
+F Block 3D5D2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|1|1|0.03|0|0
+F Miss 3CC49BA7
+F Dodge 3D75C28F
+F Parry 3D75C28F
+F Glancing 00000000
+F Block 3D5D2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|1|1|0.03|0|0.1
+F Miss 3CC49BA7
+F Dodge 3D75C28F
+F Parry 3D75C28F
+F Glancing 00000000
+F Block 3D5D2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|1|1|0.03|0.02|0
+F Miss 3CC49BA7
+F Dodge 3D23D70A
+F Parry 3D23D70A
+F Glancing 00000000
+F Block 3D5D2F1B
+F Crit BC449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|82|1|1|1|0.03|0.02|0.1
+F Miss 3CC49BA7
+F Dodge 3D23D70A
+F Parry 3D23D70A
+F Glancing 00000000
+F Block 3D5D2F1B
+F Crit 3DB43958
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|0|0|0|0|0
+F Miss 3DA3D70A
+F Dodge 3D851EB8
+F Parry 00000000
+F Glancing 3E75C28F
+F Block 00000000
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|0|0|0|0|0.1
+F Miss 3DA3D70A
+F Dodge 3D851EB8
+F Parry 00000000
+F Glancing 3E75C28F
+F Block 00000000
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|0|0|0|0.02|0
+F Miss 3DA3D70A
+F Dodge 3D3851EB
+F Parry 00000000
+F Glancing 3E75C28F
+F Block 00000000
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|0|0|0|0.02|0.1
+F Miss 3DA3D70A
+F Dodge 3D3851EB
+F Parry 00000000
+F Glancing 3E75C28F
+F Block 00000000
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|0|0|0.03|0|0
+F Miss 3D4CCCCC
+F Dodge 3D851EB8
+F Parry 00000000
+F Glancing 3E75C28F
+F Block 00000000
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|0|0|0.03|0|0.1
+F Miss 3D4CCCCC
+F Dodge 3D851EB8
+F Parry 00000000
+F Glancing 3E75C28F
+F Block 00000000
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|0|0|0.03|0.02|0
+F Miss 3D4CCCCC
+F Dodge 3D3851EB
+F Parry 00000000
+F Glancing 3E75C28F
+F Block 00000000
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|0|0|0.03|0.02|0.1
+F Miss 3D4CCCCC
+F Dodge 3D3851EB
+F Parry 00000000
+F Glancing 3E75C28F
+F Block 00000000
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|0|0.5|0|0|0
+F Miss 3DA3D70A
+F Dodge 3D851EB8
+F Parry 3D8F5C29
+F Glancing 3E75C28F
+F Block 3D051EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|0|0.5|0|0|0.1
+F Miss 3DA3D70A
+F Dodge 3D851EB8
+F Parry 3D8F5C29
+F Glancing 3E75C28F
+F Block 3D051EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|0|0.5|0|0.02|0
+F Miss 3DA3D70A
+F Dodge 3D3851EB
+F Parry 3D75C290
+F Glancing 3E75C28F
+F Block 3D051EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|0|0.5|0|0.02|0.1
+F Miss 3DA3D70A
+F Dodge 3D3851EB
+F Parry 3D75C290
+F Glancing 3E75C28F
+F Block 3D051EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|0|0.5|0.03|0|0
+F Miss 3D4CCCCC
+F Dodge 3D851EB8
+F Parry 3D8F5C29
+F Glancing 3E75C28F
+F Block 3D051EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|0|0.5|0.03|0|0.1
+F Miss 3D4CCCCC
+F Dodge 3D851EB8
+F Parry 3D8F5C29
+F Glancing 3E75C28F
+F Block 3D051EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|0|0.5|0.03|0.02|0
+F Miss 3D4CCCCC
+F Dodge 3D3851EB
+F Parry 3D75C290
+F Glancing 3E75C28F
+F Block 3D051EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|0|0.5|0.03|0.02|0.1
+F Miss 3D4CCCCC
+F Dodge 3D3851EB
+F Parry 3D75C290
+F Glancing 3E75C28F
+F Block 3D051EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|0|1|0|0|0
+F Miss 3DA3D70A
+F Dodge 3D851EB8
+F Parry 3E0F5C29
+F Glancing 3E75C28F
+F Block 3D851EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|0|1|0|0|0.1
+F Miss 3DA3D70A
+F Dodge 3D851EB8
+F Parry 3E0F5C29
+F Glancing 3E75C28F
+F Block 3D851EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|0|1|0|0.02|0
+F Miss 3DA3D70A
+F Dodge 3D3851EB
+F Parry 3DF5C290
+F Glancing 3E75C28F
+F Block 3D851EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|0|1|0|0.02|0.1
+F Miss 3DA3D70A
+F Dodge 3D3851EB
+F Parry 3DF5C290
+F Glancing 3E75C28F
+F Block 3D851EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|0|1|0.03|0|0
+F Miss 3D4CCCCC
+F Dodge 3D851EB8
+F Parry 3E0F5C29
+F Glancing 3E75C28F
+F Block 3D851EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|0|1|0.03|0|0.1
+F Miss 3D4CCCCC
+F Dodge 3D851EB8
+F Parry 3E0F5C29
+F Glancing 3E75C28F
+F Block 3D851EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|0|1|0.03|0.02|0
+F Miss 3D4CCCCC
+F Dodge 3D3851EB
+F Parry 3DF5C290
+F Glancing 3E75C28F
+F Block 3D851EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|0|1|0.03|0.02|0.1
+F Miss 3D4CCCCC
+F Dodge 3D3851EB
+F Parry 3DF5C290
+F Glancing 3E75C28F
+F Block 3D851EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|1|0|0|0|0
+F Miss 3DA3D70A
+F Dodge 3D851EB8
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|1|0|0|0|0.1
+F Miss 3DA3D70A
+F Dodge 3D851EB8
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|1|0|0|0.02|0
+F Miss 3DA3D70A
+F Dodge 3D3851EB
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|1|0|0|0.02|0.1
+F Miss 3DA3D70A
+F Dodge 3D3851EB
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|1|0|0.03|0|0
+F Miss 3D4CCCCC
+F Dodge 3D851EB8
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|1|0|0.03|0|0.1
+F Miss 3D4CCCCC
+F Dodge 3D851EB8
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|1|0|0.03|0.02|0
+F Miss 3D4CCCCC
+F Dodge 3D3851EB
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|1|0|0.03|0.02|0.1
+F Miss 3D4CCCCC
+F Dodge 3D3851EB
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|1|0.5|0|0|0
+F Miss 3DA3D70A
+F Dodge 3D851EB8
+F Parry 3D8F5C29
+F Glancing 00000000
+F Block 3D051EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|1|0.5|0|0|0.1
+F Miss 3DA3D70A
+F Dodge 3D851EB8
+F Parry 3D8F5C29
+F Glancing 00000000
+F Block 3D051EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|1|0.5|0|0.02|0
+F Miss 3DA3D70A
+F Dodge 3D3851EB
+F Parry 3D75C290
+F Glancing 00000000
+F Block 3D051EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|1|0.5|0|0.02|0.1
+F Miss 3DA3D70A
+F Dodge 3D3851EB
+F Parry 3D75C290
+F Glancing 00000000
+F Block 3D051EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|1|0.5|0.03|0|0
+F Miss 3D4CCCCC
+F Dodge 3D851EB8
+F Parry 3D8F5C29
+F Glancing 00000000
+F Block 3D051EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|1|0.5|0.03|0|0.1
+F Miss 3D4CCCCC
+F Dodge 3D851EB8
+F Parry 3D8F5C29
+F Glancing 00000000
+F Block 3D051EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|1|0.5|0.03|0.02|0
+F Miss 3D4CCCCC
+F Dodge 3D3851EB
+F Parry 3D75C290
+F Glancing 00000000
+F Block 3D051EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|1|0.5|0.03|0.02|0.1
+F Miss 3D4CCCCC
+F Dodge 3D3851EB
+F Parry 3D75C290
+F Glancing 00000000
+F Block 3D051EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|1|1|0|0|0
+F Miss 3DA3D70A
+F Dodge 3D851EB8
+F Parry 3E0F5C29
+F Glancing 00000000
+F Block 3D851EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|1|1|0|0|0.1
+F Miss 3DA3D70A
+F Dodge 3D851EB8
+F Parry 3E0F5C29
+F Glancing 00000000
+F Block 3D851EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|1|1|0|0.02|0
+F Miss 3DA3D70A
+F Dodge 3D3851EB
+F Parry 3DF5C290
+F Glancing 00000000
+F Block 3D851EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|1|1|0|0.02|0.1
+F Miss 3DA3D70A
+F Dodge 3D3851EB
+F Parry 3DF5C290
+F Glancing 00000000
+F Block 3D851EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|1|1|0.03|0|0
+F Miss 3D4CCCCC
+F Dodge 3D851EB8
+F Parry 3E0F5C29
+F Glancing 00000000
+F Block 3D851EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|1|1|0.03|0|0.1
+F Miss 3D4CCCCC
+F Dodge 3D851EB8
+F Parry 3E0F5C29
+F Glancing 00000000
+F Block 3D851EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|1|1|0.03|0.02|0
+F Miss 3D4CCCCC
+F Dodge 3D3851EB
+F Parry 3DF5C290
+F Glancing 00000000
+F Block 3D851EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|0|1|1|0.03|0.02|0.1
+F Miss 3D4CCCCC
+F Dodge 3D3851EB
+F Parry 3DF5C290
+F Glancing 00000000
+F Block 3D851EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|0|0|0|0|0
+F Miss 3E8A3D71
+F Dodge 3D851EB8
+F Parry 00000000
+F Glancing 3E75C28F
+F Block 00000000
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|0|0|0|0|0.1
+F Miss 3E8A3D71
+F Dodge 3D851EB8
+F Parry 00000000
+F Glancing 3E75C28F
+F Block 00000000
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|0|0|0|0.02|0
+F Miss 3E8A3D71
+F Dodge 3D3851EB
+F Parry 00000000
+F Glancing 3E75C28F
+F Block 00000000
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|0|0|0|0.02|0.1
+F Miss 3E8A3D71
+F Dodge 3D3851EB
+F Parry 00000000
+F Glancing 3E75C28F
+F Block 00000000
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|0|0|0.03|0|0
+F Miss 3E75C290
+F Dodge 3D851EB8
+F Parry 00000000
+F Glancing 3E75C28F
+F Block 00000000
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|0|0|0.03|0|0.1
+F Miss 3E75C290
+F Dodge 3D851EB8
+F Parry 00000000
+F Glancing 3E75C28F
+F Block 00000000
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|0|0|0.03|0.02|0
+F Miss 3E75C290
+F Dodge 3D3851EB
+F Parry 00000000
+F Glancing 3E75C28F
+F Block 00000000
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|0|0|0.03|0.02|0.1
+F Miss 3E75C290
+F Dodge 3D3851EB
+F Parry 00000000
+F Glancing 3E75C28F
+F Block 00000000
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|0|0.5|0|0|0
+F Miss 3E8A3D71
+F Dodge 3D851EB8
+F Parry 3D8F5C29
+F Glancing 3E75C28F
+F Block 3D051EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|0|0.5|0|0|0.1
+F Miss 3E8A3D71
+F Dodge 3D851EB8
+F Parry 3D8F5C29
+F Glancing 3E75C28F
+F Block 3D051EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|0|0.5|0|0.02|0
+F Miss 3E8A3D71
+F Dodge 3D3851EB
+F Parry 3D75C290
+F Glancing 3E75C28F
+F Block 3D051EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|0|0.5|0|0.02|0.1
+F Miss 3E8A3D71
+F Dodge 3D3851EB
+F Parry 3D75C290
+F Glancing 3E75C28F
+F Block 3D051EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|0|0.5|0.03|0|0
+F Miss 3E75C290
+F Dodge 3D851EB8
+F Parry 3D8F5C29
+F Glancing 3E75C28F
+F Block 3D051EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|0|0.5|0.03|0|0.1
+F Miss 3E75C290
+F Dodge 3D851EB8
+F Parry 3D8F5C29
+F Glancing 3E75C28F
+F Block 3D051EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|0|0.5|0.03|0.02|0
+F Miss 3E75C290
+F Dodge 3D3851EB
+F Parry 3D75C290
+F Glancing 3E75C28F
+F Block 3D051EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|0|0.5|0.03|0.02|0.1
+F Miss 3E75C290
+F Dodge 3D3851EB
+F Parry 3D75C290
+F Glancing 3E75C28F
+F Block 3D051EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|0|1|0|0|0
+F Miss 3E8A3D71
+F Dodge 3D851EB8
+F Parry 3E0F5C29
+F Glancing 3E75C28F
+F Block 3D851EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|0|1|0|0|0.1
+F Miss 3E8A3D71
+F Dodge 3D851EB8
+F Parry 3E0F5C29
+F Glancing 3E75C28F
+F Block 3D851EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|0|1|0|0.02|0
+F Miss 3E8A3D71
+F Dodge 3D3851EB
+F Parry 3DF5C290
+F Glancing 3E75C28F
+F Block 3D851EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|0|1|0|0.02|0.1
+F Miss 3E8A3D71
+F Dodge 3D3851EB
+F Parry 3DF5C290
+F Glancing 3E75C28F
+F Block 3D851EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|0|1|0.03|0|0
+F Miss 3E75C290
+F Dodge 3D851EB8
+F Parry 3E0F5C29
+F Glancing 3E75C28F
+F Block 3D851EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|0|1|0.03|0|0.1
+F Miss 3E75C290
+F Dodge 3D851EB8
+F Parry 3E0F5C29
+F Glancing 3E75C28F
+F Block 3D851EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|0|1|0.03|0.02|0
+F Miss 3E75C290
+F Dodge 3D3851EB
+F Parry 3DF5C290
+F Glancing 3E75C28F
+F Block 3D851EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|0|1|0.03|0.02|0.1
+F Miss 3E75C290
+F Dodge 3D3851EB
+F Parry 3DF5C290
+F Glancing 3E75C28F
+F Block 3D851EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|1|0|0|0|0
+F Miss 3DA3D70A
+F Dodge 3D851EB8
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|1|0|0|0|0.1
+F Miss 3DA3D70A
+F Dodge 3D851EB8
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|1|0|0|0.02|0
+F Miss 3DA3D70A
+F Dodge 3D3851EB
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|1|0|0|0.02|0.1
+F Miss 3DA3D70A
+F Dodge 3D3851EB
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|1|0|0.03|0|0
+F Miss 3D4CCCCC
+F Dodge 3D851EB8
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|1|0|0.03|0|0.1
+F Miss 3D4CCCCC
+F Dodge 3D851EB8
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|1|0|0.03|0.02|0
+F Miss 3D4CCCCC
+F Dodge 3D3851EB
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|1|0|0.03|0.02|0.1
+F Miss 3D4CCCCC
+F Dodge 3D3851EB
+F Parry 00000000
+F Glancing 00000000
+F Block 00000000
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|1|0.5|0|0|0
+F Miss 3DA3D70A
+F Dodge 3D851EB8
+F Parry 3D8F5C29
+F Glancing 00000000
+F Block 3D051EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|1|0.5|0|0|0.1
+F Miss 3DA3D70A
+F Dodge 3D851EB8
+F Parry 3D8F5C29
+F Glancing 00000000
+F Block 3D051EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|1|0.5|0|0.02|0
+F Miss 3DA3D70A
+F Dodge 3D3851EB
+F Parry 3D75C290
+F Glancing 00000000
+F Block 3D051EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|1|0.5|0|0.02|0.1
+F Miss 3DA3D70A
+F Dodge 3D3851EB
+F Parry 3D75C290
+F Glancing 00000000
+F Block 3D051EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|1|0.5|0.03|0|0
+F Miss 3D4CCCCC
+F Dodge 3D851EB8
+F Parry 3D8F5C29
+F Glancing 00000000
+F Block 3D051EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|1|0.5|0.03|0|0.1
+F Miss 3D4CCCCC
+F Dodge 3D851EB8
+F Parry 3D8F5C29
+F Glancing 00000000
+F Block 3D051EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|1|0.5|0.03|0.02|0
+F Miss 3D4CCCCC
+F Dodge 3D3851EB
+F Parry 3D75C290
+F Glancing 00000000
+F Block 3D051EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|1|0.5|0.03|0.02|0.1
+F Miss 3D4CCCCC
+F Dodge 3D3851EB
+F Parry 3D75C290
+F Glancing 00000000
+F Block 3D051EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|1|1|0|0|0
+F Miss 3DA3D70A
+F Dodge 3D851EB8
+F Parry 3E0F5C29
+F Glancing 00000000
+F Block 3D851EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|1|1|0|0|0.1
+F Miss 3DA3D70A
+F Dodge 3D851EB8
+F Parry 3E0F5C29
+F Glancing 00000000
+F Block 3D851EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|1|1|0|0.02|0
+F Miss 3DA3D70A
+F Dodge 3D3851EB
+F Parry 3DF5C290
+F Glancing 00000000
+F Block 3D851EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|1|1|0|0.02|0.1
+F Miss 3DA3D70A
+F Dodge 3D3851EB
+F Parry 3DF5C290
+F Glancing 00000000
+F Block 3D851EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|1|1|0.03|0|0
+F Miss 3D4CCCCC
+F Dodge 3D851EB8
+F Parry 3E0F5C29
+F Glancing 00000000
+F Block 3D851EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|1|1|0.03|0|0.1
+F Miss 3D4CCCCC
+F Dodge 3D851EB8
+F Parry 3E0F5C29
+F Glancing 00000000
+F Block 3D851EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|1|1|0.03|0.02|0
+F Miss 3D4CCCCC
+F Dodge 3D3851EB
+F Parry 3DF5C290
+F Glancing 00000000
+F Block 3D851EB8
+F Crit BD449BA6
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0
+== 80|83|1|1|1|0.03|0.02|0.1
+F Miss 3D4CCCCC
+F Dodge 3D3851EB
+F Parry 3DF5C290
+F Glancing 00000000
+F Block 3D851EB8
+F Crit 3D54FDF4
+F Hit 00000000
+B bPlayerTarget 0
+B bBehind 0

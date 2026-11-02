@@ -1,0 +1,71 @@
+/* JRawr base styles — reset, global scrollbar and the page canvas. Component styles live in
+   components.css. */
+
+/* Global slim dark scrollbar for every scroller (page, modals, pickers, lists). */
+html,
+body,
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+}
+
+*::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+*::-webkit-scrollbar-track {
+    background: color-mix(in srgb, var(--text) 2%, transparent);
+    border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb {
+    border: 0.125rem solid transparent;
+    border-radius: 999px;
+    background: var(--border);
+    background-clip: content-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: var(--text-dim);
+    background-clip: content-box;
+}
+
+*::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background: var(--bg);
+    /* Fluid root scale: rem-based layout and type follow the viewport width, but on a gentle
+       slope with sane bounds, so 1080p stays readable and 1440p/4K do not balloon. No
+       per-resolution overrides: the clamp interpolates continuously. */
+    font-size: clamp(14px, calc(0.3vw + 10px), 22px);
+}
+
+body {
+    background:
+        radial-gradient(68.75rem 40.625rem at 82% -10%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 60%),
+        radial-gradient(62.5rem 43.75rem at 8% 108%, color-mix(in srgb, var(--accent-2) 7%, transparent), transparent 62%),
+        linear-gradient(180deg, var(--bg-top) 0%, var(--bg) 100%);
+    color: var(--text);
+    font: var(--fs-body)/1.5 var(--font-body);
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

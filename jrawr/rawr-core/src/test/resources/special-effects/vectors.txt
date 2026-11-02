@@ -1,0 +1,201 @@
+# SpecialEffects probe vectors. Format (one per line, '#' starts a comment):
+#   M|<line>                     -> ProcessMetaGem(line, stats, false)
+#   U|<isArmory>|<id>|<line>     -> ProcessUseLine(line, stats, isArmory, id)
+#   E|<isArmory>|<ilvl>|<id>|<line> -> ProcessEquipLine(line, stats, isArmory, ilvl, id)
+# The expected output (expected.txt) is produced by tools/special-effects-probe
+# against the prebuilt legacy Rawr.Base.dll under Mono. Both files are committed.
+#
+# --- ProcessMetaGem ---
+M|Spell Damage +6
+M|Stamina +6
+M|Chance to restore mana on spellcast
+M|2% Increased Armor Value from Items
+M|Chance on spellcast - next spell cast in half time
+M|Chance to Increase Spell Cast Speed
+M|+5% Shield Block Value
+M|+2% Intellect
+M|+2% Mana
+M|Reduce Spell Damage Taken by 2%
+M|3% Increased Critical Damage
+M|3% Increased Critical Healing Effect
+M|Minor Run Speed Increase
+M|Stun Duration Reduced by 10%
+M|Reduces Snare/Root Duration by 10%
+M|Fear Duration Reduced by 10%
+M|Chance to Increase Melee/Ranged Attack Speed
+M|10% Spell Reflect
+M|Sometimes Heal on Your Crits
+M|2% Reduced Threat
+M|+32 Stamina and 2% Increased Armor Value from Items
+M|21 Intellect and 3% Increased Critical Damage
+M|+9 Healing
+M|8 Mana every 5 seconds
+M|10 Dodge Rating and 10 Parry Rating
+M|+10 Strength & +10 Agility
+M|5% Increased Critical Damage
+M|+9 Healing +5 Spell Damage
+M|This is not a recognized gem bonus
+#
+# --- ProcessUseLine ---
+U|0|0|Increases haste rating by 512 for 20 sec (2 Min Cooldown)
+U|0|0|Increases your attack power by 400 for 15 sec (2 Min Cooldown)
+U|0|0|Increases spell power by 599 for 20 sec (2 Min Cooldown)
+U|0|0|Increases spell power by 300&nbsp;<small>(2.99% @ L80)</small><a href="spell=123" class="q2"> for 20 sec (2 Min Cooldown)
+U|0|0|Increases spell power by 1215 for 20 sec (2 Min Cooldown)
+U|0|0|Increases spell power by 1215 for 20 sec
+U|0|0|Increases your dodge rating by 1500 for 20 sec
+U|0|0|Increases maximum health by 2500 for 15 sec
+U|0|0|Increases spell power by 34 for all nearby party members. Lasts 30 min. (1 Hour Cooldown)
+U|0|0|Increases spell power by 183 for 20 sec
+U|0|28040|Increases your spell power by 183 for 20 sec
+U|0|42395|Increases your spell power by 183 for 20 sec
+U|0|0|Increases armor penetration rating by 300 for 20 sec
+U|0|0|Increases your armor penetration rating by 300 for 20 sec
+U|0|0|Increases attack power by 1000 for 20 sec
+U|0|0|Increases your attack power by 1000 for 20 sec
+U|0|0|Increases armor by 300 for 20 sec
+U|0|0|Increases your armor by 1500 for 20 sec
+U|0|44063|Increases dodge by 300 for 20 sec
+U|0|0|Increases dodge rating by 300 for 20 sec
+U|0|0|Increases your dodge rating by 300 for 20 sec
+U|0|0|Increases parry rating by 300 for 20 sec
+U|0|0|Increases your parry rating by 300 for 20 sec
+U|0|0|Increases haste rating by 300 for 20 sec
+U|0|0|Increases your haste rating by 300 for 20 sec
+U|0|0|Increases the block value of your shield by 300 for 20 sec
+U|0|0|Increases the block value of your shield by 300 for 20 sec.
+U|0|0|Heal self for 750 to 1250 damage.
+U|0|0|Instantly heal your current friendly target for 2710. (1 Min Cooldown)
+U|0|0|Removes all movement impairing effects and all effects which cause loss of control of your character.
+U|0|0|Restores 2340 mana over 12 sec
+U|0|0|Restores 900 mana over 12 sec.
+U|0|0|Restores 500 mana.
+U|0|0|Grants 200 haste rating for 20 sec
+U|0|0|Each spell cast within 20 seconds will grant a stacking bonus of 21 mana regen per 5 sec. Expires after 20 seconds.
+U|0|0|Each spell cast within 20 seconds will grant a stacking bonus of 21 mana regen per 5 sec. Expires after 20 seconds. Abilities with no mana cost will not trigger this trinket.
+U|0|0|Each time you cast a harmful spell, you gain 64 haste rating. Stacks up to 8 times. Entire effect lasts 20 sec (2 Min Cooldown)
+U|0|0|Each time you are struck by an attack, you gain 1265 armor. Stacks up to 5 times. Entire effect lasts 20 sec (2 Min Cooldown)
+U|0|0|Each time you are struck by an attack, you gain 1265 armor. Stacks up to 5 times. Entire effect lasts 20 sec.
+U|0|0|Increases your Spirit by +150 for 20 sec
+U|0|0|Increases speed by 30% for 6 sec
+U|0|0|Increases speed by 30% for 6 sec (3 Min Cooldown)
+U|0|0|When the shield is removed by any means, you regain 4000 mana.
+U|0|0|Gain 250 mana each sec for 8 sec
+U|0|0|Conjures a Power Circle lasting for 15 sec.  While standing in this circle, the caster gains 320 spell power.
+U|0|0|Tap into the power of the skull, increasing haste rating by 175 for 20 sec
+U|0|0|Quickens the mind, increasing the Mage's haste rating by 330 for 20 sec
+U|0|0|Increases the damage dealt by your Scourge Strike and Obliterate abilities by 420.
+U|0|0|Every time one of your non-periodic spells deals a critical strike, the bonus is reduced by 184 critical strike rating.
+U|0|0|Generates a bolt of lightning to strike an enemy for 1425 to 1875 Nature damage.
+U|0|0|Absorbs 6400 damage.  Lasts 10 sec. (2 Min Cooldown)
+U|0|0|Increases resistance to Arcane, Fire, Frost, Nature, and Shadow spells by 239 for 10 sec. (1 Min Cooldown)
+U|0|0|Each time you cast a helpful spell, you gain 200 spell power. Stacks up to 5 times. Entire effect lasts 20 sec.
+U|0|0|Each time you strike an enemy with a melee attack, you gain 100 attack power. Stacks up to 5 times. Entire effect lasts 20 sec.
+U|0|0|This line is not recognized by any use parser.
+U|0|0|Increases maximum health by 2400 for 15 sec. Shares cooldown with other Battlemaster's trinkets. (2 Min Cooldown)
+U|1|0|Increases maximum health by 2400 for 15 sec. Shares cooldown with other Battlemaster's trinkets. (2 Min Cooldown)
+U|1|0|Increases speed by 30% for 6 sec (3 Min Cooldown)
+#
+# --- ProcessEquipLine: the legacy Rawr.UnitTests SpecialEffectsTest lines ---
+E|0|0|0|Increases the damage dealt by your Blood Strike and Heart Strike by 90.
+E|0|0|0|Your Icy Touch will also increase your defense rating by 53.
+E|0|0|0|Your Plague Strike ability also grants you 144 attack power for 10 sec.
+E|0|0|0|Your Rune Strike ability grants 136 dodge rating for 5 sec.
+E|0|0|0|Increases the damage done by your Death Coil and Frost Strike abilities by 380.
+E|0|0|0|Your Plague Strike ability also grants you 120 attack power for 10 sec.
+E|0|0|0|Increases the base damage dealt by your Scourge Strike by 189, your Obliterate by 336, and your Death Strike by 315.
+E|0|0|0|Your Plague Strike ability also grants you 106 attack power for 6 sec.
+E|0|0|0|Your Blood Strike and Heart Strikes have a chance to grant 173 critical strike rating for 10 sec.
+E|0|0|0|Your Plague Strike ability also grants you 94 attack power for 6 sec.
+E|0|0|0|Increases the damage dealt by your Scourge Strike ability by 91.35.
+E|0|0|0|Increases the damage dealt by your Icy Touch ability by 111.
+E|0|0|0|Increases the damage dealt by your Death Coil ability by 80.
+#
+# --- ProcessEquipLine: procs / stats / special paths ---
+E|0|0|0|Your melee and ranged attacks have a chance to increase your armor penetration rating by 665 for 10 sec
+E|0|0|0|Chance on hit to increase your critical strike rating by 220 for 10 sec
+E|0|0|0|Your harmful spells have a chance to increase your haste rating by 500 for 10 sec
+E|0|0|0|Each time one of your spells deals periodic damage, you have a chance to gain 250 spell power for 4 sec
+E|0|0|0|Each time you cast a damaging or healing spell you gain 20 spell power for the next 10 sec, stacking up to 10 times
+E|0|0|0|Your spells have a chance to increase your spell power by 500 for 10 sec
+E|0|50397|0|Your offensive spells have a chance on hit to increase your spell power by 512 for 10 sec
+E|0|0|0|Your offensive spells have a chance on hit to increase your spell power by 512 for 10 sec
+E|0|0|0|Your harmful spells have a chance to increase your spell power by 500 for 10 sec
+E|0|0|0|Sends a shadowy bolt at the enemy causing 900 to 1100 Shadow damage.
+E|0|0|0|Delivers a fatal wound for 500 damage
+E|0|0|0|Each time you deal melee or ranged damage to an opponent, you gain 16 attack power for the next 10 sec, stacking up to 20 times
+E|0|0|0|Chance on critical hit to increase your attack power by 1000 for 10 sec
+E|0|0|0|Your melee attacks have a chance to grant you Necrotic Touch for 10 sec, causing all your melee attacks to deal an additional 10% damage as shadow damage
+E|0|277|0|Your ranged attacks have a 25% chance to cause you to instantly attack with this weapon for 50% weapon damage
+E|0|264|0|Your ranged attacks have a 25% chance to cause you to instantly attack with this weapon for 50% weapon damage
+E|0|277|0|Your attacks have a chance to awaken the powers of the races of Northrend, temporarily transforming you and increasing your combat capabilities for 30 sec
+E|0|264|0|Your attacks have a chance to awaken the powers of the races of Northrend, temporarily transforming you and increasing your combat capabilities for 30 sec
+E|0|0|0|Your melee attacks have a chance to grant you a Mote of Anger. When you reach 10 Motes of Anger, they will release, causing you to instantly attack for 50% weapon damage with one of your melee weapons
+E|0|0|0|While in Bear Form, your Lacerate and Swipe abilities have a chance to grant 200 dodge rating for 20 sec, and your Cat Form's Mangle and Shred abilities have a chance to grant 200 Agility for 20 sec
+E|0|0|0|Your Mangle ability has a chance to grant 200 agility for 15 sec
+E|0|0|0|Your Mangle ability has a chance to grant 200 agility for 10 sec
+E|0|0|0|The periodic damage from your Lacerate and Rake abilities grants 80 Agility for 15 sec Stacks up to 5 times
+E|0|0|0|Each time your Rejuvenation spell deals periodic healing, you have a chance to gain 100 spell power for 15 sec
+E|0|0|0|Your Lava Lash ability also grants you 200 attack power for 10 sec
+E|0|0|0|Each time you cast Lightning Bolt, you have a chance to gain 200 haste rating for 10 sec
+E|0|0|0|Your Lightning Bolt spell has a chance to grant 200 haste rating for 10 sec
+E|0|0|0|Each time you use your Lava Lash ability, you have a chance to gain 200 attack power for 10 sec
+E|0|0|0|Each time you cast Holy Light, you have a chance to gain 200 spell power for 10 sec
+E|0|0|0|Your Judgement ability also increases your shield block value by 300 for 10 sec
+E|0|0|0|Your Crusader Strike ability also grants you 200 attack power for 10 sec
+E|0|0|0|When you deal damage you have a chance to gain 1000 attack power for 10 sec
+E|0|0|0|Each time one of your spells deals periodic damage, there is a chance 800 to 1200 additional damage will be dealt.
+E|0|0|0|Each time a melee attack strikes you, you have a chance to gain 5000 armor for 10 sec
+E|0|0|0|When you heal or deal damage you have a chance to gain Greatness, increasing your highest stat by 300 for 15 sec
+E|0|50648|0|Your harmful spells have a chance to cause you to summon a Val'kyr to fight by your side for 30 sec
+E|0|0|0|Your harmful spells have a chance to cause you to summon a Val'kyr to fight by your side for 30 sec
+E|0|0|0|When struck in combat has a chance of shielding you in a protective barrier which will reduce damage from each attack by 140
+E|0|0|0|Steals 90 to 110 life from target enemy.
+E|0|0|0|Your melee attacks have a chance to drain a Soul Fragment granting you 30 Strength.  When you have acquired 10 Soul Fragments you will unleash Chaos Bane, dealing 1900 to 2100 Shadow damage split between all enemies within 15 yards and granting you 270 Strength for 10 sec.
+E|0|0|0|You gain 500 mana each time you heal a target with one of your spells
+E|0|0|0|Each time your spells heal a target you have a chance to cause another nearby friendly target to be instantly healed for 1500 to 2500
+E|0|0|0|Your harmful spells have a chance to increase your spell power by 100 and an additional 50 every 2 sec for 20 sec
+E|0|0|0|Melee attacks which reduce you below 35% health cause you to gain 5712 armor for 10 sec
+E|0|0|0|Your helpful spells have a chance to increase your spell power by 200 for 15 sec
+E|0|0|0|When struck in combat has a chance of increasing your armor by 1000 for 20 sec
+E|0|0|0|Melee attacks which reduce you below 35% health cause you to gain 733 dodge rating for 10 sec
+E|0|0|0|Your damaging spells have a chance to grant 500 spell power for 15 sec
+E|0|0|0|This equip line is not recognized by any parser.
+E|0|0|0|Increases weapon damage when you use Stormstrike by 50
+E|0|0|0|+50 Weapon Damage
+E|0|0|0|Each time you cast a spell, you gain 16 mana per 5 sec for 20 sec Stacks up to 5 times
+E|0|0|0|Each time you cast a helpful spell, you have a chance to gain 200 mana
+E|0|0|0|Your melee attacks have a chance to grant you Blessing of Light, increasing your strength by 60 and your healing received by up to 200 for 10 sec
+E|0|0|0|Each time you are struck by a melee attack, you have a 60% chance to gain 100 stamina for the next 10 sec, stacking up to 10 times
+E|0|0|0|Your Obliterate, Scourge Strike, and Death Strike abilities grants 73 Strength for 15 sec.  Stacks up to 3 times.
+E|0|0|0|Each time you use your Obliterate, Scourge Strike, or Death Strike ability, you have a chance to gain 100 Strength for 15 sec
+E|0|0|0|Each time you use your Rune Strike ability, you have a chance to gain 200 dodge rating for 20 sec
+E|0|0|0|Each time you deal spell damage to an opponent, you gain 20 spell power for the next 10 sec, stacking up to 10 times
+E|0|0|0|Each time you cast a spell you gain 10 Spirit for the next 10 sec, stacking up to 10 times
+E|0|0|0|Your spell casts have a chance to grant 20 mana per 5 sec for 10 sec
+E|0|0|0|Your spell critical strikes have a 50% chance to grant you 250 spell haste rating for 10 sec
+E|0|0|0|Increases your pet's critical strike chance by 4%.
+E|0|0|0|Increases damage dealt by your pet by 5%.
+#
+# --- ProcessEquipLine: the armory-only tag branches ---
+E|1|0|0|Increases spell power by 30.
+E|1|0|0|Increases damage done by Shadow spells and effects by up to 40.
+E|1|0|0|Increases damage done by Fire spells and effects by up to 40.
+E|1|0|0|Increases damage done by Frost spells and effects by up to 40.
+E|1|0|0|Increases damage done by Arcane spells and effects by up to 40.
+E|1|0|0|Increases damage done by Nature spells and effects by up to 40.
+E|1|0|0|Improves haste rating by 20.
+E|1|0|0|Improves critical strike rating by 20.
+E|1|0|0|Increases your spell penetration by 10.
+E|1|0|0|Increases hit rating by 10.
+E|1|0|0|Restores 7 mana per 5 sec.
+E|1|0|0|Increases attack power by 50.
+E|1|0|0|Increases defense rating by 5.
+E|1|0|0|Increases your dodge rating by 5.
+E|1|0|0|Increases your parry rating by 5.
+E|1|0|0|Increases the block value of your shield by 30.
+E|1|0|0|Increases your shield block rating by 5.
+E|1|0|0|Increases your block rating by 5.
+E|1|0|0|Increases your hit rating by 5.
+E|1|0|0|Increases your armor penetration rating by 5.
+E|1|0|0|Increases armor penetration rating by 5.

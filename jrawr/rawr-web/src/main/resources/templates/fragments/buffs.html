@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<th:block th:fragment="buffsSwap">
+    <section id="buff-panel" class="buffs-tab">
+        <div th:replace="~{:: buffsBody}"></div>
+    </section>
+    <th:block th:replace="~{fragments/paperdoll :: ratingOob}"></th:block>
+    <th:block th:replace="~{fragments/stats :: statsOob}"></th:block>
+</th:block>
+
+<div th:fragment="buffsBody">
+    <header class="card-head">
+        <h2>Buffs &amp; debuffs</h2>
+        <span class="buff-rule">Choose one buff per group</span>
+        <div class="buff-actions">
+            <button type="button" class="btn" data-buff-toggle-all>Collapse all</button>
+            <button type="button" class="btn"
+                    hx-post="/character/buffs/reset" hx-target="#buff-panel"
+                    hx-swap="outerHTML" hx-confirm="Reset all buffs for this character?">
+                Reset buffs
+            </button>
+        </div>
+    </header>
+
+    <div class="buff-groups">
+        <div class="buff-column" th:each="column : ${buffGroupColumns}">
+            <th:block th:each="g : ${column}">
+                <div th:replace="~{:: buffGroup(${g})}"></div>
+            </th:block>
+        </div>
+    </div>
+</div>
+
+
+<details th:fragment="buffGroup(g)" class="buff-group"
+         th:classappend="${g.hasActive()} ? 'is-active' : ''" th:open="${g.hasActive()}"
+         th:attr="data-buff-group=${g.group()}">
+    <summary>
+        <span th:text="${g.group()}">Group</span>
+    </summary>
+    <div class="chips">
+        <button th:each="b : ${g.buffs()}" type="button"
+                th:class="'chip' + (${b.active()} ? ' is-active' : '') + (${b.improvement()} ? ' is-improvement' : '') + (${b.locked()} ? ' is-locked' : '')"
+                th:attr="data-buff=${b.name()},aria-pressed=${b.active()},data-buff-locked=${b.locked() ? 'true' : null},aria-disabled=${b.locked() ? 'true' : null},data-tip-host='true'"
+                th:hx-post="@{/character/buff(name=${b.name()}, active=${!b.active()})}"
+                hx-target="#buff-panel" hx-swap="outerHTML">
+            <span class="chip-dot"></span>
+            <span th:text="${b.name()}">Buff</span>
+            <span class="chip-source" th:if="${b.source() != null}" th:text="${b.source()}">src</span>
+            <span class="chip-lock" th:if="${b.locked()}" title="Managed automatically">&#128274;</span>
+            <span class="talent-tip">
+                <span class="talent-tip-name" th:text="${b.name()}">Buff</span>
+                <span class="talent-tip-rank" th:if="${b.source() != null}" th:text="${b.source()}">Source</span>
+                <span class="talent-tip-text" th:if="${!#strings.isEmpty(b.stats())}" th:text="${b.stats()}">Stats</span>
+                <span class="talent-tip-req" th:if="${b.locked()}">Managed automatically or requires its base buff.</span>
+                <span class="talent-tip-hint" th:unless="${b.locked()}"
+                      th:text="${b.active() ? 'Click to remove' : 'Click to add'}">Click to add</span>
+            </span>
+        </button>
+    </div>
+</details>
+
+</body>
+</html>

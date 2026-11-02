@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Reusable item icon: quality-colored border, initials fallback, htmx-lazy anchored tooltip. -->
+<span class="item-icon-wrap" th:fragment="icon(tooltipUrl, iconUrl, initials, qualityKey, name)"
+      th:classappend="|${iconUrl == null ? 'icon-missing ' : ''}q-${qualityKey}|"
+      tabindex="0"
+      th:hx-get="${tooltipUrl}" hx-trigger="mouseenter once, focusin once"
+      hx-target="find .item-tooltip" hx-swap="innerHTML">
+    <span class="icon-fallback" th:text="${initials}">?</span>
+    <img class="item-icon" th:if="${iconUrl != null}" th:src="${iconUrl}" th:alt="${name}"
+         onerror="this.closest('.item-icon-wrap').classList.add('icon-missing')"/>
+    <span class="item-tooltip" role="tooltip"></span>
+</span>
+
+</body>
+</html>

@@ -1,0 +1,175 @@
+plugins {
+    id 'java-library'
+}
+
+allprojects {
+    group = 'jrawr'
+    version = providers.gradleProperty('jrawr.version').getOrElse('1.0.0')
+}
+
+subprojects {
+    apply plugin: 'java-library'
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(25)
+        }
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8'
+        options.release = 25
+    }
+
+    tasks.withType(Test).configureEach {
+        useJUnitPlatform()
+        if (name == 'test') {
+            // mage-golden and restosham-golden run one fixture per JVM (see rawr-golden/build.gradle)
+            // optimizer verification also runs one fixture per JVM via optimizerGolden_* tasks
+            useJUnitPlatform { excludeTags 'mage-golden', 'restosham-golden', 'optimizer', 'optimizer-parallel', 'relative-stats' }
+        }
+        maxHeapSize = '4g'
+        if (findProperty('jrawr.fixture')) {
+            systemProperty 'jrawr.fixture', findProperty('jrawr.fixture')
+        }
+        if (findProperty('jrawr.xint')) {
+            jvmArgs '-Xint'
+        }
+        if (findProperty('jrawr.probe.first')) {
+            systemProperty 'jrawr.probe.first', findProperty('jrawr.probe.first')
+        }
+        if (findProperty('jrawr.probe.clear')) {
+            systemProperty 'jrawr.probe.clear', findProperty('jrawr.probe.clear')
+        }
+        if (findProperty('jrawr.probe.freshmodel')) {
+            systemProperty 'jrawr.probe.freshmodel', findProperty('jrawr.probe.freshmodel')
+        }
+        if (findProperty('jrawr.probe.clearfx')) {
+            systemProperty 'jrawr.probe.clearfx', findProperty('jrawr.probe.clearfx')
+        }
+        if (findProperty('jrawr.probe.touch')) {
+            systemProperty 'jrawr.probe.touch', findProperty('jrawr.probe.touch')
+        }
+        if (findProperty('jrawr.probe.prodclear')) {
+            systemProperty 'jrawr.probe.prodclear', findProperty('jrawr.probe.prodclear')
+        }
+
+        testLogging {
+            events 'failed'
+            exceptionFormat = 'full'
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Release packaging
+// ---------------------------------------------------------------------------
+// Builds the runnable distribution (boot jar, game data, launchers, legal and
+// public docs) without any source, legacy port tree, tools or local data.
+def repoRoot = rootProject.projectDir.parentFile
+def releaseName = "JRawr-${version}"
+def releaseStageDir = layout.buildDirectory.dir('release-stage')
+def releaseOutputDir = layout.buildDirectory.dir('release')
+
+tasks.register('stageRelease', Sync) {
+    dependsOn ':rawr-web:bootJar'
+    into(releaseStageDir.map { it.dir(releaseName) })
+
+    from(repoRoot) {
+        include 'README.md'
+        include 'LICENSE'
+        include 'NOTICE'
+        include 'THIRD_PARTY_NOTICES.md'
+        include 'CHANGELOG.md'
+        include 'docs/README.md'
+        include 'docs/DEVELOPMENT.md'
+        include 'docs/RELEASING.md'
+        include 'docs/LEGAL.md'
+        include 'docs/architecture/**'
+    }
+    from(rootProject.file('data')) {
+        into 'data'
+    }
+    from(rootProject.file('packaging/jrawr.sh')) {
+        filePermissions { unix('rwxr-xr-x') }
+    }
+    from(rootProject.file('packaging/jrawr.bat'))
+    from(project(':rawr-web').layout.buildDirectory.file("libs/rawr-web-${version}.jar")) {
+        rename { 'jrawr.jar' }
+    }
+}
+
+def launcherFile = releaseStageDir.map { it.file("${releaseName}/jrawr.sh") }
+
+tasks.register('releaseZip', Zip) {
+    dependsOn 'stageRelease'
+    archiveFileName = "${releaseName}.zip"
+    destinationDirectory = releaseOutputDir
+    from(releaseStageDir) {
+        exclude "**/jrawr.sh"
+    }
+    from(launcherFile) {
+        into releaseName
+        filePermissions { unix('rwxr-xr-x') }
+    }
+}
+
+tasks.register('releaseTar', Tar) {
+    dependsOn 'stageRelease'
+    archiveFileName = "${releaseName}.tar.gz"
+    destinationDirectory = releaseOutputDir
+    compression = Compression.GZIP
+    from(releaseStageDir) {
+        exclude "**/jrawr.sh"
+    }
+    from(launcherFile) {
+        into releaseName
+        filePermissions { unix('rwxr-xr-x') }
+    }
+}
+
+tasks.register('release') {
+    group = 'distribution'
+    description = 'Builds the JRawr zip and tar.gz release archives with SHA-256 checksums.'
+    dependsOn 'releaseZip', 'releaseTar'
+
+    doLast {
+        def outDir = releaseOutputDir.get().asFile
+        def archives = ['releaseZip', 'releaseTar'].collect {
+            tasks.named(it).get().archiveFile.get().asFile
+        }
+        def forbidden = [
+                ~/(^|\/)legacy\//,
+                ~/(^|\/)tools\//,
+                ~/(^|\/)oracle\//,
+                ~/(^|\/)characters\//,
+                ~/(^|\/)docs\/dev\//,
+                ~/(^|\/)AGENTS\.md$/,
+                ~/(?i).*\.(cs|dll|exe)$/
+        ]
+        def zip = archives.find { it.name.endsWith('.zip') }
+        new java.util.zip.ZipFile(zip).withCloseable { zf ->
+            zf.entries().each { entry ->
+                if (forbidden.any { pattern -> pattern.matcher(entry.name).find() }) {
+                    throw new GradleException("Release archive contains forbidden path: ${entry.name}")
+                }
+            }
+        }
+        archives.each { file ->
+            def digest = java.security.MessageDigest.getInstance('SHA-256')
+            file.withInputStream { input ->
+                byte[] buffer = new byte[8192]
+                int read
+                while ((read = input.read(buffer)) != -1) {
+                    digest.update(buffer, 0, read)
+                }
+            }
+            def hex = digest.digest().collect { String.format('%02x', it & 0xff) }.join()
+            new File(outDir, file.name + '.sha256').text = "${hex}  ${file.name}\n"
+        }
+    }
+}

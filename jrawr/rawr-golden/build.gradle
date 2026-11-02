@@ -1,0 +1,225 @@
+dependencies {
+    testImplementation project(':rawr-core')
+    testImplementation project(':rawr-data')
+    testImplementation project(':rawr-models')
+    testImplementation libs.junit.jupiter
+    testImplementation libs.junit.platform.launcher
+    testImplementation libs.assertj.core
+    testImplementation libs.jackson.databind
+}
+
+
+// One fresh-JVM Test task per fixture: the oracle dumped one fixture per process and the models
+// keep static/carry-over state, so suites must not share a JVM (see docs/dev/DECISIONS.md #23).
+def goldenSuites = [
+        [name: 'mage', tag: 'mage-golden'],
+        [name: 'restosham', tag: 'restosham-golden'],
+        [name: 'cat', tag: 'cat-golden'],
+        [name: 'bear', tag: 'bear-golden'],
+        [name: 'moonkin', tag: 'moonkin-golden'],
+        [name: 'elemental', tag: 'elemental-golden'],
+        [name: 'healadin', tag: 'healadin-golden'],
+        [name: 'protwarr', tag: 'protwarr-golden'],
+        [name: 'retribution', tag: 'retribution-golden'],
+        [name: 'enhance', tag: 'enhance-golden'],
+        [name: 'protpally', tag: 'protpally-golden'],
+        [name: 'healpriest', tag: 'healpriest-golden'],
+        [name: 'shadowpriest', tag: 'shadowpriest-golden'],
+        [name: 'hunter', tag: 'hunter-golden'],
+        [name: 'rogue', tag: 'rogue-golden'],
+        [name: 'tree', tag: 'tree-golden'],
+        [name: 'tankdk', tag: 'tankdk-golden'],
+        [name: 'warlock', tag: 'warlock-golden'],
+        [name: 'dpsdk', tag: 'dpsdk-golden'],
+        [name: 'dpswarr', tag: 'dpswarr-golden'],
+]
+
+// The shared 'test' task keeps the non-fixture tests (serialization, static-state audits, etc.).
+// Every golden/optimizer/relative-stats fixture is covered by a fresh-JVM task below; the shared
+// task must not run those fixtures too (it used to, duplicating coverage and breaking the
+// one-JVM-per-fixture rule for every model except Mage/RestoSham).
+def allGoldenTags = goldenSuites.collect { it.tag }
+tasks.named('test') {
+    useJUnitPlatform {
+        excludeTags(*allGoldenTags)
+        excludeTags 'optimizer', 'optimizer-parallel', 'relative-stats'
+    }
+}
+
+// Work lists shared by the individual fresh-JVM Test tasks and the parallel runner.
+def goldenWork = []
+def optimizerWork = []
+def optimizerParallelWork = []
+def relativeStatsWork = []
+
+def goldenTasks = []
+goldenSuites.each { suite ->
+    def fixturesDir = rootProject.file("../oracle/fixtures/${suite.name}")
+    def fixtures = fixturesDir != null && fixturesDir.isDirectory()
+            ? fixturesDir.listFiles().findAll { it.name.endsWith('.xml') }.collect { it.name.substring(0, it.name.length() - 4) }.sort()
+            : []
+    goldenTasks.addAll(fixtures.collect { fixture ->
+        def taskName = "${suite.name}Golden_${fixture}"
+        goldenWork << [name: taskName, tag: suite.tag, property: 'jrawr.fixture', value: fixture]
+        tasks.register(taskName, Test) {
+            group = 'verification'
+            description = "${suite.name} golden fixture '${fixture}' in a fresh JVM (the oracle dumped one fixture per process)"
+            dependsOn tasks.named('testClasses')
+            testClassesDirs = sourceSets.test.output.classesDirs
+            classpath = sourceSets.test.runtimeClasspath
+            useJUnitPlatform { includeTags(suite.tag) }
+            systemProperty 'jrawr.fixture', fixture
+            maxHeapSize = '4g'
+            testLogging { events 'failed'; exceptionFormat = 'full' }
+        }
+    })
+}
+
+// Phase 7 optimizer verification: one fresh-JVM task per oracle/golden/optimizer/<fixture>.json
+// (tag 'optimizer' is excluded from the shared 'test' task).
+def optimizerFixturesDir = rootProject.file("../oracle/golden/optimizer")
+def optimizerFixtures = optimizerFixturesDir != null && optimizerFixturesDir.isDirectory()
+        ? optimizerFixturesDir.listFiles().findAll { it.name.endsWith('.json') }.collect { it.name.substring(0, it.name.length() - 5) }.sort()
+        : []
+def optimizerTasks = optimizerFixtures.collect { fixture ->
+    def taskName = "optimizerGolden_${fixture}"
+    optimizerWork << [name: taskName, tag: 'optimizer', property: 'jrawr.fixture', value: fixture]
+    tasks.register(taskName, Test) {
+        group = 'verification'
+        description = "optimizer verification fixture '${fixture}' in a fresh JVM (Java best score >= C# best - tolerance)"
+        dependsOn tasks.named('testClasses')
+        testClassesDirs = sourceSets.test.output.classesDirs
+        classpath = sourceSets.test.runtimeClasspath
+        useJUnitPlatform { includeTags 'optimizer' }
+        systemProperty 'jrawr.fixture', fixture
+        maxHeapSize = '4g'
+        testLogging { events 'failed'; exceptionFormat = 'full' }
+    }
+}
+
+// Relative Stats chart: one fresh JVM per dumped oracle/golden/relative-stats/<model>/<fixture>.json
+// (models keep static/carry-over state, so fixtures must not share a JVM).
+def relativeStatsDir = rootProject.file("../oracle/golden/relative-stats")
+def relativeStatsFixtures = relativeStatsDir != null && relativeStatsDir.isDirectory()
+        ? relativeStatsDir.listFiles().findAll { it.isDirectory() }.collectMany { modelDir ->
+            modelDir.listFiles().findAll { it.name.endsWith('.json') }.collect {
+                modelDir.name + '/' + it.name.substring(0, it.name.length() - 5)
+            }
+        }.sort()
+        : []
+def relativeStatsTasks = relativeStatsFixtures.collect { fixture ->
+    def taskName = fixture.replace('/', '_').replace('-', '_')
+    relativeStatsWork << [name: "relativeStatsGolden_${taskName}", tag: 'relative-stats',
+                          property: 'jrawr.relativeFixture', value: fixture]
+    tasks.register("relativeStatsGolden_${taskName}", Test) {
+        group = 'verification'
+        description = "relative stats golden '${fixture}' in a fresh JVM"
+        dependsOn tasks.named('testClasses')
+        testClassesDirs = sourceSets.test.output.classesDirs
+        classpath = sourceSets.test.runtimeClasspath
+        useJUnitPlatform { includeTags 'relative-stats' }
+        systemProperty 'jrawr.relativeFixture', fixture
+        maxHeapSize = '4g'
+        testLogging { events 'failed'; exceptionFormat = 'full' }
+    }
+}
+
+// DECISIONS #58: sequential vs opt-in parallel candidate evaluation must be bit-identical for the
+// verified models; one fixture per fresh JVM like the golden and optimizer tasks.
+def optimizerParallelFixtures = optimizerFixtures.findAll {
+    it != 'arcane_277_raid' && it != 'fire_277_raid' && it != 'frost_264_raid'
+            && it != 'resto_264_raid' && it != 'resto_277_procs'
+}
+def optimizerParallelTasks = optimizerParallelFixtures.collect { fixture ->
+    def taskName = "optimizerParallel_${fixture}"
+    optimizerParallelWork << [name: taskName, tag: 'optimizer-parallel',
+                              property: 'jrawr.fixture', value: fixture]
+    tasks.register(taskName, Test) {
+        group = 'verification'
+        description = "sequential vs parallel optimizer determinism for '${fixture}' (DECISIONS #58)"
+        dependsOn tasks.named('testClasses')
+        testClassesDirs = sourceSets.test.output.classesDirs
+        classpath = sourceSets.test.runtimeClasspath
+        useJUnitPlatform { includeTags 'optimizer-parallel' }
+        systemProperty 'jrawr.fixture', fixture
+        maxHeapSize = '4g'
+        testLogging { events 'failed'; exceptionFormat = 'full' }
+    }
+}
+
+// The full check runs every fixture in a fresh JVM, but the independent fixtures are executed by a
+// small process pool instead of one Gradle Test task at a time. Gradle runs same-project Test
+// tasks sequentially; this pool keeps the one-JVM-per-fixture guarantee and uses the available
+// cores. Individual fixture tasks above remain available for targeted runs.
+def goldenWorkerCount = providers.gradleProperty('jrawr.golden.workers')
+        .map { it as Integer }.orElse(4).get()
+def goldenWorkingDir = project.projectDir
+def goldenAllParallel = tasks.register('goldenAllParallel') {
+    group = 'verification'
+    description = 'Runs every fresh-JVM golden/optimizer/relative-stats fixture in parallel.'
+    dependsOn tasks.named('testClasses')
+    def runtimeClasspath = sourceSets.test.runtimeClasspath
+    def runtimeClasspathPath = runtimeClasspath.asPath
+    def goldenJavaExe = javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(25)
+    }.get().executablePath.asFile.absolutePath
+    def repoRoot = rootProject.projectDir.parentFile
+    inputs.files(runtimeClasspath)
+    inputs.files(fileTree(new File(repoRoot, 'oracle/fixtures')) { include '**/*.xml' })
+    inputs.files(fileTree(new File(repoRoot, 'oracle/golden')) { include '**/*.json' })
+    inputs.files(fileTree(new File(repoRoot, 'jrawr/data')) { include '*.xml' })
+    inputs.property('golden-work',
+            goldenWork.collect { "${it.name}:${it.tag}:${it.property}:${it.value}" }.join('|'))
+    outputs.dir(layout.buildDirectory.dir('golden-parallel'))
+    doLast {
+        def work = goldenWork + optimizerWork + optimizerParallelWork + relativeStatsWork
+        def workers = goldenWorkerCount
+        def javaExe = goldenJavaExe
+        def classpath = runtimeClasspathPath
+        def workingDir = goldenWorkingDir
+        def logDir = layout.buildDirectory.dir('golden-parallel').get().asFile
+        delete logDir
+        logDir.mkdirs()
+        def queue = new java.util.concurrent.ConcurrentLinkedQueue(work)
+        def failures = java.util.Collections.synchronizedList([])
+        def pool = java.util.concurrent.Executors.newFixedThreadPool(workers)
+        def futures = []
+        workers.times {
+            futures << pool.submit({
+                while (true) {
+                    def item = queue.poll()
+                    if (item == null) break
+                    def log = new File(logDir, item.name + '.log')
+                    def command = [javaExe, '-Xmx4g', '-Dfile.encoding=UTF-8',
+                                   '-D' + item.property + '=' + item.value,
+                                   '-cp', classpath, 'rawr.golden.GoldenFixtureProcess',
+                                   item.tag].collect { it.toString() }
+                    def process = new ProcessBuilder(command)
+                            .directory(workingDir)
+                            .redirectErrorStream(true)
+                            .redirectOutput(log)
+                            .start()
+                    int exit = process.waitFor()
+                    if (exit != 0) {
+                        failures.add(item.name)
+                        println "GOLDEN FAILED: ${item.name} (${log})"
+                    }
+                }
+            } as java.util.concurrent.Callable)
+        }
+        futures.each { it.get() }
+        pool.shutdown()
+        if (!failures.isEmpty()) {
+            failures.each { name ->
+                def log = new File(logDir, name + '.log')
+                println "----- ${name} -----"
+                if (log.isFile()) {
+                    println log.readLines().takeRight(100).join('\n')
+                }
+            }
+            throw new GradleException("Golden verification failed for ${failures.size()} fixture(s); logs in ${logDir}.")
+        }
+        println "Golden verification passed: ${work.size()} fixtures with ${workers} workers."
+    }
+}
+tasks.named('check').configure { dependsOn goldenAllParallel }

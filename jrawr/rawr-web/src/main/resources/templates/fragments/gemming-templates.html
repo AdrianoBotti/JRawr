@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div class="modal-backdrop" data-modal="gemming-templates" th:fragment="gemmingModal">
+    <div class="modal card gemming-modal" role="dialog" aria-modal="true"
+         aria-labelledby="gemming-title">
+        <header class="modal-head">
+            <div class="modal-head-leading">
+                <button class="icon-btn" type="button" title="Back to Tools" aria-label="Back to Tools"
+                        hx-get="/tools" hx-target="#modal" hx-swap="innerHTML">&#8592;</button>
+                <h2 id="gemming-title">Gemming templates</h2>
+            </div>
+            <div class="modal-head-actions">
+                <button class="btn btn-small" type="button"
+                        hx-post="/character/save" hx-target="#toast-area" hx-swap="innerHTML"
+                        hx-confirm="Save all character changes? This includes gemming templates.">
+                    Save character
+                </button>
+                <button class="icon-btn" type="button" title="Close" aria-label="Close"
+                        data-modal-close>&#215;</button>
+            </div>
+        </header>
+        <div id="gemming-panel" class="modal-body" th:fragment="gemmingPanel">
+            <div class="inline-error" th:if="${gemmingError != null}" th:text="${gemmingError}">error</div>
+            <p class="hint" th:if="${!gemming.hasModel()}">
+                Choose a model before editing gemming templates.
+            </p>
+                <div class="gemming-top-settings">
+                    <label class="field">
+                        <span class="field-label">Variants per item in charts</span>
+                        <input type="number" name="topGemmings" min="1" max="25"
+                               th:value="${globalSettings.topGemmings()}"
+                               hx-post="/character/gemming-templates/top-gemmings"
+                               hx-include="closest .gemming-top-settings"
+                               hx-target="#gemming-top-status" hx-swap="innerHTML"
+                               hx-trigger="change"/>
+                    </label>
+                    <span id="gemming-top-status"></span>
+                    <span class="hint">Number of gemming variants the comparison chart may show per
+                        item (equipped and exact custom-pool gemmings are always kept).</span>
+                </div>
+            <th:block th:if="${gemming.hasModel()}">
+                <p class="hint gemming-model-hint"
+                   th:text="|Model: ${gemming.modelName()} · top ${gemming.topGemmings()} gemmings shown in the comparison chart|">
+                    Model: Mage
+                </p>
+                <div class="gemming-filters">
+                    <span class="gemming-filter-title">Find templates with</span>
+                    <div class="gemming-gems">
+                        <label class="gemming-gem gemming-gem-red">
+                            <span class="gemming-gem-label">Red</span>
+                            <select data-gemming-filter="red" aria-label="Filter templates by red gem">
+                                <option value="0">All</option>
+                                <option th:each="g : ${gemming.redGems()}" th:if="${g.id() != 0}"
+                                        th:value="${g.id()}" th:text="${g.name()}">Gem</option>
+                            </select>
+                        </label>
+                        <label class="gemming-gem gemming-gem-yellow">
+                            <span class="gemming-gem-label">Yellow</span>
+                            <select data-gemming-filter="yellow" aria-label="Filter templates by yellow gem">
+                                <option value="0">All</option>
+                                <option th:each="g : ${gemming.yellowGems()}" th:if="${g.id() != 0}"
+                                        th:value="${g.id()}" th:text="${g.name()}">Gem</option>
+                            </select>
+                        </label>
+                        <label class="gemming-gem gemming-gem-blue">
+                            <span class="gemming-gem-label">Blue</span>
+                            <select data-gemming-filter="blue" aria-label="Filter templates by blue gem">
+                                <option value="0">All</option>
+                                <option th:each="g : ${gemming.blueGems()}" th:if="${g.id() != 0}"
+                                        th:value="${g.id()}" th:text="${g.name()}">Gem</option>
+                            </select>
+                        </label>
+                        <label class="gemming-gem gemming-gem-prismatic">
+                            <span class="gemming-gem-label">Prismatic</span>
+                            <select data-gemming-filter="prismatic" aria-label="Filter templates by prismatic gem">
+                                <option value="0">All</option>
+                                <option th:each="g : ${gemming.prismaticGems()}" th:if="${g.id() != 0}"
+                                        th:value="${g.id()}" th:text="${g.name()}">Gem</option>
+                            </select>
+                        </label>
+                        <label class="gemming-gem gemming-gem-meta">
+                            <span class="gemming-gem-label">Meta</span>
+                            <select data-gemming-filter="meta" aria-label="Filter templates by meta gem">
+                                <option value="0">All</option>
+                                <option th:each="g : ${gemming.metaGems()}" th:if="${g.id() != 0}"
+                                        th:value="${g.id()}" th:text="${g.name()}">Gem</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                <p class="hint gemming-filter-empty" data-gemming-filter-empty hidden>
+                    No templates match these gem filters.
+                </p>
+                <div class="gemming-rows">
+                    <div class="gemming-row" th:each="row : ${gemming.rows()}"
+                         th:classappend="${row.custom()} ? ' is-custom'"
+                         th:attr="data-gem-red=${row.redId()},data-gem-yellow=${row.yellowId()},data-gem-blue=${row.blueId()},data-gem-prismatic=${row.prismaticId()},data-gem-meta=${row.metaId()}">
+                        <form class="gemming-toggle" th:if="${!row.custom()}"
+                              data-gemming-preserve-scroll
+                              hx-post="/character/gemming-templates/toggle"
+                              hx-target="#gemming-panel" hx-swap="outerHTML">
+                            <input type="hidden" name="index" th:value="${row.index()}"/>
+                            <input type="hidden" name="custom" value="false"/>
+                            <input type="checkbox" name="enabled" th:checked="${row.enabled()}"
+                                   onchange="this.form.requestSubmit()"
+                                   th:attr="title='Enable or disable this template',aria-label='Enable ' + ${row.group()}"/>
+                        </form>
+                        <div class="gemming-readonly" th:if="${!row.custom()}">
+                            <div class="gemming-head">
+                                <span class="gemming-kind">Built-in</span>
+                                <span class="gemming-group" th:text="${row.group()}">Group</span>
+                            </div>
+                            <div class="gemming-gems">
+                                <div class="gemming-gem gemming-gem-red">
+                                    <span class="gemming-gem-label">Red</span>
+                                    <span class="gemming-gem-name" th:text="${row.red()}">Red gem</span>
+                                </div>
+                                <div class="gemming-gem gemming-gem-yellow">
+                                    <span class="gemming-gem-label">Yellow</span>
+                                    <span class="gemming-gem-name" th:text="${row.yellow()}">Yellow gem</span>
+                                </div>
+                                <div class="gemming-gem gemming-gem-blue">
+                                    <span class="gemming-gem-label">Blue</span>
+                                    <span class="gemming-gem-name" th:text="${row.blue()}">Blue gem</span>
+                                </div>
+                                <div class="gemming-gem gemming-gem-prismatic">
+                                    <span class="gemming-gem-label">Prismatic</span>
+                                    <span class="gemming-gem-name" th:text="${row.prismatic()}">Prismatic gem</span>
+                                </div>
+                                <div class="gemming-gem gemming-gem-meta">
+                                    <span class="gemming-gem-label">Meta</span>
+                                    <span class="gemming-gem-name" th:text="${row.meta()}">Meta gem</span>
+                                </div>
+                            </div>
+                        </div>
+                        <form class="gemming-edit" th:if="${row.custom()}"
+                              data-gemming-preserve-scroll
+                              hx-post="/character/gemming-templates/update"
+                              hx-target="#gemming-panel" hx-swap="outerHTML">
+                            <input type="hidden" name="index" th:value="${row.index()}"/>
+                            <div class="gemming-head">
+                                <label class="optimize-option gemming-enabled">
+                                    <input type="checkbox" name="enabled" th:checked="${row.enabled()}"/>
+                                    <span>Enabled</span>
+                                </label>
+                                <span class="gemming-kind is-custom">Custom template</span>
+                                <button class="btn btn-small gemming-save" type="submit">Save template</button>
+                            </div>
+                            <div class="gemming-gems">
+                                <label class="gemming-gem gemming-gem-red">
+                                    <span class="gemming-gem-label">Red</span>
+                                    <select name="redId" title="Red gem">
+                                        <option th:each="g : ${gemming.redGems()}" th:value="${g.id()}"
+                                                th:selected="${g.id() == row.redId()}"
+                                                th:text="${g.name()}">None</option>
+                                    </select>
+                                </label>
+                                <label class="gemming-gem gemming-gem-yellow">
+                                    <span class="gemming-gem-label">Yellow</span>
+                                    <select name="yellowId" title="Yellow gem">
+                                        <option th:each="g : ${gemming.yellowGems()}" th:value="${g.id()}"
+                                                th:selected="${g.id() == row.yellowId()}"
+                                                th:text="${g.name()}">None</option>
+                                    </select>
+                                </label>
+                                <label class="gemming-gem gemming-gem-blue">
+                                    <span class="gemming-gem-label">Blue</span>
+                                    <select name="blueId" title="Blue gem">
+                                        <option th:each="g : ${gemming.blueGems()}" th:value="${g.id()}"
+                                                th:selected="${g.id() == row.blueId()}"
+                                                th:text="${g.name()}">None</option>
+                                    </select>
+                                </label>
+                                <label class="gemming-gem gemming-gem-prismatic">
+                                    <span class="gemming-gem-label">Prismatic</span>
+                                    <select name="prismaticId" title="Prismatic gem">
+                                        <option th:each="g : ${gemming.prismaticGems()}" th:value="${g.id()}"
+                                                th:selected="${g.id() == row.prismaticId()}"
+                                                th:text="${g.name()}">None</option>
+                                    </select>
+                                </label>
+                                <label class="gemming-gem gemming-gem-meta">
+                                    <span class="gemming-gem-label">Meta</span>
+                                    <select name="metaId" title="Meta gem">
+                                        <option th:each="g : ${gemming.metaGems()}" th:value="${g.id()}"
+                                                th:selected="${g.id() == row.metaId()}"
+                                                th:text="${g.name()}">None</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </form>
+                        <form class="gemming-delete" th:if="${row.custom()}"
+                              data-gemming-preserve-scroll
+                              hx-post="/character/gemming-templates/delete"
+                              hx-target="#gemming-panel" hx-swap="outerHTML"
+                              hx-confirm="Delete this custom template?">
+                            <input type="hidden" name="index" th:value="${row.index()}"/>
+                            <button class="btn btn-small" type="submit">Delete</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="gemming-footer">
+                    <button class="btn" type="button" data-gemming-create-toggle>Add custom template</button>
+                    <form class="gemming-create" data-gemming-create-form data-gemming-add hidden
+                          hx-post="/character/gemming-templates/create"
+                          hx-target="#gemming-panel" hx-swap="outerHTML">
+                        <div class="gemming-head">
+                            <span class="gemming-kind is-custom">New custom template</span>
+                            <label class="optimize-option gemming-enabled">
+                                <input type="checkbox" name="enabled" checked/><span>Enabled</span>
+                            </label>
+                            <button class="btn btn-small gemming-save" type="submit"
+                                    data-gemming-add>Create</button>
+                            <button class="btn btn-small" type="button"
+                                    data-gemming-create-cancel>Cancel</button>
+                        </div>
+                        <div class="gemming-gems">
+                            <label class="gemming-gem gemming-gem-red">
+                                <span class="gemming-gem-label">Red</span>
+                                <select name="redId" title="Red gem">
+                                    <option th:each="g : ${gemming.redGems()}" th:value="${g.id()}"
+                                            th:selected="${g.id() == 0}" th:text="${g.name()}">None</option>
+                                </select>
+                            </label>
+                            <label class="gemming-gem gemming-gem-yellow">
+                                <span class="gemming-gem-label">Yellow</span>
+                                <select name="yellowId" title="Yellow gem">
+                                    <option th:each="g : ${gemming.yellowGems()}" th:value="${g.id()}"
+                                            th:selected="${g.id() == 0}" th:text="${g.name()}">None</option>
+                                </select>
+                            </label>
+                            <label class="gemming-gem gemming-gem-blue">
+                                <span class="gemming-gem-label">Blue</span>
+                                <select name="blueId" title="Blue gem">
+                                    <option th:each="g : ${gemming.blueGems()}" th:value="${g.id()}"
+                                            th:selected="${g.id() == 0}" th:text="${g.name()}">None</option>
+                                </select>
+                            </label>
+                            <label class="gemming-gem gemming-gem-prismatic">
+                                <span class="gemming-gem-label">Prismatic</span>
+                                <select name="prismaticId" title="Prismatic gem">
+                                    <option th:each="g : ${gemming.prismaticGems()}" th:value="${g.id()}"
+                                            th:selected="${g.id() == 0}" th:text="${g.name()}">None</option>
+                                </select>
+                            </label>
+                            <label class="gemming-gem gemming-gem-meta">
+                                <span class="gemming-gem-label">Meta</span>
+                                <select name="metaId" title="Meta gem">
+                                    <option th:each="g : ${gemming.metaGems()}" th:value="${g.id()}"
+                                            th:selected="${g.id() == 0}" th:text="${g.name()}">None</option>
+                                </select>
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </th:block>
+        </div>
+    </div>
+</div>
+
+<th:block th:fragment="topGemmingsStatus">
+    <span class="hint" th:if="${topGemmingsSaved}">Saved.</span>
+    <span class="inline-error" th:if="${topGemmingsError != null}"
+          th:text="${topGemmingsError}">error</span>
+</th:block>
+
+</body>
+</html>

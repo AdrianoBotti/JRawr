@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Persistent comparison chart shown beside the build widget. The card is lazy-loaded into
+     #charts-panel on page load and refreshed in place; the rows are rated server-side and
+     sorted/filtered client-side so changing the order never reruns the model. -->
+<section class="card charts-card" th:fragment="comparePanel" aria-label="Charts">
+    <header class="charts-card-head">
+        <span class="charts-card-title">Charts</span>
+        <button type="button" class="btn btn-small charts-maximize" data-chart-maximize
+                title="Expand the charts pane" aria-label="Maximize charts">Maximize</button>
+    </header>
+    <div id="compare-body" class="charts-body" th:fragment="compareBody"
+         th:hx-get="@{/character/compare/body(slot=${selectedSlot.name()},limit=${selectedLimit},baseline=${selectedBaselineKey},chartType=${selectedChartType},graphMode=${selectedGraphMode},graphBase=${selectedGraphBase},graphValue=${selectedGraphValue},graphSteps=${selectedGraphSteps},graphStats=${selectedGraphStats},enchantSlot=${selectedEnchantSlot},buffFilter=${selectedBuffFilter},gemColor=${selectedGemColor})}"
+         hx-trigger="jrawrRefreshCharts from:body"
+         hx-target="this" hx-swap="outerHTML" hx-indicator="#compare-loading">
+        <div class="charts-layout">
+            <nav class="charts-nav" aria-label="Chart type">
+                <div class="charts-nav-group">
+                    <span class="charts-nav-title">Gear</span>
+                    <div class="charts-nav-items" role="tablist" aria-label="Gear charts" aria-orientation="vertical">
+                        <button type="button" class="charts-nav-item" role="tab"
+                                th:classappend="${selectedChartType == 'items'} ? ' is-active' : ''"
+                                th:aria-selected="${selectedChartType == 'items'}"
+                                th:hx-get="@{/character/compare/body(slot=${selectedSlot.name()},limit=${selectedChartType == 'items' ? selectedLimit : 0},baseline=${selectedBaselineKey},chartType='items')}"
+                                hx-target="#compare-body" hx-swap="outerHTML" hx-indicator="#compare-loading">
+                            Items
+                        </button>
+                        <button type="button" class="charts-nav-item" role="tab"
+                                th:classappend="${selectedChartType == 'upgrades'} ? ' is-active' : ''"
+                                th:aria-selected="${selectedChartType == 'upgrades'}"
+                                th:hx-get="@{/character/compare/body(chartType='upgrades',limit=${selectedChartType == 'upgrades' ? selectedLimit : 0})}"
+                                hx-target="#compare-body" hx-swap="outerHTML" hx-indicator="#compare-loading">
+                            Upgrades
+                        </button>
+                        <button type="button" class="charts-nav-item" role="tab"
+                                th:classappend="${selectedChartType == 'enchants'} ? ' is-active' : ''"
+                                th:aria-selected="${selectedChartType == 'enchants'}"
+                                th:hx-get="@{/character/compare/body(chartType='enchants',enchantSlot=${selectedChartType == 'enchants' ? selectedEnchantSlot : ''})}"
+                                hx-target="#compare-body" hx-swap="outerHTML" hx-indicator="#compare-loading">
+                            Enchants
+                        </button>
+                        <button type="button" class="charts-nav-item" role="tab"
+                                th:classappend="${selectedChartType == 'gems'} ? ' is-active' : ''"
+                                th:aria-selected="${selectedChartType == 'gems'}"
+                                th:hx-get="@{/character/compare/body(chartType='gems',gemColor=${selectedChartType == 'gems' ? selectedGemColor : 'All'})}"
+                                hx-target="#compare-body" hx-swap="outerHTML" hx-indicator="#compare-loading">
+                            Gems
+                        </button>
+                    </div>
+                </div>
+                <div class="charts-nav-group">
+                    <span class="charts-nav-title">Build</span>
+                    <div class="charts-nav-items" role="tablist" aria-label="Build charts" aria-orientation="vertical">
+                        <button type="button" class="charts-nav-item" role="tab"
+                                th:classappend="${selectedChartType == 'talents'} ? ' is-active' : ''"
+                                th:aria-selected="${selectedChartType == 'talents'}"
+                                th:hx-get="@{/character/compare/body(chartType='talents')}"
+                                hx-target="#compare-body" hx-swap="outerHTML" hx-indicator="#compare-loading">
+                            Talents
+                        </button>
+                        <button type="button" class="charts-nav-item" role="tab"
+                                th:classappend="${selectedChartType == 'glyphs'} ? ' is-active' : ''"
+                                th:aria-selected="${selectedChartType == 'glyphs'}"
+                                th:hx-get="@{/character/compare/body(chartType='glyphs')}"
+                                hx-target="#compare-body" hx-swap="outerHTML" hx-indicator="#compare-loading">
+                            Glyphs
+                        </button>
+                        <button type="button" class="charts-nav-item" role="tab"
+                                th:classappend="${selectedChartType == 'buffs'} ? ' is-active' : ''"
+                                th:aria-selected="${selectedChartType == 'buffs'}"
+                                th:hx-get="@{/character/compare/body(chartType='buffs',buffFilter=${selectedChartType == 'buffs' ? selectedBuffFilter : 'All'})}"
+                                hx-target="#compare-body" hx-swap="outerHTML" hx-indicator="#compare-loading">
+                            Buffs
+                        </button>
+                    </div>
+                </div>
+                <div class="charts-nav-group">
+                    <span class="charts-nav-title">Stats</span>
+                    <div class="charts-nav-items" role="tablist" aria-label="Stats charts" aria-orientation="vertical">
+                        <button type="button" class="charts-nav-item" role="tab"
+                                th:classappend="${selectedChartType == 'stats'} ? ' is-active' : ''"
+                                th:aria-selected="${selectedChartType == 'stats'}"
+                                th:hx-get="@{/character/compare/body(chartType='stats')}"
+                                hx-target="#compare-body" hx-swap="outerHTML" hx-indicator="#compare-loading">
+                            Relative Stats
+                        </button>
+                        <button type="button" class="charts-nav-item" role="tab"
+                                th:classappend="${selectedChartType == 'statgraph'} ? ' is-active' : ''"
+                                th:aria-selected="${selectedChartType == 'statgraph'}"
+                                th:hx-get="@{/character/compare/body(chartType='statgraph',graphMode=${selectedGraphMode},graphBase=${selectedGraphBase},graphValue=${selectedGraphValue},graphSteps=${selectedGraphSteps},graphStats=${selectedGraphStats})}"
+                                hx-target="#compare-body" hx-swap="outerHTML" hx-indicator="#compare-loading">
+                            Stat Graph
+                        </button>
+                    </div>
+                </div>
+                <div class="charts-nav-footer">
+                    <button type="button" class="btn btn-small charts-filters"
+                            hx-get="/character/item-filters" hx-target="#modal" hx-swap="innerHTML"
+                            title="Edit the global item relevance filters used by the picker, charts and optimizer.">
+                        Item filters
+                    </button>
+                    <button type="button" class="btn btn-small charts-pool"
+                            th:hx-get="@{/character/availability(slot=${selectedSlot.name()})}"
+                            hx-target="#availability-modal" hx-swap="innerHTML"
+                            title="Edit the custom item pool the optimizer uses.">
+                        Custom Item Pool
+                    </button>
+                </div>
+            </nav>
+            <div class="charts-main">
+
+        <form class="compare-controls" onsubmit="return false">
+            <input type="hidden" name="chartType" th:value="${selectedChartType}"/>
+
+            <label class="compare-field" th:if="${statChart != null}">
+                <span class="field-label">View</span>
+                <select id="compare-view" data-compare-view hx-preserve="true">
+                    <option value="rows">Rows</option>
+                    <option value="histogram">Histogram</option>
+                </select>
+            </label>
+
+            <th:block th:if="${selectedChartType == 'items'}">
+                <label class="compare-field">
+                    <span class="field-label">Slot</span>
+                    <select name="slot"
+                            hx-get="/character/compare/body" hx-target="#compare-body"
+                            hx-swap="outerHTML" hx-include="closest form" hx-indicator="#compare-loading">
+                        <option th:each="s : ${compareSlots}" th:value="${s.name()}"
+                                th:selected="${s == selectedSlot}"
+                                th:text="${compareSlotLabels.get(s)}">Head</option>
+                    </select>
+                </label>
+                <label class="compare-field">
+                    <span class="field-label">Candidates</span>
+                    <select name="limit"
+                            hx-get="/character/compare/body" hx-target="#compare-body"
+                            hx-swap="outerHTML" hx-include="closest form" hx-indicator="#compare-loading">
+                        <option th:each="l : ${limitChoices}" th:value="${l}"
+                                th:selected="${l == selectedLimit}"
+                                th:text="${l == 0 ? 'All' : l}">All</option>
+                    </select>
+                </label>
+                <label class="compare-field">
+                    <span class="field-label">Reference</span>
+                    <select name="baseline"
+                            hx-get="/character/compare/body" hx-target="#compare-body"
+                            hx-swap="outerHTML" hx-include="closest form" hx-indicator="#compare-loading">
+                        <option value="overall" th:selected="${selectedBaselineKey == 'overall'}">Absolute</option>
+                        <option value="equipped" th:selected="${selectedBaselineKey == 'equipped'}"
+                                th:disabled="${chart == null or !chart.hasEquipped()}">Current Build</option>
+                    </select>
+                </label>
+            </th:block>
+
+            <th:block th:if="${selectedChartType == 'upgrades'}">
+                <label class="compare-field">
+                    <span class="field-label">Top per slot</span>
+                    <select name="limit"
+                            hx-get="/character/compare/body" hx-target="#compare-body"
+                            hx-swap="outerHTML" hx-include="closest form" hx-indicator="#compare-loading">
+                        <option th:each="l : ${limitChoices}" th:value="${l}"
+                                th:selected="${l == selectedLimit}"
+                                th:text="${l == 0 ? 'All' : l}">All</option>
+                    </select>
+                </label>
+            </th:block>
+
+            <th:block th:if="${selectedChartType == 'enchants' and enchantChart != null}">
+                <label class="compare-field">
+                    <span class="field-label">Slot</span>
+                    <select name="enchantSlot"
+                            hx-get="/character/compare/body" hx-target="#compare-body"
+                            hx-swap="outerHTML" hx-include="closest form" hx-indicator="#compare-loading">
+                        <option th:each="option : ${enchantChart.slots()}" th:value="${option.key()}"
+                                th:selected="${option.key() == selectedEnchantSlot}"
+                                th:text="${option.label()}">Head</option>
+                    </select>
+                </label>
+            </th:block>
+
+            <th:block th:if="${selectedChartType == 'buffs' and buffChart != null}">
+                <label class="compare-field">
+                    <span class="field-label">Group</span>
+                    <select name="buffFilter"
+                            hx-get="/character/compare/body" hx-target="#compare-body"
+                            hx-swap="outerHTML" hx-include="closest form" hx-indicator="#compare-loading">
+                        <option th:each="group : ${buffChart.groups()}" th:value="${group}"
+                                th:selected="${group == selectedBuffFilter}"
+                                th:text="${group}">All</option>
+                    </select>
+                </label>
+            </th:block>
+            <th:block th:if="${selectedChartType == 'gems' and gemChart != null}">
+                <label class="compare-field">
+                    <span class="field-label">Color</span>
+                    <select name="gemColor"
+                            hx-get="/character/compare/body" hx-target="#compare-body"
+                            hx-swap="outerHTML" hx-include="closest form" hx-indicator="#compare-loading">
+                        <option th:each="color : ${gemChart.colors()}" th:value="${color}"
+                                th:selected="${color == selectedGemColor}" th:text="${color}">All</option>
+                    </select>
+                </label>
+            </th:block>
+            <th:block th:if="${selectedChartType == 'statgraph'}">
+                <div class="compare-graph-options">
+                    <label class="compare-field">
+                        <span class="field-label">Graph</span>
+                        <select name="graphMode"
+                                hx-get="/character/compare/body" hx-target="#compare-body"
+                                hx-swap="outerHTML" hx-include="closest form" hx-indicator="#compare-loading">
+                            <option value="stats" th:selected="${selectedGraphMode == 'stats'}">Stat change</option>
+                            <option value="scaling" th:selected="${selectedGraphMode == 'scaling'}">Scaling</option>
+                        </select>
+                    </label>
+                    <label class="compare-field" th:if="${selectedGraphMode == 'scaling' and statGraph != null}">
+                        <span class="field-label">Base stat</span>
+                        <select name="graphBase"
+                                hx-get="/character/compare/body" hx-target="#compare-body"
+                                hx-swap="outerHTML" hx-include="closest form" hx-indicator="#compare-loading">
+                            <option th:each="option : ${statGraph.statOptions()}" th:value="${option.key()}"
+                                    th:selected="${option.key() == statGraph.baseStat()}"
+                                    th:text="${option.label()}">Spell Power</option>
+                        </select>
+                    </label>
+                    <label class="compare-field" th:if="${statGraph != null}">
+                        <span class="field-label">Value</span>
+                        <select name="graphValue"
+                                hx-get="/character/compare/body" hx-target="#compare-body"
+                                hx-swap="outerHTML" hx-include="closest form" hx-indicator="#compare-loading">
+                            <option value="overall" th:selected="${selectedGraphValue == 'overall'}">Overall</option>
+                            <option th:each="label, iter : ${statGraph.subPointLabels()}" th:value="${iter.index}"
+                                    th:selected="${selectedGraphValue == '' + iter.index}"
+                                    th:text="${label}">Dps</option>
+                        </select>
+                    </label>
+                    <label class="compare-field">
+                        <span class="field-label">Range</span>
+                        <select name="graphSteps"
+                                hx-get="/character/compare/body" hx-target="#compare-body"
+                                hx-swap="outerHTML" hx-include="closest form" hx-indicator="#compare-loading">
+                            <option th:each="choice : ${graphStepsChoices}" th:value="${choice}"
+                                    th:selected="${choice == selectedGraphSteps}"
+                                    th:text="${choice}">10</option>
+                        </select>
+                    </label>
+                </div>
+            </th:block>
+
+            <label class="compare-field" th:if="${selectedChartType != 'statgraph'}">
+                <span class="field-label">Sort</span>
+                <select id="compare-sort" data-compare-sort hx-preserve="true">
+                    <option value="overall"
+                            th:text="${selectedChartType == 'upgrades' or selectedChartType == 'enchants'
+                                    or selectedChartType == 'gems' ? 'Gain'
+                                : selectedChartType == 'talents' or selectedChartType == 'glyphs'
+                                    or selectedChartType == 'buffs' ? 'Value'
+                                : 'Overall'}">Overall</option>
+                    <option value="name">Name</option>
+                    <th:block th:if="${chart != null}">
+                        <option th:each="label, iter : ${chart.subPointLabels()}"
+                                th:value="|sub-${iter.index}|" th:text="${label}">Dps</option>
+                    </th:block>
+                    <th:block th:if="${statChart != null}">
+                        <option th:each="label, iter : ${statChart.subPointLabels()}"
+                                th:value="|sub-${iter.index}|" th:text="${label}">Dps</option>
+                    </th:block>
+                </select>
+            </label>
+            <label class="compare-field compare-search" th:if="${selectedChartType != 'statgraph'}">
+                <span class="field-label">Find</span>
+                <input type="search" id="compare-filter"
+                       th:placeholder="${selectedChartType == 'stats' ? 'Filter by stat name…'
+                           : selectedChartType == 'enchants' ? 'Filter by enchant name…'
+                           : selectedChartType == 'talents' ? 'Filter by talent name…'
+                           : selectedChartType == 'glyphs' ? 'Filter by glyph name…'
+                           : selectedChartType == 'buffs' ? 'Filter by buff name…'
+                           : selectedChartType == 'gems' ? 'Filter by gem name…'
+                           : 'Filter by item name…'}"
+                       autocomplete="off" data-compare-filter hx-preserve="true"/>
+            </label>
+            <span id="compare-loading" class="compare-loading htmx-indicator">Calculating…</span>
+        </form>
+
+        <div class="inline-error" th:if="${compareError != null}" th:text="${compareError}">
+            Choose a model first.
+        </div>
+
+        <th:block th:if="${chart != null}">
+            <div class="compare-summary">
+                <span><strong th:text="${chart.rows().size()}">0</strong> candidates shown</span>
+                <span class="hint" th:text="${chart.relevantCount()} + ' relevant gemmed instances for this slot'">0 relevant instances</span>
+                <span class="hint" th:text="'computed in ' + ${chart.elapsedMillis()} + ' ms'">computed in 0 ms</span>
+            </div>
+
+            <p class="hint compare-availability-hint">
+                Click the diamond to add or remove this exact instance; item-level entries are
+                managed in Custom Item Pool.
+            </p>
+
+            <div class="compare-rows" data-compare-rows>
+                <div class="compare-row" th:each="row : ${chart.rows()}"
+                     th:with="useEquipped=${selectedBaselineKey == 'equipped' and chart.hasEquipped()}"
+                     th:attr="data-overall=${useEquipped ? row.equippedDelta() : row.overall()},data-name=${row.name()},data-item-id=${row.itemId()}"
+                     th:classappend="${row.equipped()} ? ' is-equipped' : ''">
+                    <div class="compare-item">
+                        <span th:replace="~{fragments/item-icon :: icon(
+                                ${icons.instanceTooltipUrl(row.itemId(), selectedSlot.name(), row.gemmedId())},
+                                ${row.iconUrl()}, ${row.initials()}, ${row.qualityKey()}, ${row.name()})}"></span>
+                        <div class="compare-item-text">
+                            <span class="compare-name" th:classappend="'q-' + ${row.qualityKey()}"
+                                  th:text="${row.name()}">Item name</span>
+                            <span class="compare-meta" th:text="${row.metaText()}">ilvl 0</span>
+                            <span class="compare-gems" th:if="${!#lists.isEmpty(row.gemColors())}"
+                                  aria-hidden="true">
+                                <span class="compare-gem" th:each="gemColor : ${row.gemColors()}"
+                                      th:classappend="'gem-' + ${gemColor}"></span>
+                            </span>
+                            <span class="compare-equipped" th:if="${row.equipped()}">Equipped</span>
+                        </div>
+                    </div>
+                    <div class="compare-availability-cell">
+                        <span th:replace="~{:: availabilityButton(${selectedSlot.name()}, ${row.gemmedId()}, ${row.itemId()}, ${row.exactAvailable()})}"></span>
+                    </div>
+                    <div class="compare-score">
+                        <div class="compare-primary">
+                            <span class="compare-overall"
+                                  th:classappend="' is-' + ${useEquipped ? row.equippedDeltaState() : row.overallState()}"
+                                  th:text="${useEquipped ? row.equippedDeltaText() : row.overallText()}">+0.00</span>
+                            <span class="compare-vs-equipped" th:if="${row.equipped()}">
+                                current item
+                            </span>
+                            <span class="compare-vs-equipped"
+                                  th:if="${!row.equipped() and !useEquipped and chart.hasEquipped()}"
+                                  th:classappend="' is-' + ${row.equippedDeltaState()}"
+                                  th:text="'vs equipped ' + ${row.equippedDeltaText()}">vs equipped +0.00</span>
+                            <span class="compare-vs-equipped"
+                                  th:if="${!row.equipped() and useEquipped}"
+                                  th:classappend="' is-' + ${row.overallState()}"
+                                  th:text="'absolute ' + ${row.overallText()}">absolute +0.00</span>
+                        </div>
+                        <div class="compare-subpoints"
+                             th:with="subs=${useEquipped ? row.equippedDeltaSubPoints() : row.subPoints()}">
+                            <span class="compare-subpoint" th:each="sp : ${subs}"
+                                  th:attr="data-sub-index=${sp.index()},data-sub-value=${sp.value()}"
+                                  th:style="'color:' + ${sp.color()}">
+                                <span class="compare-subpoint-label" th:text="${sp.label()}">Dps</span>
+                                <span class="compare-subpoint-value" th:text="${sp.text()}">+0.00</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="compare-actions">
+                        <button type="button" class="btn btn-small" th:unless="${row.equipped()}"
+                                th:hx-post="@{/character/slot/instance(slot=${selectedSlot.name()}, gemmedId=${row.gemmedId()})}"
+                                hx-swap="none">Equip</button>
+                        <span class="hint" th:if="${row.equipped()}">In use</span>
+                    </div>
+                    <div class="compare-bar" th:if="${chart.bars().containsKey(row.gemmedId())}"
+                         th:with="bar=${chart.bars().get(row.gemmedId())}" aria-hidden="true">
+                        <span class="compare-bar-track">
+                            <span class="compare-bar-fill" th:classappend="${bar.negative()} ? ' is-negative' : ''"
+                                  th:style="'width:' + ${bar.percent()} + '%'">
+                                <span class="compare-bar-seg" th:each="seg : ${bar.segments()}"
+                                      th:style="'flex:' + ${seg.weight()} + ' 1 0;background:' + ${seg.color()}"
+                                      th:title="${seg.label()}"></span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <p class="empty-state" th:if="${chart.rows().isEmpty()}">
+                No item instances are available for this slot.
+            </p>
+        </th:block>
+
+        <th:block th:if="${upgradeChart != null}">
+            <div class="compare-summary">
+                <span><strong th:text="${upgradeChart.rows().size()}">0</strong> upgrades</span>
+                <span class="hint" th:text="${upgradeChart.evaluated()} + ' candidates screened across all slots'">0 candidates</span>
+                <span class="hint" th:text="'computed in ' + ${upgradeChart.elapsedMillis()} + ' ms'">computed in 0 ms</span>
+            </div>
+
+            <p class="hint compare-availability-hint">
+                Only items with a positive gain over the equipped piece are shown. Click the
+                diamond to manage the exact instance; Equip applies it to its slot.
+            </p>
+
+            <div class="compare-rows" data-compare-rows>
+                <div class="compare-row" th:each="row : ${upgradeChart.rows()}"
+                     th:attr="data-overall=${row.gain()},data-name=${row.name()},data-item-id=${row.itemId()}">
+                    <div class="compare-item">
+                        <span th:replace="~{fragments/item-icon :: icon(
+                                ${icons.instanceTooltipUrl(row.itemId(), row.slot().name(), row.gemmedId())},
+                                ${row.iconUrl()}, ${row.initials()}, ${row.qualityKey()}, ${row.name()})}"></span>
+                        <div class="compare-item-text">
+                            <span class="compare-name" th:classappend="'q-' + ${row.qualityKey()}"
+                                  th:text="${row.name()}">Item name</span>
+                            <span class="compare-meta" th:text="${row.slotLabel()} + ' · ' + ${row.metaText()}">Head · ilvl 0</span>
+                            <span class="compare-gems" th:if="${!#lists.isEmpty(row.gemColors())}"
+                                  aria-hidden="true">
+                                <span class="compare-gem" th:each="gemColor : ${row.gemColors()}"
+                                      th:classappend="'gem-' + ${gemColor}"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="compare-availability-cell">
+                        <span th:replace="~{:: availabilityButton(${row.slot().name()}, ${row.gemmedId()}, ${row.itemId()}, ${row.exactAvailable()})}"></span>
+                    </div>
+                    <div class="compare-score">
+                        <div class="compare-primary">
+                            <span class="compare-overall is-positive" th:text="${row.gainText()}">+0.00</span>
+                        </div>
+                    </div>
+                    <div class="compare-actions">
+                        <button type="button" class="btn btn-small"
+                                th:hx-post="@{/character/slot/instance(slot=${row.slot().name()}, gemmedId=${row.gemmedId()})}"
+                                hx-swap="none">Equip</button>
+                    </div>
+                    <div class="compare-bar" th:if="${upgradeChart.bars().containsKey(row.gemmedId())}"
+                         th:with="bar=${upgradeChart.bars().get(row.gemmedId())}" aria-hidden="true">
+                        <span class="compare-bar-track">
+                            <span class="compare-bar-fill" th:style="'width:' + ${bar.percent()} + '%'">
+                                <span class="compare-bar-seg" th:each="seg : ${bar.segments()}"
+                                      th:style="'flex:' + ${seg.weight()} + ' 1 0;background:' + ${seg.color()}"
+                                      th:title="${seg.label()}"></span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <p class="empty-state" th:if="${upgradeChart.rows().isEmpty()}">
+                No positive upgrades were found in the candidate pool.
+            </p>
+        </th:block>
+
+        <th:block th:if="${enchantChart != null}">
+            <div class="compare-summary">
+                <span><strong th:text="${enchantChart.rows().size()}">0</strong> enchants</span>
+                <span class="hint" th:text="${enchantChart.slotLabel()} + ' · baseline is the item with no enchant'">Head</span>
+                <span class="hint" th:text="'computed in ' + ${enchantChart.elapsedMillis()} + ' ms'">computed in 0 ms</span>
+            </div>
+
+            <p class="hint compare-availability-hint">
+                Gains are relative to the same item with no enchant. Apply writes the enchant to
+                the equipped item.
+            </p>
+
+            <div class="compare-rows" data-compare-rows>
+                <div class="compare-row" th:each="row : ${enchantChart.rows()}"
+                     th:with="key=${'' + row.enchantId()}"
+                     th:attr="data-overall=${row.overall()},data-name=${row.name()}"
+                     th:classappend="${row.equipped()} ? ' is-equipped' : ''">
+                    <div class="compare-item">
+                        <div class="compare-item-text">
+                            <span class="compare-name" th:text="${row.name()}">Enchant</span>
+                            <span class="compare-meta" th:text="${row.statsText()}">Stats</span>
+                            <span class="compare-equipped" th:if="${row.equipped()}">Current</span>
+                        </div>
+                    </div>
+                    <div class="compare-availability-cell"></div>
+                    <div class="compare-score">
+                        <div class="compare-primary">
+                            <span class="compare-overall"
+                                  th:classappend="' is-' + ${row.overallState()}"
+                                  th:text="${row.overallText()}">+0.00</span>
+                        </div>
+                        <div class="compare-subpoints">
+                            <span class="compare-subpoint" th:each="sp : ${row.subPoints()}"
+                                  th:attr="data-sub-index=${sp.index()},data-sub-value=${sp.value()}"
+                                  th:style="'color:' + ${sp.color()}">
+                                <span class="compare-subpoint-label" th:text="${sp.label()}">Dps</span>
+                                <span class="compare-subpoint-value" th:text="${sp.text()}">+0.00</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="compare-actions">
+                        <button type="button" class="btn btn-small" th:unless="${row.equipped()}"
+                                th:hx-post="@{/character/slot/enchant(slot=${enchantChart.slot().name()}, enchantId=${row.enchantId()})}"
+                                hx-target="#paperdoll" hx-swap="outerHTML">Apply</button>
+                        <span class="hint" th:if="${row.equipped()}">In use</span>
+                    </div>
+                    <div class="compare-bar" th:if="${enchantChart.bars().containsKey(key)}"
+                         th:with="bar=${enchantChart.bars().get(key)}" aria-hidden="true">
+                        <span class="compare-bar-track">
+                            <span class="compare-bar-fill" th:classappend="${bar.negative()} ? ' is-negative' : ''"
+                                  th:style="'width:' + ${bar.percent()} + '%'">
+                                <span class="compare-bar-seg" th:each="seg : ${bar.segments()}"
+                                      th:style="'flex:' + ${seg.weight()} + ' 1 0;background:' + ${seg.color()}"
+                                      th:title="${seg.label()}"></span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <p class="empty-state" th:if="${enchantChart.rows().isEmpty()}">
+                No enchant options are available for the equipped items.
+            </p>
+        </th:block>
+
+        <th:block th:if="${talentChart != null}">
+            <div class="compare-summary">
+                <span><strong th:text="${talentChart.rows().size()}">0</strong> talents</span>
+                <span class="hint">value of the next rank (maxed talents show their last point)</span>
+                <span class="hint" th:text="'computed in ' + ${talentChart.elapsedMillis()} + ' ms'">computed in 0 ms</span>
+            </div>
+            <div class="compare-rows" data-compare-rows>
+                <div class="compare-row compare-stat-row" th:each="row : ${talentChart.rows()}"
+                     th:with="key=${'' + row.index()}"
+                     th:attr="data-overall=${row.overall()},data-name=${row.name()}"
+                     th:classappend="${row.maxed()} ? ' is-equipped' : ''">
+                    <div class="compare-item">
+                        <div class="compare-item-text">
+                            <span class="compare-name" th:text="${row.name()}">Talent</span>
+                            <span class="compare-meta"
+                                  th:text="'Rank ' + ${row.rank()} + '/' + ${row.maxPoints()}">Rank 0/5</span>
+                            <span class="compare-equipped" th:if="${row.maxed()}">Maxed</span>
+
+                        </div>
+                        <span class="hint" th:if="${row.invested() and !row.maxed()}">Invested</span>
+                    </div>
+                    <div class="compare-score">
+                        <div class="compare-primary">
+                            <span class="compare-overall"
+                                  th:classappend="' is-' + ${row.overallState()}"
+                                  th:text="${row.overallText()}">+0.00</span>
+                        </div>
+                        <div class="compare-subpoints">
+                            <span class="compare-subpoint" th:each="sp : ${row.subPoints()}"
+                                  th:attr="data-sub-index=${sp.index()},data-sub-value=${sp.value()}"
+                                  th:style="'color:' + ${sp.color()}">
+                                <span class="compare-subpoint-label" th:text="${sp.label()}">Dps</span>
+                                <span class="compare-subpoint-value" th:text="${sp.text()}">+0.00</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="compare-bar" th:if="${talentChart.bars().containsKey(key)}"
+                         th:with="bar=${talentChart.bars().get(key)}" aria-hidden="true">
+                        <span class="compare-bar-track">
+                            <span class="compare-bar-fill" th:classappend="${bar.negative()} ? ' is-negative' : ''"
+                                  th:style="'width:' + ${bar.percent()} + '%'">
+                                <span class="compare-bar-seg" th:each="seg : ${bar.segments()}"
+                                      th:style="'flex:' + ${seg.weight()} + ' 1 0;background:' + ${seg.color()}"
+                                      th:title="${seg.label()}"></span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <p class="empty-state" th:if="${talentChart.rows().isEmpty()}">
+                No talents are available for this class.
+            </p>
+        </th:block>
+
+        <th:block th:if="${glyphChart != null}">
+            <div class="compare-summary">
+                <span><strong th:text="${glyphChart.rows().size()}">0</strong> glyphs</span>
+                <span class="hint">value of adding the glyph (active glyphs show their removal value)</span>
+                <span class="hint" th:text="'computed in ' + ${glyphChart.elapsedMillis()} + ' ms'">computed in 0 ms</span>
+            </div>
+            <div class="compare-rows" data-compare-rows>
+                <div class="compare-row compare-stat-row" th:each="row : ${glyphChart.rows()}"
+                     th:with="key=${'' + row.index()}"
+                     th:attr="data-overall=${row.overall()},data-name=${row.name()}"
+                     th:classappend="${row.active()} ? ' is-equipped' : ''">
+                    <div class="compare-item">
+                        <div class="compare-item-text">
+                            <span class="compare-name" th:text="${row.name()}">Glyph</span>
+                            <span class="compare-meta" th:text="${row.major() ? 'Major glyph' : 'Minor glyph'}">Major glyph</span>
+                            <span class="compare-equipped" th:if="${row.active()}">Active</span>
+                        </div>
+                    </div>
+                    <div class="compare-score">
+                        <div class="compare-primary">
+                            <span class="compare-overall"
+                                  th:classappend="' is-' + ${row.overallState()}"
+                                  th:text="${row.overallText()}">+0.00</span>
+                        </div>
+                        <div class="compare-subpoints">
+                            <span class="compare-subpoint" th:each="sp : ${row.subPoints()}"
+                                  th:attr="data-sub-index=${sp.index()},data-sub-value=${sp.value()}"
+                                  th:style="'color:' + ${sp.color()}">
+                                <span class="compare-subpoint-label" th:text="${sp.label()}">Dps</span>
+                                <span class="compare-subpoint-value" th:text="${sp.text()}">+0.00</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="compare-bar" th:if="${glyphChart.bars().containsKey(key)}"
+                         th:with="bar=${glyphChart.bars().get(key)}" aria-hidden="true">
+                        <span class="compare-bar-track">
+                            <span class="compare-bar-fill" th:classappend="${bar.negative()} ? ' is-negative' : ''"
+                                  th:style="'width:' + ${bar.percent()} + '%'">
+                                <span class="compare-bar-seg" th:each="seg : ${bar.segments()}"
+                                      th:style="'flex:' + ${seg.weight()} + ' 1 0;background:' + ${seg.color()}"
+                                      th:title="${seg.label()}"></span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <p class="empty-state" th:if="${glyphChart.rows().isEmpty()}">
+                No relevant glyphs are available for this model.
+            </p>
+        </th:block>
+
+        <th:block th:if="${buffChart != null}">
+            <div class="compare-summary">
+                <span><strong th:text="${buffChart.rows().size()}">0</strong> buffs</span>
+                <span class="hint" th:text="'group: ' + ${buffChart.filter()}">group: All</span>
+                <span class="hint" th:text="'computed in ' + ${buffChart.elapsedMillis()} + ' ms'">computed in 0 ms</span>
+            </div>
+            <div class="compare-rows" data-compare-rows>
+                <div class="compare-row" th:each="row : ${buffChart.rows()}"
+                     th:attr="data-overall=${row.overall()},data-name=${row.name()}"
+                     th:classappend="${row.equipped()} ? ' is-equipped' : ''">
+                    <div class="compare-item">
+                        <div class="compare-item-text">
+                            <span class="compare-name" th:text="${row.name()}">Buff</span>
+                            <span class="compare-meta" th:text="${row.group()}">Group</span>
+                            <span class="compare-equipped" th:if="${row.equipped()}">Current</span>
+
+                        </div>
+                        <span class="compare-conflict" th:if="${row.partEquipped()}">Conflict</span>
+                    </div>
+                    <div class="compare-availability-cell"></div>
+                    <div class="compare-score">
+                        <div class="compare-primary">
+                            <span class="compare-overall"
+                                  th:classappend="' is-' + ${row.overallState()}"
+                                  th:text="${row.overallText()}">+0.00</span>
+                        </div>
+                        <div class="compare-subpoints">
+                            <span class="compare-subpoint" th:each="sp : ${row.subPoints()}"
+                                  th:attr="data-sub-index=${sp.index()},data-sub-value=${sp.value()}"
+                                  th:style="'color:' + ${sp.color()}">
+                                <span class="compare-subpoint-label" th:text="${sp.label()}">Dps</span>
+                                <span class="compare-subpoint-value" th:text="${sp.text()}">+0.00</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="compare-actions">
+                        <button type="button" class="btn btn-small"
+                                th:hx-post="@{/character/buff(name=${row.name()}, active=${!row.equipped()})}"
+                                hx-target="#buff-panel" hx-swap="outerHTML"
+                                th:text="${row.equipped() ? 'Remove' : 'Add'}">Add</button>
+                    </div>
+                    <div class="compare-bar" th:if="${buffChart.bars().containsKey(row.name())}"
+                         th:with="bar=${buffChart.bars().get(row.name())}" aria-hidden="true">
+                        <span class="compare-bar-track">
+                            <span class="compare-bar-fill" th:classappend="${bar.negative()} ? ' is-negative' : ''"
+                                  th:style="'width:' + ${bar.percent()} + '%'">
+                                <span class="compare-bar-seg" th:each="seg : ${bar.segments()}"
+                                      th:style="'flex:' + ${seg.weight()} + ' 1 0;background:' + ${seg.color()}"
+                                      th:title="${seg.label()}"></span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <p class="empty-state" th:if="${buffChart.rows().isEmpty()}">
+                No buffs match this group.
+            </p>
+        </th:block>
+
+        <th:block th:if="${gemChart != null}">
+            <div class="compare-summary">
+                <span><strong th:text="${gemChart.rows().size()}">0</strong> gems</span>
+                <span class="hint" th:text="'color: ' + ${gemChart.selectedColor()}">color: All</span>
+                <span class="hint" th:text="'computed in ' + ${gemChart.elapsedMillis()} + ' ms'">computed in 0 ms</span>
+            </div>
+            <div class="compare-rows" data-compare-rows>
+                <div class="compare-row compare-stat-row" th:each="row : ${gemChart.rows()}"
+                     th:with="key=${'' + row.itemId()}"
+                     th:attr="data-overall=${row.overall()},data-name=${row.name()}">
+                    <div class="compare-item">
+                        <span th:replace="~{fragments/item-icon :: icon(
+                                ${icons.tooltipUrl(row.itemId(), '')},
+                                ${row.iconUrl()}, ${row.initials()}, ${row.qualityKey()}, ${row.name()})}"></span>
+                        <div class="compare-item-text">
+                            <span class="compare-name" th:classappend="'q-' + ${row.qualityKey()}"
+                                  th:text="${row.name()}">Gem</span>
+                            <span class="compare-meta" th:text="${row.colorLabel()} + ' · ' + ${row.statsText()}">Red</span>
+                        </div>
+                    </div>
+                    <div class="compare-score">
+                        <div class="compare-primary">
+                            <span class="compare-overall"
+                                  th:classappend="' is-' + ${row.overallState()}"
+                                  th:text="${row.overallText()}">+0.00</span>
+                        </div>
+                        <div class="compare-subpoints">
+                            <span class="compare-subpoint" th:each="sp : ${row.subPoints()}"
+                                  th:attr="data-sub-index=${sp.index()},data-sub-value=${sp.value()}"
+                                  th:style="'color:' + ${sp.color()}">
+                                <span class="compare-subpoint-label" th:text="${sp.label()}">Dps</span>
+                                <span class="compare-subpoint-value" th:text="${sp.text()}">+0.00</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="compare-bar" th:if="${gemChart.bars().containsKey(key)}"
+                         th:with="bar=${gemChart.bars().get(key)}" aria-hidden="true">
+                        <span class="compare-bar-track">
+                            <span class="compare-bar-fill" th:classappend="${bar.negative()} ? ' is-negative' : ''"
+                                  th:style="'width:' + ${bar.percent()} + '%'">
+                                <span class="compare-bar-seg" th:each="seg : ${bar.segments()}"
+                                      th:style="'flex:' + ${seg.weight()} + ' 1 0;background:' + ${seg.color()}"
+                                      th:title="${seg.label()}"></span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <p class="empty-state" th:if="${gemChart.rows().isEmpty()}">
+                No relevant gems match this color.
+            </p>
+            <p class="hint" th:if="${gemChart.rows().isEmpty()}">
+                The Gems chart uses the item filters. Enable an include filter with “Applies to
+                gems”, or set “Items with no matching additive rule” to “Include by default” in
+                Item filters → Global defaults.
+            </p>
+        </th:block>
+
+        <th:block th:if="${statChart != null}">
+            <div class="compare-summary">
+                <span><strong th:text="${statChart.rows().size()}">0</strong> stats</span>
+                <span class="hint"
+                      th:text="${statChart.normalizedTo() != null
+                          ? 'normalized to ' + statChart.normalizedTo() + ' = 1.00'
+                          : 'rating per point of each stat'}">rating per point of each stat</span>
+                <span class="hint" th:text="'computed in ' + ${statChart.elapsedMillis()} + ' ms'">computed in 0 ms</span>
+            </div>
+
+            <p class="hint compare-availability-hint">
+                Each row is the rating gained from one point of that stat, split into the
+                model's rating components.
+            </p>
+
+            <div class="compare-rows" data-compare-rows data-compare-list>
+                <div class="compare-row compare-stat-row" th:each="row : ${statChart.rows()}"
+                     th:attr="data-overall=${row.overall()},data-name=${row.displayName()}">
+                    <div class="compare-item">
+                        <div class="compare-item-text">
+                            <span class="compare-name" th:text="${row.displayName()}">Stat</span>
+                            <span class="compare-meta" th:text="${row.description()}">Rating per point</span>
+                        </div>
+                    </div>
+                    <div class="compare-score">
+                        <div class="compare-primary">
+                            <span class="compare-overall"
+                                  th:classappend="' is-' + ${row.overallState()}"
+                                  th:text="${row.overallText()}">+0.00</span>
+                        </div>
+                        <div class="compare-subpoints">
+                            <span class="compare-subpoint" th:each="sp : ${row.subPoints()}"
+                                  th:attr="data-sub-index=${sp.index()},data-sub-value=${sp.value()}"
+                                  th:style="'color:' + ${sp.color()}">
+                                <span class="compare-subpoint-label" th:text="${sp.label()}">Dps</span>
+                                <span class="compare-subpoint-value" th:text="${sp.text()}">+0.00</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="compare-bar" th:if="${statChart.bars().containsKey(row.displayName())}"
+                         th:with="bar=${statChart.bars().get(row.displayName())}" aria-hidden="true">
+                        <span class="compare-bar-track">
+                            <span class="compare-bar-fill" th:classappend="${bar.negative()} ? ' is-negative' : ''"
+                                  th:style="'width:' + ${bar.percent()} + '%'">
+                                <span class="compare-bar-seg" th:each="seg : ${bar.segments()}"
+                                      th:style="'flex:' + ${seg.weight()} + ' 1 0;background:' + ${seg.color()}"
+                                      th:title="${seg.label()}"></span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="compare-histogram" data-compare-histogram hidden></div>
+            <p class="empty-state" th:if="${statChart.rows().isEmpty()}">
+                This model has no relevant stats to compare.
+            </p>
+        </th:block>
+
+        <th:block th:if="${statGraph != null}">
+            <div class="compare-summary">
+                <span><strong data-stat-visible-count th:text="${selectedGraphLineCount}">0</strong> lines</span>
+                <span class="hint"
+                      th:text="${selectedGraphMode == 'scaling'
+                          ? 'relative value vs ' + statGraph.baseStatLabel()
+                          : 'rating change per stat point'}">rating change per stat point</span>
+                <span class="hint" th:text="'computed in ' + ${statGraph.elapsedMillis()} + ' ms'">computed in 0 ms</span>
+            </div>
+
+            <div class="stat-graph-data" data-stat-graph-data hidden>
+                <span th:each="line : ${statGraph.series()}" data-stat-series
+                      th:attr="data-key=${line.key()},data-label=${line.label()},data-color=${line.color()},data-visible=${line.selected()},data-points=${line.pointsCsv()}"></span>
+            </div>
+            <div class="stat-graph" data-stat-graph
+                 th:attr="data-x-min=${statGraph.minX()},data-x-max=${statGraph.maxX()},data-y-min=${statGraph.minY()},data-y-max=${statGraph.maxY()},data-x-label=${statGraph.xLabel()},data-y-label=${statGraph.yLabel()}"></div>
+            <p class="empty-state" th:if="${statGraph.series().isEmpty()}">
+                Select at least one stat line.
+            </p>
+        </th:block>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Diamond toggling this exact gemming/enchant entry. Returned directly by the toggle
+     endpoint; the HX-Trigger event updates that row without recomputing the chart. -->
+<button type="button" th:fragment="availabilityButton(slotParam, gemmedId, itemId, available)"
+        class="compare-availability"
+        th:classappend="${available} ? ' is-available' : ''"
+        data-compare-availability="true"
+        th:attr="data-gemmed-id=${gemmedId},data-item-id=${itemId},aria-pressed=${available},title=${available
+                ? 'Remove this exact gemming/enchant from the custom item pool'
+                : 'Add this exact gemming/enchant to the custom item pool'}"
+        th:hx-post="@{/character/compare/availability(slot=${slotParam}, gemmedId=${gemmedId}, available=${!available})}"
+        hx-target="this" hx-swap="outerHTML">
+    <span class="compare-diamond" th:text="${available ? '◆' : '◇'}">&#9671;</span>
+    <span class="sr-only" th:text="${available ? 'Available' : 'Not available'}">Not available</span>
+</button>
+
+</body>
+</html>

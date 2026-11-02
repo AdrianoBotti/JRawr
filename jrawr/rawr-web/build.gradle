@@ -1,0 +1,50 @@
+plugins {
+    alias(libs.plugins.spring.boot)
+}
+
+dependencies {
+    // Gradle-native BOM support; Spring Boot's plugin exposes the BOM coordinates. No
+    // io.spring.dependency-management plugin (Gradle 8.14+/9.x support, faster builds).
+    implementation platform(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
+
+    implementation project(':rawr-core')
+    implementation project(':rawr-models')
+    implementation project(':rawr-data')
+
+    implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // @AutoConfigureMockMvc moved to org.springframework.boot.webmvc.test.autoconfigure in Boot 4.
+    testImplementation 'org.springframework.boot:spring-boot-webmvc-test'
+    testImplementation libs.jackson.databind
+    // Headless browser for the availability checkbox/import JS handlers (DECISIONS #100).
+    testImplementation 'org.htmlunit:htmlunit:3.11.0'
+    testRuntimeOnly libs.junit.platform.launcher
+}
+
+// jrawr.data-dir defaults to ./data (relative to jrawr/); bootRun otherwise starts in the module
+// directory. Run with: ./gradlew :rawr-web:bootRun from jrawr/.
+tasks.named('test') {
+    // Trial: the web suite is the expensive shared-JVM task; two forks run independent test
+    // classes concurrently. Each fork still has its own Spring contexts and static state.
+    maxParallelForks = 2
+}
+
+tasks.named('bootRun') {
+    workingDir = rootProject.projectDir
+}
+
+// Ship the legal files inside the executable jar as well as next to it.
+tasks.named('bootJar') {
+    from(rootProject.file('../LICENSE')) {
+        into 'META-INF'
+    }
+    from(rootProject.file('../NOTICE')) {
+        into 'META-INF'
+    }
+    from(rootProject.file('../THIRD_PARTY_NOTICES.md')) {
+        into 'META-INF'
+    }
+}

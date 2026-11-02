@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Item editor: Add items (fetch/preview/undo) and Edit items (inspect/refresh/remove).
+     The Add tab renders a parsed queue and the browser fetches one item at a time; the Edit tab
+     lists the local cache with origin badges and a detail panel. -->
+<div class="modal-backdrop item-editor-backdrop" data-modal="item-editor" th:fragment="itemEditorModal">
+    <div class="modal card item-editor-modal" role="dialog" aria-modal="true"
+         aria-labelledby="item-editor-title">
+        <header class="modal-head">
+            <div class="modal-head-leading">
+                <button class="icon-btn" type="button" title="Back to Tools" aria-label="Back to Tools"
+                        hx-get="/tools" hx-target="#modal" hx-swap="innerHTML">&#8592;</button>
+                <h2 id="item-editor-title">Item editor</h2>
+            </div>
+            <button class="icon-btn" type="button" title="Close" aria-label="Close"
+                    data-modal-close>&#215;</button>
+        </header>
+
+        <div class="modal-body">
+            <div class="tabs" role="tablist" aria-label="Item editor sections">
+                <button class="tab" type="button" role="tab" id="item-editor-tab-add"
+                        aria-controls="item-editor-panel-add"
+                        th:classappend="${editorTab == 'add'} ? 'is-active'"
+                        th:aria-selected="${editorTab == 'add'}"
+                        data-tab="add">Add items</button>
+                <button class="tab" type="button" role="tab" id="item-editor-tab-edit"
+                        aria-controls="item-editor-panel-edit"
+                        th:classappend="${editorTab == 'edit'} ? 'is-active'"
+                        th:aria-selected="${editorTab == 'edit'}"
+                        data-tab="edit">Edit items</button>
+            </div>
+
+            <section class="ie-view" id="item-editor-panel-add" role="tabpanel"
+                     aria-labelledby="item-editor-tab-add" data-tab-panel="add"
+                     th:hidden="${editorTab != 'add'}">
+                <div th:replace="~{:: sourceStrip}"></div>
+
+                <div class="ie-add-layout">
+                    <div class="ie-panel">
+                        <div class="ie-panel-head">
+                            <h3>Fetch items</h3>
+                        </div>
+                        <p class="hint">Paste item IDs, one per line or separated by commas.</p>
+                        <form id="item-editor-add-form" hx-post="/tools/item-editor/parse"
+                              hx-target="#item-editor-add-results" hx-swap="innerHTML">
+                            <textarea class="ie-input" name="items" wrap="off" spellcheck="false"
+                                      aria-label="Item IDs"
+                                      placeholder="50731&#10;51281"></textarea>
+                            <label class="ie-option">
+                                <input type="checkbox" name="skipCached" value="true" checked/>
+                                <span>Skip items already in the cache. Clear this to refresh
+                                    fetched items.</span>
+                            </label>
+                            <div class="ie-actions">
+                                <button class="btn btn-primary" type="submit">Fetch items</button>
+                                <button class="btn" type="button" data-clear-add>Clear</button>
+                            </div>
+                        </form>
+                        <div class="ie-progress" data-fetch-progress hidden>
+                            <span class="ie-spinner" aria-hidden="true"></span>
+                            <span data-fetch-progress-text>Fetching from the item source&#8230;</span>
+                            <span class="ie-spacer"></span>
+                            <button class="btn btn-small" type="button" data-cancel-fetch>Cancel</button>
+                        </div>
+                        <p class="ie-subtle">
+                            Failed fetches leave the cache unchanged. Up to 50 IDs per batch.
+                        </p>
+                    </div>
+
+                    <div class="ie-panel">
+                        <div class="ie-panel-head">
+                            <h3>Results</h3>
+                            <span class="ie-count" id="item-editor-summary" data-summary
+                                  aria-live="polite">No items yet</span>
+                        </div>
+                        <div id="item-editor-add-results" class="ie-results" aria-live="polite">
+                            <p class="empty-state">Paste item IDs and press Fetch items.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ie-view" id="item-editor-panel-edit" role="tabpanel"
+                     aria-labelledby="item-editor-tab-edit" data-tab-panel="edit"
+                     th:hidden="${editorTab != 'edit'}">
+                <div th:replace="~{:: editBody}"></div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<!-- Editable item source: choosing an option applies it immediately; a custom URL commits on
+     blur or Enter. -->
+<div id="item-editor-source" class="ie-source" th:fragment="sourceStrip">
+    <form class="ie-source-form" onsubmit="return false;">
+        <span class="ie-source-label">Item source</span>
+        <select name="preset" aria-label="Item source" data-source-preset
+                hx-post="/tools/item-editor/source" hx-target="#item-editor-source"
+                hx-swap="outerHTML" hx-include="closest .ie-source-form"
+                hx-trigger="change[this.value !== 'custom']">
+            <option th:each="preset : ${sourcePresets}" th:value="${preset.key()}"
+                    th:text="${preset.label()}"
+                    th:selected="${sourceDraft == null and source.presetKey() == preset.key()}">Wowhead (WotLK)</option>
+            <option value="custom" th:selected="${sourceDraft != null or source.custom()}">Custom URL</option>
+        </select>
+        <input type="text" name="template" data-source-template
+               th:value="${sourceDraft != null ? sourceDraft : (source.custom() ? source.template() : '')}"
+               th:disabled="${sourceDraft == null and !source.custom()}" spellcheck="false"
+               placeholder="https://example.com/item/{id}.xml"
+               aria-label="Custom item source URL template"
+               hx-post="/tools/item-editor/source" hx-target="#item-editor-source"
+               hx-swap="outerHTML" hx-include="closest .ie-source-form"
+               hx-trigger="change, keyup[key=='Enter']"/>
+    </form>
+    <div class="ie-source-current">
+        <span>Using</span>
+        <code th:text="${source.template()}">https://wotlkdb.com/?item={id}&amp;xml</code>
+        <span class="ie-source-host">
+            <span th:text="${source.host()}">wotlkdb.com</span>
+        </span>
+        <span class="ie-source-rule"
+              th:text="${source.custom() ? 'custom source' : 'preset'}">preset</span>
+    </div>
+    <p class="inline-error" th:if="${sourceError != null}" th:text="${sourceError}">error</p>
+    <p class="hint" th:if="${sourceDraft != null or source.custom()}">
+        Custom sources are your responsibility. JRawr only checks that the URL is http(s) and
+        contains <code>{id}</code>.
+    </p>
+</div>
+
+<!-- Parse response: the queue rows plus an out-of-band summary refresh. -->
+<th:block th:fragment="addQueue">
+    <span id="item-editor-summary" class="ie-count" data-summary hx-swap-oob="true"
+          th:text="${queue.summary()}">No items</span>
+    <p class="inline-error" th:if="${queue.hasMessage()}" th:text="${queue.message()}">
+        Paste at least one item ID.</p>
+    <p class="hint" th:if="${queue.truncated}">Only the first 50 items are fetched.</p>
+    <div id="item-editor-queue" data-queue="true" th:if="${queue.hasRows()}"
+         th:attr="data-source-host=${queue.sourceHost()}">
+        <th:block th:each="row : ${queue.rows()}">
+            <th:block th:replace="~{:: addResult(${row})}"></th:block>
+        </th:block>
+    </div>
+    <p class="empty-state" th:if="${!queue.hasRows()}">No items were found in the input.</p>
+</th:block>
+
+<!-- One Add-tab result; also used for fetch, retry and undo swaps. -->
+<article class="ie-result" th:fragment="addResult(row)"
+         th:classappend="${row.statusClass()}"
+         th:attr="data-status=${row.statusKey()},data-item-id=${row.itemId() > 0 ? row.itemId() : null},data-fetch=${row.fetch()},data-refresh=${row.refresh()}">
+    <div class="ie-result-head">
+        <span class="item-icon-wrap" th:classappend="${row.iconClass()}">
+            <span class="icon-fallback" th:text="${row.iconInitial()}">?</span>
+            <img class="item-icon" th:if="${row.iconUrl() != null}" th:src="${row.iconUrl()}" alt=""
+                 onerror="this.closest('.item-icon-wrap').classList.add('icon-missing')"/>
+        </span>
+        <div class="ie-result-text">
+            <span class="ie-result-name" th:classappend="${row.qualityClass()}"
+                  th:text="${row.displayName()}">Item</span>
+            <span class="ie-result-meta" th:if="${row.meta() != null}" th:text="${row.meta()}">Item 0</span>
+        </div>
+        <span class="ie-badge" th:classappend="${row.statusClass()}"
+              th:text="${row.statusLabel()}">Added</span>
+    </div>
+
+    <p class="ie-result-note" th:if="${row.message() != null}" th:text="${row.message()}">message</p>
+
+    <div class="ie-result-actions" th:if="${row.isQueued()}">
+        <span class="ie-spinner" aria-hidden="true"></span>
+        <span class="ie-subtle">Fetching from the item source&#8230;</span>
+    </div>
+
+    <div class="ie-badges" th:if="${!#lists.isEmpty(row.badges())}">
+        <span class="ie-badge" th:each="badge : ${row.badges()}" th:text="${badge}">Fetched</span>
+    </div>
+
+    <div class="ie-result-actions" th:unless="${row.isQueued()}">
+        <button class="btn btn-small" type="button" th:if="${row.canUndo()}"
+                th:hx-post="@{/tools/item-editor/undo(id=${row.itemId()})}"
+                hx-target="closest .ie-result" hx-swap="outerHTML">Undo</button>
+        <button class="btn btn-small" type="button" th:if="${row.canRefresh()}"
+                th:hx-post="@{/tools/item-editor/fetch(id=${row.itemId()}, refresh=true)}"
+                hx-target="closest .ie-result" hx-swap="outerHTML">Refresh from source</button>
+        <button class="btn btn-small" type="button" th:if="${row.canRetry()}"
+                th:hx-post="@{/tools/item-editor/fetch(id=${row.itemId()})}"
+                hx-target="closest .ie-result" hx-swap="outerHTML">Fetch again</button>
+        <button class="btn btn-small" type="button" th:if="${row.canOpenPicker()}"
+                data-open-picker
+                th:attr="data-picker-slot=${row.pickerSlot()},data-item-id=${row.itemId()}">Open in picker</button>
+        <button class="btn btn-small" type="button"
+                th:if="${row.itemId() > 0 and row.name() != null}"
+                data-open-custom
+                th:attr="data-copy-source=${row.itemId()}">Create custom copy</button>
+    </div>
+
+    <details class="ie-collapse" th:if="${row.hasPreview()}" th:open="${row.expandedPreview()}">
+        <summary>Preview</summary>
+        <div class="ie-preview" th:with="tooltip=${row.tooltip()}">
+            <div th:replace="~{fragments/item-tooltip :: tooltip}"></div>
+        </div>
+    </details>
+
+    <p class="ie-subtle" th:if="${row.isAdded() || row.isRefreshed()}">Stored in jrawr.items.xml.</p>
+</article>
+
+<!-- The Edit tab: filterable list plus detail panel. -->
+<div id="item-editor-edit-body" class="ie-edit-layout" th:fragment="editBody">
+    <div th:replace="~{:: itemList}"></div>
+    <div th:replace="~{:: itemDetail}"></div>
+</div>
+
+<div id="item-editor-list-body" class="ie-panel ie-list" th:fragment="itemList">
+    <div class="ie-panel-head">
+        <h3>Items</h3>
+        <span class="ie-count" th:text="${list.summary()}">0 shown</span>
+    </div>
+    <form hx-get="/tools/item-editor/list" hx-target="#item-editor-list-body"
+          hx-swap="outerHTML" hx-trigger="input changed delay:200ms, change">
+        <input type="search" id="item-editor-search" name="q" hx-preserve="true"
+               placeholder="Search items by name&#8230;" th:value="${list.query()}"
+               autocomplete="off"/>
+        <div class="ie-filters">
+            <label class="field">
+                <span class="field-label">Origin</span>
+                <select name="origin">
+                    <option value="all" th:selected="${list.origin() == 'all'}">All</option>
+                    <option value="base" th:selected="${list.origin() == 'base'}">Base</option>
+                    <option value="fetched" th:selected="${list.origin() == 'fetched'}">Fetched</option>
+                    <option value="custom" th:selected="${list.origin() == 'custom'}">Custom</option>
+                </select>
+            </label>
+            <label class="field">
+                <span class="field-label">Slot</span>
+                <select name="slot">
+                    <option value="all">All slots</option>
+                    <option th:each="entry : ${itemSlots}" th:value="${entry.key}"
+                            th:text="${entry.value}"
+                            th:selected="${#strings.equalsIgnoreCase(entry.key, list.slot())}">Head</option>
+                </select>
+            </label>
+        </div>
+    </form>
+    <p class="inline-error" th:if="${list.hasError()}" th:text="${list.error()}">error</p>
+    <p class="hint" th:if="${list.hasMessage()}" th:text="${list.message()}">message</p>
+    <div class="ie-list-scroll">
+        <button class="ie-list-row" type="button" th:each="row : ${list.rows()}"
+                th:classappend="${selectedId != null and row.itemId() == selectedId} ? ' is-selected'"
+                th:hx-get="@{/tools/item-editor/detail(id=${row.itemId()}, q=${list.query()}, origin=${list.origin()}, slot=${list.slot()})}"
+                hx-target="#item-editor-detail" hx-swap="outerHTML">
+            <span class="item-icon-wrap" th:classappend="${row.iconClass()}">
+                <span class="icon-fallback" th:text="${row.iconInitial()}">?</span>
+                <img class="item-icon" th:if="${row.iconUrl() != null}" th:src="${row.iconUrl()}" alt=""
+                     onerror="this.closest('.item-icon-wrap').classList.add('icon-missing')"/>
+            </span>
+            <span class="ie-list-text">
+                <span class="ie-list-name" th:classappend="${row.qualityClass()}"
+                      th:text="${row.name()}">Item</span>
+                <span class="ie-list-meta" th:text="${row.meta()}">ilvl 0 &#183; Head</span>
+            </span>
+            <span class="ie-badge" th:classappend="${row.originClass()}"
+                  th:text="${row.originLabel()}">Base</span>
+        </button>
+        <p class="empty-state" th:if="${!list.hasRows()}">No matching items.</p>
+    </div>
+    <p class="ie-subtle" th:if="${list.total() > #lists.size(list.rows())}"
+       th:text="|Showing ${#lists.size(list.rows())} of ${list.total()}; refine the search to see more.|">
+        Showing a subset.</p>
+    <p class="ie-subtle">
+        Base items are shipped with JRawr and cannot be changed. Fetched and custom items live in
+        jrawr.items.xml.
+    </p>
+</div>
+
+<div id="item-editor-detail" class="ie-detail" th:fragment="itemDetail">
+    <p class="empty-state" th:if="${detail == null}">Select an item to inspect it.</p>
+    <th:block th:if="${detail != null}">
+        <p class="inline-error" th:if="${detail.hasError()}" th:text="${detail.error()}">error</p>
+        <th:block th:if="${detail.available()}">
+            <div class="ie-detail-head">
+                <div class="ie-detail-title">
+                    <h3 th:classappend="${detail.qualityClass()}" th:text="${detail.name()}">Item</h3>
+                    <span class="ie-result-meta" th:text="${detail.meta()}">ilvl 0 &#183; Head &#183; Item 0</span>
+                </div>
+                <span class="ie-badge" th:classappend="${detail.originClass()}"
+                      th:text="${detail.originLabel()}">Base</span>
+            </div>
+            <p class="hint" th:if="${detail.hasMessage()}" th:text="${detail.message()}">message</p>
+            <div class="ie-preview" th:with="tooltip=${detail.tooltip()}">
+                <div th:replace="~{fragments/item-tooltip :: tooltip}"></div>
+            </div>
+            <div class="ie-badges" th:if="${detail.hasBadges()}">
+                <span class="ie-badge" th:each="badge : ${detail.badges()}"
+                      th:text="${badge}">Unique</span>
+            </div>
+            <dl class="ie-kv">
+                <dt>Slot</dt><dd th:text="${detail.slotText()}">Head &#183; Cloth</dd>
+                <dt>Quality</dt><dd th:text="${#strings.capitalize(detail.qualityKey())}">Epic</dd>
+                <dt>Item level</dt><dd th:text="${detail.itemLevel()}">277</dd>
+                <dt>Item ID</dt><dd th:text="${detail.itemId()}">51281</dd>
+                <dt th:if="${!#strings.isEmpty(detail.tooltip().setName())}">Set</dt>
+                <dd th:if="${!#strings.isEmpty(detail.tooltip().setName())}"
+                    th:text="${detail.tooltip().setName()}">Set</dd>
+                <dt th:if="${detail.tooltip().hasSource()}">Source</dt>
+                <dd th:if="${detail.tooltip().hasSource()}"
+                    th:text="${detail.tooltip().sourceKind() + ' &#183; ' + detail.tooltip().source()}">
+                    Source</dd>
+            </dl>
+            <p class="ie-note" th:if="${detail.isBase()}">
+                Base items come from the shipped item cache and are read-only. Fetched and custom
+                items live in the item side-car.
+            </p>
+            <p class="ie-note is-warning" th:if="${detail.inUse() and !detail.isBase()}">
+                This item is equipped or socketed on the current character. Unequip or unsocket it
+                to remove the local copy.
+            </p>
+            <p class="ie-note" th:if="${detail.isFetched() and !detail.inUse()}">
+                This item came from the item source. Refresh re-downloads it; Remove deletes the
+                local copy.
+            </p>
+            <p class="ie-note" th:if="${detail.isCustom() and !detail.inUse()}">
+                Custom copies live in the item side-car and can be equipped, optimized and saved
+                with a character.
+            </p>
+            <div class="ie-detail-actions">
+                <button class="btn btn-primary" type="button"
+                        th:hx-get="@{/tools/item-editor/custom(source=${detail.itemId()}, q=${filterQuery}, origin=${filterOrigin}, slot=${filterSlot})}"
+                        hx-target="#item-editor-edit-body" hx-swap="outerHTML">Create custom copy</button>
+                <button class="btn" type="button" th:if="${detail.isCustom()}"
+                        th:hx-get="@{/tools/item-editor/custom(id=${detail.itemId()}, q=${filterQuery}, origin=${filterOrigin}, slot=${filterSlot})}"
+                        hx-target="#item-editor-edit-body" hx-swap="outerHTML">Edit item</button>
+                <button class="btn" type="button" th:if="${detail.canOpenPicker()}"
+                        data-open-picker
+                        th:attr="data-picker-slot=${detail.pickerSlot()},data-item-id=${detail.itemId()}">Open in picker</button>
+                <button class="btn" type="button" th:if="${detail.canRefresh()}"
+                        th:hx-post="@{/tools/item-editor/refresh(id=${detail.itemId()}, q=${filterQuery}, origin=${filterOrigin}, slot=${filterSlot})}"
+                        hx-target="#item-editor-detail" hx-swap="outerHTML">Refresh from source</button>
+                <button class="btn btn-danger" type="button" th:if="${!detail.isBase()}"
+                        th:disabled="${!detail.canRemove()}"
+                        th:title="${detail.canRemove()
+                            ? 'Remove ' + detail.name() + ' from the local cache'
+                            : 'Unequip or unsocket the item first'}"
+                        th:hx-post="@{/tools/item-editor/remove(id=${detail.itemId()}, q=${filterQuery}, origin=${filterOrigin}, slot=${filterSlot})}"
+                        hx-target="#item-editor-edit-body" hx-swap="outerHTML"
+                        th:hx-confirm="|Remove ${detail.name()} from the local cache?|">Remove from cache</button>
+            </div>
+        </th:block>
+    </th:block>
+</div>
+
+<!-- Custom-copy editor: preview left, editable form right. -->
+<div id="item-editor-edit-body" class="ie-custom-layout" th:fragment="customItemForm">
+    <form class="ie-custom-form" onsubmit="return false;"
+          th:attr="data-first-error=${form.firstErrorField()}"
+          hx-post="/tools/item-editor/custom/preview" hx-target="#custom-item-preview"
+          hx-swap="innerHTML" hx-trigger="input changed delay:400ms, change">
+        <input type="hidden" name="sourceId" th:value="${form.sourceId()}"/>
+        <input type="hidden" name="editId" th:value="${form.editId()}"/>
+        <input type="hidden" name="itemId" th:value="${form.itemId()}"/>
+        <input type="hidden" name="filterQuery" th:value="${filterQuery}"/>
+        <input type="hidden" name="filterOrigin" th:value="${filterOrigin}"/>
+        <input type="hidden" name="filterSlot" th:value="${filterSlot}"/>
+
+        <aside class="ie-rail">
+            <div class="ie-custom-head">
+                <span class="ie-badge is-custom"
+                      th:text="${form.isNew() ? 'Custom copy' : 'Custom item'}">Custom copy</span>
+                <span class="ie-subtle" th:if="${form.isNew()}">
+                    Based on <strong th:text="${form.sourceName()}">source</strong>
+                </span>
+                <span class="ie-subtle" th:unless="${form.isNew()}">Editing item
+                    <strong th:text="${form.itemId()}">1000001</strong></span>
+            </div>
+            <div id="custom-item-preview" class="ie-preview" aria-live="polite">
+                <div th:if="${form.hasPreview()}" th:with="tooltip=${form.preview()}">
+                    <div th:replace="~{fragments/item-tooltip :: tooltip}"></div>
+                </div>
+            </div>
+            <p class="inline-error" role="alert" th:if="${form.hasError()}"
+               th:text="${form.error()}">error</p>
+            <p class="ie-note">Preview updates as you edit. Nothing is saved until you press
+                <strong>Save custom item</strong>.</p>
+            <p class="ie-subtle" th:if="${form.isNew()}">
+                Custom IDs use the reserved range 1,000,000 and above.
+            </p>
+        </aside>
+
+        <div class="ie-form-scroll">
+            <p class="inline-error" role="alert" th:if="${form.hasError()}"
+               th:text="${form.error()}">error</p>
+            <div class="ie-custom-title">
+                <h3 th:text="${form.isNew() ? 'Create custom item' : 'Edit custom item'}">Create custom item</h3>
+                <span class="ie-subtle" th:if="${form.isNew()}">
+                    Copying <span th:text="${form.sourceName()}">source</span>
+                </span>
+            </div>
+
+            <section class="ie-form-section">
+                <h3>Identity</h3>
+                <div class="ie-grid-2">
+                    <label class="field" data-field-key="name"
+                           th:classappend="${form.hasFieldError('name')} ? ' is-invalid'">
+                        <span class="field-label">Name</span>
+                        <input type="text" name="name" th:value="${form.name()}" required
+                               th:aria-invalid="${form.hasFieldError('name')}"/>
+                        <span class="field-error" th:if="${form.hasFieldError('name')}"
+                              th:text="${form.fieldError('name')}">error</span>
+                    </label>
+                    <label class="field" data-field-key="itemLevel"
+                           th:classappend="${form.hasFieldError('itemLevel')} ? ' is-invalid'">
+                        <span class="field-label">Item level</span>
+                        <input type="number" name="itemLevel" th:value="${form.itemLevel()}" min="0"
+                               th:aria-invalid="${form.hasFieldError('itemLevel')}"/>
+                        <span class="field-error" th:if="${form.hasFieldError('itemLevel')}"
+                              th:text="${form.fieldError('itemLevel')}">error</span>
+                    </label>
+                    <label class="field">
+                        <span class="field-label">Quality</span>
+                        <select name="quality">
+                            <option th:each="option : ${form.qualityOptions()}"
+                                    th:value="${option.value()}" th:text="${option.label()}"
+                                    th:selected="${#strings.equals(option.value(), form.quality())}">Epic</option>
+                        </select>
+                    </label>
+                    <label class="field">
+                        <span class="field-label">Slot</span>
+                        <select name="slot">
+                            <option th:each="option : ${form.slotOptions()}"
+                                    th:value="${option.value()}" th:text="${option.label()}"
+                                    th:selected="${#strings.equals(option.value(), form.slot())}">Head</option>
+                        </select>
+                    </label>
+                    <label class="field">
+                        <span class="field-label">Type</span>
+                        <select name="type">
+                            <option th:each="option : ${form.typeOptions()}"
+                                    th:value="${option.value()}" th:text="${option.label()}"
+                                    th:selected="${#strings.equals(option.value(), form.type())}">Cloth</option>
+                        </select>
+                    </label>
+                    <label class="field">
+                        <span class="field-label">Faction</span>
+                        <select name="faction">
+                            <option th:each="option : ${form.factionOptions()}"
+                                    th:value="${option.value()}" th:text="${option.label()}"
+                                    th:selected="${#strings.equals(option.value(), form.faction())}">Neutral</option>
+                        </select>
+                    </label>
+                    <label class="field">
+                        <span class="field-label">Bind</span>
+                        <select name="bind">
+                            <option th:each="option : ${form.bindOptions()}"
+                                    th:value="${option.value()}" th:text="${option.label()}"
+                                    th:selected="${#strings.equals(option.value(), form.bind())}">BoP</option>
+                        </select>
+                    </label>
+                    <label class="field">
+                        <span class="field-label">Set name</span>
+                        <input type="text" name="setName" th:value="${form.setName()}"/>
+                    </label>
+                    <label class="field" data-field-key="iconPath"
+                           th:classappend="${form.hasFieldError('iconPath')} ? ' is-invalid'">
+                        <span class="field-label">Icon path</span>
+                        <input type="text" name="iconPath" th:value="${form.iconPath()}"
+                               th:aria-invalid="${form.hasFieldError('iconPath')}"/>
+                        <span class="field-error" th:if="${form.hasFieldError('iconPath')}"
+                              th:text="${form.fieldError('iconPath')}">error</span>
+                    </label>
+                    <label class="ie-check" style="align-self:end;padding-bottom:.35rem">
+                        <input type="checkbox" name="unique" value="true"
+                               th:checked="${form.unique()}"/>
+                        <span>Unique</span>
+                    </label>
+                </div>
+                <details>
+                    <summary class="ie-subtle">Weapon damage (weapons only)</summary>
+                    <div class="ie-grid-3" style="margin-top:.375rem">
+                        <label class="field" data-field-key="minDamage"
+                               th:classappend="${form.hasFieldError('minDamage')} ? ' is-invalid'">
+                            <span class="field-label">Min damage</span>
+                            <input type="number" name="minDamage" th:value="${form.minDamage()}" min="0"
+                                   th:aria-invalid="${form.hasFieldError('minDamage')}"/>
+                            <span class="field-error" th:if="${form.hasFieldError('minDamage')}"
+                                  th:text="${form.fieldError('minDamage')}">error</span>
+                        </label>
+                        <label class="field" data-field-key="maxDamage"
+                               th:classappend="${form.hasFieldError('maxDamage')} ? ' is-invalid'">
+                            <span class="field-label">Max damage</span>
+                            <input type="number" name="maxDamage" th:value="${form.maxDamage()}" min="0"
+                                   th:aria-invalid="${form.hasFieldError('maxDamage')}"/>
+                            <span class="field-error" th:if="${form.hasFieldError('maxDamage')}"
+                                  th:text="${form.fieldError('maxDamage')}">error</span>
+                        </label>
+                        <label class="field" data-field-key="speed"
+                               th:classappend="${form.hasFieldError('speed')} ? ' is-invalid'">
+                            <span class="field-label">Speed</span>
+                            <input type="number" name="speed" th:value="${form.speed()}" min="0" step="any"
+                                   th:aria-invalid="${form.hasFieldError('speed')}"/>
+                            <span class="field-error" th:if="${form.hasFieldError('speed')}"
+                                  th:text="${form.fieldError('speed')}">error</span>
+                        </label>
+                    </div>
+                    <label class="field">
+                        <span class="field-label">Damage type</span>
+                        <select name="damageType">
+                            <option th:each="option : ${form.damageTypeOptions()}"
+                                    th:value="${option.value()}" th:text="${option.label()}"
+                                    th:selected="${#strings.equals(option.value(), form.damageType())}">Physical</option>
+                        </select>
+                    </label>
+                </details>
+            </section>
+
+            <section class="ie-form-section">
+                <h3>Sockets</h3>
+                <div class="ie-grid-3">
+                    <label class="field">
+                        <span class="field-label">Socket 1</span>
+                        <select name="socket1">
+                            <option th:each="option : ${form.socketOptions()}"
+                                    th:value="${option.value()}" th:text="${option.label()}"
+                                    th:selected="${#strings.equals(option.value(), form.socket1())}">None</option>
+                        </select>
+                    </label>
+                    <label class="field">
+                        <span class="field-label">Socket 2</span>
+                        <select name="socket2">
+                            <option th:each="option : ${form.socketOptions()}"
+                                    th:value="${option.value()}" th:text="${option.label()}"
+                                    th:selected="${#strings.equals(option.value(), form.socket2())}">None</option>
+                        </select>
+                    </label>
+                    <label class="field">
+                        <span class="field-label">Socket 3</span>
+                        <select name="socket3">
+                            <option th:each="option : ${form.socketOptions()}"
+                                    th:value="${option.value()}" th:text="${option.label()}"
+                                    th:selected="${#strings.equals(option.value(), form.socket3())}">None</option>
+                        </select>
+                    </label>
+                </div>
+                <span class="field-label">Socket bonus</span>
+                <div id="custom-bonus-rows" class="ie-stat-rows">
+                    <div class="ie-stat-line" th:each="row, iter : ${form.socketBonus()}"
+                         th:attr="data-field-key=|bonus.${iter.index}|"
+                         th:classappend="${form.hasFieldError('bonus.' + iter.index)} ? ' is-invalid'">
+                        <div class="ie-stat-row">
+                        <select name="bonusName" aria-label="Socket bonus stat"
+                                data-stat-select th:attr="data-selected=${row.name()}"></select>
+                        <input type="number" name="bonusValue" aria-label="Socket bonus value"
+                               step="any" th:value="${row.value()}"/>
+                        <button type="button" class="btn btn-small ie-remove" data-remove-row>Remove</button>
+                        </div>
+                        <span class="field-error" th:if="${form.hasFieldError('bonus.' + iter.index)}"
+                              th:text="${form.fieldError('bonus.' + iter.index)}">error</span>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-small" data-add-row="bonus">Add socket bonus stat</button>
+            </section>
+
+            <section class="ie-form-section">
+                <h3>Stats</h3>
+                <p class="hint">Percentage stats are entered as percentages.</p>
+                <div id="custom-stat-rows" class="ie-stat-rows">
+                    <div class="ie-stat-line" th:each="row, iter : ${form.stats()}"
+                         th:attr="data-field-key=|stat.${iter.index}|"
+                         th:classappend="${form.hasFieldError('stat.' + iter.index)} ? ' is-invalid'">
+                        <div class="ie-stat-row">
+                        <select name="statName" aria-label="Stat"
+                                data-stat-select th:attr="data-selected=${row.name()}"></select>
+                        <input type="number" name="statValue" aria-label="Value"
+                               step="any" th:value="${row.value()}"/>
+                        <button type="button" class="btn btn-small ie-remove" data-remove-row>Remove</button>
+                        </div>
+                        <span class="field-error" th:if="${form.hasFieldError('stat.' + iter.index)}"
+                              th:text="${form.fieldError('stat.' + iter.index)}">error</span>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-small" data-add-row="stat">Add stat</button>
+            </section>
+
+            <section class="ie-form-section">
+                <h3>Required classes</h3>
+                <p class="hint">Leave every class unchecked to allow all classes.</p>
+                <div class="ie-class-grid">
+                    <label class="ie-check" th:each="option : ${form.classOptions()}">
+                        <input type="checkbox" name="requiredClass" th:value="${option.name()}"
+                               th:checked="${option.checked()}"/>
+                        <span th:text="${option.label()}">Mage</span>
+                    </label>
+                </div>
+                <span class="field-error" th:if="${form.hasFieldError('requiredClasses')}"
+                      th:text="${form.fieldError('requiredClasses')}">error</span>
+            </section>
+
+            <section class="ie-form-section">
+                <h3>Special effects</h3>
+                <p class="hint">Chance is a percentage or PPM. Use -1 for an infinite duration or
+                    cooldown.</p>
+                <p class="hint" th:if="${#lists.isEmpty(form.effects())}">No special effects yet.</p>
+                <div id="custom-effect-rows" class="ie-effect-rows">
+                    <div class="ie-effect" th:each="effect : ${form.effects()}"
+                         th:attr="data-effect-index=${effect.index()},data-field-key=|effect.${effect.index()}|"
+                         th:classappend="${form.hasFieldError('effect.' + effect.index())} ? ' is-invalid'">
+                        <div class="ie-effect-head">
+                            <span class="ie-effect-title">Effect</span>
+                            <button type="button" class="btn btn-small ie-remove"
+                                    data-remove-effect>Remove effect</button>
+                        </div>
+                        <div class="ie-grid-3">
+                            <label class="field">
+                                <span class="field-label">Trigger</span>
+                                <select th:name="'effect' + ${effect.index()} + 'Trigger'">
+                                    <option th:each="option : ${form.triggerOptions()}"
+                                            th:value="${option.value()}" th:text="${option.label()}"
+                                            th:selected="${#strings.equals(option.value(), effect.trigger())}">Use</option>
+                                </select>
+                            </label>
+                            <label class="field">
+                                <span class="field-label">Duration (sec)</span>
+                                <input type="number" th:name="'effect' + ${effect.index()} + 'Duration'"
+                                       th:value="${effect.duration()}" step="any"/>
+                            </label>
+                            <label class="field">
+                                <span class="field-label">Cooldown (sec)</span>
+                                <input type="number" th:name="'effect' + ${effect.index()} + 'Cooldown'"
+                                       th:value="${effect.cooldown()}" step="any"/>
+                            </label>
+                            <label class="field">
+                                <span class="field-label">Chance</span>
+                                <input type="number" th:name="'effect' + ${effect.index()} + 'Chance'"
+                                       th:value="${effect.chance()}" step="any" min="0"/>
+                            </label>
+                            <label class="field">
+                                <span class="field-label">Chance mode</span>
+                                <select th:name="'effect' + ${effect.index()} + 'Mode'">
+                                    <option value="percent"
+                                            th:selected="${#strings.equals(effect.chanceMode(), 'percent')}">Percent</option>
+                                    <option value="ppm"
+                                            th:selected="${#strings.equals(effect.chanceMode(), 'ppm')}">PPM</option>
+                                </select>
+                            </label>
+                            <label class="field">
+                                <span class="field-label">Stacks</span>
+                                <input type="number" th:name="'effect' + ${effect.index()} + 'Stacks'"
+                                       th:value="${effect.stacks()}" min="1"/>
+                            </label>
+                        </div>
+                        <span class="field-error" th:if="${form.hasFieldError('effect.' + effect.index())}"
+                              th:text="${form.fieldError('effect.' + effect.index())}">error</span>
+                        <div class="ie-stat-rows" th:attr="data-effect-index=${effect.index()}">
+                            <div class="ie-stat-line" th:each="row, iter : ${effect.stats()}"
+                                 th:attr="data-field-key=|effect.${effect.index()}.stat.${iter.index}|"
+                                 th:classappend="${form.hasFieldError('effect.' + effect.index() + '.stat.' + iter.index)} ? ' is-invalid'">
+                                <div class="ie-stat-row">
+                                <select th:name="'effect' + ${effect.index()} + 'StatName'"
+                                        aria-label="Effect stat" data-stat-select
+                                        th:attr="data-selected=${row.name()}"></select>
+                                <input type="number" th:name="'effect' + ${effect.index()} + 'StatValue'"
+                                       th:value="${row.value()}" step="any" aria-label="Effect value"/>
+                                <button type="button" class="btn btn-small ie-remove"
+                                        data-remove-row>Remove</button>
+                                </div>
+                                <span class="field-error"
+                                      th:if="${form.hasFieldError('effect.' + effect.index() + '.stat.' + iter.index)}"
+                                      th:text="${form.fieldError('effect.' + effect.index() + '.stat.' + iter.index)}">error</span>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-small"
+                                data-add-effect-stat>Add effect stat</button>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-small" data-add-effect>Add special effect</button>
+            </section>
+
+            <details class="ie-form-section">
+                <summary class="ie-section-summary">Advanced</summary>
+                <label class="field" th:if="${form.advancedEditable()}" data-field-key="idOverride"
+                       th:classappend="${form.hasFieldError('idOverride')} ? ' is-invalid'">
+                    <span class="field-label">Custom item ID (optional)</span>
+                    <input type="number" name="idOverride" th:value="${form.advancedId()}"
+                           placeholder="Auto (1,000,000+)" min="1000000"
+                           th:aria-invalid="${form.hasFieldError('idOverride')}"/>
+                    <span class="field-error" th:if="${form.hasFieldError('idOverride')}"
+                          th:text="${form.fieldError('idOverride')}">error</span>
+                </label>
+                <p class="hint" th:if="${form.advancedEditable()}">
+                    Leave blank for the next free ID. Custom IDs use the reserved range 1,000,000 and above.
+                </p>
+                <p class="hint" th:unless="${form.advancedEditable()}">
+                    Item ID <strong th:text="${form.itemId()}">1000001</strong>.
+                </p>
+            </details>
+        </div>
+
+        <div class="ie-custom-footer">
+            <button class="btn" type="button"
+                    th:hx-get="@{/tools/item-editor/edit-body(selected=${form.editId() > 0 ? form.editId() : form.sourceId()}, q=${filterQuery}, origin=${filterOrigin}, slot=${filterSlot})}"
+                    hx-target="#item-editor-edit-body" hx-swap="outerHTML">Cancel</button>
+            <button class="btn btn-primary" type="button"
+                    hx-post="/tools/item-editor/custom/save" hx-include="closest form"
+                    hx-target="#item-editor-edit-body" hx-swap="outerHTML"
+                    hx-disabled-elt="this">Save custom item</button>
+        </div>
+
+        <template id="custom-stat-options-template">
+            <option value="">(none)</option>
+            <optgroup th:each="group : ${form.statGroups()}" th:label="${group.label()}">
+                <option th:each="option : ${group.options()}" th:value="${option.name()}"
+                        th:text="${option.label() + (option.percentage() ? ' (%)' : '')}">Intellect</option>
+            </optgroup>
+        </template>
+        <template id="custom-effect-template">
+            <div class="ie-effect" data-effect-index="__idx__">
+                <div class="ie-effect-head">
+                    <span class="ie-effect-title">Effect</span>
+                    <button type="button" class="btn btn-small ie-remove"
+                            data-remove-effect>Remove effect</button>
+                </div>
+                <div class="ie-grid-3">
+                    <label class="field">
+                        <span class="field-label">Trigger</span>
+                        <select name="effect__idx__Trigger">
+                            <option th:each="option : ${form.triggerOptions()}"
+                                    th:value="${option.value()}" th:text="${option.label()}">Use</option>
+                        </select>
+                    </label>
+                    <label class="field">
+                        <span class="field-label">Duration (sec)</span>
+                        <input type="number" name="effect__idx__Duration" value="20" step="any"/>
+                    </label>
+                    <label class="field">
+                        <span class="field-label">Cooldown (sec)</span>
+                        <input type="number" name="effect__idx__Cooldown" value="120" step="any"/>
+                    </label>
+                    <label class="field">
+                        <span class="field-label">Chance</span>
+                        <input type="number" name="effect__idx__Chance" value="100" step="any" min="0"/>
+                    </label>
+                    <label class="field">
+                        <span class="field-label">Chance mode</span>
+                        <select name="effect__idx__Mode">
+                            <option value="percent">Percent</option>
+                            <option value="ppm">PPM</option>
+                        </select>
+                    </label>
+                    <label class="field">
+                        <span class="field-label">Stacks</span>
+                        <input type="number" name="effect__idx__Stacks" value="1" min="1"/>
+                    </label>
+                </div>
+                <div class="ie-stat-rows"></div>
+                <button type="button" class="btn btn-small"
+                        data-add-effect-stat>Add effect stat</button>
+            </div>
+        </template>
+        <template id="custom-effect-stat-template">
+            <div class="ie-stat-row">
+                <select name="effect__idx__StatName" aria-label="Effect stat"
+                        data-stat-select></select>
+                <input type="number" name="effect__idx__StatValue" step="any"
+                       aria-label="Effect value"/>
+                <button type="button" class="btn btn-small ie-remove" data-remove-row>Remove</button>
+            </div>
+        </template>
+        <template id="custom-stat-template">
+            <div class="ie-stat-row">
+                <select name="statName" aria-label="Stat" data-stat-select></select>
+                <input type="number" name="statValue" step="any" aria-label="Value"/>
+                <button type="button" class="btn btn-small ie-remove" data-remove-row>Remove</button>
+            </div>
+        </template>
+        <template id="custom-bonus-template">
+            <div class="ie-stat-row">
+                <select name="bonusName" aria-label="Socket bonus stat" data-stat-select></select>
+                <input type="number" name="bonusValue" step="any" aria-label="Socket bonus value"/>
+                <button type="button" class="btn btn-small ie-remove" data-remove-row>Remove</button>
+            </div>
+        </template>
+    </form>
+</div>
+
+<!-- Live preview response. -->
+<th:block th:fragment="customPreview">
+    <div th:if="${preview != null}" th:with="tooltip=${preview}">
+        <div th:replace="~{fragments/item-tooltip :: tooltip}"></div>
+    </div>
+    <p class="inline-error" th:if="${previewError != null}" th:text="${previewError}">error</p>
+</th:block>
+
+</body>
+</html>

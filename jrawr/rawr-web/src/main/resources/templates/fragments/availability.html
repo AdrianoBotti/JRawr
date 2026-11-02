@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Available-gear manager: item-level and exact gemming/enchant entries for one slot. Loaded into
+     its own #availability-modal root so the optimizer form underneath stays untouched. -->
+<div class="modal-backdrop availability-backdrop" data-modal="availability"
+     th:fragment="availabilityModal">
+    <div class="modal card availability-modal" role="dialog" aria-modal="true"
+         aria-labelledby="availability-title">
+        <header class="modal-head">
+            <h2 id="availability-title">Custom Item Pool</h2>
+            <button class="icon-btn" type="button" title="Close" aria-label="Close"
+                    data-modal-close>&#215;</button>
+        </header>
+        <div th:replace="~{:: availabilityBody}"></div>
+    </div>
+</div>
+
+<div id="availability-body" class="modal-body availability-body"
+     th:fragment="availabilityBody">
+
+    <p class="hint availability-intro">
+        This is the custom item pool used by the optimizer's <strong>Custom item pool</strong>
+        mode. <strong>Item-level</strong> entries allow every gemming and enchant;
+        <strong>exact</strong> entries allow only that one instance. The equipped items are always
+        kept by the optimizer.
+    </p>
+
+    <form class="availability-controls" onsubmit="return false">
+        <label class="field">
+            <span class="field-label">Slot</span>
+            <select name="slot" hx-get="/character/availability/body"
+                    hx-target="#availability-body" hx-swap="outerHTML"
+                    hx-trigger="change" hx-include="closest form">
+                <option th:each="s : ${availabilitySlots}" th:value="${s.name()}"
+                        th:selected="${s == availabilitySlot}"
+                        th:text="${availabilitySlotLabels.get(s)}">Head</option>
+            </select>
+        </label>
+        <label class="field availability-search">
+            <span class="field-label">Find</span>
+            <input type="search" id="availability-search" name="q" hx-preserve="true"
+                   th:value="${availabilityQuery}"
+                   placeholder="Filter by item name or ID…" autocomplete="off"
+                   hx-get="/character/availability/body"
+                   hx-target="#availability-body" hx-swap="outerHTML"
+                   hx-trigger="input changed delay:200ms" hx-include="closest form"/>
+        </label>
+    </form>
+
+    <div class="availability-actions">
+        <h3 class="dialog-section-title">Bulk actions</h3>
+        <div class="availability-actions-row">
+            <form hx-post="/character/availability/bulk" hx-target="#availability-body"
+                  hx-swap="outerHTML"
+                  hx-confirm="Replace the custom item pool with your equipped items?">
+                <input type="hidden" name="slot" th:value="${availabilitySlotParam}"/>
+                <input type="hidden" name="q" th:value="${availabilityQuery}"/>
+                <button class="btn btn-small" type="submit" name="action" value="EQUIPPED"
+                        title="Replace the custom item pool with the currently equipped items.">
+                    Use equipped gear
+                </button>
+            </form>
+            <form hx-post="/character/availability/bulk" hx-target="#availability-body"
+                  hx-swap="outerHTML"
+                  hx-confirm="Replace the custom item pool with every model-relevant item?">
+                <input type="hidden" name="slot" th:value="${availabilitySlotParam}"/>
+                <input type="hidden" name="q" th:value="${availabilityQuery}"/>
+                <button class="btn btn-small" type="submit" name="action" value="ALL_RELEVANT"
+                        title="Replace the custom item pool with every model-relevant item for all slots.">
+                    All relevant items
+                </button>
+            </form>
+            <form hx-post="/character/availability/bulk" hx-target="#availability-body"
+                  hx-swap="outerHTML"
+                  hx-confirm="Remove every custom-pool entry for this slot?">
+                <input type="hidden" name="slot" th:value="${availabilitySlotParam}"/>
+                <input type="hidden" name="q" th:value="${availabilityQuery}"/>
+                <button class="btn btn-small btn-danger" type="submit" name="action" value="CLEAR_SLOT"
+                        title="Remove all custom-pool entries for the selected slot.">
+                    Clear this slot
+                </button>
+            </form>
+            <form hx-post="/character/availability/bulk" hx-target="#availability-body"
+                  hx-swap="outerHTML"
+                  hx-confirm="Clear the entire custom item pool?">
+                <input type="hidden" name="slot" th:value="${availabilitySlotParam}"/>
+                <input type="hidden" name="q" th:value="${availabilityQuery}"/>
+                <button class="btn btn-small btn-danger" type="submit" name="action" value="CLEAR_ALL"
+                        title="Remove every custom-pool entry.">
+                    Clear all
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="inline-error" th:if="${availabilityError != null}"
+         th:text="${availabilityError}">error</div>
+    <div class="inline-success" th:if="${availabilityMessage != null}"
+         th:text="${availabilityMessage}">Saved.</div>
+
+    <div class="availability-summary" th:if="${availabilityView != null}">
+        <span><strong th:text="${availabilityView.availabilityCount()}">0</strong>
+            entries in the custom item pool</span>
+        <span class="hint" th:text="${availabilityView.itemLevelCount()} + ' item-level and '
+                + ${availabilityView.exactCount()} + ' exact for this slot'">0 item-level and 0 exact for this slot</span>
+    </div>
+
+    <section class="availability-exact" th:if="${availabilityView != null}">
+        <header class="availability-section-head">
+            <h3 class="dialog-section-title">Exact gemming/enchant entries</h3>
+            <span class="hint" th:if="${availabilityView.equippedEntry() != null}"
+                  th:text="${availabilityView.equippedEntry()}">51281.0.0.0.3820</span>
+        </header>
+        <p class="hint" th:if="${availabilityView.exactEntries().isEmpty()}">
+            No exact entries for this slot. Item-level entries allow any gemming/enchant.
+        </p>
+        <div class="availability-exact-row" th:each="entry : ${availabilityView.exactEntries()}">
+            <span th:replace="~{fragments/item-icon :: icon(
+                    ${icons.instanceTooltipUrl(entry.itemId(), availabilitySlotParam, entry.entry())},
+                    ${entry.iconUrl()}, ${entry.initials()}, ${entry.qualityKey()}, ${entry.itemName()})}"></span>
+            <div class="availability-exact-text">
+                <span class="availability-item-name" th:classappend="'q-' + ${entry.qualityKey()}"
+                      th:text="${entry.itemName()}">Item name</span>
+                <span class="hint" th:text="${entry.description()}">Any gem · any enchant</span>
+                <code th:text="${entry.entry()}">51281.0.0.0.3820</code>
+            </div>
+            <span class="availability-flag is-equipped" th:if="${entry.equipped()}">Equipped</span>
+            <form hx-post="/character/availability/exact" hx-target="#availability-body"
+                  hx-swap="outerHTML">
+                <input type="hidden" name="slot" th:value="${availabilitySlotParam}"/>
+                <input type="hidden" name="q" th:value="${availabilityQuery}"/>
+                <input type="hidden" name="entry" th:value="${entry.entry()}"/>
+                <button class="btn btn-small" type="submit" name="action" value="REMOVE"
+                        th:attr="aria-label='Remove exact entry for ' + ${entry.itemName()}"
+                        title="Remove this exact entry.">Remove</button>
+            </form>
+        </div>
+        <form hx-post="/character/availability/exact" hx-target="#availability-body"
+              hx-swap="outerHTML"
+              th:if="${availabilityView.equippedEntry() != null and !availabilityView.equippedEntryAvailable()}">
+            <input type="hidden" name="slot" th:value="${availabilitySlotParam}"/>
+            <input type="hidden" name="q" th:value="${availabilityQuery}"/>
+            <button class="btn btn-small" type="submit" name="action" value="ADD_EQUIPPED">
+                Add equipped instance as exact entry
+            </button>
+        </form>
+        <form class="availability-exact-add" hx-post="/character/availability/exact"
+              hx-target="#availability-body" hx-swap="outerHTML">
+            <input type="hidden" name="slot" th:value="${availabilitySlotParam}"/>
+            <input type="hidden" name="q" th:value="${availabilityQuery}"/>
+            <input type="text" name="entry" autocomplete="off" spellcheck="false"
+                   aria-label="Exact availability entry"
+                   placeholder="itemId.gem1.gem2.gem3.enchant"/>
+            <button class="btn btn-small btn-primary" type="submit" name="action" value="ADD">
+                Add exact entry
+            </button>
+        </form>
+        <p class="hint">Add an exact entry manually; use <code>*</code> for wildcard gems/enchants.
+            The item must fit this slot and your class/faction.</p>
+    </section>
+
+    <section class="availability-other"
+             th:if="${availabilityView != null and !#lists.isEmpty(availabilityView.otherEntries())}">
+        <header class="availability-section-head">
+            <h3 class="dialog-section-title">Other pool entries</h3>
+            <span class="hint" th:text="${#lists.size(availabilityView.otherEntries())} + ' not shown as items'">0 not shown as items</span>
+        </header>
+        <p class="hint">These entries are legacy enchant-availability tokens, malformed entries, or
+            items missing from the item cache. They are kept but cannot be edited in the item
+            list.</p>
+        <div class="availability-exact-row" th:each="other : ${availabilityView.otherEntries()}">
+            <div class="availability-exact-text">
+                <span class="availability-item-name" th:text="${other.description()}">Unrecognized entry</span>
+                <code th:text="${other.entry()}">-3820</code>
+            </div>
+            <form hx-post="/character/availability/other" hx-target="#availability-body"
+                  hx-swap="outerHTML">
+                <input type="hidden" name="slot" th:value="${availabilitySlotParam}"/>
+                <input type="hidden" name="q" th:value="${availabilityQuery}"/>
+                <input type="hidden" name="entry" th:value="${other.entry()}"/>
+                <button class="btn btn-small" type="submit" name="action" value="REMOVE"
+                        th:attr="aria-label='Remove pool entry ' + ${other.entry()}"
+                        title="Remove this pool entry.">Remove</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="availability-items" th:if="${availabilityView != null}">
+        <header class="availability-section-head">
+            <h3 class="dialog-section-title"
+                th:text="'Items for ' + ${availabilitySlotLabels.get(availabilitySlot)}">Items</h3>
+            <span class="hint" th:text="${#lists.size(availabilityView.rows())} + ' shown'">0 shown</span>
+        </header>
+        <p class="empty-state" th:if="${availabilityView.rows().isEmpty()}">
+            No items match this search.
+        </p>
+        <div class="availability-row" th:each="row : ${availabilityView.rows()}"
+             th:classappend="${row.equipped()} ? ' is-equipped' : ''">
+            <form class="availability-toggle" hx-post="/character/availability/item"
+                  hx-target="#availability-body" hx-swap="outerHTML">
+                <input type="hidden" name="slot" th:value="${availabilitySlotParam}"/>
+                <input type="hidden" name="q" th:value="${availabilityQuery}"/>
+                <input type="hidden" name="itemId" th:value="${row.itemId()}"/>
+                <input type="hidden" name="available" value="false"/>
+                <label class="availability-check" title="Item-level entry: allow any gemming/enchant.">
+                    <input type="checkbox" class="availability-checkbox"
+                           th:id="'availability-item-' + ${row.itemId()}"
+                           th:checked="${row.itemLevelAvailable()}"/>
+                    <span class="sr-only"
+                          th:text="'Item-level availability for ' + ${row.name()} + ': allow any gemming or enchant'">Available with any gemming/enchant</span>
+                </label>
+            </form>
+            <span th:replace="~{fragments/item-icon :: icon(
+                    ${icons.tooltipUrl(row.itemId(), availabilitySlotParam, true)},
+                    ${row.iconUrl()}, ${row.initials()}, ${row.qualityKey()}, ${row.name()})}"></span>
+            <div class="availability-item-text">
+                <span class="availability-item-name" th:classappend="'q-' + ${row.qualityKey()}"
+                      th:text="${row.name()}">Item name</span>
+                <span class="availability-item-meta">
+                    <span th:text="${row.itemLevelText()}">ilvl 0</span>
+                    <span th:if="${!#strings.isEmpty(row.sourceText())}" th:text="${row.sourceText()}">Source</span>
+                </span>
+            </div>
+            <span class="availability-flag is-equipped" th:if="${row.equipped()}">Equipped</span>
+            <span class="availability-flag" th:if="${row.itemLevelAvailable()}">Item-level</span>
+            <span class="availability-flag" th:if="${row.exactCount() > 0}"
+                  th:text="${row.exactCount()} + ' exact'">1 exact</span>
+            <span class="availability-flag is-filtered" th:unless="${row.relevant()}">Filtered out</span>
+        </div>
+    </section>
+
+    <details class="availability-transfer" th:if="${availabilityView != null}">
+        <summary>Import / export</summary>
+        <p class="hint">One pool entry per line: an item ID, or itemId.gem1.gem2.gem3.enchant with
+            <code>*</code> for wildcard gems/enchants. Duplicate lines are removed.</p>
+        <form hx-post="/character/availability/import" hx-target="#availability-body"
+              hx-swap="outerHTML" data-availability-import
+              hx-confirm="Replace the entire custom item pool with these entries?">
+            <input type="hidden" name="slot" th:value="${availabilitySlotParam}"/>
+            <input type="hidden" name="q" th:value="${availabilityQuery}"/>
+            <textarea name="entries" rows="6" spellcheck="false"
+                      aria-label="Custom item pool entries"
+                      th:text="${availabilityImportText != null ? availabilityImportText : availabilityExportText}">51281</textarea>
+            <div class="availability-transfer-actions">
+                <select name="mode" data-availability-import-mode aria-label="Import mode">
+                    <option value="replace">Replace the list</option>
+                    <option value="append">Append to the list</option>
+                </select>
+                <button class="btn btn-small" type="submit">Import</button>
+                <a class="btn btn-small" th:href="@{/character/availability/export}"
+                   download="availability.txt">Download .txt</a>
+            </div>
+        </form>
+    </details>
+
+</div>
+
+</body>
+</html>

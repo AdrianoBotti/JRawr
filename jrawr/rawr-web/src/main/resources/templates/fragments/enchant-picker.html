@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div id="item-picker" class="picker" th:fragment="picker">
+    <div class="picker-head">
+        <strong th:text="${slotLabel}">Head</strong>
+        <span class="hint">pick an enchant</span>
+        <button type="button" class="icon-btn" title="Close"
+                onclick="document.getElementById('item-picker').innerHTML=''">×</button>
+    </div>
+    <form class="picker-search" onsubmit="return false">
+        <input type="hidden" name="slot" th:value="${slotParam}"/>
+        <input type="search" name="q" placeholder="Search enchants…" autocomplete="off" autofocus
+               hx-get="/enchants" hx-target="#enchant-results" hx-swap="outerHTML"
+               hx-trigger="input changed delay:150ms" hx-include="closest form"/>
+    </form>
+    <div th:replace="~{:: results}"></div>
+</div>
+
+<div id="enchant-results" class="item-results" th:fragment="results">
+    <p class="empty-state" th:if="${#lists.isEmpty(enchants)}">No matching enchants.</p>
+    <button type="button" th:each="choice : ${enchants}" class="item-row enchant-row"
+            th:classappend="${choice.equipped() ? ' is-equipped' : (choice.none() ? ' is-none' : '')}"
+            th:hx-post="@{/character/slot/enchant(slot=${slotParam}, enchantId=${choice.id()})}"
+            hx-target="#paperdoll" hx-swap="outerHTML">
+        <span class="enchant-mark" th:classappend="${choice.none()} ? ' is-none' : ''">
+            <span th:if="${choice.none()}">×</span>
+            <th:block th:unless="${choice.none()}">
+                <span th:replace="~{fragments/icons :: scroll}"></span>
+            </th:block>
+        </span>
+        <span class="item-text">
+            <span class="item-name" th:text="${choice.name()}">Enchant name</span>
+            <span class="item-sub" th:text="${choice.statsText()}">30 Spell Power</span>
+        </span>
+        <span class="enchant-equipped" th:if="${choice.equipped()}">Equipped</span>
+    </button>
+</div>
+
+</body>
+</html>

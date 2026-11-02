@@ -1,0 +1,3 @@
+out/*.exe
+probe/bin/
+__pycache__/

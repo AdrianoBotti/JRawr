@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Boss/encounter options modal opened from the character header. -->
+<div class="modal-backdrop" data-modal="boss" th:fragment="bossModal">
+    <div class="modal card boss-modal" role="dialog" aria-modal="true" aria-labelledby="boss-title">
+        <header class="modal-head">
+            <h2 id="boss-title">Boss / encounter</h2>
+            <button class="icon-btn" type="button" data-modal-close title="Close"
+                    aria-label="Close">&#215;</button>
+        </header>
+        <div id="boss-panel" class="modal-body boss-body" th:fragment="bossPanel">
+            <div th:replace="~{:: bossBody}"></div>
+        </div>
+    </div>
+</div>
+
+<!-- htmx response: swap the panel and out-of-band refresh paper doll + stats. -->
+<th:block th:fragment="bossSwap">
+    <div th:replace="~{:: bossPanel}"></div>
+    <th:block th:replace="~{fragments/paperdoll :: paperdollOob}"></th:block>
+    <th:block th:replace="~{fragments/stats :: statsOob}"></th:block>
+</th:block>
+
+<!-- htmx response for list edits: only the lists change, so unsaved scalar fields survive. -->
+<th:block th:fragment="bossListsSwap">
+    <div th:replace="~{:: bossLists}"></div>
+    <th:block th:replace="~{fragments/paperdoll :: paperdollOob}"></th:block>
+    <th:block th:replace="~{fragments/stats :: statsOob}"></th:block>
+</th:block>
+
+<div th:fragment="bossBody">
+    <p class="hint boss-intro">
+        Encounter settings are shared by the Build rating and the optimizer. Load a canonical
+        preset to start from a known fight, or edit the values below.
+    </p>
+    <div class="inline-error" th:if="${bossError != null}" th:text="${bossError}">error</div>
+    <form class="boss-preset" hx-post="/character/boss/preset" hx-target="#boss-panel"
+          hx-swap="outerHTML">
+        <label class="field">
+            <span class="field-label">Load a canonical encounter</span>
+            <select name="preset">
+                <option value="">Choose a boss preset…</option>
+                <option th:each="p : ${bossPresets}" th:value="${p.index()}"
+                        th:text="${p.label()}">T7.0 : Naxxramas : Patchwerk</option>
+            </select>
+        </label>
+        <button class="btn" type="submit">Load preset</button>
+    </form>
+    <form class="boss-form" hx-post="/character/boss" hx-target="#boss-panel" hx-swap="outerHTML">
+        <section class="boss-section">
+            <h3 class="dialog-section-title">Encounter</h3>
+            <div class="boss-grid">
+                <label class="field">
+                    <span class="field-label">Name</span>
+                    <input type="text" name="name" th:value="${boss.name}" maxlength="500"/>
+                </label>
+                <label class="field">
+                    <span class="field-label">Content tier</span>
+                    <select name="content">
+                        <option th:each="c : ${bossContents}" th:value="${c.name()}"
+                                th:selected="${c == boss.content}" th:text="${c.name()}">T7_0</option>
+                    </select>
+                </label>
+                <label class="field">
+                    <span class="field-label">Instance</span>
+                    <input type="text" name="instance" th:value="${boss.instance}" maxlength="500"/>
+                </label>
+                <label class="field">
+                    <span class="field-label">Version</span>
+                    <select name="version">
+                        <option th:each="v : ${bossVersions}" th:value="${v.name()}"
+                                th:selected="${v == boss.version}" th:text="${v.name()}">V_10N</option>
+                    </select>
+                </label>
+            </div>
+            <label class="field">
+                <span class="field-label">Comment</span>
+                <input type="text" name="comment" th:value="${boss.comment}" maxlength="500"/>
+            </label>
+        </section>
+
+        <section class="boss-section">
+            <h3 class="dialog-section-title">Vitals and timers</h3>
+            <div class="boss-grid">
+                <label class="field" th:classappend="${!bossSupports['Level']} ? ' boss-unsupported'">
+                    <span class="field-label">Level</span>
+                    <input type="number" name="level" min="1" max="83" th:value="${boss.level}"/></label>
+                <label class="field" th:classappend="${!bossSupports['Armor']} ? ' boss-unsupported'">
+                    <span class="field-label">Armor</span>
+                    <input type="number" name="armor" min="0" th:value="${boss.armor}"/></label>
+                <label class="field" th:classappend="${!bossSupports['Health']} ? ' boss-unsupported'">
+                    <span class="field-label">Health</span>
+                    <input type="number" name="health" min="0" step="any" th:value="${boss.health}"/></label>
+                <label class="field" th:classappend="${!bossSupports['Timers']} ? ' boss-unsupported'">
+                    <span class="field-label">Berserk timer (s)</span>
+                    <input type="number" name="berserkTimer" min="0" th:value="${boss.berserkTimer}"/></label>
+                <label class="field" th:classappend="${!bossSupports['Timers']} ? ' boss-unsupported'">
+                    <span class="field-label">Speed-kill timer (s)</span>
+                    <input type="number" name="speedKillTimer" min="0" th:value="${boss.speedKillTimer}"/></label>
+                <label class="field" th:classappend="${!bossSupports['Invulnerables']} ? ' boss-unsupported'">
+                    <span class="field-label">Invulnerable time (s)</span>
+                    <input type="number" name="timeBossIsInvuln" min="0" step="any" th:value="${boss.timeBossIsInvuln}"/></label>
+                <label class="field" th:classappend="${!bossSupports['RaidSize']} ? ' boss-unsupported'">
+                    <span class="field-label">Max players</span>
+                    <input type="number" name="maxPlayers" min="1" max="40" th:value="${boss.maxPlayers}"/></label>
+                <label class="field" th:classappend="${!bossSupports['RaidSize']} ? ' boss-unsupported'">
+                    <span class="field-label">Min healers</span>
+                    <input type="number" name="minHealers" min="0" max="40" th:value="${boss.minHealers}"/></label>
+                <label class="field" th:classappend="${!bossSupports['RaidSize']} ? ' boss-unsupported'">
+                    <span class="field-label">Min tanks</span>
+                    <input type="number" name="minTanks" min="0" max="40" th:value="${boss.minTanks}"/></label>
+            </div>
+        </section>
+
+        <section class="boss-section">
+            <h3 class="dialog-section-title">Positioning and execute range</h3>
+            <div class="boss-grid">
+                <label class="field" th:classappend="${!bossSupports['InBack_Melee']} ? ' boss-unsupported'">
+                    <span class="field-label">In back, melee (0 to 1)</span>
+                    <input type="number" name="inBackPercMelee" min="0" max="1" step="any" th:value="${boss.inBackPercMelee}"/></label>
+                <label class="field" th:classappend="${!bossSupports['InBack_Ranged']} ? ' boss-unsupported'">
+                    <span class="field-label">In back, ranged (0 to 1)</span>
+                    <input type="number" name="inBackPercRanged" min="0" max="1" step="any" th:value="${boss.inBackPercRanged}"/></label>
+                <label class="field" th:classappend="${!bossSupports['TimeSub35']} ? ' boss-unsupported'">
+                    <span class="field-label">Time below 35% (0 to 1)</span>
+                    <input type="number" name="under35Perc" min="0" max="1" step="any" th:value="${boss.under35Perc}"/></label>
+                <label class="field" th:classappend="${!bossSupports['TimeSub20']} ? ' boss-unsupported'">
+                    <span class="field-label">Time below 20% (0 to 1)</span>
+                    <input type="number" name="under20Perc" min="0" max="1" step="any" th:value="${boss.under20Perc}"/></label>
+            </div>
+        </section>
+
+        <section class="boss-section" th:classappend="${!bossSupports['Defensive']} ? ' boss-unsupported'">
+            <h3 class="dialog-section-title">Resistances (0 to 1)</h3>
+            <div class="boss-grid boss-grid-three">
+                <label class="field"><span class="field-label">Physical</span>
+                    <input type="number" name="resistPhysical" min="0" max="1" step="any" th:value="${boss.resistPhysical}"/></label>
+                <label class="field"><span class="field-label">Frost</span>
+                    <input type="number" name="resistFrost" min="0" max="1" step="any" th:value="${boss.resistFrost}"/></label>
+                <label class="field"><span class="field-label">Fire</span>
+                    <input type="number" name="resistFire" min="0" max="1" step="any" th:value="${boss.resistFire}"/></label>
+                <label class="field"><span class="field-label">Nature</span>
+                    <input type="number" name="resistNature" min="0" max="1" step="any" th:value="${boss.resistNature}"/></label>
+                <label class="field"><span class="field-label">Arcane</span>
+                    <input type="number" name="resistArcane" min="0" max="1" step="any" th:value="${boss.resistArcane}"/></label>
+                <label class="field"><span class="field-label">Shadow</span>
+                    <input type="number" name="resistShadow" min="0" max="1" step="any" th:value="${boss.resistShadow}"/></label>
+                <label class="field"><span class="field-label">Holy</span>
+                    <input type="number" name="resistHoly" min="0" max="1" step="any" th:value="${boss.resistHoly}"/></label>
+            </div>
+        </section>
+
+        <section class="boss-section">
+            <h3 class="dialog-section-title">Mechanics</h3>
+            <div class="boss-toggles">
+                <label class="optimize-option"
+                       th:classappend="${!(bossSupports['InBack_Melee'] || bossSupports['InBack_Ranged'])} ? ' boss-unsupported'"><input type="checkbox" name="inBack" th:checked="${boss.inBack}"/><span>Player can attack from behind</span></label>
+                <label class="optimize-option"
+                       th:classappend="${!bossSupports['TargetGroups']} ? ' boss-unsupported'"><input type="checkbox" name="multiTargs" th:checked="${boss.multiTargs}"/><span>Multiple targets / adds</span></label>
+                <label class="optimize-option"
+                       th:classappend="${!bossSupports['Attacks']} ? ' boss-unsupported'"><input type="checkbox" name="damagingTargs" th:checked="${boss.damagingTargs}"/><span>Boss damage matters</span></label>
+                <label class="optimize-option"
+                       th:classappend="${!bossSupports['Stuns']} ? ' boss-unsupported'"><input type="checkbox" name="stunningTargs" th:checked="${boss.stunningTargs}"/><span>Stuns</span></label>
+                <label class="optimize-option"
+                       th:classappend="${!bossSupports['Moves']} ? ' boss-unsupported'"><input type="checkbox" name="movingTargs" th:checked="${boss.movingTargs}"/><span>Forced movement</span></label>
+                <label class="optimize-option"
+                       th:classappend="${!bossSupports['Fears']} ? ' boss-unsupported'"><input type="checkbox" name="fearingTargs" th:checked="${boss.fearingTargs}"/><span>Fears</span></label>
+                <label class="optimize-option"
+                       th:classappend="${!bossSupports['Roots']} ? ' boss-unsupported'"><input type="checkbox" name="rootingTargs" th:checked="${boss.rootingTargs}"/><span>Roots</span></label>
+                <label class="optimize-option"
+                       th:classappend="${!bossSupports['Disarms']} ? ' boss-unsupported'"><input type="checkbox" name="disarmingTargs" th:checked="${boss.disarmingTargs}"/><span>Disarms</span></label>
+            </div>
+        </section>
+
+        <p class="hint">
+            The canonical presets copy the complete encounter, including its target groups and
+            attacks. Use the list editors below for manual changes; unsupported fields are hidden
+            for the selected model but keep their values.
+        </p>
+        <div class="form-actions boss-form-actions">
+            <button class="btn btn-primary" type="submit">Save encounter</button>
+            <button class="btn" type="button" hx-post="/character/boss/reset"
+                    hx-target="#boss-panel" hx-swap="outerHTML">Reset defaults</button>
+        </div>
+    </form>
+
+<div id="boss-lists" th:fragment="bossLists">
+    <div class="inline-error" th:if="${bossListError != null}" th:text="${bossListError}">error</div>
+
+    <section class="boss-section boss-list-section">
+        <h3 class="dialog-section-title">Target groups <span class="boss-count" th:text="${#lists.size(bossTargets)}">0</span></h3>
+        <p class="hint">Extra enemies (adds) that spawn during the fight; used for multi-target
+            damage calculations.</p>
+        <p class="hint" th:if="${!bossSupports['TargetGroups']}">
+            The <strong th:text="${bossModel}">model</strong> model does not use target groups.
+        </p>
+        <th:block th:if="${bossSupports['TargetGroups']}">
+            <p class="hint" th:if="${#lists.isEmpty(bossTargets)}">
+                No target groups: the encounter spawns no adds.
+            </p>
+            <details class="boss-row" th:each="row : ${bossTargets}"
+                     th:open="${bossOpenTarget == row.index()}">
+                <summary>
+                    <span class="boss-row-kind">Group</span>
+                    <span class="boss-row-summary" th:text="${row.group()}">None</span>
+                </summary>
+                <form class="boss-row-form" hx-post="/character/boss/targets/update"
+                      hx-target="#boss-lists" hx-swap="outerHTML">
+                    <input type="hidden" name="index" th:value="${row.index()}"/>
+                    <div class="boss-row-grid">
+                        <label class="field"><span class="field-label">Frequency (s)</span>
+                            <input type="number" name="frequency" min="-1" max="36000" step="any"
+                                   th:value="${row.group().frequency}"/></label>
+                        <label class="field"><span class="field-label">Duration (ms)</span>
+                            <input type="number" name="duration" min="0" max="3600000" step="any"
+                                   th:value="${row.group().duration}"/></label>
+                        <label class="field"><span class="field-label">Chance (%)</span>
+                            <input type="number" name="chance" min="0" max="100" step="any"
+                                   th:value="${row.group().chance * 100}"/></label>
+                        <label class="field"><span class="field-label">Targets</span>
+                            <input type="number" name="numTargs" min="0" max="100" step="any"
+                                   th:value="${row.group().numTargs}"/></label>
+                        <label class="optimize-option boss-row-check">
+                            <input type="checkbox" name="nearBoss" th:checked="${row.group().nearBoss}"/>
+                            <span>Near boss</span></label>
+                    </div>
+                    <div class="boss-row-actions">
+                        <button class="btn btn-primary" type="submit">Save group</button>
+                    </div>
+                </form>
+                <form class="boss-row-delete" hx-post="/character/boss/targets/delete"
+                      hx-target="#boss-lists" hx-swap="outerHTML"
+                      hx-confirm="Delete this target group?">
+                    <input type="hidden" name="index" th:value="${row.index()}"/>
+                    <button class="btn" type="submit">Delete</button>
+                </form>
+            </details>
+            <form class="boss-add-row" hx-post="/character/boss/targets/add"
+                  hx-target="#boss-lists" hx-swap="outerHTML">
+                <button class="btn" type="submit">Add target group</button>
+            </form>
+        </th:block>
+    </section>
+
+    <section class="boss-section boss-list-section">
+        <h3 class="dialog-section-title">Attacks and DoTs <span class="boss-count" th:text="${#lists.size(bossAttacks)}">0</span></h3>
+        <p class="hint" th:if="${!bossSupports['Attacks']}">
+            The <strong th:text="${bossModel}">model</strong> model does not use boss attacks.
+        </p>
+        <th:block th:if="${bossSupports['Attacks']}">
+            <p class="hint" th:if="${#lists.isEmpty(bossAttacks)}">
+                No attacks: the boss deals no damage.
+            </p>
+            <p class="hint" th:if="${bossLegacyDotCount > 0}">
+                <span th:text="${bossLegacyDotCount}">0</span> legacy saved DoT entries are preserved
+                but are not used by models; add DoTs as attack rows below.
+            </p>
+            <details class="boss-row" th:each="row : ${bossAttacks}"
+                     th:open="${bossOpenAttack == row.index()}">
+                <summary>
+                    <span class="boss-row-kind" th:classappend="${row.dot()} ? ' boss-row-dot'"
+                          th:text="${row.dot() ? 'DoT' : 'Attack'}">Attack</span>
+                    <span class="boss-row-summary" th:text="${row.attack()}">None</span>
+                </summary>
+                <form class="boss-row-form" hx-post="/character/boss/attacks/update"
+                      hx-target="#boss-lists" hx-swap="outerHTML">
+                    <input type="hidden" name="index" th:value="${row.index()}"/>
+                    <div class="boss-row-grid">
+                        <label class="field"><span class="field-label">Name</span>
+                            <input type="text" name="name" maxlength="500"
+                                   th:value="${row.attack().name}"/></label>
+                        <label class="field"><span class="field-label">Damage type</span>
+                            <select name="damageType">
+                                <option th:each="type : ${damageTypes}" th:value="${type.name()}"
+                                        th:selected="${type == row.attack().damageType}"
+                                        th:text="${type.name()}">Physical</option>
+                            </select></label>
+                        <label class="field"><span class="field-label">Damage per hit</span>
+                            <input type="number" name="damagePerHit" min="0" step="any"
+                                   th:value="${row.attack().damagePerHit}"/></label>
+                        <label class="field"><span class="field-label">Max targets</span>
+                            <input type="number" name="maxNumTargets" min="0" max="100" step="any"
+                                   th:value="${row.attack().maxNumTargets}"/></label>
+                        <label class="field"><span class="field-label">Attack speed (s)</span>
+                            <input type="number" name="attackSpeed" min="0" max="36000" step="any"
+                                   th:value="${row.attack().attackSpeed}"/></label>
+                        <label class="field"><span class="field-label">Attack type</span>
+                            <select name="attackType">
+                                <option th:each="type : ${attackTypes}" th:value="${type.name()}"
+                                        th:selected="${type == row.attack().attackType}"
+                                        th:text="${type.name() == 'AT_MELEE' ? 'Melee' : (type.name() == 'AT_RANGED' ? 'Ranged' : 'AoE')}">Melee</option>
+                            </select></label>
+                    </div>
+                    <div class="boss-row-toggles">
+                        <label class="optimize-option"><input type="checkbox" name="damageIsPerc"
+                               th:checked="${row.attack().damageIsPerc}"/><span>Damage is a fraction of max health</span></label>
+                        <label class="optimize-option"><input type="checkbox" name="isTheDefaultMelee"
+                               th:checked="${row.attack().isTheDefaultMelee}"/><span>Default melee attack</span></label>
+                        <label class="optimize-option"><input type="checkbox" name="useParryHaste"
+                               th:checked="${row.attack().useParryHaste}"/><span>Use parry haste</span></label>
+                        <label class="optimize-option"><input type="checkbox" name="isDualWielding"
+                               th:checked="${row.attack().isDualWielding}"/><span>Dual wielding</span></label>
+                        <label class="optimize-option"><input type="checkbox" name="interruptable"
+                               th:checked="${row.attack().interruptable}"/><span>Interruptable</span></label>
+                    </div>
+                    <fieldset class="boss-row-group" th:if="${row.dot()}">
+                        <legend>Damage over time</legend>
+                        <div class="boss-row-grid">
+                            <label class="field"><span class="field-label">Damage per tick</span>
+                                <input type="number" name="damagePerTick" min="0" step="any"
+                                       th:value="${row.attack().damagePerTick}"/></label>
+                            <label class="field"><span class="field-label">Number of ticks</span>
+                                <input type="number" name="numTicks" min="0" max="100000" step="any"
+                                       th:value="${row.attack().numTicks}"/></label>
+                            <label class="field"><span class="field-label">Tick interval (s)</span>
+                                <input type="number" name="tickInterval" min="0" max="36000" step="any"
+                                       th:value="${row.attack().tickInterval}"/></label>
+                        </div>
+                        <p class="hint">Total duration: <span th:text="${row.attack().duration}">0</span> s</p>
+                    </fieldset>
+                    <fieldset class="boss-row-group">
+                        <legend>Avoidance</legend>
+                        <div class="boss-row-toggles">
+                            <label class="optimize-option"><input type="checkbox" name="missable"
+                                   th:checked="${row.attack().missable}"/><span>Missable</span></label>
+                            <label class="optimize-option"><input type="checkbox" name="dodgable"
+                                   th:checked="${row.attack().dodgable}"/><span>Dodgable</span></label>
+                            <label class="optimize-option"><input type="checkbox" name="parryable"
+                                   th:checked="${row.attack().parryable}"/><span>Parryable</span></label>
+                            <label class="optimize-option"><input type="checkbox" name="blockable"
+                                   th:checked="${row.attack().blockable}"/><span>Blockable</span></label>
+                        </div>
+                    </fieldset>
+                    <fieldset class="boss-row-group">
+                        <legend>Targeting ignores</legend>
+                        <div class="boss-row-toggles">
+                            <label class="optimize-option"><input type="checkbox" name="ignoresMTank"
+                                   th:checked="${row.attack().ignoresMTank}"/><span>Main tank</span></label>
+                            <label class="optimize-option"><input type="checkbox" name="ignoresOTank"
+                                   th:checked="${row.attack().ignoresOTank}"/><span>Off tank</span></label>
+                            <label class="optimize-option"><input type="checkbox" name="ignoresTTank"
+                                   th:checked="${row.attack().ignoresTTank}"/><span>Tertiary tank</span></label>
+                            <label class="optimize-option"><input type="checkbox" name="ignoresHealers"
+                                   th:checked="${row.attack().ignoresHealers}"/><span>Healers</span></label>
+                            <label class="optimize-option"><input type="checkbox" name="ignoresMeleeDps"
+                                   th:checked="${row.attack().ignoresMeleeDps}"/><span>Melee DPS</span></label>
+                            <label class="optimize-option"><input type="checkbox" name="ignoresRangedDps"
+                                   th:checked="${row.attack().ignoresRangedDps}"/><span>Ranged DPS</span></label>
+                        </div>
+                    </fieldset>
+                    <div class="boss-row-actions">
+                        <button class="btn btn-primary" type="submit">Save attack</button>
+                    </div>
+                </form>
+                <form class="boss-row-delete" hx-post="/character/boss/attacks/delete"
+                      hx-target="#boss-lists" hx-swap="outerHTML"
+                      hx-confirm="Delete this attack?">
+                    <input type="hidden" name="index" th:value="${row.index()}"/>
+                    <button class="btn" type="submit">Delete</button>
+                </form>
+            </details>
+            <div class="boss-add-row">
+                <form hx-post="/character/boss/attacks/add" hx-target="#boss-lists"
+                      hx-swap="outerHTML">
+                    <input type="hidden" name="kind" value="ATTACK"/>
+                    <button class="btn" type="submit">Add attack</button>
+                </form>
+                <form hx-post="/character/boss/attacks/add" hx-target="#boss-lists"
+                      hx-swap="outerHTML">
+                    <input type="hidden" name="kind" value="DOT"/>
+                    <button class="btn" type="submit">Add DoT</button>
+                </form>
+            </div>
+        </th:block>
+    </section>
+</div>
+</div>
+
+</body>
+</html>

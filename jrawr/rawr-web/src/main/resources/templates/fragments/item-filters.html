@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div class="modal-backdrop" data-modal="item-filters" th:fragment="filtersModal">
+    <div class="modal card filters-modal" role="dialog" aria-modal="true"
+         aria-labelledby="filters-title">
+        <header class="modal-head">
+            <div class="modal-head-leading">
+                <button class="icon-btn" type="button" title="Back to Tools" aria-label="Back to Tools"
+                        hx-get="/tools" hx-target="#modal" hx-swap="innerHTML">&#8592;</button>
+                <h2 id="filters-title">Item filters</h2>
+            </div>
+            <button class="icon-btn" type="button" title="Close" aria-label="Close"
+                    data-modal-close>&#215;</button>
+        </header>
+        <div id="filters-panel" class="modal-body" th:fragment="filtersPanel">
+            <div class="inline-error" th:if="${filtersError != null}" th:text="${filtersError}">error</div>
+            <div class="filters-layout">
+                <section class="filters-tree">
+                    <div class="filter-tree-head">
+                        <input type="search" class="filter-search" data-filter-search
+                               placeholder="Search by name or pattern…" autocomplete="off"
+                               spellcheck="false" aria-label="Search item filters"/>
+                        <div class="filter-tree-meta">
+                            <div class="filter-status" role="group" aria-label="Show filters">
+                                <button class="filter-status-btn is-active" type="button"
+                                        data-filter-status="all" aria-pressed="true">All</button>
+                                <button class="filter-status-btn" type="button"
+                                        data-filter-status="on" aria-pressed="false">On</button>
+                                <button class="filter-status-btn" type="button"
+                                        data-filter-status="off" aria-pressed="false">Off</button>
+                            </div>
+                            <span class="filter-summary" data-filter-summary
+                                  th:attr="data-total=${filters.totalRules()}"
+                                  th:text="|${filters.totalRules()} filters · ${filters.enabledRules()} on|">338 filters · 87 on</span>
+                        </div>
+                    </div>
+                    <div class="filter-tree-scroll" data-filter-tree>
+                        <div class="filter-section" th:if="${!filters.includeNodes().isEmpty()}">
+                            <p class="filter-section-title">Include filters</p>
+                            <ul class="filter-tree">
+                                <th:block th:each="node : ${filters.includeNodes()}">
+                                    <th:block th:replace="~{:: filterNode(${node}, ${filters.selectedPath()})}"></th:block>
+                                </th:block>
+                            </ul>
+                        </div>
+                        <div class="filter-section" th:if="${!filters.excludeNodes().isEmpty()}">
+                            <p class="filter-section-title">Exclude filters</p>
+                            <ul class="filter-tree">
+                                <th:block th:each="node : ${filters.excludeNodes()}">
+                                    <th:block th:replace="~{:: filterNode(${node}, ${filters.selectedPath()})}"></th:block>
+                                </th:block>
+                            </ul>
+                        </div>
+                        <p class="hint" th:if="${filters.includeNodes().isEmpty() && filters.excludeNodes().isEmpty()}">
+                            No filters yet. Create a new filter.
+                        </p>
+                        <p class="filter-empty" data-filter-empty hidden>No matching filters.</p>
+                    </div>
+                </section>
+
+                <section class="filters-editor">
+                    <div class="filter-editor-toolbar">
+                        <button class="btn btn-small" type="button"
+                                title="Add a top-level filter at the end of the list"
+                                hx-post="/character/item-filters/add" hx-target="#filters-panel"
+                                hx-swap="outerHTML">+ New filter</button>
+                        <button class="btn btn-small" type="button"
+                                th:if="${filters.selectedPath() != null}"
+                                title="Add a child filter under the selected filter"
+                                hx-post="/character/item-filters/add" hx-target="#filters-panel"
+                                hx-swap="outerHTML"
+                                th:hx-vals="'{&quot;parentPath&quot;:&quot;' + ${filters.selectedPath()} + '&quot;}'">+ New subfilter</button>
+                        <span class="filter-editor-kind" th:if="${filters.selected() != null}"
+                              th:classappend="${filters.selectedExcludeTree()} ? 'is-exclude'"
+                              th:text="${(filters.selectedExcludeTree() ? 'Exclude filter' : 'Include filter')
+                                  + (filters.selectedTopLevel() ? '' : ' · child')}">Include filter</span>
+                    </div>
+
+                    <div class="filter-editor-scroll">
+                    <th:block th:if="${filters.selected() != null}">
+                        <form hx-post="/character/item-filters/node" hx-target="#filters-panel"
+                              hx-swap="outerHTML" class="filter-editor-form" data-filter-editor>
+                            <input type="hidden" name="path" th:value="${filters.selectedPath()}"/>
+
+                            <div class="filter-enabled-row" th:if="${filters.selected().regexList.isEmpty()}">
+                                <label class="optimize-option"
+                                       title="Whether this filter is active. A filter is only effective when all of its parent filters are enabled too.">
+                                    <input type="checkbox" name="enabled"
+                                           th:checked="${filters.selected().enabled}"/><span>Enabled</span>
+                                </label>
+                                <span class="hint">A filter is effective only when its parent
+                                    filters are enabled.</span>
+                            </div>
+                            <p class="hint filter-enabled-note"
+                               th:unless="${filters.selected().regexList.isEmpty()}">
+                                This filter has children; use its tree checkbox to enable or
+                                disable the whole group.
+                            </p>
+
+                            <label class="field filter-field">
+                                <span class="field-label">Name</span>
+                                <input type="text" name="name" maxlength="500"
+                                       th:value="${filters.selected().name}"/>
+                            </label>
+
+                            <label class="field filter-field">
+                                <span class="field-label">Pattern (Java regex)</span>
+                                <textarea name="pattern" rows="4" maxlength="500"
+                                          spellcheck="false"
+                                          th:text="${filters.selected().pattern}"></textarea>
+                                <span class="hint">Case-insensitive, unanchored substring match
+                                    against the item's source text; an empty pattern matches
+                                    everything.</span>
+                            </label>
+
+                            <div class="filter-field-grid">
+                                <label class="field">
+                                    <span class="field-label">Min item level</span>
+                                    <input type="number" name="minItemLevel" min="0" max="1000"
+                                           th:value="${filters.selected().minItemLevel}"/>
+                                </label>
+                                <label class="field">
+                                    <span class="field-label">Max item level</span>
+                                    <input type="number" name="maxItemLevel" min="0" max="1000"
+                                           th:value="${filters.selected().maxItemLevel}"/>
+                                </label>
+                                <label class="field">
+                                    <span class="field-label">Min quality</span>
+                                    <select name="minItemQuality">
+                                        <option th:each="q : ${filters.qualities()}" th:value="${q}"
+                                                th:selected="${q == filters.selected().minItemQuality.name()}"
+                                                th:text="${q}">Rare</option>
+                                    </select>
+                                </label>
+                                <label class="field">
+                                    <span class="field-label">Max quality</span>
+                                    <select name="maxItemQuality">
+                                        <option th:each="q : ${filters.qualities()}" th:value="${q}"
+                                                th:selected="${q == filters.selected().maxItemQuality.name()}"
+                                                th:text="${q}">Epic</option>
+                                    </select>
+                                </label>
+                            </div>
+
+                            <div class="filter-option-group" role="group"
+                                 aria-labelledby="filter-binds-label">
+                                <span class="field-label" id="filter-binds-label">Bind types</span>
+                                <div class="filter-options">
+                                    <label class="optimize-option" title="Bind on pickup: the item becomes soulbound when looted."><input type="checkbox" name="boP"
+                                           th:checked="${filters.selected().boP}"/><span>Bind on pickup</span></label>
+                                    <label class="optimize-option" title="Bind on equip: the item becomes soulbound when equipped."><input type="checkbox" name="boE"
+                                           th:checked="${filters.selected().boE}"/><span>Bind on equip</span></label>
+                                    <label class="optimize-option" title="Bind on use: the item becomes soulbound when its on-use effect is used."><input type="checkbox" name="boU"
+                                           th:checked="${filters.selected().boU}"/><span>Bind on use</span></label>
+                                    <label class="optimize-option" title="Bind on account: heirlooms and other account-bound items."><input type="checkbox" name="boA"
+                                           th:checked="${filters.selected().boA}"/><span>Bind on account</span></label>
+                                    <label class="optimize-option" title="Never binds: the item stays tradeable."><input type="checkbox" name="boN"
+                                           th:checked="${filters.selected().boN}"/><span>Bind on none</span></label>
+                                </div>
+                            </div>
+
+                            <div class="filter-option-group" role="group"
+                                 aria-labelledby="filter-options-label">
+                                <span class="field-label" id="filter-options-label">Options</span>
+                                <div class="filter-options">
+                                    <label class="optimize-option"
+                                           th:if="${filters.selectedTopLevel()}"
+                                           title="Top-level filters: checked includes matching items, unchecked excludes them. Child filters always narrow their parent.">
+                                        <input type="checkbox" name="additiveFilter"
+                                               th:checked="${filters.selected().additiveFilter}"/><span>Additive filter</span></label>
+                                    <label class="optimize-option"
+                                           title="Match equippable gear: armor, weapons and other non-gem items. Gems are a separate scope.">
+                                        <input type="checkbox" name="appliesToItems"
+                                               th:checked="${filters.selected().appliesToItems}"/><span>Applies to items</span></label>
+                                    <label class="optimize-option"
+                                           title="Match gems. Items and gems are separate scopes; check both to affect both. With neither checked the filter matches nothing.">
+                                        <input type="checkbox" name="appliesToGems"
+                                               th:checked="${filters.selected().appliesToGems}"/><span>Applies to gems</span></label>
+                                    <label class="optimize-option"
+                                           th:if="${!filters.selected().regexList.isEmpty()}"
+                                           title="For a group: when none of its child filters match an item, use this filter's own match result. Leave it enabled unless the group should only match through its children.">
+                                        <input type="checkbox" name="otherRegexEnabled"
+                                               th:checked="${filters.selected().otherRegexEnabled}"/><span>Other items enabled under this filter</span></label>
+                                </div>
+                                <p class="hint">Items (gear) and gems are filtered separately. A
+                                    filter only affects the kinds checked here; its pattern,
+                                    level, quality and bind rules apply to both.</p>
+                            </div>
+                            <p class="hint" th:unless="${filters.selectedTopLevel()}">
+                                This is a child filter: it narrows its parent. Include/exclude is
+                                decided by the top-level filter.
+                            </p>
+
+                            <div class="filter-editor-actions">
+                                <button class="btn btn-primary" type="submit">Save filter</button>
+                                <button class="btn btn-danger filter-delete" type="button"
+                                        hx-post="/character/item-filters/delete"
+                                        hx-include="closest form" hx-target="#filters-panel"
+                                        hx-swap="outerHTML"
+                                        hx-confirm="Delete this filter and all its subfilters?">Delete</button>
+                            </div>
+                        </form>
+                    </th:block>
+                    <p class="hint filter-editor-note" th:if="${filters.selected() == null}">
+                        Select a filter on the left, or create a new filter.
+                    </p>
+                    <p class="hint filter-editor-note" data-filter-editor-hidden hidden>
+                        The selected filter is hidden by the current search or status filter. Clear
+                        them or pick a visible filter.
+                    </p>
+                    </div>
+                </section>
+            </div>
+
+            <details class="filters-defaults">
+                <summary>Global defaults</summary>
+                <div class="filter-defaults-grid">
+                    <section class="filter-default-card">
+                        <h3 class="filter-default-title">Unmatched items</h3>
+                        <form class="filter-default-form" hx-post="/character/item-filters/other"
+                              hx-target="#filters-panel" hx-swap="outerHTML">
+                            <div class="filter-default-row">
+                                <label class="field">
+                                    <span class="field-label">Items with no matching additive rule</span>
+                                    <select name="otherEnabled">
+                                        <option value="true" th:selected="${filters.otherEnabled()}">Include by default</option>
+                                        <option value="false" th:selected="${!filters.otherEnabled()}">Exclude by default</option>
+                                    </select>
+                                </label>
+                                <button class="btn" type="submit">Save</button>
+                            </div>
+                            <p class="hint">Include keeps every item that no include filter
+                                matches. Exclude turns the include filters into an allow-list.
+                                Items and gems are separate scopes, so in allow-list mode add an
+                                include filter with “Applies to gems” to keep gem candidates.</p>
+                        </form>
+                    </section>
+
+                    <section class="filter-default-card">
+                        <h3 class="filter-default-title"
+                            th:text="${filters.hasModel()
+                                ? 'Relevant item types for ' + filters.modelName()
+                                : 'Choose a model to edit item types'}">Relevant item types</h3>
+                        <form class="filter-default-form" hx-post="/character/item-filters/types"
+                              hx-target="#filters-panel" hx-swap="outerHTML">
+                            <div class="filters-types" th:if="${filters.hasModel()}">
+                                <label class="optimize-option" th:each="type : ${filters.types()}">
+                                    <input type="checkbox" name="type" th:value="${type.name()}"
+                                           th:checked="${type.checked()}"/>
+                                    <span th:text="${type.name()}">Cloth</span>
+                                </label>
+                            </div>
+                            <div class="filter-default-actions" th:if="${filters.hasModel()}">
+                                <button class="btn" type="submit">Save types</button>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+            </details>
+        </div>
+    </div>
+</div>
+
+<li class="filter-branch" th:fragment="filterNode(node, selectedPath)"
+    th:classappend="${node.children().isEmpty() || node.expanded()} ? '' : 'is-collapsed'"
+    th:attr="data-path=${node.path()},data-search=${node.searchText()},data-enabled=${node.effectiveEnabled()},data-own-enabled=${node.enabled()}">
+    <div class="filter-row"
+         th:classappend="${(node.selected() ? ' is-selected' : '') + (!node.effectiveEnabled() ? ' is-off' : '')}">
+        <button th:if="${!node.children().isEmpty()}" class="filter-chevron" type="button"
+                data-filter-toggle
+                th:attr="aria-expanded=${node.expanded()},aria-label=${'Expand or collapse ' + (node.name() != null ? node.name() : 'filter')}">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                 focusable="false">
+                <path d="M6 3.5 10.5 8 6 12.5"/>
+            </svg>
+        </button>
+        <span class="filter-chevron-spacer" th:if="${node.children().isEmpty()}"></span>
+        <form class="filter-check" hx-post="/character/item-filters/enabled"
+              hx-target="#filters-panel" hx-swap="none"
+              hx-sync="#filters-panel:queue all">
+            <input type="hidden" name="path" th:value="${node.path()}"/>
+            <input type="hidden" name="selectedPath" th:value="${selectedPath}"/>
+            <input type="hidden" name="deep" th:if="${!node.children().isEmpty()}" value="true"/>
+            <input type="checkbox" name="enabled" th:checked="${node.isChecked()}"
+                   data-filter-enable
+                   th:attr="aria-label=${'Enable ' + (node.name() != null ? node.name() : 'filter')},data-check-state=${node.checkState()}"/>
+        </form>
+        <button class="filter-node-link" type="button"
+                th:hx-get="@{/character/item-filters/body(path=${node.path()})}"
+                hx-target="#filters-panel" hx-swap="outerHTML"
+                th:attr="aria-current=${node.selected() ? 'true' : null}">
+            <span class="filter-node-name"
+                  th:text="${node.name() != null ? node.name() : '(unnamed)'}"
+                  th:title="${node.name() != null ? node.name() : '(unnamed)'}">Filter</span>
+            <span class="filter-node-count" th:if="${!node.children().isEmpty()}"
+                  th:text="|${node.enabledRules()}/${node.totalRules()}|">12/16</span>
+        </button>
+    </div>
+    <ul class="filter-children" th:unless="${node.children().isEmpty()}">
+        <th:block th:each="child : ${node.children()}">
+            <th:block th:replace="~{:: filterNode(${child}, ${selectedPath})}"></th:block>
+        </th:block>
+    </ul>
+</li>
+
+</body>
+</html>

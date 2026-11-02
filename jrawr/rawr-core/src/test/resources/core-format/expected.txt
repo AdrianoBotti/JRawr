@@ -1,0 +1,64 @@
+== 0 S|Agility=12
+12 Agility
+== 1 S|Agility=12,Strength=3.5,SpellPower=123.456,Health=1330
+1330 Health, 12 Agility, 3.5 Strength, 123.46 Spell Power
+== 2 S|BonusDamageMultiplier=0.03
+3% Dmg
+== 3 S|DamageTakenMultiplier=-0.1
+-10% Damage Taken
+== 4 S|HealingReceivedMultiplier=0.06,PhysicalHaste=0.035,SpellHaste=0.15
+6% Healing Received, 15% Spell Haste, 3.5% Physical Haste
+== 5 S|CritRating=6103.884765625,AttackPower=548
+548 Attack Power, 6103.88 Crit Rating
+== 6 S|Mp5=91.25,Hp5=7.5
+91.25 Mana per 5 sec, 7.5 Health per 5 sec
+== 7 S|Agility=0.125,Strength=2.675,Intellect=31.005,Spirit=0.005
+0.12 Agility, 2.68 Strength, 31 Intellect, 0 Spirit
+== 8 S|WeaponDamage=0.30000001192092896,ManaRestoreFromMaxManaPerSecond=0.002
+0.3 Weapon Damage, 0.2% Max Mana / Sec
+== 9 S|BonusAttackPowerMultiplier=0.1,HealthRestoreFromMaxHealth=-0.3
+-30% of Max Health Restored, 10% AP
+== 10 S|CritRating=NaN
+NaN Crit Rating
+== 11 S|CritRating=INF
+Infinity Crit Rating
+== 12 E|MeleeHit|AttackPower=400|15|0|0.35|1
+400 Attack Power (15 Sec 35% on Melee Hit)
+== 13 E|MeleeHit|AttackPower=400,HasteRating=30|15|0|-1|1
+400 Attack Power, 30 Haste Rating (15 Sec 1.00 PPM on Melee Hit)
+== 14 E|DamageSpellHit|HasteRating=250|10|35|0.35|2
+2x 250 Haste Rating (10 Sec 35% on Damaging Spell Hit/35 Sec)
+== 15 E|Use|SpellHaste=0.2,ManaCostPerc=-0.2|15|120|1|1
+-20% of Base Ability Mana Cost, 20% Spell Haste (15 Sec/2 Min)
+== 16 E|Use|BonusDamageMultiplier=0.15|10|30|1|1
+15% Dmg (10 Sec/30 Sec)
+== 17 E|PhysicalCrit|HealthRestoreFromMaxHealth=0.04|0|6|0|1
+4% of Max Health Restored (0% on Physical Crit/6 Sec)
+== 18 E|ManaGem|Mana=100|INF|0|1|1
+100 Mana (on Mana Gem)
+== 19 E|BloodStrikeOrHeartStrikeHit|Strength=100|12|45|0.5|3
+3x 100 Strength (12 Sec 50% on Blood Strike or Heart Strike/45 Sec)
+== 20 E|MeleeAttack|Agility=120|15|0|0.125|1
+120 Agility (15 Sec 13% on Melee Attack)
+== 21 E|DamageDone|Damage=33|2.5|0|0.75|1
+X throw ArgumentException
+== 22 E|CurrentHandHit|AttackPower=10|0|0|1|1
+10 Attack Power (on Current Hand Melee Hit)
+== 23 E|InsectSwarmTick|SpellPower=5|0|0|1|1
+5 Spell Power (on Insect Swarm Tick)
+== 24 E|ShieldofRighteousness|BlockValue=10|0|0|1|1
+10 Block Value (on ShoR cast)
+== 25 E|JudgementHit|SpellPower=5|0|0|1|1
+5 Spell Power (on Judgement)
+== 26 B|Battle Shout|AttackPower=548
+Battle Shout: 548 Attack Power
+== 27 B|Blessing of Might|AttackPower=550,Strength=0
+Blessing of Might: 550 Attack Power
+== 28 N|Arcanum of Torment|AttackPower=50,CritRating=20
+Arcanum of Torment: 50 Attack Power, 20 Crit Rating
+== 29 N|No Enchant|
+No Enchant
+== 30 SE|SpellPower=100|DamageSpellHit|HasteRating=250|10|35|0.35|1
+100 Spell Power, 250 Haste Rating (10 Sec 35% on Damaging Spell Hit/35 Sec)
+== 31 SE|Agility=20|MeleeCrit|AttackPower=30|15|0|0.5|2
+20 Agility, 2x 30 Attack Power (15 Sec 50% on Melee Crit)

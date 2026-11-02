@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>JRawr character</title>
+    <!-- Load the saved palette before the stylesheet so a custom theme never flashes. -->
+    <script th:src="@{/js/theme.js(v=3)}"></script>
+    <link rel="stylesheet" th:href="@{/css/tokens.css(v=3)}"/>
+    <link rel="stylesheet" th:href="@{/css/base.css(v=3)}"/>
+    <link rel="stylesheet" th:href="@{/css/components.css(v=168)}"/>
+    <!-- htmx is loaded from the unpkg CDN (tests run offline; vendor it locally for a fully offline app). -->
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+    <script th:src="@{/js/app.js(v=66)}" defer></script>
+    <script th:src="@{/js/item-editor.js(v=9)}" defer></script>
+</head>
+<body>
+<header class="topbar" aria-label="Application">
+    <div class="topbar-brand" title="JRawr (WotLK 3.3.5)">
+        <span class="topbar-brand-name">JRawr</span>
+        <span class="topbar-brand-sub">WotLK 3.3.5</span>
+    </div>
+
+    <nav class="topbar-modes" role="tablist" aria-label="Mode">
+        <button class="mode-tab is-active" type="button" role="tab" aria-selected="true"
+                id="mode-tab-build" aria-controls="build-mode" tabindex="0"
+                data-mode="build">Build</button>
+        <button class="mode-tab" type="button" role="tab" aria-selected="false"
+                id="mode-tab-optimize" aria-controls="optimize-mode" tabindex="-1"
+                data-mode="optimize">Optimize</button>
+    </nav>
+
+    <div class="topbar-status" aria-live="polite">
+        <span id="topbar-character-name" class="topbar-character-name"
+              th:text="${#strings.isEmpty(character.name) ? 'Unnamed character' : character.name}">Unnamed character</span>
+        <span class="menu-dot" title="Unsaved changes"
+              th:class="${dirty} ? 'menu-dot' : 'menu-dot is-hidden'">•</span>
+    </div>
+
+    <div class="topbar-actions">
+        <details class="menu topbar-menu">
+            <summary class="topbar-btn" title="Character" aria-label="Character">
+                <svg class="topbar-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7 3h7l4 4v14H7z" fill="none" stroke="currentColor"
+                          stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M14 3v4h4" fill="none" stroke="currentColor"
+                          stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+                <span class="topbar-label">Character</span>
+            </summary>
+            <div class="menu-panel topbar-panel">
+                <button class="menu-item" type="button"
+                        hx-get="/character/new" hx-target="#modal" hx-swap="innerHTML">New</button>
+                <button class="menu-item" type="button"
+                        hx-get="/characters" hx-target="#modal" hx-swap="innerHTML">Open…</button>
+                <button class="menu-item" type="button"
+                        hx-get="/character/import" hx-target="#modal" hx-swap="innerHTML">Import…</button>
+                <div class="menu-sep"></div>
+                <button class="menu-item" type="button"
+                        hx-post="/character/save" hx-target="#toast-area" hx-swap="innerHTML">Save</button>
+                <button class="menu-item" type="button"
+                        hx-get="/character/save-as" hx-target="#modal" hx-swap="innerHTML">Save As…</button>
+                <a class="menu-item" th:href="@{/character/download}" download>Download XML</a>
+                <th:block th:if="${currentFile != null}">
+                    <div class="menu-sep"></div>
+                    <span class="menu-file" th:text="${currentFile}">character.xml</span>
+                </th:block>
+            </div>
+        </details>
+        <button class="topbar-btn" type="button" title="About" aria-label="About"
+                hx-get="/about" hx-target="#modal" hx-swap="innerHTML">
+            <svg class="topbar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M12 8h.01M11 12h1v4h1"/>
+            </svg>
+            <span class="topbar-label">About</span>
+        </button>
+        <button class="topbar-btn" type="button" title="Tools" aria-label="Tools"
+                hx-get="/tools" hx-target="#modal" hx-swap="innerHTML">
+            <svg class="topbar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14.5 6.5a4.5 4.5 0 0 0-5.7 5.7L4 17l3 3 4.8-4.8a4.5 4.5 0 0 0 5.7-5.7l-2.4 2.4-3-3 2.4-2.4z"/>
+            </svg>
+            <span class="topbar-label">Tools</span>
+        </button>
+        <button class="topbar-btn" type="button" title="Appearance" aria-label="Appearance"
+                hx-get="/appearance" hx-target="#modal" hx-swap="innerHTML">
+            <svg class="topbar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 3a9 9 0 1 0 0 18c1.7 0 2.2-1.1 1.4-2.1-.8-1.1 0-2.2 1.4-2.2H17a4 4 0 0 0 4-3.7C20.7 7 16.8 3 12 3z"/>
+                <circle cx="7.5" cy="11" r=".8"/>
+                <circle cx="10" cy="7" r=".8"/>
+                <circle cx="14.5" cy="7" r=".8"/>
+            </svg>
+            <span class="topbar-label">Appearance</span>
+        </button>
+        <button class="topbar-btn" type="button" title="Settings" aria-label="Settings"
+                hx-get="/settings" hx-target="#modal" hx-swap="innerHTML">
+            <svg class="topbar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+            <span class="topbar-label">Settings</span>
+        </button>
+    </div>
+</header>
+
+<div class="error-banner" th:if="${param.error != null and param.error[0] == 'invalid-character'}">
+    Could not apply the change. Check the values and try again.
+</div>
+
+<main class="layout">
+    <div id="build-mode" class="mode-screen" role="tabpanel" aria-labelledby="mode-tab-build">
+        <div class="workspace">
+            <div class="build-column">
+                <section th:replace="~{fragments/paperdoll :: paperdoll}"></section>
+            </div>
+            <aside class="charts-column" aria-label="Charts">
+                <div id="charts-panel" class="charts-panel"
+                     hx-get="/character/compare?slot=Head" hx-trigger="load" hx-swap="innerHTML">
+                    <p class="hint charts-skeleton">Loading chart…</p>
+                </div>
+            </aside>
+        </div>
+    </div>
+    <div id="optimize-mode" class="mode-screen" role="tabpanel"
+         aria-labelledby="mode-tab-optimize" hidden></div>
+</main>
+
+<div id="modal" class="modal-root">
+    <!-- Server-rendered modal (no extra round trip): /?open=import or /?open=settings. -->
+    <th:block th:if="${param.open != null}">
+        <th:block th:if="${param.open[0] == 'import'}">
+            <div th:replace="~{fragments/import :: importModal}"></div>
+        </th:block>
+        <th:block th:unless="${param.open[0] == 'import'}">
+            <div th:replace="~{fragments/settings :: settingsModal}"></div>
+        </th:block>
+    </th:block>
+</div>
+<div id="availability-modal" class="modal-root"></div>
+<div id="specs-modal" class="modal-root"></div>
+
+<div id="toast-area" class="toast-area">
+    <div class="toast" data-toast="saved" th:if="${param.saved != null}">
+        Saved as <strong th:text="${param.saved[0]}">character.xml</strong>
+    </div>
+    <div class="toast" data-toast="fetched" th:if="${param.fetched != null}">
+        Imported the character; fetched <strong th:text="${param.fetched[0]}">0</strong> missing item(s).
+    </div>
+    <div class="toast" data-toast="imported" th:if="${param.imported != null}">
+        Imported the character without fetching its missing items.
+    </div>
+</div>
+
+</body>
+</html>

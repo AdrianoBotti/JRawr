@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfBuff xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Buff>
+    <Name>Probe Buff</Name>
+    <Group>Probe Group</Group>
+    <Stats>
+      <SpecialEffects>
+        <SpecialEffect>
+          <Trigger>DamageSpellHit</Trigger>
+          <Stats>
+            <HasteRating>250</HasteRating>
+          </Stats>
+          <Duration>10</Duration>
+          <Cooldown>35</Cooldown>
+          <Chance>0.35</Chance>
+          <MaxStack>1</MaxStack>
+        </SpecialEffect>
+      </SpecialEffects>
+      <SpecialEffectCount>1</SpecialEffectCount>
+      <Agility>10</Agility>
+      <SpellPower>50</SpellPower>
+      <BonusDamageMultiplier>0.03</BonusDamageMultiplier>
+    </Stats>
+    <SetName>Probe Set</SetName>
+    <Source>Probe Source</Source>
+    <SetThreshold>2</SetThreshold>
+    <Improvements>
+      <Buff>
+        <Name>Probe Improvement</Name>
+        <Stats>
+          <Intellect>5</Intellect>
+        </Stats>
+        <SetThreshold>0</SetThreshold>
+        <Improvements />
+        <IsTargetDebuff>true</IsTargetDebuff>
+        <IsCustom>true</IsCustom>
+        <AllowedClasses>
+          <CharacterClass>Mage</CharacterClass>
+        </AllowedClasses>
+        <Professions>
+          <Profession>Alchemy</Profession>
+        </Professions>
+        <ConflictingBuffs>
+          <string>Probe Group</string>
+          <string>Other</string>
+        </ConflictingBuffs>
+      </Buff>
+    </Improvements>
+    <IsTargetDebuff>false</IsTargetDebuff>
+    <IsCustom>false</IsCustom>
+    <AllowedClasses>
+      <CharacterClass>DeathKnight</CharacterClass>
+      <CharacterClass>Druid</CharacterClass>
+      <CharacterClass>Hunter</CharacterClass>
+      <CharacterClass>Mage</CharacterClass>
+      <CharacterClass>Paladin</CharacterClass>
+      <CharacterClass>Priest</CharacterClass>
+      <CharacterClass>Rogue</CharacterClass>
+      <CharacterClass>Shaman</CharacterClass>
+      <CharacterClass>Warlock</CharacterClass>
+      <CharacterClass>Warrior</CharacterClass>
+    </AllowedClasses>
+    <Professions>
+      <Profession>None</Profession>
+      <Profession>Alchemy</Profession>
+      <Profession>Blacksmithing</Profession>
+      <Profession>Enchanting</Profession>
+      <Profession>Engineering</Profession>
+      <Profession>Herbalism</Profession>
+      <Profession>Inscription</Profession>
+      <Profession>Jewelcrafting</Profession>
+      <Profession>Leatherworking</Profession>
+      <Profession>Mining</Profession>
+      <Profession>Skinning</Profession>
+      <Profession>Tailoring</Profession>
+    </Professions>
+    <ConflictingBuffs>
+      <string>Probe Group</string>
+    </ConflictingBuffs>
+  </Buff>
+  <Buff>
+    <Name>Sparse</Name>
+    <Stats />
+    <SetThreshold>0</SetThreshold>
+    <Improvements />
+    <IsTargetDebuff>false</IsTargetDebuff>
+    <IsCustom>false</IsCustom>
+    <AllowedClasses>
+      <CharacterClass>DeathKnight</CharacterClass>
+      <CharacterClass>Druid</CharacterClass>
+      <CharacterClass>Hunter</CharacterClass>
+      <CharacterClass>Mage</CharacterClass>
+      <CharacterClass>Paladin</CharacterClass>
+      <CharacterClass>Priest</CharacterClass>
+      <CharacterClass>Rogue</CharacterClass>
+      <CharacterClass>Shaman</CharacterClass>
+      <CharacterClass>Warlock</CharacterClass>
+      <CharacterClass>Warrior</CharacterClass>
+    </AllowedClasses>
+    <Professions>
+      <Profession>None</Profession>
+      <Profession>Alchemy</Profession>
+      <Profession>Blacksmithing</Profession>
+      <Profession>Enchanting</Profession>
+      <Profession>Engineering</Profession>
+      <Profession>Herbalism</Profession>
+      <Profession>Inscription</Profession>
+      <Profession>Jewelcrafting</Profession>
+      <Profession>Leatherworking</Profession>
+      <Profession>Mining</Profession>
+      <Profession>Skinning</Profession>
+      <Profession>Tailoring</Profession>
+    </Professions>
+    <ConflictingBuffs>
+      <string xsi:nil="true" />
+    </ConflictingBuffs>
+  </Buff>
+</ArrayOfBuff>

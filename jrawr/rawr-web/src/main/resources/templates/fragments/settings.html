@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Settings modal: one form with Calculation and Icons subsections. Tools and Appearance are
+     top-level dialogs from the main bar. -->
+<div class="modal-backdrop" data-modal="settings" th:fragment="settingsModal">
+    <div class="modal card settings-modal" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+        <header class="modal-head">
+            <h2 id="settings-title">Settings</h2>
+            <button class="icon-btn" type="button" title="Close" aria-label="Close" data-modal-close>&#215;</button>
+        </header>
+
+        <div class="modal-body">
+            <form method="post" action="/settings" id="settings-form"
+                  th:attr="data-icon-layouts=${icons.layoutRulesJson()},data-icon-example=${icons.exampleIcon()}">
+                <div class="inline-error" th:if="${param.settingsError != null}">
+                    <span th:if="${param.settingsError[0] == 'icons'}">Not saved: the icon template
+                        must be an http(s) URL containing <code>{icon}</code>.</span>
+                    <span th:if="${param.settingsError[0] == 'calculation'}">Not saved: choose a
+                        valid calculation option.</span>
+                    <span th:if="${param.settingsError[0] != 'icons' and param.settingsError[0] != 'calculation'}">
+                        Not saved: check the settings values.</span>
+                </div>
+
+                <section class="settings-panel">
+                    <h3 class="settings-section-title">Calculation</h3>
+                    <div class="settings-option">
+                        <label class="field">
+                            <span class="field-label">Profession-gated enchants</span>
+                            <select name="hideProfEnchants">
+                                <option value="true" th:selected="${globalSettings.hideProfEnchants()}">Hide when the profession is missing</option>
+                                <option value="false" th:selected="${!globalSettings.hideProfEnchants()}">Show all enchants</option>
+                            </select>
+                        </label>
+                        <p class="hint">
+                            The original Rawr default hides enchanter, engineer, inscription, leatherworking
+                            and tailoring enchants unless the character has that profession.
+                        </p>
+                    </div>
+
+                    <div class="settings-option">
+                        <label class="field">
+                            <span class="field-label">Proc effect calculation</span>
+                            <select name="procEffectMode">
+                                <option value="1" th:selected="${globalSettings.procEffectMode() == 1}">Simple</option>
+                                <option value="2" th:selected="${globalSettings.procEffectMode() == 2}">Advanced</option>
+                                <option value="3" th:selected="${globalSettings.procEffectMode() == 3}">Interpolated</option>
+                            </select>
+                        </label>
+                        <p class="hint">
+                            Simple uses the closed-form uptime. Advanced integrates the proc model.
+                            Interpolated is the original default and balances accuracy with speed.
+                        </p>
+                    </div>
+
+                    <div class="settings-option">
+                        <label class="field">
+                            <span class="field-label">Combined effect calculation</span>
+                            <select name="combinationEffectMode">
+                                <option value="0" th:selected="${globalSettings.combinationEffectMode() == 0}">Linear interpolation</option>
+                                <option value="1" th:selected="${globalSettings.combinationEffectMode() == 1}">Interpolated (original default)</option>
+                                <option value="2" th:selected="${globalSettings.combinationEffectMode() == 2}">Exact</option>
+                            </select>
+                        </label>
+                        <p class="hint">
+                            Chooses how the incomplete beta function is evaluated when several proc effects
+                            are combined. Exact is the slowest.
+                        </p>
+                    </div>
+
+                    <h3 class="settings-section-title">Icons</h3>
+                    <div class="settings-option">
+                        <label class="field">
+                            <span class="field-label">Icon source</span>
+                            <select id="icon-base-url" name="iconBaseUrl">
+                                <option th:each="option : ${iconSources}"
+                                        th:value="${option.base()}"
+                                        th:text="${option.label()}"
+                                        th:selected="${option.base() == icons.baseUrl()}">zamimg (default)</option>
+                            </select>
+                        </label>
+                        <p class="hint" id="icon-base-hint"
+                           th:text="'Example icon URL: ' + ${icons.exampleUrl()}">Example icon URL: &#8230;</p>
+                        <p class="hint">
+                            Icons are hotlinked from this site; JRawr never downloads or stores them.
+                        </p>
+                    </div>
+
+                    <details class="advanced">
+                        <summary>Advanced</summary>
+                        <label class="field">
+                            <span class="field-label">Icon URL template (optional)</span>
+                            <input type="text" id="icon-template" name="iconTemplate"
+                                   th:value="${icons.template()}" spellcheck="false"
+                                   placeholder="https://example.com/icons/{icon}.jpg"/>
+                        </label>
+                        <p class="hint">
+                            Overrides the selected source. Must start with http(s):// and contain the
+                            literal <code>{icon}</code> placeholder.
+                        </p>
+                    </details>
+                </section>
+
+                <div class="form-actions">
+                    <button class="btn btn-primary" type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

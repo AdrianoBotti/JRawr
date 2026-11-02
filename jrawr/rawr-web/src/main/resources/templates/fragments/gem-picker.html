@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div id="item-picker" class="picker" th:fragment="picker">
+    <div class="picker-head">
+        <strong th:text="${slotLabel}">Head</strong>
+        <span class="hint" th:text="${socketLabel}">Red socket</span>
+        <button type="button" class="icon-btn" title="Close"
+                onclick="document.getElementById('item-picker').innerHTML=''">×</button>
+    </div>
+    <form class="picker-controls" onsubmit="return false">
+        <input type="hidden" name="slot" th:value="${slotParam}"/>
+        <input type="hidden" name="socket" th:value="${socketIndex}"/>
+        <label class="field picker-sort-field">
+            <span class="field-label">Sort</span>
+            <select name="sort" hx-get="/gems" hx-target="#gem-results" hx-swap="outerHTML"
+                    hx-include="closest form" hx-trigger="change">
+                <option value="quality" th:selected="${sort == 'quality'}">Quality</option>
+                <option value="name" th:selected="${sort == 'name'}">Name</option>
+            </select>
+        </label>
+        <label class="field picker-search-field">
+            <span class="field-label">Search</span>
+            <input type="search" name="q" placeholder="Search gems…" autocomplete="off" autofocus
+                   hx-get="/gems" hx-target="#gem-results" hx-swap="outerHTML"
+                   hx-trigger="input changed delay:150ms" hx-include="closest form"/>
+        </label>
+    </form>
+    <div th:replace="~{:: results}"></div>
+</div>
+
+<div id="gem-results" class="item-results" th:fragment="results">
+    <p class="empty-state" th:if="${#lists.isEmpty(gems)}">No matching gems.</p>
+    <button type="button" th:each="choice : ${gems}" class="item-row gem-row tip-right"
+            th:classappend="${choice.socketed() ? ' is-equipped' : ''}"
+            th:hx-post="@{/character/slot/gem(slot=${slotParam}, socket=${socketIndex}, gemId=${choice.id()})}"
+            hx-target="#paperdoll" hx-swap="outerHTML">
+        <span class="enchant-mark is-none" th:if="${choice.none()}">×</span>
+        <th:block th:unless="${choice.none()}">
+            <span th:replace="~{fragments/item-icon :: icon(${icons.tooltipUrl(choice.id(), null)}, ${icons.url(choice.iconPath())}, ${icons.initials(choice.name())}, ${choice.qualityKey()}, ${choice.name()})}"></span>
+        </th:block>
+        <span class="item-text">
+            <span class="item-name"
+                  th:classappend="${choice.qualityKey() != null ? 'q-' + choice.qualityKey() : ''}"
+                  th:text="${choice.name()}">Gem name</span>
+            <span class="item-sub" th:text="${choice.statsText()}">20 Spell Power</span>
+        </span>
+        <span class="item-badges">
+            <span class="gem-off-color" th:if="${!choice.none() and !choice.matches()}"
+                  title="Does not match the socket color; the socket bonus stays inactive">off-color</span>
+            <span class="enchant-equipped" th:if="${choice.socketed()}">Socketed</span>
+        </span>
+    </button>
+</div>
+
+</body>
+</html>

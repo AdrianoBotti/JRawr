@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Background upgrade-list progress; polls itself until the job is done. -->
+<div class="optimize-output-body" th:fragment="upgradeProgress" data-job-state="upgrades"
+     th:hx-get="@{/character/upgrades/status}"
+     th:attr="hx-trigger=${upgradeStatus != null and upgradeStatus.active()} ? 'every 500ms' : null"
+     hx-target="#optimize-output" hx-swap="innerHTML">
+    <div class="upgrade-result">
+        <header class="upgrade-result-head">
+            <div>
+                <h3>Upgrade list</h3>
+                <p class="hint" th:if="${upgradeStatus != null}"
+                   th:text="|${upgradeStatus.progress()}% · ${upgradeStatus.item()}|">0%</p>
+            </div>
+            <button type="button" class="btn btn-small" th:if="${upgradeStatus != null and upgradeStatus.active()}"
+                    hx-post="/character/upgrades/cancel" hx-target="#optimize-output"
+                    hx-swap="innerHTML">Cancel</button>
+            <button type="button" class="btn btn-small" th:if="${upgradeStatus == null or !upgradeStatus.active()}"
+                    hx-get="/character/optimize/output" hx-target="#optimize-output"
+                    hx-swap="innerHTML">Back</button>
+        </header>
+
+        <div class="inline-error" th:if="${upgradeError != null}" th:text="${upgradeError}">
+            Could not build the upgrade list.
+        </div>
+
+        <div class="upgrade-progress" th:if="${upgradeStatus != null and upgradeStatus.active()}">
+            <div class="upgrade-progress-track">
+                <span class="upgrade-progress-fill"
+                      th:style="'width:' + ${upgradeStatus.progress()} + '%'"></span>
+            </div>
+            <p class="hint">
+                Building the per-item gemming search. Cancel stops after the current item.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Optimizer-grade per-slot upgrade list (computeUpgrades). Displayed in the optimizer
+     output panel; Back returns to the live form. -->
+<div class="optimize-output-body" th:fragment="upgradeResultView" data-job-state="upgrades">
+    <div class="upgrade-result">
+        <header class="upgrade-result-head">
+            <div>
+                <h3>Upgrade list</h3>
+                <p class="hint" th:if="${upgradeResult != null}"
+                   th:text="|${upgradeResult.count()} upgrades · ${upgradeResult.calculation()} · computed in ${upgradeResult.elapsedMillis()} ms|">
+                    0 upgrades
+                </p>
+                <p class="hint" th:if="${upgradeResult != null}">
+                    Gains may include accompanying gear changes; expand “Also changes” on a row.
+                </p>
+            </div>
+            <button type="button" class="btn btn-small" hx-get="/character/optimize/output"
+                    hx-target="#optimize-output" hx-swap="innerHTML">Back</button>
+        </header>
+
+        <div class="inline-error" th:if="${upgradeError != null}" th:text="${upgradeError}">
+            Could not build the upgrade list.
+        </div>
+
+        <th:block th:if="${upgradeResult != null}">
+            <section class="upgrade-slot" th:each="slot : ${upgradeResult.slots()}">
+                <h4>
+                    <span th:text="${slot.slotLabel()}">Head</span>
+                    <span class="hint" th:text="|${slot.rows().size()} upgrades|">0 upgrades</span>
+                </h4>
+                <div class="compare-rows">
+                    <div class="compare-row" th:each="row : ${slot.rows()}"
+                         th:classappend="${row.equipped()} ? ' is-equipped' : ''">
+                        <div class="compare-item">
+                            <span th:replace="~{fragments/item-icon :: icon(
+                                    ${icons.instanceTooltipUrl(row.itemId(), row.slot().name(), row.gemmedId())},
+                                    ${row.iconUrl()}, ${row.initials()}, ${row.qualityKey()}, ${row.name()})}"></span>
+                            <div class="compare-item-text">
+                                <span class="compare-name" th:classappend="'q-' + ${row.qualityKey()}"
+                                      th:text="${row.name()}">Item name</span>
+                                <span class="compare-meta" th:text="${row.metaText()}">ilvl 0</span>
+                                <span class="compare-gems" th:if="${!#lists.isEmpty(row.gemColors())}"
+                                      aria-hidden="true">
+                                    <span class="compare-gem" th:each="gemColor : ${row.gemColors()}"
+                                          th:classappend="'gem-' + ${gemColor}"></span>
+                                </span>
+                                <details class="upgrade-conditions"
+                                         th:if="${!#lists.isEmpty(row.alsoChanges())}">
+                                    <summary th:text="|Also changes: ${row.alsoChanges().size()} slots|">Also changes</summary>
+                                    <ul>
+                                        <li th:each="change : ${row.alsoChanges()}">
+                                            <strong th:text="${change.slotLabel()}">Head</strong>:
+                                            <span th:text="${change.beforeName()}">Old</span> &#8594;
+                                            <span th:text="${change.afterName()}">New</span>
+                                            <span th:if="${change.sameItem()}">(different gems/enchant)</span>
+                                        </li>
+                                    </ul>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="compare-availability-cell">
+                            <span th:replace="~{fragments/compare :: availabilityButton(
+                                    ${row.slot().name()}, ${row.gemmedId()}, ${row.itemId()}, ${row.available()})}"></span>
+                        </div>
+                        <div class="compare-score">
+                            <div class="compare-primary">
+                                <span class="compare-overall"
+                                      th:classappend="${row.gain() >= 0} ? ' is-positive' : ' is-negative'"
+                                      th:text="${row.gainText()}">+0.00</span>
+                            </div>
+                            <div class="compare-subpoints" th:if="${!#lists.isEmpty(row.subPoints())}">
+                                <span class="compare-subpoint" th:each="sp : ${row.subPoints()}"
+                                      th:style="'color:' + ${sp.color()}">
+                                    <span class="compare-subpoint-label" th:text="${sp.label()}">Dps</span>
+                                    <span class="compare-subpoint-value" th:text="${sp.text()}">+0.00</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="compare-actions">
+                            <span class="compare-equipped-flag" th:if="${row.equipped()}">Equipped</span>
+                            <button type="button" class="btn btn-small" th:unless="${row.equipped()}"
+                                    th:hx-post="@{/character/slot/instance(slot=${row.slot().name()}, gemmedId=${row.gemmedId()})}"
+                                    hx-swap="none">Equip</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <p class="empty-state" th:if="${upgradeResult.slots().isEmpty()}">
+                No positive upgrades were found in this candidate pool.
+            </p>
+        </th:block>
+    </div>
+</div>
+
+<!-- Single-item evaluation result. -->
+<div class="optimize-output-body" th:fragment="upgradeEvaluationView" data-job-state="upgrades">
+    <div class="upgrade-result">
+        <header class="upgrade-result-head">
+            <div>
+                <h3>Evaluate upgrade</h3>
+                <p class="hint" th:if="${upgradeEvaluation != null}"
+                   th:text="|${upgradeEvaluation.calculation()} · computed in ${upgradeEvaluation.elapsedMillis()} ms|">
+                    Overall
+                </p>
+            </div>
+            <button type="button" class="btn btn-small" hx-get="/character/optimize/output"
+                    hx-target="#optimize-output" hx-swap="innerHTML">Back</button>
+        </header>
+
+        <div class="inline-error" th:if="${upgradeError != null}" th:text="${upgradeError}">
+            Could not evaluate that item.
+        </div>
+
+        <th:block th:if="${upgradeEvaluation != null}">
+            <div class="compare-rows">
+                <div class="compare-row"
+                     th:classappend="${upgradeEvaluation.item().equipped()} ? ' is-equipped' : ''">
+                    <div class="compare-item">
+                        <span th:replace="~{fragments/item-icon :: icon(
+                                ${icons.instanceTooltipUrl(upgradeEvaluation.item().itemId(), upgradeEvaluation.item().slot().name(), upgradeEvaluation.item().gemmedId())},
+                                ${upgradeEvaluation.item().iconUrl()}, ${upgradeEvaluation.item().initials()},
+                                ${upgradeEvaluation.item().qualityKey()}, ${upgradeEvaluation.item().name()})}"></span>
+                        <div class="compare-item-text">
+                            <span class="compare-name" th:classappend="'q-' + ${upgradeEvaluation.item().qualityKey()}"
+                                  th:text="${upgradeEvaluation.item().name()}">Item name</span>
+                            <span class="compare-meta"
+                                  th:text="${upgradeEvaluation.item().slotLabel()} + ' · ' + ${upgradeEvaluation.item().metaText()}">Head</span>
+                            <details class="upgrade-conditions"
+                                     th:if="${!#lists.isEmpty(upgradeEvaluation.item().alsoChanges())}">
+                                <summary th:text="|Also changes: ${upgradeEvaluation.item().alsoChanges().size()} slots|">Also changes</summary>
+                                <ul>
+                                    <li th:each="change : ${upgradeEvaluation.item().alsoChanges()}">
+                                        <strong th:text="${change.slotLabel()}">Head</strong>:
+                                        <span th:text="${change.beforeName()}">Old</span> &#8594;
+                                        <span th:text="${change.afterName()}">New</span>
+                                        <span th:if="${change.sameItem()}">(different gems/enchant)</span>
+                                    </li>
+                                </ul>
+                            </details>
+                        </div>
+                    </div>
+                    <div class="compare-availability-cell">
+                        <span th:replace="~{fragments/compare :: availabilityButton(
+                                ${upgradeEvaluation.item().slot().name()},
+                                ${upgradeEvaluation.item().gemmedId()},
+                                ${upgradeEvaluation.item().itemId()},
+                                ${upgradeEvaluation.item().available()})}"></span>
+                    </div>
+                    <div class="compare-score">
+                        <div class="compare-primary">
+                            <span class="compare-overall"
+                                  th:classappend="${upgradeEvaluation.item().gain() >= 0} ? ' is-positive' : ' is-negative'"
+                                  th:text="${upgradeEvaluation.item().gainText()}">+0.00</span>
+                        </div>
+                        <div class="compare-subpoints" th:if="${!#lists.isEmpty(upgradeEvaluation.item().subPoints())}">
+                            <span class="compare-subpoint" th:each="sp : ${upgradeEvaluation.item().subPoints()}"
+                                  th:style="'color:' + ${sp.color()}">
+                                <span class="compare-subpoint-label" th:text="${sp.label()}">Dps</span>
+                                <span class="compare-subpoint-value" th:text="${sp.text()}">+0.00</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="compare-actions">
+                        <span class="compare-equipped-flag"
+                              th:if="${upgradeEvaluation.item().equipped()}">Equipped</span>
+                        <button type="button" class="btn btn-small"
+                                th:if="${upgradeEvaluation.item().slot() != T(rawr.base.character.CharacterSlot).None
+                                        and !upgradeEvaluation.item().equipped()}"
+                                th:hx-post="@{/character/slot/instance(slot=${upgradeEvaluation.item().slot().name()}, gemmedId=${upgradeEvaluation.item().gemmedId()})}"
+                                hx-swap="none">Equip</button>
+                    </div>
+                </div>
+            </div>
+        </th:block>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div id="item-picker" class="picker" th:fragment="picker">
+    <div class="picker-head picker-head-compare">
+        <strong th:text="${picker.slotLabel()}">Head</strong>
+        <button type="button" class="btn btn-small" title="Add or edit items"
+                aria-label="Add or edit items"
+                hx-get="/tools/item-editor?tab=add" hx-target="#modal"
+                hx-swap="innerHTML">Add item</button>
+        <button type="button" class="btn btn-small picker-compare" data-close-picker="true"
+                th:hx-get="@{/character/compare(slot=${picker.slotParam()})}"
+                hx-target="#charts-panel" hx-swap="innerHTML" data-chart-scroll>Open chart</button>
+        <button type="button" class="icon-btn" title="Close"
+                onclick="document.getElementById('item-picker').innerHTML=''">×</button>
+    </div>
+    <form class="picker-controls" onsubmit="return false">
+        <input type="hidden" name="slot" th:value="${picker.slotParam()}"/>
+        <label class="field">
+            <span class="field-label">Item pool</span>
+            <select name="relevantOnly" hx-get="/items" hx-target="#item-results"
+                    hx-swap="outerHTML" hx-include="closest #item-picker" hx-trigger="change">
+                <option value="true" th:selected="${picker.relevantOnly()}">Model relevant</option>
+                <option value="false" th:selected="${!picker.relevantOnly()}">All cached items</option>
+            </select>
+        </label>
+        <label class="field">
+            <span class="field-label">Sort</span>
+            <select name="sort" hx-get="/items" hx-target="#item-results"
+                    hx-swap="outerHTML" hx-include="closest #item-picker" hx-trigger="change">
+                <option value="overall" th:selected="${picker.sort() == 'overall'}">Rating</option>
+                <option value="name" th:selected="${picker.sort() == 'name'}">Name</option>
+                <option value="itemLevel" th:selected="${picker.sort() == 'itemLevel'}">Item level</option>
+            </select>
+        </label>
+    </form>
+    <form class="picker-search" onsubmit="return false">
+        <input type="search" name="q" placeholder="Search by name…" autocomplete="off" autofocus
+               th:value="${picker.query()}"
+               hx-get="/items" hx-target="#item-results" hx-swap="outerHTML"
+               hx-trigger="input changed delay:250ms" hx-include="closest #item-picker"/>
+    </form>
+    <div th:replace="~{:: results}"></div>
+</div>
+
+<div id="item-results" class="item-results" th:fragment="results">
+    <p class="inline-error" th:if="${picker.error() != null}" th:text="${picker.error()}">error</p>
+    <p class="hint" th:if="${picker.hasRatings()}"
+       th:text="|${picker.rows().size()} shown of ${picker.totalCandidates()} · ${picker.ratingLabel()} gain vs equipped|">
+        0 shown</p>
+    <p class="hint" th:unless="${picker.hasRatings()}">Choose a model to see rating deltas.</p>
+    <p class="empty-state" th:if="${#lists.isEmpty(picker.rows())}">No matching items.</p>
+    <button type="button" th:each="row : ${picker.rows()}" class="item-row tip-right"
+            th:classappend="${row.added()} ? ' is-added'"
+            th:hx-post="@{/character/slot(slot=${picker.slotParam()}, itemId=${row.itemId()})}"
+            hx-target="#paperdoll" hx-swap="outerHTML">
+        <span th:replace="~{fragments/item-icon :: icon(${icons.tooltipUrl(row.itemId(), picker.slotParam(), true)}, ${row.iconUrl()}, ${row.initials()}, ${row.qualityKey()}, ${row.name()})}"></span>
+        <span class="item-text">
+            <span class="item-name" th:classappend="'q-' + ${row.qualityKey()}"
+                  th:text="${row.name()}">Item name</span>
+            <span class="item-sub" th:text="${row.meta()}">ilvl 0</span>
+        </span>
+        <span class="item-rating" th:if="${picker.hasRatings()}"
+              th:classappend="' ' + ${row.state()}" th:text="${row.overallText()}">+0.00</span>
+    </button>
+</div>
+
+</body>
+</html>

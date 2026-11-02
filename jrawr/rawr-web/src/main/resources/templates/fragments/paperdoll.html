@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Full card used by GET / -->
+<section id="paperdoll" class="card paperdoll" th:fragment="paperdoll">
+    <div th:replace="~{:: paperdollBody}"></div>
+</section>
+
+<!-- htmx response: swap the card and out-of-band refresh the panels gear changes affect. -->
+<th:block th:fragment="paperdollSwap">
+    <section id="paperdoll" class="card paperdoll">
+        <div th:replace="~{:: paperdollBody}"></div>
+    </section>
+    <th:block th:replace="~{fragments/stats :: statsOob}"></th:block>
+</th:block>
+
+<!-- htmx response: refresh the paper doll and stats out of band without replacing the current
+     screen (used by the comparison-chart and optimizer Equip buttons). -->
+<th:block th:fragment="paperdollOobSwap">
+    <th:block th:replace="~{:: paperdollOob}"></th:block>
+    <th:block th:replace="~{fragments/stats :: statsOob}"></th:block>
+</th:block>
+
+<!-- htmx out-of-band swap target used by the model options responses. -->
+<section id="paperdoll" class="card paperdoll" hx-swap-oob="true" th:fragment="paperdollOob">
+    <div th:replace="~{:: paperdollBody}"></div>
+</section>
+
+<div class="paperdoll-body" th:fragment="paperdollBody">
+    <div class="paperdoll-header">
+        <th:block th:replace="~{fragments/character :: identityStrip}"></th:block>
+    </div>
+    <div class="paperdoll-tabbar">
+        <div class="tabs paperdoll-tabs" role="tablist" aria-label="Character editor">
+            <button class="tab is-active" type="button" role="tab"
+                    id="paperdoll-tab-gear" aria-controls="paperdoll-panel-gear"
+                    data-paperdoll-tab="gear" aria-selected="true">Gear</button>
+            <button class="tab" type="button" role="tab"
+                    id="paperdoll-tab-talents" aria-controls="paperdoll-panel-talents"
+                    data-paperdoll-tab="talents" aria-selected="false">Talents</button>
+            <button class="tab" type="button" role="tab"
+                    id="paperdoll-tab-glyphs" aria-controls="paperdoll-panel-glyphs"
+                    data-paperdoll-tab="glyphs" aria-selected="false">Glyphs</button>
+            <button class="tab" type="button" role="tab"
+                    id="paperdoll-tab-buffs" aria-controls="paperdoll-panel-buffs"
+                    data-paperdoll-tab="buffs" aria-selected="false">Buffs</button>
+        </div>
+        <div class="paperdoll-tabbar-end">
+            <th:block th:replace="~{fragments/character :: advancedMenu}"></th:block>
+        </div>
+    </div>
+    <div class="paperdoll-score">
+        <div class="paperdoll-rating-strip" id="paperdoll-rating" aria-live="polite">
+            <div th:replace="~{:: ratingBody}"></div>
+        </div>
+    </div>
+
+    <section class="tab-panel" role="tabpanel" id="paperdoll-panel-gear"
+             aria-labelledby="paperdoll-tab-gear" data-paperdoll-panel="gear">
+        <div class="gear-summary-bar" data-gear-summary>
+            <div class="gear-summary-row">
+                <div class="gear-metric">
+                    <span class="gear-metric-label">Average item level</span>
+                    <strong class="gear-metric-value gear-metric-primary"
+                            th:text="${gearSummary.equipped() == 0 ? 'n/a' : gearSummary.averageItemLevel()}">0</strong>
+                </div>
+                <div class="gear-sets-inline" th:if="${gearSummary.hasSets()}">
+                    <span class="gear-sets-title">Set bonuses</span>
+                    <span class="gear-set" th:each="set : ${gearSummary.sets()}">
+                        <span class="gear-set-name" th:text="${set.name()}">Tier 10</span>
+                        <span class="gear-set-pieces" th:text="|${set.pieces()} pieces|">4 pieces</span>
+                        <span class="gear-set-bonus" th:each="bonus : ${set.activeBonuses()}"
+                              th:text="${bonus}">4-piece</span>
+                    </span>
+                </div>
+                <span class="hint gear-sets-empty" th:unless="${gearSummary.hasSets()}">No set bonuses active.</span>
+            </div>
+            <form class="gear-calc-options" hx-post="/character/calculation-options"
+                  hx-target="#paperdoll" hx-swap="outerHTML" hx-trigger="change">
+                <span class="gear-options-label">Gear options</span>
+                <label class="gear-check" title="Require gem colors to match their sockets when a meta gem is equipped.">
+                    <input type="checkbox" name="enforceGemRequirements"
+                           th:checked="${character.enforceGemRequirements}"/>
+                    <span>Enforce gem requirements</span>
+                </label>
+                <span class="gear-sockets">
+                    <span class="gear-options-sublabel">Blacksmithing sockets</span>
+                    <label class="gear-check">
+                        <input type="checkbox" name="waistBlacksmithingSocket"
+                               th:checked="${character.waistBlacksmithingSocketEnabled}"/>
+                        <span>Waist</span>
+                    </label>
+                    <label class="gear-check">
+                        <input type="checkbox" name="wristBlacksmithingSocket"
+                               th:checked="${character.wristBlacksmithingSocketEnabled}"/>
+                        <span>Wrist</span>
+                    </label>
+                    <label class="gear-check">
+                        <input type="checkbox" name="handsBlacksmithingSocket"
+                               th:checked="${character.handsBlacksmithingSocketEnabled}"/>
+                        <span>Hands</span>
+                    </label>
+                </span>
+            </form>
+        </div>
+
+        <div class="doll">
+            <div class="doll-col doll-left">
+                <th:block th:each="s : ${slotsLeft}">
+                    <div th:replace="~{:: slotCell(${s}, 'tip-right')}"></div>
+                </th:block>
+            </div>
+
+            <div class="doll-center gear-stats">
+                <section th:replace="~{fragments/stats :: statsPanel}"></section>
+            </div>
+
+            <div class="doll-col doll-right">
+                <th:block th:each="s : ${slotsRight}">
+                    <div th:replace="~{:: slotCell(${s}, 'tip-left')}"></div>
+                </th:block>
+            </div>
+
+            <div class="doll-bottom">
+                <th:block th:each="s : ${slotsBottom}">
+                    <div th:replace="~{:: slotCell(${s}, 'tip-top')}"></div>
+                </th:block>
+            </div>
+        </div>
+
+        <div id="item-picker" class="picker"></div>
+    </section>
+
+    <section class="tab-panel" role="tabpanel" id="paperdoll-panel-talents"
+             aria-labelledby="paperdoll-tab-talents" data-paperdoll-panel="talents" hidden>
+        <div th:replace="~{fragments/talents :: talentTab}"></div>
+    </section>
+
+    <section class="tab-panel" role="tabpanel" id="paperdoll-panel-glyphs"
+             aria-labelledby="paperdoll-tab-glyphs" data-paperdoll-panel="glyphs" hidden>
+        <div th:replace="~{fragments/talents :: glyphTab}"></div>
+    </section>
+
+    <section class="tab-panel" role="tabpanel" id="paperdoll-panel-buffs"
+             aria-labelledby="paperdoll-tab-buffs" data-paperdoll-panel="buffs" hidden>
+        <div id="buff-panel" class="buffs-tab">
+            <div th:replace="~{fragments/buffs :: buffsBody}"></div>
+        </div>
+    </section>
+</div>
+
+<th:block th:fragment="ratingBody">
+    <div class="quick-ratings" th:if="${result != null}">
+        <div class="quick-overall">
+            <span class="quick-label" th:text="${result.overallRatingLabel()}">Overall</span>
+            <strong class="quick-value" th:text="${result.overallPointsText()}">0</strong>
+        </div>
+        <div class="rating-composition">
+            <div class="pop-line" th:each="sp : ${result.subPointRows()}"
+                 th:classappend="${sp.negligible()} ? 'is-negligible'">
+                <span class="pop-label" th:style="'color:' + ${sp.color()}" th:text="${sp.label()}">Dps</span>
+                <span class="pop-value" th:style="'color:' + ${sp.color()}" th:text="${sp.text()}">0</span>
+            </div>
+        </div>
+    </div>
+    <div class="quick-ratings is-empty" th:unless="${result != null}">
+        <span th:text="${calculationError != null ? 'Calculation error' : (incompleteReason != null ? incompleteReason : 'No ratings')}"
+              th:title="${calculationError}">Incomplete character</span>
+    </div>
+</th:block>
+
+<div class="paperdoll-rating-strip" id="paperdoll-rating" hx-swap-oob="true"
+     th:fragment="ratingOob">
+    <div th:replace="~{:: ratingBody}"></div>
+</div>
+
+<div th:fragment="slotCell(s, tipClass)" class="slot"
+     th:classappend="|${s.filled() ? 'is-filled' : 'is-empty'} ${tipClass}|">
+    <div class="slot-top">
+        <span class="slot-label" th:text="${s.label()}">Head</span>
+        <button type="button" class="slot-enchant" th:if="${s.filled() and s.enchantable()}"
+                th:classappend="${s.enchanted()} ? 'is-enchanted' : 'is-unchanted'"
+                th:hx-get="@{/enchants(slot=${s.slot().name()})}"
+                hx-target="#item-picker" hx-swap="outerHTML"
+                th:title="${s.enchanted() ? s.enchantName() : 'Choose an enchant for this item'}">
+            <span class="slot-enchant-mark" th:classappend="${s.enchanted()} ? '' : 'is-add'">
+                <span th:if="${s.enchanted()}" th:replace="~{fragments/icons :: scroll}"></span>
+                <span th:unless="${s.enchanted()}">+</span>
+            </span>
+            <span class="slot-enchant-name" th:text="${s.enchantText()}">Add enchant</span>
+        </button>
+        <button type="button" class="slot-compare"
+                th:hx-get="@{/character/compare(slot=${s.slot().name()})}"
+                hx-target="#charts-panel" hx-swap="innerHTML" data-chart-scroll
+                title="Compare items for this slot">
+            <span th:replace="~{fragments/icons :: compare}"></span>
+        </button>
+        <button type="button" class="slot-remove" th:if="${s.filled()}"
+                th:hx-post="@{/character/slot/remove(slot=${s.slot().name()})}"
+                hx-target="#paperdoll" hx-swap="outerHTML" title="Remove item">×</button>
+    </div>
+    <button type="button" class="slot-main"
+            th:hx-get="@{/items(slot=${s.slot().name()})}"
+            hx-target="#item-picker" hx-swap="outerHTML">
+        <th:block th:if="${s.filled()}">
+            <span class="slot-body">
+                <span th:replace="~{fragments/item-icon :: icon(${icons.tooltipUrl(s.itemId(), s.slot().name())}, ${icons.url(s.iconPath())}, ${icons.initials(s.itemName())}, ${s.qualityKey()}, ${s.itemName()})}"></span>
+                <span class="slot-text">
+                    <span class="item-name" th:classappend="'q-' + ${s.qualityKey()}"
+                          th:text="${s.itemName()}">Item name</span>
+                </span>
+            </span>
+        </th:block>
+        <span class="slot-plus" th:unless="${s.filled()}">+</span>
+    </button>
+    <div class="slot-meta-row" th:if="${s.filled()}">
+        <span class="item-sub" th:text="${s.metaText()}">ilvl</span>
+        <div class="slot-sockets" th:if="${!#lists.isEmpty(s.sockets())}">
+            <button type="button" th:each="sock : ${s.sockets()}" class="slot-socket"
+                    th:classappend="|pip-${sock.colorKey()} ${sock.empty() ? 'is-empty' : 'is-filled'}${sock.matches() ? '' : ' is-mismatch'}|"
+                    th:hx-get="@{/gems(slot=${s.slot().name()}, socket=${sock.index()})}"
+                    hx-target="#item-picker" hx-swap="outerHTML"
+                    th:attr="aria-label=${sock.title()}">
+                <span class="slot-socket-frame">
+                    <span class="slot-socket-fallback"
+                          th:if="${!sock.empty()}"
+                          th:classappend="${sock.qualityKey() != null ? 'q-' + sock.qualityKey() : ''}"
+                          th:text="${sock.gemName() != null ? #strings.substring(sock.gemName(), 0, 1) : '?'}">G</span>
+                    <img class="slot-socket-gem" th:if="${!sock.empty() and sock.gemIconPath() != null}"
+                         th:src="${icons.url(sock.gemIconPath())}" th:alt="${sock.gemName()}"
+                         onerror="this.style.display='none'"/>
+                    <span class="slot-socket-ring" th:if="${sock.empty()}"></span>
+                </span>
+                <span class="socket-tip" th:text="${sock.title()}">Gem bonus</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

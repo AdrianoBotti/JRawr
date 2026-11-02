@@ -1,0 +1,490 @@
+# SpecialFunction.Normal
+normal -8 6.22096057427174E-16
+normal -3 0.0013498980316300933
+normal -1.5 0.066807201268858071
+normal -1 0.15865525393145707
+normal -0.75 0.22662735237686821
+normal -0.5 0.30853753872598688
+normal -0.25 0.4012936743170763
+normal 0 0.5
+normal 0.25 0.5987063256829237
+normal 0.5 0.69146246127401312
+normal 0.75 0.77337264762313174
+normal 1 0.84134474606854293
+normal 1.5 0.93319279873114191
+normal 3 0.9986501019683699
+normal 8 0.99999999999999933
+# Stats.StatNames
+statname   3% chance on Deep Wounds damage to grant 16% Bonus Attack Power for 10 sec.
+statname   extra jumps on Prayer of Mending (Priest)
+statname   seconds increased duration of Vampiric Touch. (Priest)
+statname   seconds reduced cast time on Mind Flay. (Priest)
+statname  Agility
+statname  Arcane Damage
+statname  Arcane Res
+statname  Arcane Res
+statname  Armor
+statname  Armor Penetration Rating
+statname  Attack Power
+statname  Attack Power Demons
+statname  Base Agility
+statname  Base Healing to CH
+statname  Block Rating
+statname  Block Value
+statname  Bonus AMS Damage Reduction
+statname  Bonus Armor
+statname  Bonus Blood Strike Damage
+statname  Bonus C P G Crit Chance
+statname  Bonus Crit Chance
+statname  Bonus Crit Chance for Nourish
+statname  Bonus Death Coil Damage
+statname  Bonus Death Strike Damage
+statname  Bonus Energy From D P
+statname  Bonus Ferocious Bite Crit Chance
+statname  Bonus Flame Shock Do T Damage
+statname  Bonus Flame Shock Duration
+statname  Bonus Frost Strike Damage
+statname  bonus haste rating chance on Heroic Strike and Slam crits
+statname  Bonus Healing by Swiftmend
+statname  Bonus Healing Received
+statname  Bonus Heart Strike Damage
+statname  Bonus Howling Blast Damage
+statname  Bonus IBF Duration
+statname  Bonus Icy Touch Damage
+statname  Bonus Instant Tick by Rejuvenation
+statname  Bonus Obliterate Damage
+statname  Bonus Pet Attack Power Multiplier
+statname  Bonus Rage Generated
+statname  Bonus Rage on Crit
+statname  Bonus Rake Bleed Can Crit
+statname  Bonus Rake Duration
+statname  Bonus Ranged Attack Power Multiplier
+statname  Bonus Rip Crit Chance
+statname  Bonus Rip Damage Per Combo Point Per Tick
+statname  Bonus Rip Duration
+statname  Bonus RP From Death Strike
+statname  Bonus RP From Obliterate
+statname  Bonus RP From Scourge Strike
+statname  Bonus S S Damage
+statname  Bonus Savage Roar Duration
+statname  Bonus Scourge Strike Damage
+statname  Bonus ShoR Damage
+statname  Bonus Shred Damage
+statname  Bonus spell power for 5 seconds after casting Power Word: Shield. (Priest)
+statname  Bonus Spirit after Life Tap
+statname  Bonus Targets
+statname  Bonus To T T Energy
+statname  Bonus W F Attack Power
+statname  Boss Attack Power
+statname  CH Cost Reduction:
+statname  Chance On3 C P On Finisher
+statname  Chance to proc Revitalize
+statname  Cinderglacier Proc
+statname  Combat Mana Regeneration
+statname  Combo Move Energy Reduction
+statname  Consecration Spell Power
+statname  Crit Chance Reduction
+statname  Crit Rating
+statname  Crusader Strike Damage
+statname  Damage Absorbed
+statname  Darkmoon Card: Death proc
+statname  Deathbringer Proc
+statname  Defense
+statname  Defense Rating
+statname  Diseases Can Crit
+statname  Divine Protection Duration Bonus
+statname  Divine Storm Damage
+statname  Dodge Rating
+statname  Each time you cast Chain Heal, you have a chance to gain 234 spell power for 15 sec.
+statname  Enhance T10 2 Piece Bonus
+statname  Enhance T10 4 Piece Bonus
+statname  Enhance T7 2 Piece Bonus
+statname  Enhance T7 4 Piece Bonus
+statname  Enhance T8 2 Piece Bonus
+statname  Enhance T8 4 Piece Bonus
+statname  Enhance T9 2 Piece Bonus
+statname  Enhance T9 4 Piece Bonus
+statname  Expertise
+statname  Expertise Rating
+statname  Extra haste rating for 4 seconds after casting Mind Blast. (Priest)
+statname  extra Sudden Death or Blood Surge charge per proc and 0.5 GCD reduction on Slams/Executes and double effect SD/BS durations
+statname  Extract of Necromantic Power proc
+statname  Fire Damage
+statname  Fire Res
+statname  Fire Res
+statname  Flash of Light Spell Power
+statname  Frost Damage
+statname  Frost Res
+statname  Frost Res
+statname  Haste Rating
+statname  Healed
+statname  Healing by Lifebloom Ticks
+statname  Healing by Rejuvenation
+statname  Healing Touch Final Heal
+statname  Health
+statname  Health per 5 sec
+statname  Health Restored
+statname  Highest Stat
+statname  Hit Rating
+statname  Holy Damage
+statname  Holy Light Mana Cost Reduction
+statname  Holy Light Spell Power
+statname  Holy Shield Block Value
+statname  HW Cost Reduction:
+statname  HW Spellpower added:
+statname  Ice Armor
+statname  Increase healing done by Chain Heal by 5%
+statname  Increases the critical strike chance of your Chain Heal spell by 5%.
+statname  Increases the healing done by your Chain Heal and Healing Wave by 5%
+statname  Increases the healing done by your Riptide spell by 20%.
+statname  Inner Fire (Priest)
+statname  Innervate CD Reduction
+statname  Insect Swarm damage bonus
+statname  Instances of Earthliving Weapon active
+statname  Intellect
+statname  Interrupt Protection
+statname  Judgement Block Value
+statname  Khadgar's Regalia 2 Piece Bonus
+statname  Khadgar's Regalia 4 Piece Bonus
+statname  Kirin Tor Garb 4 Piece Bonus
+statname  Lava Burst Bonus Base Damage
+statname  LHW Spellpower added:
+statname  Lifebloom cost reduction
+statname  Lightning Bolt Cost Reduction
+statname  Lightning Bolt Crit Damage Modifier
+statname  Lightning Bolt Damage Modifier
+statname  Lightning Spell Power
+statname  Mage Armor
+statname  Mage T10 2 Piece Bonus
+statname  Mage T10 4 Piece Bonus
+statname  Mana
+statname  Mana cost of next spell reduce (within 15 sec.)
+statname  Mana gained on Greater Heal Overheals (Priest)
+statname  Mana Gem Effect
+statname  Mana per 5 sec
+statname  Mana Restore On Cast (5%)
+statname  Mana Restored
+statname  Mangle Cat Cost Reduction
+statname  Mastery Rating
+statname  Molten Armor
+statname  Moonfire damage bonus
+statname  Moonfire Dot Crit
+statname  Moonfire Extension
+statname  Mp5 increase for Mana Spring
+statname  Nature Damage
+statname  Nature Res
+statname  Nature Res
+statname  Next Healing Spell Mana Cost Reduction
+statname  Nourish bonus per HoT
+statname  Nourish spell power
+statname  Parry Rating
+statname  Pet Attack Power
+statname  Pet Spirit
+statname  Pet Stamina
+statname  Pet Strength
+statname  Physical Damage
+statname  PvP Trinket
+statname  Rage Cost Reduction Proc
+statname  Ranged Attack Power
+statname  Ranged Crit Rating
+statname  Ranged Haste Rating
+statname  Ranged Hit Rating
+statname  Reduce Chain Heal mana cost by 10%
+statname  Reduce Energy Cost From Rupture
+statname  Reduce Lesser Healing Wave mana cost by 5%
+statname  Reduced Rejuvenation Mana Cost
+statname  Rejuvenation Crit Multiplier
+statname  Rejuvenation jump chance
+statname  Resilience
+statname  Righteous Vengeance Can Crit
+statname  Rip Cost Reduction
+statname  Runic Power per 5 Seconds
+statname  Rupture Crit
+statname  Rupture Damage Bonus
+statname  Scope Damage
+statname  sec Holy Light Cast Time Reduction after Holy Shock
+statname  sec Increased Judgement Duration
+statname  sec Judgement CD Reduction
+statname  second cooldown reduction for Traps
+statname  second Intercept Cooldown Reduction
+statname  second off Riptide Cooldown
+statname  seconds increased duration of Renew (Priest)
+statname  seconds increased duration of Shadow Word: Pain (Priest)
+statname  seconds reduced duration of Weakened Soul (Priest)
+statname  secs off Sacred Shield ICD
+statname  Shadow Damage
+statname  Shadow Res
+statname  Shadow Res
+statname  ShoR Block Value
+statname  Spell Arcane Damage
+statname  Spell Damage (10 sec on Moonfire)
+statname  Spell Damage From Intellect Percentage
+statname  Spell Damage From Spirit Percentage
+statname  Spell Fire Damage
+statname  Spell Frost Damage
+statname  Spell Nature Damage
+statname  Spell Penetration
+statname  Spell Power
+statname  Spell Shadow Damage
+statname  Spells Mana Cost Reduction
+statname  Spirit
+statname  Stamina
+statname  Starfire damage bonus
+statname  Starfire Proc
+statname  Steady shot has a chance to increase pet's attack power
+statname  Strength
+statname  Strength in Cat Form
+statname  Strength or Agility
+statname  Swiftmend Cooldown Reduction
+statname  Temporary Health
+statname  tenths of a second cast time off Chain Heal
+statname  Terror Proc
+statname  Thunderhead Effect
+statname  Tiger's Fury Cooldown Reduction
+statname  Valkyr Damage
+statname  Weapon Damage
+statname  Wild Growth Reduction over Time Reduction
+statname  Windfury
+statname  Wrath damage bonus
+statname  Your Chain Heal critical strikes cause the target to heal for 25% of the healed amount over 9 sec.
+statname  Your Lava Burst spell causes your Flame Shock effect on the target to deal at least two additional periodic damage ticks before expiring.
+statname  Your Lightning Bolt and Chain Lightning spells reduce the remaining cooldown on your Elemental Mastery talent by 2 sec.
+statname  Your Riptide spell grants 20% spell haste for your next spellcast within 10 sec.
+statname  Your Riptide spell grants 85 spell power for 15 sec.  Stacks up to 3 times.
+statname  Your Serpent Stings can now crit
+statname  Your Water Shield is 10% stronger
+statname % Agility
+statname % AP
+statname % Arcane Damage
+statname % Armor
+statname % Armor Penetration
+statname % Base Armor
+statname % Base Mana / Minute (PPM)
+statname % Block
+statname % Block Value
+statname % Blood Strike Damage Multiplier
+statname % Bonus Bleed Damage Multiplier
+statname % bonus critical strike damage for Lava Burst
+statname % bonus damage for Lava Burst
+statname % Bonus Damage Per Disease For Blood Strike
+statname % Bonus Damage Per Disease For Heart Strike
+statname % Bonus Damage Per Disease For Obliterate
+statname % Bonus Damage Per Disease For Scourge Strike
+statname % Bonus Death Coil Crit
+statname % Bonus Death Strike Crit
+statname % Bonus Frost Strike Crit
+statname % Bonus Heart Strike Damage Multiplier
+statname % Bonus Obliterate Damage Multiplier
+statname % Bonus Pet Damage
+statname % Bonus Plague Strike Crit
+statname % Bonus Scourge Strike Crit
+statname % Bonus Scourge Strike Damage Multiplier
+statname % Boss Attack Speed Reduction
+statname % chance for you & your pet to gain 10% increased damage for 10 seconds\r\neach time your Immolate and Unstable Affliction spells deals periodic damage.
+statname % chance of causing to heal for 33% of healed amount over 9 sec. (Priest)
+statname % Chance to proc an extra half damage shot
+statname % chance to proc Clearcast On Bleed Damage
+statname % Chance to Reflect Spell
+statname % Crit Bonus Damage
+statname % crit chance on Shadowbolt and Incinerate
+statname % Crit Damage As Dot
+statname % Crit Dmg
+statname % Crit Heal
+statname % Crusader Strike Crit
+statname % Crusader Strike Damage
+statname % damage bonus on Unstable Affliction and 10% on Immolate
+statname % Damage increase for Serpent Sting
+statname % Damage Reduction by Blood Tap
+statname % Damage Taken
+statname % Devastate Damage
+statname % Disease Damage
+statname % Divine Storm Crit
+statname % Divine Storm Damage
+statname % Dmg
+statname % Dodge
+statname % DS CD Reset on Melee
+statname % Eclipse Bonus
+statname % Exorcism Damage
+statname % Extra Pet Crit Chance
+statname % Fear Duration Reduction
+statname % Fire Damage
+statname % Flash of Light Crit
+statname % Flash of Light Healing
+statname % Flash of Light HoT
+statname % Frost Damage
+statname % Hammer of the Righteous Damage
+statname % Hammer of Wrath Damage
+statname % Healing Done
+statname % Healing Received
+statname % Healing with Divine Illumination Active
+statname % Health
+statname % Heart Strike Damage Multiplier
+statname % Hit
+statname % Holy Damage
+statname % Holy Light Cost Reduction
+statname % Holy Light Crit
+statname % Holy Shock Crit
+statname % HoT on Holy Shock Crit
+statname % Increase damage by DnD
+statname % increase to damage done by your Immolate, Corruption and Unstable Affliction spells
+statname % increase to the critical strike chance of your next Shadowbolt or Incinerate spell
+statname % increase to your pet's critical strike chance with its abilities
+statname % increased Battle Stance ArP Bonus
+statname % increased Berserker Stance Crit Bonus
+statname % increased critical chance on Prayer of Healing. (Priest)
+statname % increased critical hit chance on Mind Flay. (Priest)
+statname % increased critical hit chance on Shadow Word: Death (Priest)
+statname % increased critical hit chance on Shadow Word: Pain, Vampiric Touch and Devouring Plague. (Priest)
+statname % increased critical strike chance on Devastate
+statname % increased critical strike chance on Mortal Strike and Bloodthirst
+statname % increased critical strike chance on Slam and Heroic Strike
+statname % increased critical strike chance to your Shadowbolt, Incinerate, Soulfire & Corruption spells
+statname % increased damage from Mind Blast (Priest)
+statname % increased damage on Devouring Plague. (Priest)
+statname % increased effect from Renew and Power Word: Shield. (Priest)
+statname % increased effect on Divine Aegis and Empowered Renew. (Priest)
+statname % increased healing from Greater Heal (Priest)
+statname % increased healing on Prayer of Mending. (Priest)
+statname % Increased Mana Potion
+statname % Increased Movement Speed
+statname % Insect Swarm Damage
+statname % Int
+statname % Judgement Crit
+statname % Judgement Damage
+statname % Lacerate Dmg
+statname % Mana
+statname % Mana or Equivalent Restore
+statname % Mangle (Bear) Threat
+statname % Max Mana / Sec
+statname % Miss
+statname % Nature Damage
+statname % Obliterate Crit
+statname % of Base Ability Mana Cost
+statname % of Max Health Restored
+statname % Parry
+statname % Physical Crit
+statname % Physical Damage Taken
+statname % Physical Dmg
+statname % Physical Haste
+statname % Ranged Attack Speed Increase while Aspect of the Viper is active
+statname % Ranged Haste
+statname % reduce the mana cost of PoH (Priest)
+statname % reduced cost of Greater Heal (Priest)
+statname % reduced cost on Mind Blast (Priest)
+statname % Rip Dmg
+statname % Rune Strike Damage Multiplier
+statname % Seal Damage
+statname % Seal of Corruption Damage
+statname % Seal of Righteousness Damage
+statname % Seal of Vengeance Damage
+statname % SF/W Crit
+statname % SF/W Damage
+statname % Shadow Damage
+statname % Shield from Heal Amount
+statname % Shield Slam Damage
+statname % Shockwave Damage
+statname % Slam Damage
+statname % Snare/Root Duration Reduction
+statname % SP
+statname % Spell Crit
+statname % Spell Crit Dmg
+statname % Spell Crit on target
+statname % Spell Damage Taken
+statname % Spell Haste
+statname % Spell Hit
+statname % Spirit
+statname % Stamina
+statname % Starfire Crit
+statname % Starfire Crit Bonus
+statname % Strength
+statname % Stun Duration Reduction
+statname % Swipe (Bear) Dmg
+statname % Threat Increase
+statname % Threat Reduction
+statname % Warlock Spell Power
+statname % Weapon Swing
+statname % White Damage as Frost Damage
+# Item.GetItemSlotByCharacterSlot
+itemslot Projectile Projectile
+itemslot Head Head
+itemslot Neck Neck
+itemslot Shoulders Shoulders
+itemslot Chest Chest
+itemslot Waist Waist
+itemslot Legs Legs
+itemslot Feet Feet
+itemslot Wrist Wrist
+itemslot Hands Hands
+itemslot Finger1 Finger
+itemslot Finger2 Finger
+itemslot Trinket1 Trinket
+itemslot Trinket2 Trinket
+itemslot Back Back
+itemslot MainHand MainHand
+itemslot OffHand OffHand
+itemslot Ranged Ranged
+itemslot ProjectileBag ProjectileBag
+itemslot Tabard Tabard
+itemslot Shirt Shirt
+itemslot Gems Prismatic
+itemslot Metas Meta
+itemslot AutoSelect None
+itemslot None None
+# Item.DefaultSlotMap
+slotmap None None
+slotmap Head Head
+slotmap Neck Neck
+slotmap Shoulders Shoulders
+slotmap Back Back
+slotmap Chest Chest
+slotmap Shirt Shirt
+slotmap Tabard Tabard
+slotmap Wrist Wrist
+slotmap Hands Hands
+slotmap Waist Waist
+slotmap Legs Legs
+slotmap Feet Feet
+slotmap Finger Finger1
+slotmap Trinket Trinket1
+slotmap OneHand MainHand
+slotmap TwoHand MainHand
+slotmap MainHand MainHand
+slotmap OffHand OffHand
+slotmap Ranged Ranged
+slotmap Projectile Projectile
+slotmap ProjectileBag ProjectileBag
+slotmap Meta None
+slotmap Red None
+slotmap Orange None
+slotmap Yellow None
+slotmap Green None
+slotmap Blue None
+slotmap Purple None
+slotmap Prismatic None
+# Character.GetCharacterSlotFromId
+slotid -2 None
+slotid -1 None
+slotid 0 Projectile
+slotid 1 Head
+slotid 2 Neck
+slotid 3 Shoulders
+slotid 4 Shirt
+slotid 5 Chest
+slotid 6 Waist
+slotid 7 Legs
+slotid 8 Feet
+slotid 9 Wrist
+slotid 10 Hands
+slotid 11 Finger1
+slotid 12 Finger2
+slotid 13 Trinket1
+slotid 14 Trinket2
+slotid 15 Back
+slotid 16 MainHand
+slotid 17 OffHand
+slotid 18 Ranged
+slotid 19 Tabard
+slotid 20 None
+slotid 101 None
+slotid 102 ProjectileBag
+slotid 103 None

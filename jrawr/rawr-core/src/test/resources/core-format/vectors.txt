@@ -1,0 +1,42 @@
+# Vectors for the JRawr core-format probe (tools/core-format-probe).
+# One case per line, '|' separated. Stat lists are Name=value pairs joined by ','.
+#
+#   S|statlist                          Stats.ToString()
+#   E|trigger|statlist|dur|cool|chance|maxStack   SpecialEffect.ToString()
+#   B|name|statlist                     Buff.ToString()
+#   N|name|statlist                     Enchant.ToString()
+#   SE|statlist|trigger|effectstatlist|dur|cool|chance|maxStack   Stats.ToString() with an effect
+#
+# Empty lines and lines starting with '#' are ignored.
+S|Agility=12
+S|Agility=12,Strength=3.5,SpellPower=123.456,Health=1330
+S|BonusDamageMultiplier=0.03
+S|DamageTakenMultiplier=-0.1
+S|HealingReceivedMultiplier=0.06,PhysicalHaste=0.035,SpellHaste=0.15
+S|CritRating=6103.884765625,AttackPower=548
+S|Mp5=91.25,Hp5=7.5
+S|Agility=0.125,Strength=2.675,Intellect=31.005,Spirit=0.005
+S|WeaponDamage=0.30000001192092896,ManaRestoreFromMaxManaPerSecond=0.002
+S|BonusAttackPowerMultiplier=0.1,HealthRestoreFromMaxHealth=-0.3
+S|CritRating=NaN
+S|CritRating=INF
+E|MeleeHit|AttackPower=400|15|0|0.35|1
+E|MeleeHit|AttackPower=400,HasteRating=30|15|0|-1|1
+E|DamageSpellHit|HasteRating=250|10|35|0.35|2
+E|Use|SpellHaste=0.2,ManaCostPerc=-0.2|15|120|1|1
+E|Use|BonusDamageMultiplier=0.15|10|30|1|1
+E|PhysicalCrit|HealthRestoreFromMaxHealth=0.04|0|6|0|1
+E|ManaGem|Mana=100|INF|0|1|1
+E|BloodStrikeOrHeartStrikeHit|Strength=100|12|45|0.5|3
+E|MeleeAttack|Agility=120|15|0|0.125|1
+E|DamageDone|Damage=33|2.5|0|0.75|1
+E|CurrentHandHit|AttackPower=10|0|0|1|1
+E|InsectSwarmTick|SpellPower=5|0|0|1|1
+E|ShieldofRighteousness|BlockValue=10|0|0|1|1
+E|JudgementHit|SpellPower=5|0|0|1|1
+B|Battle Shout|AttackPower=548
+B|Blessing of Might|AttackPower=550,Strength=0
+N|Arcanum of Torment|AttackPower=50,CritRating=20
+N|No Enchant|
+SE|SpellPower=100|DamageSpellHit|HasteRating=250|10|35|0.35|1
+SE|Agility=20|MeleeCrit|AttackPower=30|15|0|0.5|2

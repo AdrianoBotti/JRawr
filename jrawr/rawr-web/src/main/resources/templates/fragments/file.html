@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- ============================================================ save toasts -->
+
+<div class="toast" data-toast="saved" th:fragment="savedToast" th:attr="data-file=${savedFile}">
+    Saved as <strong th:text="${savedFile}">character.xml</strong>
+</div>
+
+<div class="toast" data-toast="no-changes" th:fragment="noChangesToast">No changes to save.</div>
+
+<div class="toast toast-error" data-toast="error" th:fragment="errorToast"
+     th:text="${errorMessage}">Could not save.</div>
+
+<th:block th:fragment="empty"></th:block>
+
+<!-- ============================================================ save as modal -->
+
+<div class="modal-backdrop" data-modal="save-as" th:fragment="saveAsModal">
+    <div class="modal card" role="dialog" aria-modal="true" aria-labelledby="save-as-title">
+        <header class="modal-head">
+            <h2 id="save-as-title">Save character as</h2>
+            <button class="icon-btn" type="button" title="Close" aria-label="Close" data-modal-close>&#215;</button>
+        </header>
+        <div class="modal-body">
+            <div class="inline-error" th:if="${saveAsError != null}" th:text="${saveAsError}">error</div>
+            <p th:if="${saveAsConfirm}">
+                A file named <strong th:text="${saveAsFile}">character.xml</strong> already exists.
+                Overwrite it?
+            </p>
+            <form hx-post="/character/save-as" hx-target="#modal" hx-swap="innerHTML">
+                <input type="hidden" name="then" th:if="${saveAsThen != null}" th:value="${saveAsThen}"/>
+                <input type="hidden" name="confirm" th:if="${saveAsConfirm}" value="true"/>
+                <input type="hidden" name="name" th:if="${saveAsConfirm}" th:value="${saveAsName}"/>
+                <label class="field" th:unless="${saveAsConfirm}">
+                    <span class="field-label">File name</span>
+                    <input type="text" name="name" th:value="${saveAsName}"
+                           autocomplete="off" autofocus required/>
+                </label>
+                <p class="hint" th:unless="${saveAsConfirm}">.xml is added automatically.</p>
+                <div class="modal-actions">
+                    <button class="btn" type="button" data-modal-close>Cancel</button>
+                    <button class="btn btn-primary" type="submit"
+                            th:text="${saveAsConfirm} ? 'Overwrite' : 'Save'">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ unsaved-changes modal -->
+
+<div class="modal-backdrop" data-modal="new-confirm" th:fragment="newConfirm">
+    <div class="modal card" role="dialog" aria-modal="true" aria-labelledby="new-confirm-title">
+        <header class="modal-head">
+            <h2 id="new-confirm-title">Unsaved changes</h2>
+        </header>
+        <div class="modal-body">
+            <p>This character has changes that have not been saved.</p>
+            <p class="hint">Save it before starting a new character, or discard the changes.</p>
+        </div>
+        <div class="modal-actions">
+            <button class="btn" type="button"
+                    hx-post="/character/new?action=cancel" hx-target="#modal" hx-swap="innerHTML">Cancel</button>
+            <button class="btn" type="button"
+                    hx-post="/character/new?action=discard" hx-target="#modal" hx-swap="innerHTML">Discard &amp; New</button>
+            <button class="btn" type="button"
+                    hx-post="/character/new?action=saveas" hx-target="#modal" hx-swap="innerHTML">Save As… &amp; New</button>
+            <button class="btn btn-primary" type="button"
+                    hx-post="/character/new?action=save" hx-target="#modal" hx-swap="innerHTML">Save &amp; New</button>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ open panel -->
+
+<div class="modal-backdrop" data-modal="open" th:fragment="openPanel">
+    <div class="modal card" role="dialog" aria-modal="true" aria-labelledby="open-title">
+        <header class="modal-head">
+            <h2 id="open-title">Open character</h2>
+            <button class="icon-btn" type="button" title="Close"
+                    hx-post="/character/new?action=cancel" hx-target="#modal" hx-swap="innerHTML">&#215;</button>
+        </header>
+        <div class="modal-body">
+            <div class="inline-error" th:if="${openError != null}" th:text="${openError}">error</div>
+            <div th:replace="~{:: openPanelBody}"></div>
+        </div>
+    </div>
+</div>
+
+<div id="open-panel-body" th:fragment="openPanelBody">
+    <form method="post" action="/character" enctype="multipart/form-data" class="open-upload">
+        <span class="field-label">Open XML from your computer</span>
+        <input type="file" id="open-file" name="file" accept=".xml,text/xml" hidden/>
+        <span class="file-pick">
+            <label class="btn file-btn" for="open-file">Choose file…</label>
+            <span class="file-name" id="open-file-name"></span>
+        </span>
+        <p class="hint">Choosing a file opens it immediately.</p>
+    </form>
+    <div class="empty-state" th:if="${#lists.isEmpty(characters)}">
+        No saved characters on the server.
+    </div>
+    <div class="save-row" th:each="file : ${characters}">
+        <span class="save-name" th:text="${file}">character.xml</span>
+        <div class="save-actions">
+            <button class="btn btn-primary" type="button"
+                    th:hx-post="@{/character/open(file=${file})}">Open</button>
+            <button class="btn" type="button"
+                    th:hx-post="@{/character/delete(file=${file})}"
+                    hx-target="#open-panel-body" hx-swap="outerHTML"
+                    th:hx-confirm="'Delete ' + ${file} + '? This cannot be undone.'">Delete</button>
+        </div>
+    </div>
+    <p class="hint" th:if="${currentFile != null}">
+        Current file: <span th:text="${currentFile}">character.xml</span>
+    </p>
+</div>
+
+</body>
+</html>

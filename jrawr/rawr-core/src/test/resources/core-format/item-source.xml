@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dictionary>
+  <item>
+    <key>
+      <string>1</string>
+    </key>
+    <value>
+      <ArrayOfItemLocation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ItemLocation xsi:type="VendorItem">
+          <Note>Probe Note</Note>
+          <TokenMap>
+            <item>
+              <key>
+                <string>Probe Token</string>
+              </key>
+              <value>
+                <int>10</int>
+              </value>
+            </item>
+          </TokenMap>
+          <Cost>12345</Cost>
+          <VendorName>Probe Vendor</VendorName>
+          <VendorArea>Dalaran</VendorArea>
+        </ItemLocation>
+        <ItemLocation xsi:nil="true" />
+      </ArrayOfItemLocation>
+    </value>
+  </item>
+  <item>
+    <key>
+      <string>2</string>
+    </key>
+    <value>
+      <ArrayOfItemLocation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ItemLocation xsi:type="StaticDrop">
+          <Area>Ulduar (25)</Area>
+          <Heroic>true</Heroic>
+          <Boss>Auriaya</Boss>
+        </ItemLocation>
+        <ItemLocation xsi:type="WorldDrop">
+          <Location>Wintergrasp</Location>
+          <Heroic>false</Heroic>
+        </ItemLocation>
+      </ArrayOfItemLocation>
+    </value>
+  </item>
+  <item>
+    <key>
+      <string>3</string>
+    </key>
+    <value>
+      <ArrayOfItemLocation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ItemLocation xsi:type="CraftedItem">
+          <Skill>Blacksmithing</Skill>
+          <Level>450</Level>
+          <Bind>BoP</Bind>
+          <SpellName>Probe Spell</SpellName>
+        </ItemLocation>
+        <ItemLocation xsi:nil="true" />
+      </ArrayOfItemLocation>
+    </value>
+  </item>
+  <item>
+    <key>
+      <string>4</string>
+    </key>
+    <value>
+      <ArrayOfItemLocation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ItemLocation xsi:type="QuestItem">
+          <Area>Icecrown</Area>
+          <Quest>Probe Quest</Quest>
+          <MinLevel>80</MinLevel>
+          <Party>3</Party>
+          <Type>g</Type>
+        </ItemLocation>
+        <ItemLocation xsi:nil="true" />
+      </ArrayOfItemLocation>
+    </value>
+  </item>
+  <item>
+    <key>
+      <string>5</string>
+    </key>
+    <value>
+      <ArrayOfItemLocation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ItemLocation xsi:type="PvpItem">
+          <PointType>Honor</PointType>
+          <Points>100</Points>
+          <TokenType>Mark</TokenType>
+          <TokenCount>2</TokenCount>
+          <PointTypeA>Arena</PointTypeA>
+          <PointsA>50</PointsA>
+          <RequiredArenaRating>1500</RequiredArenaRating>
+          <VendorName>Probe PvP</VendorName>
+          <VendorArea>Dalaran</VendorArea>
+        </ItemLocation>
+        <ItemLocation xsi:nil="true" />
+      </ArrayOfItemLocation>
+    </value>
+  </item>
+  <item>
+    <key>
+      <string>6</string>
+    </key>
+    <value>
+      <ArrayOfItemLocation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ItemLocation xsi:type="FactionItem">
+          <FactionName>Probe Faction</FactionName>
+          <Level>Exalted</Level>
+          <Cost>55000</Cost>
+          <TokenMap>
+            <item>
+              <key>
+                <string>Probe Faction Token</string>
+              </key>
+              <value>
+                <int>1</int>
+              </value>
+            </item>
+          </TokenMap>
+        </ItemLocation>
+        <ItemLocation xsi:nil="true" />
+      </ArrayOfItemLocation>
+    </value>
+  </item>
+  <item>
+    <key>
+      <string>7</string>
+    </key>
+    <value>
+      <ArrayOfItemLocation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ItemLocation xsi:type="ContainerItem">
+          <Heroic>true</Heroic>
+          <Area>Ulduar (10)</Area>
+          <Container>Cache of Living Stone</Container>
+          <MinLevel>75</MinLevel>
+          <Party>2</Party>
+        </ItemLocation>
+        <ItemLocation xsi:nil="true" />
+      </ArrayOfItemLocation>
+    </value>
+  </item>
+  <item>
+    <key>
+      <string>8</string>
+    </key>
+    <value>
+      <ArrayOfItemLocation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ItemLocation xsi:type="NoSource" />
+        <ItemLocation xsi:type="UnknownItem" />
+      </ArrayOfItemLocation>
+    </value>
+  </item>
+  <item>
+    <key>
+      <string>9</string>
+    </key>
+    <value>
+      <ArrayOfItemLocation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ItemLocation>
+          <Note>Plain Note</Note>
+        </ItemLocation>
+        <ItemLocation xsi:nil="true" />
+      </ArrayOfItemLocation>
+    </value>
+  </item>
+</dictionary>

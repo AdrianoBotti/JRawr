@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div id="optimize-live" th:fragment="optimizeLive" class="optimize-live"
+     th:attr="data-job-state=${jobStatus != null ? jobStatus.state() : 'idle'}">
+
+    <section class="optimize-config card" aria-label="Optimizer setup">
+    <form class="optimize-form"
+          hx-post="/character/optimize" hx-target="#optimize-live" hx-swap="outerHTML">
+        <div class="tabs optimize-tabs" role="tablist" aria-label="Optimizer options">
+            <button class="tab is-active" type="button" role="tab"
+                    id="optimize-tab-gear" aria-controls="optimize-panel-gear"
+                    aria-selected="true" data-tab="gear">Gear &amp; pool</button>
+            <button class="tab" type="button" role="tab"
+                    id="optimize-tab-talents" aria-controls="optimize-panel-talents"
+                    aria-selected="false" data-tab="talents">Talents, glyphs &amp; consumables</button>
+            <button class="tab" type="button" role="tab"
+                    id="optimize-tab-constraints" aria-controls="optimize-panel-constraints"
+                    aria-selected="false" data-tab="constraints">Constraints</button>
+            <button class="tab" type="button" role="tab"
+                    id="optimize-tab-advanced" aria-controls="optimize-panel-advanced"
+                    aria-selected="false" data-tab="advanced">Advanced</button>
+        </div>
+
+        <section class="tab-panel optimize-tab-panel" role="tabpanel" id="optimize-panel-gear"
+                 aria-labelledby="optimize-tab-gear" data-tab-panel="gear">
+            <label class="field">
+                <span class="field-label">Calculation to optimize</span>
+                <select name="calculation">
+                    <option th:each="c : ${calculationChoices}" th:value="${c.value()}"
+                            th:text="${c.label()}"
+                            th:selected="${c.value() == selectedCalculation}">Overall rating</option>
+                </select>
+            </label>
+            <div class="field">
+                <span class="field-label">Slots to optimize</span>
+                <div class="optimize-slots">
+                    <label class="optimize-slot" th:each="s : ${optimizeSlots}">
+                        <input type="checkbox" name="slot" th:value="${s.name()}"
+                               th:checked="${selectedSlots.contains(s.name())}"/>
+                        <span th:text="${slotLabels.get(s)}">Head</span>
+                    </label>
+                </div>
+            </div>
+            <div class="field">
+                <label class="field-label" for="pool-mode">Item pool</label>
+                <select name="poolMode" id="pool-mode">
+                    <option value="ALL_RELEVANT"
+                            th:selected="${optimizerSettings.poolMode() == 'ALL_RELEVANT'}">All relevant items</option>
+                    <option value="CHARACTER_AVAILABILITY"
+                            th:selected="${optimizerSettings.poolMode() == 'CHARACTER_AVAILABILITY'}">Custom item pool</option>
+                </select>
+                <ul class="hint hint-list">
+                    <li><strong>All relevant items</strong> includes every item that fits the selected
+                        slots and passes the model/item filter, including ones you may not own.</li>
+                    <li><strong>Custom item pool</strong> uses the saved list. Manage it with the
+                        button below. It falls back to all relevant items when that list has no
+                        usable items for the selected slots.</li>
+                </ul>
+                <label class="field-label pool-cap-label" for="items-per-slot">Pool cap per slot</label>
+                <select name="itemsPerSlot" id="items-per-slot"
+                        title="Limits the search space, not only the duration: only the highest item-level items in each slot are kept.">
+                    <option value="0" th:selected="${optimizerSettings.itemsPerSlot() == 0}">All items</option>
+                    <option value="25" th:selected="${optimizerSettings.itemsPerSlot() == 25}">25 per slot</option>
+                    <option value="50" th:selected="${optimizerSettings.itemsPerSlot() == 50}">50 per slot</option>
+                    <option value="100" th:selected="${optimizerSettings.itemsPerSlot() == 100}">100 per slot</option>
+                </select>
+                <span class="hint">A cap makes large searches quicker and is useful for a first pass.</span>
+                <span class="hint"
+                      th:text="|${availabilityCount} custom-pool ${availabilityCount == 1 ? 'entry' : 'entries'} loaded.|">0 custom-pool entries loaded.</span>
+                <div class="optimize-template-actions">
+                    <button type="button" class="btn btn-small"
+                            hx-get="/character/availability" hx-target="#modal" hx-swap="innerHTML">
+                        Manage custom item pool&#8230;
+                    </button>
+                </div>
+            </div>
+            <div class="field optimize-options">
+                <span class="field-label">Gem and enchant search</span>
+                <label class="optimize-option" data-tip-host>
+                    <input type="checkbox" name="overrideRegem"
+                           th:checked="${optimizerSettings.overrideRegem()}"/>
+                    <span>Try all gem combinations</span>
+                    <span class="talent-tip">Try every legal gemming of the selected items, not just the exact gemmings in your item pool. The gems come from the pool and from your gemming templates.</span>
+                </label>
+                <label class="optimize-option" data-tip-host>
+                    <input type="checkbox" name="overrideReenchant"
+                           th:checked="${optimizerSettings.overrideReenchant()}"/>
+                    <span>Try all enchants</span>
+                    <span class="talent-tip">Treat every model-relevant enchant as a candidate, even when it is not in your item pool.</span>
+                </label>
+                <label class="optimize-option" data-tip-host>
+                    <input type="checkbox" name="templateGemsEnabled"
+                           th:checked="${optimizerSettings.templateGems()}"/>
+                    <span>Use template gems</span>
+                    <span class="talent-tip">Add the gems from your enabled gemming templates to the search. Templates are managed in Tools.</span>
+                </label>
+                <div class="optimize-template-actions">
+                    <button type="button" class="btn btn-small"
+                            hx-get="/character/gemming-templates" hx-target="#modal"
+                            hx-swap="innerHTML">Manage gemming templates&#8230;</button>
+                    <span class="hint">Templates supply the gems used by Try all gem combinations.</span>
+                </div>
+            </div>
+            <div class="optimize-subflow">
+                <div class="optimize-subflow-head">
+                    <span class="field-label">Gear-only upgrade list</span>
+                    <p class="hint">
+                        This runs a separate search focused on gear. It ranks items slot by slot,
+                        and each item is evaluated with its best gems and enchant using the gem and
+                        enchant options above. It ignores talents, consumables and cross-slot
+                        combinations.
+                    </p>
+                </div>
+                <div class="optimize-upgrade-options">
+                    <label class="field" data-tip-host>
+                        <span class="field-label">Candidates per slot</span>
+                        <select name="upgradeItemsPerSlot">
+                            <option value="5" th:selected="${optimizerSettings.upgradeItemsPerSlot() == 5}">5</option>
+                            <option value="10" th:selected="${optimizerSettings.upgradeItemsPerSlot() == 10}">10</option>
+                            <option value="25" th:selected="${optimizerSettings.upgradeItemsPerSlot() == 25}">25</option>
+                            <option value="0" th:selected="${optimizerSettings.upgradeItemsPerSlot() == 0}">All</option>
+                        </select>
+                        <span class="talent-tip">
+                            <span class="talent-tip-name">Candidates per slot</span>
+                            <span class="talent-tip-text">The top N relevant items by item level in
+                                each slot. The equipped item is always included. In a custom pool the
+                                cap does not apply, and All searches every relevant item.</span>
+                        </span>
+                    </label>
+                    <label class="field" data-tip-host>
+                        <span class="field-label">Upgrade thoroughness</span>
+                        <select name="upgradeThoroughness">
+                            <option value="1" th:selected="${optimizerSettings.upgradeThoroughness() == 1}">Minimal (greedy)</option>
+                            <option value="50" th:selected="${optimizerSettings.upgradeThoroughness() == 50}">Quick</option>
+                            <option value="150" th:selected="${optimizerSettings.upgradeThoroughness() == 150}">Balanced</option>
+                        </select>
+                        <span class="talent-tip">
+                            <span class="talent-tip-name">Upgrade thoroughness</span>
+                            <span class="talent-tip-text">Minimal runs only the greedy direct-upgrade
+                                and gemming search. Quick and Balanced also run the full search, using
+                                thoroughness 50 and 150. Higher values try more complete gear sets per
+                                round and search longer before stopping, so they are slower but more
+                                likely to find a better set. This is separate from Candidates per slot,
+                                which limits the items; time grows with candidates × thoroughness.</span>
+                        </span>
+                    </label>
+                </div>
+                <div class="optimize-subflow-actions">
+                    <button type="button" class="btn" hx-post="/character/upgrades"
+                            hx-include="closest form" hx-target="#optimize-output"
+                            hx-swap="innerHTML" hx-indicator="#upgrade-loading"
+                            hx-disabled-elt="this">Find per-slot gear upgrades</button>
+                    <span id="upgrade-loading" class="compare-loading htmx-indicator">
+                        Building upgrade list… this can take a while.
+                    </span>
+                </div>
+                <div id="upgrade-request-error" class="inline-error" hidden></div>
+                <div class="optimize-subflow-evaluate">
+                    <span class="field-label">Evaluate one item</span>
+                    <div class="optimize-evaluate">
+                        <input type="text" name="upgradeItem" autocomplete="off"
+                               placeholder="item id or itemId.gem1.gem2.gem3.enchant"/>
+                        <button type="button" class="btn" hx-post="/character/upgrades/evaluate"
+                                hx-include="closest form" hx-target="#optimize-output"
+                                hx-swap="innerHTML" hx-indicator="#upgrade-eval-loading"
+                                hx-disabled-elt="this">Evaluate</button>
+                        <span id="upgrade-eval-loading" class="compare-loading htmx-indicator">
+                            Evaluating…
+                        </span>
+                    </div>
+                    <p class="hint">
+                        A bare item id uses the item's best gemming; an exact gemmed id evaluates
+                        that concrete instance.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="tab-panel optimize-tab-panel" role="tabpanel" id="optimize-panel-talents"
+                 aria-labelledby="optimize-tab-talents" data-tab-panel="talents" hidden>
+            <div class="optimize-search-grid">
+                <div class="optimize-search-group">
+                    <span class="field-label">Talent &amp; glyph search</span>
+                    <label class="optimize-option" data-tip-host>
+                        <input type="radio" name="talentMode" value="none"
+                               th:checked="${selectedTalentMode == 'none'}"/>
+                        <span class="optimize-option-text">
+                            <span class="optimize-option-title">No talent search</span>
+                            <span class="optimize-option-desc">Keep the current spec and glyphs for the gear run.</span>
+                        </span>
+                        <span class="talent-tip"><strong>No talent search</strong><br/>Optimize gear, gems and enchants only. The current talent spec and its glyphs stay as they are.</span>
+                    </label>
+                    <label class="optimize-option" data-tip-host>
+                        <input type="radio" name="talentMode" value="spec"
+                               th:checked="${selectedTalentMode == 'spec'}"/>
+                        <span class="optimize-option-text">
+                            <span class="optimize-option-title">Best existing spec</span>
+                            <span class="optimize-option-desc">Search whole specs, glyphs included. Talent points are not moved inside a spec.</span>
+                        </span>
+                        <span class="talent-tip"><strong>Best existing spec</strong><br/>Choose the highest-rated whole spec from your current spec and the valid 71-point specs in the talent library. The chosen spec's glyphs are applied; talent points inside it are not changed.</span>
+                    </label>
+                    <label class="optimize-option" data-tip-host>
+                        <input type="radio" name="talentMode" value="mutate"
+                               th:checked="${selectedTalentMode == 'mutate'}"/>
+                        <span class="optimize-option-text">
+                            <span class="optimize-option-title">Best spec plus point tweaks</span>
+                            <span class="optimize-option-desc">Search specs and move points inside them; glyphs follow the spec.</span>
+                        </span>
+                        <span class="talent-tip"><strong>Best spec plus point tweaks</strong><br/>Like Best existing spec, but the search also moves talent points inside a spec to find stronger variants. Glyphs follow the chosen spec and are not searched independently.</span>
+                    </label>
+                    <div class="optimize-current">
+                        <span class="optimize-current-title">Current spec</span>
+                        <div class="optimize-current-trees">
+                            <span class="optimize-tree" th:each="tree : ${talentSetup.trees()}">
+                                <span th:text="${tree.name()}">Arcane</span>
+                                <strong th:text="${tree.points()}">57</strong>
+                            </span>
+                            <span class="optimize-current-total"
+                                  th:text="${talentSetup.totalPoints()} + ' / ' + ${talentSetup.maxPoints()} + ' points'">71 / 71 points</span>
+                        </div>
+                        <span class="optimize-current-meta"
+                              th:text="${talentSetup.majorSelected()} + ' / 3 major · ' + ${talentSetup.minorSelected()} + ' / 3 minor glyphs'">3 / 3 major · 3 / 3 minor glyphs</span>
+                        <span class="optimize-glyph-names" th:if="${!#lists.isEmpty(talentSetup.majorGlyphs())}"
+                              th:text="${#strings.listJoin(talentSetup.majorGlyphs(), ' · ')}">Glyph of Arcane Blast</span>
+                        <span class="optimize-glyph-names" th:if="${!#lists.isEmpty(talentSetup.minorGlyphs())}"
+                              th:text="${#strings.listJoin(talentSetup.minorGlyphs(), ' · ')}">Glyph of Arcane Intellect</span>
+                    </div>
+                    <div class="optimize-subflow">
+                        <div class="optimize-subflow-head">
+                            <span class="field-label">Talent &amp; glyphs only search</span>
+                            <p class="hint">
+                                Runs the talent and glyph search selected above with the current gear
+                                fixed. It can change the spec and its glyphs, but not gear, gems or
+                                enchants.
+                            </p>
+                        </div>
+                        <input type="hidden" name="talentsOnly" value="false"/>
+                        <div class="optimize-subflow-actions">
+                            <button type="submit" class="btn" id="talents-only-button" disabled
+                                    th:attr="data-busy=${jobStatus != null and jobStatus.active()}">
+                                Run talents &amp; glyphs only
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="optimize-search-group">
+                    <span class="field-label">Consumable search</span>
+                    <label class="optimize-option" data-tip-host>
+                        <input type="checkbox" name="optimizeFood"
+                           th:checked="${optimizerSettings.optimizeFood()}"/>
+                        <span class="optimize-option-text">
+                            <span class="optimize-option-title">Optimize food</span>
+                            <span class="optimize-option-desc">Add food buffs as a search choice.</span>
+                        </span>
+                        <span class="talent-tip">Add food buffs as an extra choice; the chosen food (if any) is applied when you load the result.</span>
+                    </label>
+                    <label class="optimize-option" data-tip-host>
+                        <input type="checkbox" name="optimizeElixirs"
+                           th:checked="${optimizerSettings.optimizeElixirs()}"/>
+                        <span class="optimize-option-text">
+                            <span class="optimize-option-title">Optimize elixirs/flasks</span>
+                            <span class="optimize-option-desc">Search elixirs and flasks with their conflict rules.</span>
+                        </span>
+                        <span class="talent-tip">Add battle and guardian elixir/flask choices with their conflict rules, and apply the chosen buffs on load.</span>
+                    </label>
+                    <div class="optimize-info" data-mixology-info
+                         th:attr="data-alchemist=${alchemist}">
+                        <span class="optimize-info-title">Mixology</span>
+                        <span class="optimize-info-text" data-mixology-text
+                              th:text="${alchemist
+                                      ? 'Included automatically for Alchemy. Applies when an elixir or flask is chosen.'
+                                      : 'Not included: this character does not have Alchemy.'}">Not included: this character does not have Alchemy.</span>
+                    </div>
+                </div>
+            </div>
+            <p class="hint">
+                Chosen food, elixirs or flasks are applied when you load the optimized result.
+            </p>
+        </section>
+
+        <section class="tab-panel optimize-tab-panel" role="tabpanel" id="optimize-panel-constraints"
+                 aria-labelledby="optimize-tab-constraints" data-tab-panel="constraints" hidden>
+            <div class="field">
+                <span class="field-label">Constraints</span>
+                <div id="optimizer-requirements">
+                    <div class="requirement-row" th:each="req : ${optimizerRequirements}">
+                        <select name="requirementCalculation">
+                            <option th:each="c : ${calculationChoices}" th:value="${c.value()}"
+                                    th:text="${c.label()}" th:selected="${c.value() == req.calculation}">Overall rating</option>
+                        </select>
+                        <select name="requirementDirection">
+                            <option value="gte" th:selected="${!req.lessThan}">&#8805;</option>
+                            <option value="lte" th:selected="${req.lessThan}">&#8804;</option>
+                        </select>
+                        <input type="number" step="any" name="requirementValue" th:value="${req.value}"/>
+                        <button type="button" class="icon-btn" data-remove-requirement
+                                title="Remove constraint">&#215;</button>
+                    </div>
+                </div>
+                <button class="btn" type="button" data-add-requirement>Add constraint</button>
+                <p class="hint">Optional: constrain a calculation to be at least or at most a value.<br/>
+                    Constraints are saved with the character.</p>
+            </div>
+            <template id="requirement-row-template">
+                <div class="requirement-row">
+                    <select name="requirementCalculation">
+                        <option th:each="c : ${calculationChoices}" th:value="${c.value()}"
+                                th:text="${c.label()}">Overall rating</option>
+                    </select>
+                    <select name="requirementDirection">
+                        <option value="gte">&#8805;</option>
+                        <option value="lte">&#8804;</option>
+                    </select>
+                    <input type="number" step="any" name="requirementValue"/>
+                    <button type="button" class="icon-btn" data-remove-requirement
+                            title="Remove constraint">&#215;</button>
+                </div>
+            </template>
+        </section>
+
+        <section class="tab-panel optimize-tab-panel" role="tabpanel" id="optimize-panel-advanced"
+                 aria-labelledby="optimize-tab-advanced" data-tab-panel="advanced" hidden>
+            <div class="field-row">
+                <div class="field">
+                    <label class="field-label" for="search-method">Search method</label>
+                    <select name="method" id="search-method">
+                        <option th:each="m : ${optimizationMethods}" th:value="${m.name()}"
+                                th:text="${m.name() == 'GeneticAlgorithm' ? 'Genetic algorithm' : 'Simulated annealing'}"
+                                th:selected="${m.name() == optimizerSettings.method()}">Genetic algorithm</option>
+                    </select>
+                    <ul class="hint hint-list">
+                        <li><strong>Genetic algorithm</strong> is the safer default and evolves a
+                            population of gear sets.</li>
+                        <li><strong>Simulated annealing</strong> walks one set and accepts some worse
+                            moves early to escape local optima.</li>
+                    </ul>
+                </div>
+                <div class="field">
+                    <label class="field-label" for="greedy-method">Greedy fallback</label>
+                    <select name="greedy" id="greedy-method">
+                        <option th:each="g : ${greedyMethods}" th:value="${g.name()}"
+                                th:text="${g.name() == 'AllCombinations' ? 'All combinations' : (g.name() == 'SingleChanges' ? 'Single gem/enchant changes' : 'Greedy best gem/enchant')}"
+                                th:selected="${g.name() == optimizerSettings.greedy()}">All combinations</option>
+                    </select>
+                    <span class="hint">Gem/enchant strategy for the direct single-slot upgrade pass.
+                        This is the GA's stopping pass; at Minimal effort it is the whole GA search.
+                        Simulated annealing does not use it.</span>
+                    <ul class="hint hint-list">
+                        <li><strong>All combinations</strong> is the most thorough option.</li>
+                        <li><strong>Single gem/enchant changes</strong> is a faster approximation.</li>
+                        <li><strong>Greedy best gem/enchant</strong> is the fastest approximation.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="field">
+                <label class="field-label" for="thoroughness-level">Thoroughness
+                    <span class="thoroughness-current" id="thoroughness-current"
+                          th:text="${defaultThoroughnessLabel}">Balanced</span>
+                </label>
+                <div class="thoroughness-control">
+                    <input type="range" id="thoroughness-level" min="1" max="5" step="1"
+                           th:value="${defaultThoroughnessLevel}"
+                           th:attr="data-thoroughness-values=${thoroughnessValues}"
+                           aria-describedby="thoroughness-help"/>
+                    <input type="hidden" name="thoroughness" id="thoroughness-value"
+                           th:value="${defaultThoroughness}"/>
+                    <div class="thoroughness-labels" aria-hidden="true">
+                        <span th:each="level : ${thoroughnessLevels}" th:text="${level.label()}">Balanced</span>
+                    </div>
+                </div>
+                <span class="hint" id="thoroughness-help">Higher levels give the optimizer more search
+                    effort and improve the odds of finding a better set. With the genetic algorithm,
+                    thoroughness sets how many complete gear sets are evaluated per generation and how
+                    many generations without improvement to wait. With simulated annealing, it sets the
+                    number of random-swap cycles (thoroughness squared).</span>
+            </div>
+            <div class="field optimize-performance">
+                <span class="field-label">Performance</span>
+                <div class="field-row">
+                    <label class="field">
+                        <span class="field-label">Use multithreading</span>
+                        <select name="useMultithreading"
+                                hx-post="/settings/optimizer"
+                                hx-include="closest .optimize-performance"
+                                hx-target="#optimizer-performance-status" hx-swap="innerHTML"
+                                hx-trigger="change">
+                            <option value="true" th:selected="${globalSettings.useMultithreading()}">Yes</option>
+                            <option value="false" th:selected="${!globalSettings.useMultithreading()}">No</option>
+                        </select>
+                    </label>
+                    <label class="field">
+                        <span class="field-label">Optimizer threads</span>
+                        <input type="number" name="maxThreads" min="1" max="64"
+                               th:value="${globalSettings.maxThreads()}"
+                               hx-post="/settings/optimizer"
+                               hx-include="closest .optimize-performance"
+                               hx-target="#optimizer-performance-status" hx-swap="innerHTML"
+                               hx-trigger="change"/>
+                    </label>
+                </div>
+                <div id="optimizer-performance-status"></div>
+                <span class="hint">Parallel candidate evaluation is only used for models whose results
+                    are verified identical to a sequential run; all other models stay single-threaded.</span>
+            </div>
+        </section>
+
+        <div class="optimize-form-footer">
+            <div class="optimize-setup-summary-card">
+                <span class="optimize-setup-summary-label">Current setup</span>
+                <div class="optimize-setup-summary" data-optimize-setup-summary
+                     aria-live="polite"></div>
+            </div>
+            <ul class="hint hint-list">
+                <li>Runs in the background on a clone of the character.</li>
+                <li>The candidate pool follows the <strong>Item pool</strong> choice on Gear &amp;
+                    pool; equipped gear and enchants are always kept.</li>
+                <li>Review the finished run, then choose <strong>Keep existing</strong> or
+                    <strong>Load optimized</strong> to apply the optimized gear, gems, enchants and
+                    any optimized food or elixir buffs.</li>
+            </ul>
+            <div class="modal-actions">
+                <button class="btn btn-primary" type="submit"
+                        th:disabled="${jobStatus != null and jobStatus.active()}">Start</button>
+            </div>
+        </div>
+    </form>
+    </section>
+
+    <section id="optimize-output" class="optimize-output card" aria-label="Optimizer result"
+             aria-live="polite">
+        <div id="optimize-output-body" th:fragment="optimizeOutput" class="optimize-output-body">
+        <div class="inline-error" data-optimize-error th:if="${optimizeError != null}"
+             th:text="${optimizeError}">already running</div>
+        <div class="inline-error" th:if="${saveResultError != null and optimizerResult == null}"
+             th:text="${saveResultError}">error</div>
+
+        <th:block th:if="${optimizerResult != null}">
+            <div th:replace="~{:: optimizeResultView}"></div>
+        </th:block>
+
+        <div class="optimize-status" th:if="${optimizerResult == null and jobStatus != null}">
+        <div class="optimize-progress">
+            <div class="optimize-bar-track">
+                <div class="optimize-bar" id="optimize-bar"
+                     th:style="'width:' + ${jobStatus.progress()} + '%'"></div>
+            </div>
+            <span class="optimize-progress-text" id="optimize-progress-text"
+                  th:text="${jobStatus.progress()} + '%'">0%</span>
+        </div>
+        <p class="hint" th:switch="${jobStatus.state()}">
+            <span th:case="'queued'">Queued&#8230;</span>
+            <span th:case="'running'">Optimizing&#8230;</span>
+            <span th:case="'done'" class="optimize-summary" data-optimize-summary
+                  th:text="${optimizeSummary}">Optimized: 0.00 &#8594; 0.00 (+0.00)</span>
+            <span th:case="'cancelled'">Cancelled. The character was left unchanged.</span>
+            <span th:case="'failed'">The optimizer failed.</span>
+        </p>
+        <div class="inline-error" data-optimize-failure th:if="${jobStatus.state() == 'failed'}"
+             th:text="${jobStatus.error()}">error</div>
+        <div class="modal-actions" th:if="${jobStatus.active()}">
+            <button class="btn" type="button"
+                    hx-post="/character/optimize/cancel" hx-target="#optimize-live"
+                    hx-swap="outerHTML">Cancel</button>
+        </div>
+        <div class="modal-actions" th:if="${jobStatus.state() == 'done'}">
+            <button class="btn" type="button" data-mode="build">Keep existing</button>
+            <button class="btn btn-primary" type="button"
+                    hx-post="/character/optimize/apply" hx-target="#optimize-live"
+                    hx-swap="outerHTML">Load optimized</button>
+        </div>
+        </div>
+
+        <div class="optimize-output-empty" th:if="${optimizerResult == null and jobStatus == null}">
+            <span class="optimize-output-mark" aria-hidden="true">&#9670;</span>
+            <h3>No run yet</h3>
+            <p class="hint">Pick a target and the rest of the settings on the left, then press
+                Start. Progress and the result will appear here.</p>
+        </div>
+        </div>
+    </section>
+</div>
+
+<div th:fragment="optimizeResultView" class="optimize-result">
+    <div class="optimize-result-hero" data-optimize-summary>
+        <div class="optimize-result-heading">
+            <span class="field-label">Optimized:</span>
+            <strong th:text="${optimizerResult.targetLabel()}">Overall rating</strong>
+        </div>
+        <div class="optimize-result-score">
+            <span class="optimize-result-before" th:text="${optimizerResult.beforeText()}">0.00</span>
+            <span class="optimize-result-arrow">&#8594;</span>
+            <strong class="optimize-result-after" th:text="${optimizerResult.afterText()}">0.00</strong>
+            <span class="optimize-result-delta" th:text="${optimizerResult.deltaText()}">+0.00</span>
+        </div>
+    </div>
+    <div class="optimize-run-recap" th:if="${!#lists.isEmpty(optimizerResult.runSettings())}">
+        <span class="optimize-setup-summary-label">Run settings</span>
+        <div class="optimize-setup-summary">
+            <span class="optimize-setup-part" th:each="setting : ${optimizerResult.runSettings()}">
+                <span class="optimize-setup-key" th:text="${setting.label()}">Target</span>
+                <span class="optimize-setup-value" th:text="${setting.value()}">Overall rating</span>
+            </span>
+        </div>
+    </div>
+    <p class="hint optimize-result-count"
+       th:text="${optimizerResult.changedCount() == 0
+               ? 'No gear slots changed.'
+               : optimizerResult.changedCount() + (optimizerResult.changedCount() == 1
+                       ? ' gear slot changed.' : ' gear slots changed.')}">0 gear slots changed.</p>
+    <p class="hint optimize-result-note" th:if="${optimizerResult.changedCount() > 0}">
+        Slot values are each slot's contribution in the final setup; talent changes are shown separately.
+    </p>
+
+    <div class="optimize-changes" th:if="${!#lists.isEmpty(optimizerResult.changes())}">
+        <div class="optimize-change" th:each="change : ${optimizerResult.changes()}">
+            <div class="optimize-change-head">
+                <span class="optimize-change-slot" th:text="${change.slotLabel()}">Head</span>
+                <span class="optimize-change-value" th:classappend="' is-' + ${change.valueState()}"
+                      th:text="${change.valueText()}">+0.00</span>
+            </div>
+            <div class="optimize-change-body">
+                <div class="optimize-change-side is-before">
+                    <span class="optimize-change-side-label">Before</span>
+                    <th:block th:replace="~{:: resultItem(${change.before()})}"></th:block>
+                </div>
+                <span class="optimize-change-arrow">&#8594;</span>
+                <div class="optimize-change-side is-after">
+                    <span class="optimize-change-side-label">After</span>
+                    <th:block th:replace="~{:: resultItem(${change.after()})}"></th:block>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="optimize-consumables" th:if="${optimizerResult.hasBuffChanges()}">
+        <div class="optimize-change-head">
+            <span class="field-label">Consumables</span>
+            <span class="optimize-change-value is-neutral">changed</span>
+        </div>
+        <div class="optimize-consumable-groups">
+            <div class="optimize-consumable-group" th:each="group : ${optimizerResult.consumableGroups()}"
+                 th:if="${group.hasChanges()}">
+                <span class="optimize-consumable-label" th:text="${group.label()}">Food</span>
+                <div class="optimize-consumable-row" th:each="item : ${group.added()}">
+                    <span class="optimize-consumable-name" th:text="${item.name()}">Fish Feast</span>
+                    <span class="optimize-consumable-mark is-added">Added</span>
+                    <span class="optimize-consumable-stats" th:text="${item.statsText()}">+80 Attack Power</span>
+                </div>
+                <div class="optimize-consumable-row is-removed" th:each="item : ${group.removed()}">
+                    <span class="optimize-consumable-name" th:text="${item.name()}">Flask of the North</span>
+                    <span class="optimize-consumable-mark is-removed">Removed</span>
+                    <span class="optimize-consumable-stats" th:text="${item.statsText()}">+60 Spell Power</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="optimize-talents" th:if="${optimizerResult.talentsChanged()}">
+        <div class="optimize-change-head">
+            <span class="field-label">Talents &amp; glyphs</span>
+            <span class="optimize-change-value is-neutral">changed</span>
+        </div>
+        <div class="optimize-talent-row">
+            <span class="optimize-talent-side">Before</span>
+            <code th:text="${optimizerResult.beforeTalents()}">0/0/0</code>
+            <span class="optimize-change-arrow">&#8594;</span>
+            <span class="optimize-talent-side">After</span>
+            <code th:text="${optimizerResult.afterTalents()}">0/0/0</code>
+        </div>
+        <div class="optimize-talent-changes" th:if="${!#lists.isEmpty(optimizerResult.talentChanges())}">
+            <span class="field-label">Talent points changed</span>
+            <div class="optimize-talent-change" th:each="change : ${optimizerResult.talentChanges()}"
+                 data-tip-host="true">
+                <span class="optimize-talent-change-icon">
+                    <img th:if="${change.icon() != null}" th:src="${icons.url(change.icon())}"
+                         alt="" onerror="this.remove()"/>
+                    <span th:if="${change.icon() == null}"
+                          th:text="${#strings.substring(change.name(), 0, 1)}">A</span>
+                </span>
+                <span class="optimize-talent-change-name" th:text="${change.name()}">Arcane Concentration</span>
+                <span class="optimize-talent-change-ranks"
+                      th:text="${change.before() + '/' + change.maxRank() + ' → ' + change.after() + '/' + change.maxRank()}">2/5 → 4/5</span>
+                <span class="talent-tip">
+                    <span class="talent-tip-name" th:text="${change.name()}">Arcane Concentration</span>
+                    <span class="talent-tip-rank"
+                          th:text="'Rank ' + ${change.descriptionRank()} + ' / ' + ${change.maxRank()}">Rank 4 / 5</span>
+                    <span class="talent-tip-text" th:if="${!#strings.isEmpty(change.description())}"
+                          th:text="${change.description()}">Effect description.</span>
+                </span>
+            </div>
+        </div>
+        <div class="optimize-glyph-changes" th:if="${!#lists.isEmpty(optimizerResult.glyphChanges())}">
+            <span class="field-label">Glyphs changed</span>
+            <div class="optimize-talent-change" th:each="change : ${optimizerResult.glyphChanges()}"
+                 data-tip-host="true">
+                <span class="optimize-talent-change-icon is-glyph" aria-hidden="true">&#10022;</span>
+                <span class="optimize-talent-change-name"
+                      th:text="${change.name() + (change.major() ? ' (major)' : ' (minor)')}">Glyph of Fireball (major)</span>
+                <span class="optimize-talent-change-ranks"
+                      th:text="${(change.before() ? 'selected' : 'not selected') + ' → ' + (change.after() ? 'selected' : 'not selected')}">not selected → selected</span>
+                <span class="talent-tip">
+                    <span class="talent-tip-name" th:text="${change.name()}">Glyph of Fireball</span>
+                    <span class="talent-tip-rank"
+                          th:text="${change.major() ? 'Major glyph' : 'Minor glyph'}">Major glyph</span>
+                    <span class="talent-tip-text" th:if="${!#strings.isEmpty(change.description())}"
+                          th:text="${change.description()}">Effect description.</span>
+                </span>
+            </div>
+            <p class="hint">Glyphs are part of a saved talent spec; the optimizer does not search glyphs independently.</p>
+        </div>
+
+        <details class="optimize-talent-details">
+            <summary>Show talent strings</summary>
+            <div class="optimize-talent-strings">
+                <div class="optimize-talent-spec">
+                    <span class="field-label">Before string</span><code th:text="${optimizerResult.beforeTalentSpec()}"></code>
+                </div>
+                <div class="optimize-talent-spec">
+                    <span class="field-label">After string</span><code th:text="${optimizerResult.afterTalentSpec()}"></code>
+                </div>
+            </div>
+        </details>
+    </div>
+
+    <div class="optimize-save-as">
+        <h4>Save as separate character</h4>
+        <div class="inline-success" th:if="${saveResultMessage != null}" th:text="${saveResultMessage}">
+            Saved.
+        </div>
+        <div class="inline-error" th:if="${saveResultError != null}" th:text="${saveResultError}">error</div>
+        <p class="hint" th:if="${saveResultConfirm}">
+            A file named <strong th:text="${saveResultFile}">character.xml</strong> already exists.
+            Overwrite it?
+        </p>
+        <form hx-post="/character/optimize/save-as" hx-target="#optimize-live" hx-swap="outerHTML">
+            <input type="hidden" name="confirm" th:if="${saveResultConfirm}" value="true"/>
+            <input type="hidden" name="name" th:if="${saveResultConfirm}" th:value="${saveResultName}"/>
+            <label class="field" th:unless="${saveResultConfirm}">
+                <span class="field-label">File name</span>
+                <input type="text" name="name" th:value="${saveResultName}" autocomplete="off" required/>
+            </label>
+            <p class="hint" th:unless="${saveResultConfirm}">.xml is added automatically; the current
+                character is not changed.</p>
+            <div class="modal-actions">
+                <button class="btn" type="button" th:if="${saveResultConfirm}"
+                        hx-get="/character/optimize/live" hx-target="#optimize-live"
+                        hx-swap="outerHTML">Cancel</button>
+                <button class="btn btn-primary" type="submit"
+                        th:text="${saveResultConfirm} ? 'Overwrite' : 'Save XML'">Save XML</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="modal-actions optimize-result-actions">
+        <button class="btn" type="button" hx-get="/character/optimize/live?new=1"
+                hx-target="#optimize-live" hx-swap="outerHTML">Optimize again</button>
+        <button class="btn" type="button" data-mode="build">Keep existing</button>
+        <button class="btn btn-primary" type="button"
+                hx-post="/character/optimize/apply" hx-target="#optimize-live"
+                hx-swap="outerHTML">Load optimized</button>
+    </div>
+</div>
+
+<span th:fragment="resultItem(side)" class="result-item"
+      th:classappend="${side.empty()} ? ' is-empty' : ''">
+    <span class="result-item-icon">
+        <img th:if="${!side.empty() and side.iconUrl() != null}" th:src="${side.iconUrl()}"
+             th:alt="${side.name()}" onerror="this.style.display='none'"/>
+        <span th:if="${!side.empty() and side.iconUrl() == null}" th:text="${side.initials()}">?</span>
+        <span th:if="${side.empty()}" class="result-item-empty-mark">&middot;</span>
+    </span>
+    <span class="result-item-text">
+        <span class="result-item-name" th:if="${!side.empty()}"
+              th:classappend="'q-' + ${side.qualityKey()}" th:text="${side.name()}">Item name</span>
+        <span class="result-item-name is-empty" th:if="${side.empty()}">Empty</span>
+        <span class="result-item-meta" th:if="${!side.empty()}" th:text="${side.metaText()}">ilvl 0</span>
+        <span class="result-item-gems" th:if="${!side.empty() and !#lists.isEmpty(side.gemColors())}"
+              aria-hidden="true">
+            <span class="compare-gem" th:each="gemColor : ${side.gemColors()}"
+                  th:classappend="'gem-' + ${gemColor}"></span>
+        </span>
+    </span>
+</span>
+
+<div th:fragment="applied"></div>
+
+<!-- htmx response for POST /settings/optimizer. -->
+<th:block th:fragment="performanceStatus">
+    <span class="hint" th:if="${optimizerSettingsSaved}">Saved.</span>
+    <span class="inline-error" th:if="${optimizerSettingsError != null}"
+          th:text="${optimizerSettingsError}">error</span>
+</th:block>
+
+<!-- htmx response for GET /character/optimize/result: the paper doll (and stats, out of band)
+     re-rendered from the session character the finished job applied its items to. -->
+<th:block th:fragment="resultSwap">
+    <th:block th:replace="~{fragments/paperdoll :: paperdollSwap}"></th:block>
+</th:block>
+
+</body>
+</html>

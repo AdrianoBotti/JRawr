@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- htmx response swapped into the hovered icon's .item-tooltip; CSS anchors and reveals it. -->
+<div class="item-tooltip-card" th:fragment="tooltip" th:classappend="'q-' + ${tooltip.qualityKey()}">
+    <div class="tt-head">
+        <img class="tt-icon" th:if="${tooltip.iconUrl() != null}" th:src="${tooltip.iconUrl()}"
+             th:alt="${tooltip.name()}" onerror="this.style.display='none'"/>
+        <span class="tt-name" th:text="${tooltip.name()}">Item name</span>
+        <span class="tt-id" th:text="'Item ID ' + ${tooltip.itemId()}">Item ID 0</span>
+    </div>
+    <div class="tt-sub">
+        <span th:if="${tooltip.itemLevel() > 0}" th:text="'ilvl ' + ${tooltip.itemLevel()}">ilvl 0</span>
+        <span th:text="${tooltip.slotText()}">Head</span>
+        <span class="tt-set" th:if="${!#strings.isEmpty(tooltip.setName())}" th:text="${tooltip.setName()}">Set name</span>
+    </div>
+
+    <ul class="tt-stats" th:if="${!#lists.isEmpty(tooltip.stats())}">
+        <li th:each="line : ${tooltip.stats()}" th:text="${line.text()}">42 Intellect</li>
+    </ul>
+
+    <div class="tt-section tt-effects" th:if="${!#lists.isEmpty(tooltip.effects())}">
+        <span class="tt-label">Effects</span>
+        <ul class="tt-effects-list">
+            <li th:each="effect : ${tooltip.effects()}" th:text="${effect.line()}">Use: ...</li>
+        </ul>
+    </div>
+
+    <div class="tt-set-block" th:if="${tooltip.hasSetBonuses()}">
+        <div class="tt-set-header" th:if="${tooltip.hasSetSummary()}">
+            <span th:text="${tooltip.setSummary()}">Set: (0/0, 0 bonuses active)</span>
+            <span class="tt-set-if-equipped" th:if="${tooltip.setSimulated()}">(if equipped)</span>
+        </div>
+        <ul class="tt-set-bonuses">
+            <li th:each="bonus : ${tooltip.setBonuses()}" th:text="${bonus.text()}"
+                th:classappend="${bonus.stateClass()}">(2) Set: 42 Spell Power</li>
+        </ul>
+    </div>
+
+    <div class="tt-extras tt-enchant" th:if="${!#strings.isEmpty(tooltip.enchantName())}">
+        <div class="tt-section tt-enchant-head">
+            <span class="tt-label">Enchant</span>
+            <span class="tt-enchant-name" th:text="${tooltip.enchantName()}">Enchant name</span>
+        </div>
+        <ul class="tt-enchant-stats" th:if="${!#lists.isEmpty(tooltip.enchantStats())}">
+            <li th:each="line : ${tooltip.enchantStats()}" th:text="${line}">30 Spell Power</li>
+        </ul>
+    </div>
+    <div class="tt-section tt-gems" th:if="${!#lists.isEmpty(tooltip.gems())}">
+        <span class="tt-label">Gems</span>
+        <ul class="tt-gem-lines">
+            <li class="tt-gem" th:each="gem : ${tooltip.gems()}">
+                <span class="tt-gem-dot" th:classappend="'socket-' + ${gem.colorKey()}"></span>
+                <span class="tt-gem-text">
+                    <span class="tt-gem-name" th:classappend="'gem-' + ${gem.colorKey()}"
+                          th:text="${gem.name()}">Gem name</span>
+                    <span class="tt-gem-stats" th:if="${!#strings.isEmpty(gem.statsText())}"
+                          th:text="${gem.statsText()}">23 Spell Power</span>
+                </span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="tt-section tt-sockets" th:if="${!#lists.isEmpty(tooltip.sockets())}">
+        <span class="tt-label">Sockets</span>
+        <span class="tt-socket-list">
+            <span class="tt-socket" th:each="sock : ${tooltip.sockets()}"
+                  th:classappend="'socket-' + ${sock.colorKey()}" th:title="${sock.label()}"></span>
+        </span>
+        <span class="tt-socket-bonus" th:if="${!#strings.isEmpty(tooltip.socketBonusText())}"
+              th:classappend="${tooltip.socketBonusActive() == null ? '' : (tooltip.socketBonusActive() ? 'is-active' : 'is-inactive')}"
+              th:text="${tooltip.socketBonusActive() == null
+                    ? 'Socket bonus: ' + tooltip.socketBonusText()
+                    : 'Socket bonus: ' + tooltip.socketBonusText() + (tooltip.socketBonusActive() ? ' (active)' : ' (inactive)')}">Socket bonus: 9 Spell Power</span>
+    </div>
+
+    <div class="tt-source" th:if="${tooltip.hasSource()}">
+        <span class="tt-label" th:text="${tooltip.sourceKind()}">Drop</span>
+        <span th:if="${!#strings.isEmpty(tooltip.source())}" th:text="${tooltip.source()}">Source description</span>
+    </div>
+</div>
+
+</body>
+</html>

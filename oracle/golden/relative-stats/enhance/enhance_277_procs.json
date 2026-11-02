@@ -1,0 +1,126 @@
+{
+  "model": "Enhance",
+  "fixture": "enhance_277_procs",
+  "relativeStats": [
+    {
+      "name": " Agility",
+      "description": "If you had 1 more Agility",
+      "baseStat": " Attack Power",
+      "overallPoints": 1.7730751,
+      "subPoints": [
+        1.7730751,
+        0
+      ]
+    },
+    {
+      "name": " Armor Penetration Rating",
+      "description": "If you had 1 more Armor Penetration Rating",
+      "baseStat": " Attack Power",
+      "overallPoints": 1.82517481,
+      "subPoints": [
+        1.82517481,
+        0
+      ]
+    },
+    {
+      "name": " Attack Power",
+      "description": "If you had 1 more Attack Power",
+      "baseStat": " Attack Power",
+      "overallPoints": 1,
+      "subPoints": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": " Crit Rating",
+      "description": "If you had 1 more Crit Rating",
+      "baseStat": " Attack Power",
+      "overallPoints": 1.8519814,
+      "subPoints": [
+        1.8519814,
+        0
+      ]
+    },
+    {
+      "name": " Expertise Rating",
+      "description": "If you had 1 more Expertise Rating",
+      "baseStat": " Attack Power",
+      "overallPoints": 6.11421919,
+      "subPoints": [
+        6.11421919,
+        0
+      ]
+    },
+    {
+      "name": " Haste Rating",
+      "description": "If you had 1 more Haste Rating",
+      "baseStat": " Attack Power",
+      "overallPoints": 2.44055939,
+      "subPoints": [
+        2.44055939,
+        0
+      ]
+    },
+    {
+      "name": " Health",
+      "description": "If you had 1 more Health",
+      "baseStat": " Attack Power",
+      "overallPoints": 0.0238785464,
+      "subPoints": [
+        0,
+        0.0238785464
+      ]
+    },
+    {
+      "name": " Hit Rating",
+      "description": "If you had 1 more Hit Rating",
+      "baseStat": " Attack Power",
+      "overallPoints": 1.89277387,
+      "subPoints": [
+        1.89277387,
+        0
+      ]
+    },
+    {
+      "name": " Intellect",
+      "description": "If you had 1 more Intellect",
+      "baseStat": " Attack Power",
+      "overallPoints": 1.44514859,
+      "subPoints": [
+        1.44514859,
+        0
+      ]
+    },
+    {
+      "name": " Spell Power",
+      "description": "If you had 1 more Spell Power",
+      "baseStat": " Attack Power",
+      "overallPoints": 0.956876457,
+      "subPoints": [
+        0.956876457,
+        0
+      ]
+    },
+    {
+      "name": " Stamina",
+      "description": "If you had 1 more Stamina",
+      "baseStat": " Attack Power",
+      "overallPoints": 0.238567054,
+      "subPoints": [
+        0,
+        0.238567054
+      ]
+    },
+    {
+      "name": " Strength",
+      "description": "If you had 1 more Strength",
+      "baseStat": " Attack Power",
+      "overallPoints": 1.10057318,
+      "subPoints": [
+        1.10057318,
+        0
+      ]
+    }
+  ]
+}

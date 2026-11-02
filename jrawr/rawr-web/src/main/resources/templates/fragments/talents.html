@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Talent tab content. Talent edits swap this panel; the glyph tab is OOB-refreshed because the
+     compact talent string contains glyph flags. -->
+<div id="talent-panel" class="talent-tab" th:fragment="talentTab">
+    <div th:replace="~{:: talentBody}"></div>
+</div>
+<div id="talent-panel" class="talent-tab" hx-swap-oob="true" th:fragment="talentOob">
+    <div th:replace="~{:: talentBody}"></div>
+</div>
+
+<!-- Glyph tab content. A glyph edit OOB-refreshes the talent tab so both panels stay in sync. -->
+<div id="glyph-panel" class="glyph-tab" th:fragment="glyphTab">
+    <div th:replace="~{:: glyphBody}"></div>
+</div>
+<div id="glyph-panel" class="glyph-tab" hx-swap-oob="true" th:fragment="glyphOob">
+    <div th:replace="~{:: glyphBody}"></div>
+</div>
+
+<th:block th:fragment="talentsSwap">
+    <div th:replace="~{:: talentTab}"></div>
+    <div th:replace="~{:: glyphOob}"></div>
+    <th:block th:replace="~{fragments/paperdoll :: ratingOob}"></th:block>
+    <th:block th:replace="~{fragments/stats :: statsOob}"></th:block>
+</th:block>
+
+<th:block th:fragment="glyphsSwap">
+    <div th:replace="~{:: glyphTab}"></div>
+    <div th:replace="~{:: talentOob}"></div>
+    <th:block th:replace="~{fragments/paperdoll :: ratingOob}"></th:block>
+    <th:block th:replace="~{fragments/stats :: statsOob}"></th:block>
+</th:block>
+
+<div th:fragment="talentBody">
+    <div class="talent-inline-head">
+        <h3>Talents</h3>
+        <span class="hint">Left-click learn · Right-click (or Shift+click) unlearn</span>
+        <span class="talent-points">Points spent:
+            <b th:text="${talentPanel.totalPoints}">0</b> /
+            <span th:text="${talentPanel.maxPoints}">71</span>
+        </span>
+        <button type="button" class="btn talent-specs"
+                hx-get="/character/specs" hx-target="#specs-modal" hx-swap="innerHTML"
+                title="Browse and manage saved talent specs.">Specs…</button>
+        <button type="button" class="btn talent-reset" th:unless="${#lists.isEmpty(talentPanel.trees)}"
+                hx-post="/character/talents/reset" hx-target="#talent-panel"
+                hx-swap="outerHTML" hx-confirm="Reset all talents for this character?">
+            Reset talents
+        </button>
+    </div>
+
+    <div class="inline-error" data-talent-error="true" th:if="${talentError != null}"
+         th:text="${talentError}">error</div>
+
+    <div class="talent-trees">
+        <section class="talent-tree" th:each="tree : ${talentPanel.trees}"
+                 th:classappend="${tree.cssClass()}" th:attr="data-tree=${tree.index}">
+            <header class="talent-tree-head">
+                <span class="talent-tree-name" th:text="${tree.name}">Arcane</span>
+                <span class="talent-tree-points"><b th:text="${tree.points}">0</b></span>
+            </header>
+            <div class="talent-grid" role="group" th:attr="aria-label=${tree.name + ' talent tree'}">
+                <div class="talent-row" th:each="row : ${tree.rows}">
+                    <div class="talent-cell" th:each="cell : ${row.cells}"
+                         th:classappend="${cell == null} ? 'is-empty'">
+                        <button th:if="${cell != null}" type="button" class="talent-btn"
+                                th:classappend="${cell.cssClass}"
+                                th:attr="data-talent-index=${cell.index},data-can-add=${cell.canAdd},data-can-remove=${cell.canRemove},data-tip-host='true',aria-label=${cell.name + ' · ' + cell.rank + ' / ' + cell.maxRank}">
+                            <span class="talent-fallback" aria-hidden="true"
+                                  th:text="${#strings.substring(cell.name, 0, 1)}">A</span>
+                            <img th:if="${cell.icon != null}" th:src="${icons.url(cell.icon)}"
+                                 alt="" draggable="false" onerror="this.remove()"/>
+                            <span class="talent-rank" th:text="${cell.rank + '/' + cell.maxRank}">0/5</span>
+                            <span class="talent-prereq" th:if="${cell.prerequisiteName != null}"
+                                  aria-hidden="true">&#x21B3;</span>
+                            <span class="talent-tip">
+                                <span class="talent-tip-name" th:text="${cell.name}">Talent</span>
+                                <span class="talent-tip-rank"
+                                      th:text="${cell.rank + ' / ' + cell.maxRank + ' · ' + tree.name}">0 / 5 · Tree</span>
+                                <span class="talent-tip-text" th:if="${cell.currentDescription != null}"
+                                      th:text="${cell.currentDescription}">Current rank effect.</span>
+                                <span class="talent-tip-next" th:if="${cell.nextDescription != null}"
+                                      th:text="'Next rank: ' + ${cell.nextDescription}">Next rank effect.</span>
+                                <span class="talent-tip-req" th:if="${!cell.treeOpen}"
+                                      th:text="'Requires ' + ${cell.treeRequirement} + ' points in ' + ${tree.name}">Requires tree points.</span>
+                                <span class="talent-tip-req"
+                                      th:if="${cell.prerequisiteName != null and !cell.prerequisiteMet}"
+                                      th:text="'Requires ' + ${cell.prerequisiteName} + ' at maximum rank'">Requires a prerequisite.</span>
+                                <span class="talent-tip-req"
+                                      th:if="${!cell.canAdd and cell.rank < cell.maxRank and cell.treeOpen and cell.prerequisiteMet}"
+                                      th:text="'No talent points left.'">No talent points left.</span>
+                                <span class="talent-tip-hint">Left-click learn · Right-click (or Shift+click) unlearn</span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</div>
+
+<div th:fragment="glyphBody">
+    <div class="talent-inline-head">
+        <h3>Glyphs</h3>
+        <span class="hint">Socket up to three major and three minor glyphs.</span>
+        <button type="button" class="btn talent-reset"
+                hx-post="/character/glyphs/reset" hx-target="#glyph-panel"
+                hx-swap="outerHTML" hx-confirm="Reset all glyphs for this character?">
+            Reset glyphs
+        </button>
+    </div>
+
+    <div class="inline-error" data-glyph-error="true" th:if="${glyphError != null}"
+         th:text="${glyphError}">error</div>
+
+    <section class="glyph-section">
+        <div class="glyph-column">
+            <header class="glyph-head">
+                <h3>Major Glyphs</h3>
+                <span class="glyph-count" th:text="${talentPanel.majorSelected} + ' / 3'">0 / 3</span>
+            </header>
+            <div class="glyph-slots">
+                <button type="button" class="glyph-slot" th:each="slot : ${talentPanel.majorSlots}"
+                        th:classappend="${slot.glyph != null} ? 'is-filled' : ''"
+                        th:attr="data-glyph-index=${slot.glyph != null ? slot.glyph.index : null},data-tip-host=${slot.glyph != null ? 'true' : null}">
+                    <span class="glyph-rune" aria-hidden="true">&#10022;</span>
+                    <span class="glyph-slot-label"
+                          th:text="${slot.glyph != null ? slot.glyph.name : 'Empty'}">Empty</span>
+                    <span class="talent-tip" th:if="${slot.glyph != null}">
+                        <span class="talent-tip-name" th:text="${slot.glyph.name}">Glyph</span>
+                        <span class="talent-tip-text" th:text="${slot.glyph.description}">Glyph effect.</span>
+                        <span class="talent-tip-hint">Click to remove</span>
+                    </span>
+                </button>
+            </div>
+            <div class="glyph-picker" th:if="${!#lists.isEmpty(talentPanel.availableMajor)}">
+                <button type="button" class="glyph-choice" th:each="glyph : ${talentPanel.availableMajor}"
+                        th:classappend="${glyph.selected ? 'is-selected' : (glyph.locked ? 'is-locked' : '')}"
+                        th:attr="data-glyph-index=${glyph.index},data-glyph-locked=${glyph.locked ? 'true' : null},data-tip-host='true',aria-disabled=${glyph.locked ? 'true' : null}">
+                    <span class="glyph-rune" aria-hidden="true">&#10022;</span>
+                    <span class="glyph-choice-name" th:text="${glyph.name}">Glyph</span>
+                    <span class="glyph-choice-state" th:if="${glyph.selected}">&#10003;</span>
+                    <span class="talent-tip">
+                        <span class="talent-tip-name" th:text="${glyph.name}">Glyph</span>
+                        <span class="talent-tip-text" th:text="${glyph.description}">Glyph effect.</span>
+                        <span class="talent-tip-req" th:if="${glyph.locked}">All major glyph slots are full. Remove one first.</span>
+                        <span class="talent-tip-hint" th:unless="${glyph.locked}"
+                              th:text="${glyph.selected ? 'Click to remove' : 'Click to socket'}">Click to socket</span>
+                    </span>
+                </button>
+            </div>
+            <p class="hint" th:if="${#lists.isEmpty(talentPanel.availableMajor)}">
+                Rawr models no major glyphs for this class.
+            </p>
+        </div>
+
+        <div class="glyph-column">
+            <header class="glyph-head">
+                <h3>Minor Glyphs</h3>
+                <span class="glyph-count" th:text="${talentPanel.minorSelected} + ' / 3'">0 / 3</span>
+            </header>
+            <div class="glyph-slots">
+                <button type="button" class="glyph-slot" th:each="slot : ${talentPanel.minorSlots}"
+                        th:classappend="${slot.glyph != null} ? 'is-filled' : ''"
+                        th:attr="data-glyph-index=${slot.glyph != null ? slot.glyph.index : null},data-tip-host=${slot.glyph != null ? 'true' : null}">
+                    <span class="glyph-rune" aria-hidden="true">&#10022;</span>
+                    <span class="glyph-slot-label"
+                          th:text="${slot.glyph != null ? slot.glyph.name : 'Empty'}">Empty</span>
+                    <span class="talent-tip" th:if="${slot.glyph != null}">
+                        <span class="talent-tip-name" th:text="${slot.glyph.name}">Glyph</span>
+                        <span class="talent-tip-text" th:text="${slot.glyph.description}">Glyph effect.</span>
+                        <span class="talent-tip-hint">Click to remove</span>
+                    </span>
+                </button>
+            </div>
+            <div class="glyph-picker" th:if="${!#lists.isEmpty(talentPanel.availableMinor)}">
+                <button type="button" class="glyph-choice" th:each="glyph : ${talentPanel.availableMinor}"
+                        th:classappend="${glyph.selected ? 'is-selected' : (glyph.locked ? 'is-locked' : '')}"
+                        th:attr="data-glyph-index=${glyph.index},data-glyph-locked=${glyph.locked ? 'true' : null},data-tip-host='true',aria-disabled=${glyph.locked ? 'true' : null}">
+                    <span class="glyph-rune" aria-hidden="true">&#10022;</span>
+                    <span class="glyph-choice-name" th:text="${glyph.name}">Glyph</span>
+                    <span class="glyph-choice-state" th:if="${glyph.selected}">&#10003;</span>
+                    <span class="talent-tip">
+                        <span class="talent-tip-name" th:text="${glyph.name}">Glyph</span>
+                        <span class="talent-tip-text" th:text="${glyph.description}">Glyph effect.</span>
+                        <span class="talent-tip-req" th:if="${glyph.locked}">All minor glyph slots are full. Remove one first.</span>
+                        <span class="talent-tip-hint" th:unless="${glyph.locked}"
+                              th:text="${glyph.selected ? 'Click to remove' : 'Click to socket'}">Click to socket</span>
+                    </span>
+                </button>
+            </div>
+            <p class="hint" th:if="${#lists.isEmpty(talentPanel.availableMinor)}">
+                Rawr does not model minor glyphs for this class.
+            </p>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>

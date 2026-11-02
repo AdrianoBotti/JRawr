@@ -1,0 +1,331 @@
+{
+  "Aegis Battlegear": {
+    "2": "Increases the damage done by your Exorcism and Hammer of Wrath abilities by 10%.",
+    "4": "Increases the critical strike chance of your Divine Storm and Crusader Strike abilities by 10%."
+  },
+  "Aegis Plate": {
+    "2": "Increases the damage done by your Seals of Vengeance, Corruption, and Righteousness by 10%.",
+    "4": "Shield of Righteousness now increases your shield block value by 225 for that attack and for 6 sec afterward."
+  },
+  "Aegis Regalia": {
+    "2": "Your Holy Shock critical heals now also place a periodic healing effect on the target, healing for 15% of the Holy Shock's heal amount over 9 sec.",
+    "4": "Your Sacred Shield can now trigger its effect every 4 sec instead of every 6."
+  },
+  "Ahn'Kahar Blood Hunter's Battlegear": {
+    "2": "Your Auto Shots have a 5% chance to cause you and your pet to deal 15% additional damage for 10 sec.",
+    "4": "When your Serpent Sting and Wyvern Sting abilities deal damage, you have a 5% chance to gain 20% attack power for 10 sec."
+  },
+  "Bloodmage's Regalia": {
+    "2": "Your Hot Streak, Missile Barrage, and Brain Freeze talents also grant you 12% haste for 5 sec when the effect of the talent is consumed.",
+    "4": "Your Mirror Image ability also causes you to deal 18% additional damage for 30 sec."
+  },
+  "Bonescythe Battlegear": {
+    "2": "Increases the damage dealt by your Rupture by 10%.",
+    "4": "Reduces the Energy cost of your Combo Moves by 5%."
+  },
+  "Crimson Acolyte's Raiment": {
+    "2": "Your Flash Heal has a 33% chance to cause the target to heal for 33% of the healed amount over 9 sec.",
+    "4": "Increases the effect of Power Word: Shield by 5% and Circle of Healing by 10%."
+  },
+  "Crimson Acolyte's Regalia": {
+    "2": "The critical strike chance of your Shadow Word: Pain, Devouring Plague, and Vampiric Touch spells is increased by 5%.",
+    "4": "Reduces the channel duration by 0.5 sec and period by 0.17 sec on your Mind Flay spell."
+  },
+  "Cryptstalker Battlegear": {
+    "2": "Your pet deals an additional 5% damage.",
+    "4": "Your ranged attack speed is increased by 20% while Aspect of the Viper is active."
+  },
+  "Dark Coven's Regalia": {
+    "2": "The critical strike chance of your Shadowbolt, Incinerate, Soulfire, and Corruption spells is increased by 5%.",
+    "4": "Each time your Immolate and Unstable Affliction spells deal periodic damage, you have a 15% chance to gain 10% damage done by you and your pet for 10 sec."
+  },
+  "Darkruned Battlegear": {
+    "2": "Increases the critical strike chance of Death Coil and Frost Strike by 8%.",
+    "4": "Increases the bonus damage done per disease by 20% on Blood Strike, Heart Strike, Obliterate, and Scourge Strike."
+  },
+  "Darkruned Plate": {
+    "2": "Increases the damage done by Rune Strike by 10%.",
+    "4": "Anti-magic shell also grants you 10% reduction to physical damage taken."
+  },
+  "Deathbringer Garb": {
+    "2": "Increases the damage done by your Unstable Affliction by 20% and your Immolate by 10%.",
+    "4": "Increases the critical strike chance of your Shadow Bolt and Incinerate spells by 5%."
+  },
+  "Dreadnaught Battlegear": {
+    "2": "Increases the damage of your Slam by 10%.",
+    "4": "Your Bleed periodic effects have a chance to make your next ability cost 5 less rage."
+  },
+  "Dreadnaught Plate": {
+    "2": "Increases the damage of your Shield Slam by 10%."
+  },
+  "Dreamwalker Battlegear": {
+    "2": "Your Rip lasts for an additional 4 seconds, and your Lacerate deals an additional 5% damage.",
+    "4": "Increases the duration of Barkskin by 3 seconds and decreases the cooldown of Tiger's Fury by 3 seconds."
+  },
+  "Dreamwalker Garb": {
+    "2": "Your Insect Swarm deals an additional 10% damage.",
+    "4": "Your Wrath and Starfire spells gain an additional 5% critical strike chance."
+  },
+  "Dreamwalker Regalia": {
+    "2": "The cost of your Lifebloom is reduced by 5%.",
+    "4": "Your Nourish heals an additional 5% for each of your heal over time effects present on the target."
+  },
+  "Earthshatter Battlegear": {
+    "2": "Your Lightning Shield damage is increased by 10%.",
+    "4": "Your Flurry effect provides an additional 5% melee haste."
+  },
+  "Earthshatter Garb": {
+    "2": "Your Lightning Bolt costs 5% less mana.",
+    "4": "The bonus critical strike damage of your Lava Burst is increased by 10%."
+  },
+  "Earthshatter Regalia": {
+    "2": "Your Water Shield is 10% stronger.",
+    "4": "Increases the healing done by your Chain Heal and Healing Wave by 5%."
+  },
+  "Frost Witch's Battlegear": {
+    "2": "When you activate your Shamanistic Rage ability you also deal 12% additional damage for 15 sec.",
+    "4": "Each time the beneficial effect of your Maelstrom Weapon talent reaches 5 charges, you have a 15% chance to gain 20% attack power for 10 sec."
+  },
+  "Frost Witch's Garb": {
+    "2": "Your Riptide spell grants 20% spell haste for your next spellcast within 10 sec.",
+    "4": "Your Chain Heal critical strikes cause the target to heal for 25% of the healed amount over 9 sec."
+  },
+  "Frost Witch's Regalia": {
+    "2": "Your Lightning Bolt and Chain Lightning spells reduce the remaining cooldown on your Elemental Mastery talent by 2 sec.",
+    "4": "Your Lava Burst spell causes your Flame Shock effect on the target to deal at least two additional periodic damage ticks before expiring."
+  },
+  "Frostfire Garb": {
+    "2": "You gain 25% more mana when you use a mana gem. In addition, using a mana gem grants you 225 spell power for 15 sec.",
+    "4": "Your offensive spells gain an additional 5% increased critical strike bonus damage."
+  },
+  "Garb of Faith": {
+    "2": "The mana cost of your Mind Blast is reduced by 10%.",
+    "4": "Your Shadow Word: Death has an additional 10% chance to critically strike."
+  },
+  "Gladiator's Battlegear": {
+    "2": "+100 (1.06% @ L80) resilience rating.",
+    "4": "Reduces the cooldown of your Intercept ability by 5 sec."
+  },
+  "Gladiator's Investiture": {
+    "2": "+100 (1.06% @ L80) resilience rating.",
+    "4": "Reduces the duration of the Weakened Soul effect caused by your Power Word: Shield by 2 sec."
+  },
+  "Gladiator's Pursuit": {
+    "2": "+100 (1.06% @ L80) resilience rating.",
+    "4": "Reduces the cooldown of your Traps by 2 seconds."
+  },
+  "Gladiator's Raiment": {
+    "2": "+100 (1.06% @ L80) resilience rating.",
+    "4": "Reduces the duration of the Weakened Soul effect caused by your Power Word: Shield by 2 sec."
+  },
+  "Gladiator's Regalia": {
+    "2": "+100 (1.06% @ L80) resilience rating.",
+    "4": "Reduces the casting time of your Polymorph spell by 0.15 sec."
+  },
+  "Gladiator's Sanctuary": {
+    "2": "+100 (1.06% @ L80) resilience rating.",
+    "4": "Increases your movement speed by 15% while in Bear Form, Cat Form, or Travel Form. Only active outdoors."
+  },
+  "Kel'Thuzad's Regalia": {
+    "2": "Increases your pet's critical strike chance with all its attacks by 10%.",
+    "4": "Increases the damage done by your Immolate, Corruption, and Unstable Affliction spells by 10%."
+  },
+  "Khadgar's Regalia": {
+    "2": "Increases the armor you gain from Ice Armor by 20%, the mana regeneration you gain from Mage Armor by 10%, and adds an additional 15% of your Spirit in critical strike rating when Molten Armor is active.",
+    "4": "Increases the critical strike chance of your Fireball, Frostbolt, Frostfire Bolt, Arcane Missiles, and Arcane Blast spells by 5%."
+  },
+  "Kirin Tor Garb": {
+    "2": "Your Arcane Blast, Frostbolt, Frostfire Bolt, and Fireball spells have a chance to grant you 350 spell power for 15 sec.",
+    "4": "You have a chance for the effect of your Missile Barrage, Hot Streak, or Brain Freeze talent not to be consumed when you cast the spells which benefit."
+  },
+  "Lasherweave Battlegear": {
+    "2": "Your Swipe (Bear) and Lacerate abilities deal 20% additional damage and the cost of your Rip ability is reduced by 10 energy.",
+    "4": "Your Enrage ability no longer decreases your armor and instead decreases all damage taken by 12%, and the periodic damage done by your Rake ability can now be a critical strike."
+  },
+  "Lasherweave Garb": {
+    "2": "The healing granted by your Wild Growth spell reduces 30% less over time.",
+    "4": "Each time your Rejuvenation spell heals a target, it has a 2% chance to jump to a new target at full duration."
+  },
+  "Lasherweave Regalia": {
+    "2": "When you gain Clearcasting from your Omen of Clarity talent, you deal 15% additional Nature and Arcane damage for 6 sec.",
+    "4": "Your critical strikes from Starfire and Wrath cause the target to languish for an additional 7% of your spell's damage over 4 sec."
+  },
+  "Lightsworn Battlegear": {
+    "2": "Your melee attacks have a 40% chance to reset the cooldown on your Divine Storm ability.",
+    "4": "Your Seals and Judgements deal 10% additional damage."
+  },
+  "Lightsworn Garb": {
+    "2": "While your Divine Illumination talent is active, your healing spells are 35% stronger.",
+    "4": "Your Holy Shock spell causes the next Holy Light you cast within 10 sec to have 0.3 sec reduced cast time."
+  },
+  "Lightsworn Plate": {
+    "2": "Your Hammer of the Righteous ability deals 20% increased damage.",
+    "4": "When you activate Divine Plea, you gain 12% dodge for 10 sec."
+  },
+  "Malfurion's Battlegear": {
+    "2": "Decreases the cooldown on your Growl ability by 2 sec, increases the periodic damage done by your Lacerate ability by 5%, and increases the duration of your Rake ability by 3 sec.",
+    "4": "Reduces the cooldown on Barkskin by 12 sec and increases the critical strike chance of Rip and Ferocious Bite by 5%."
+  },
+  "Malfurion's Garb": {
+    "2": "Increases the critical strike chance of your Nourish spell by 5%.",
+    "4": "Your Rejuvenation ability now has a chance for its healing to be critical strikes."
+  },
+  "Malfurion's Regalia": {
+    "2": "Your Moonfire ability now has a chance for its periodic damage to be critical strikes.",
+    "4": "Increases the damage done by your Starfire and Wrath spells by 4%."
+  },
+  "Nightsong Battlegear": {
+    "2": "The periodic damage dealt by your Rake, Rip, and Lacerate abilities has a chance to cause you to enter a Clearcasting state.",
+    "4": "Increases the duration of Savage Roar and Survival Instinct by 8 sec."
+  },
+  "Nightsong Garb": {
+    "2": "Increases the bonus granted by Eclipse for Starfire and Wrath by 7%.",
+    "4": "Each time your Insect Swarm deals damage, it has a chance to make your next Starfire cast within 10 sec instant."
+  },
+  "Nightsong Regalia": {
+    "2": "Increases the healing done by your Swiftmend spell by 10%.",
+    "4": "Your Rejuvenation spell also provides an instant heal for your target."
+  },
+  "Nobundo's Battlegear": {
+    "2": "Adds an additional 3% chance to trigger your Static Shock talent.",
+    "4": "Increases the damage done by your Earth Shock, Flame Shock, and Frost Shock spells by 25%."
+  },
+  "Nobundo's Garb": {
+    "2": "Increases the healing done by your Riptide spell by 20%.",
+    "4": "Increases the critical strike chance of your Chain Heal spell by 5%."
+  },
+  "Nobundo's Regalia": {
+    "2": "Increases the duration of your Flame Shock spell by 9 sec.",
+    "4": "Your Lava Burst spell causes your target to burn for an additonal 10% of your spell's damage over 6 sec."
+  },
+  "Plagueheart Garb": {
+    "2": "Your Corruption and Immolate periodic effects have a chance to increase the critical strike chance of your next Shadow Bolt or Incinerate by 10% for the next 10 sec.",
+    "4": "Casting Life Tap grants you an additional 300 spirit for 10 seconds."
+  },
+  "Purified Shard of the Gods": {
+    "2": "Increases spell power by 222."
+  },
+  "Redemption Battlegear": {
+    "2": "Increases the damage dealt by your Divine Storm by 10%.",
+    "4": "Reduces the cooldown of your Judgment of Light, Judgment of Wisdom, and Judgment of Justice by 1 second."
+  },
+  "Redemption Plate": {
+    "2": "Increases the damage dealt by your Hammer of the Righteous by 10%.",
+    "4": "Increases the duration of your Divine Shield and Divine Protection by 3 seconds."
+  },
+  "Redemption Regalia": {
+    "2": "Your Holy Shock gains an additional 10% chance to critically strike.",
+    "4": "The cost of your Holy Light is reduced by 5%."
+  },
+  "Regalia of Faith": {
+    "2": "Your Prayer of Mending will jump an additional time.",
+    "4": "The cost of your Greater Heal is reduced by 5%."
+  },
+  "Sanctification Garb": {
+    "2": "Increases the damage done by your Devouring Plague by 15%.",
+    "4": "Your Mind Blast also grants you 240 (7.32% @ L80) haste rating for 4 sec."
+  },
+  "Sanctification Regalia": {
+    "2": "Increases the critical heal chance of your Prayer of Healing by 10%.",
+    "4": "Casting Power Word: Shield also grants you 250 spell power for 5 sec."
+  },
+  "Scourgeborne Battlegear": {
+    "2": "Increases the critical strike chance of your Obliterate, Scourge Strike, and Death Strike abilities by 5%.",
+    "4": "Your Obliterate, Scourge Strike, and Death Strike generate an additional 5 Runic Power when used."
+  },
+  "Scourgeborne Plate": {
+    "2": "Increases the critical strike chance of your Plague Strike by 10%.",
+    "4": "Increases the duration of your Icebound Fortitude by 3 seconds."
+  },
+  "Scourgelord's Battlegear": {
+    "2": "Your Obliterate and Scourge Strike abilities deal 10% increased damage, and your Heart Strike ability deals 7% increased damage.",
+    "4": "Whenever all your runes are on cooldown, you gain 3% increased damage done with weapons, spells, and abilities for the next 15 sec."
+  },
+  "Scourgelord's Plate": {
+    "2": "Increases the damage done by your Death and Decay ability by 20%.",
+    "4": "When you activate Blood Tap, you gain 12% damage reduction from all attacks for 10 sec."
+  },
+  "Scourgestalker Battlegear": {
+    "2": "Increases the damage done by your Serpent Sting by 10%.",
+    "4": "Your Steady Shot has a chance to grant you 600 attack power for 15 sec."
+  },
+  "Shadowblade's Battlegear": {
+    "2": "Your Tricks of the Trade ability now grants you 15 energy instead of costing energy.",
+    "4": "Gives your melee finishing moves a 13% chance to add 3 combo points to your target."
+  },
+  "Shiny Shard of the Gods": {
+    "2": "Increases spell power by 250."
+  },
+  "Siegebreaker Battlegear": {
+    "2": "Heroic Strike and Slam critical strikes have a chance to grant you 150 (4.57% @ L80) haste rating for 5 sec.",
+    "4": "Increases the critical strike chance of Mortal Strike and Bloodthirst by 10%."
+  },
+  "Siegebreaker Plate": {
+    "2": "Increases the critical strike chance of your Devastate ability by 10%."
+  },
+  "Terrorblade Battlegear": {
+    "2": "Your Deadly Poison causes you to gain 1 energy each time it deals damage.",
+    "4": "Increases the damage done by your Rupture by 20%."
+  },
+  "Thassarian's Battlegear": {
+    "2": "Your Blood Strike and Heart Strike abilities have a chance to grant you 180 additional strength for 15 sec.",
+    "4": "Your Blood Plague ability now has a chance for its damage to be critical strikes."
+  },
+  "Thassarian's Plate": {
+    "2": "Decreases the cooldown on your Dark Command ability by 2 sec and increases the damage done by your Blood Strike and Heart Strike abilities by 5%.",
+    "4": "Decreases the cooldown on your Unbreakable Armor, Vampiric Blood, and Bone Shield abilities by 10 sec."
+  },
+  "Turalyon's Battlegear": {
+    "2": "Your Righteous Vengeance talent now has a chance for its damage to be critical strikes.",
+    "4": "Increases the critical strike chance of your Judgements by 5%."
+  },
+  "Turalyon's Garb": {
+    "2": "Increases the duration of your Judgements by 10 sec.",
+    "4": "Increases the heal over time effect from Flash of Light in conjunction with Sacred Shield by 100%."
+  },
+  "Turalyon's Plate": {
+    "2": "Decreases the cooldown on your Hand of Reckoning ability by 2 sec and increases the damage done by your Hammer of the Righteous ability by 5%."
+  },
+  "VanCleef's Battlegear": {
+    "2": "Your Rupture ability has a chance each time it deals damage to reduce the cost of your next ability by 40 energy.",
+    "4": "Increases the critical strike chance of your Hemorrhage, Sinister Strike, Backstab, and Mutilate abilities by 5%."
+  },
+  "Velen's Raiment": {
+    "2": "Increases the healing done by your Prayer of Mending spell by 20%.",
+    "4": "Increases the shield from your Divine Aegis and the instant healing from your Empowered Renew by 10%."
+  },
+  "Velen's Regalia": {
+    "2": "Increases the duration of your Vampiric Touch spell by 6 sec.",
+    "4": "Increases the critical strike chance of your Mind Flay spell by 5%."
+  },
+  "Windrunner's Battlegear": {
+    "2": "The damage done by your Serpent Sting ability can now be critical strikes.",
+    "4": "Each time you hit with a ranged attack, you have a chance to grant your pet 600 attack power for 15 sec."
+  },
+  "Worldbreaker Battlegear": {
+    "2": "Increases the damage done by Lava Lash and Stormstrike by 20%.",
+    "4": "Increases the frequency of Maelstrom Weapon being triggered by your melee weapon attacks by 20%."
+  },
+  "Worldbreaker Garb": {
+    "2": "Increases periodic damage done by your Flame Shock ability by 20%.",
+    "4": "Your critical strikes from Lightning Bolt cause the target to take nature damage equal to 8% of the Lightning Bolt's damage over 4 sec."
+  },
+  "Worldbreaker Regalia": {
+    "2": "Reduces the cooldown on Riptide by 1 sec.",
+    "4": "Reduces the cast time of Chain Heal by 0.2 sec."
+  },
+  "Wrynn's Battlegear": {
+    "2": "Berserker Stance grants an additional 2% critical strike chance, and Battle Stance grants an additional 6% armor penetration.",
+    "4": "Increases the critical strike chance of your Slam and Heroic Strike abilities by 5%."
+  },
+  "Wrynn's Plate": {
+    "2": "Decreases the cooldown on your Taunt ability by 2 sec and increases the damage done by your Devastate ability by 5%."
+  },
+  "Ymirjar Lord's Battlegear": {
+    "2": "When your Deep Wounds ability deals damage you have a 3% chance to gain 16% attack power for 10 sec.",
+    "4": "You have a 20% chance for your Bloodsurge and Sudden Death talents to grant 2 charges of their effect instead of 1, reduce the global cooldown on Execute or Slam by 0.5 sec, and for the duration of the effect to be increased by 100%."
+  },
+  "Ymirjar Lord's Plate": {
+    "2": "Your Shield Slam and Shockwave abilities deal 20% increased damage."
+  }
+}

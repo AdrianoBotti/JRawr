@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<section id="stats-panel" class="card" th:fragment="statsPanel">
+    <div th:replace="~{:: statsBody}"></div>
+</section>
+
+<!-- htmx out-of-band swap target used by the paper-doll / buff / talent responses. -->
+<section id="stats-panel" class="card" hx-swap-oob="true" th:fragment="statsOob">
+    <div th:replace="~{:: statsBody}"></div>
+</section>
+
+<div th:fragment="statsBody">
+    <header class="card-head">
+        <h2>Stats</h2>
+    </header>
+
+    <div class="empty-state" data-state="incomplete" th:if="${incomplete}">
+        <p th:text="${incompleteReason}">Incomplete character.</p>
+    </div>
+
+    <div class="error-state" data-state="error" th:if="${calculationError != null}">
+        <p>Calculation failed.</p>
+        <pre th:text="${calculationError}">error</pre>
+    </div>
+
+    <div class="stats-scroll" data-state="ok" th:if="${result != null}">
+        <section class="stats-section stats-base" data-section="base"
+                 th:if="${result.hasBaseGroups()}">
+            <h3 class="stats-section-title">Base</h3>
+            <th:block th:each="group : ${result.baseGroups()}">
+                <section th:replace="~{:: statGroup(${group})}"></section>
+            </th:block>
+        </section>
+    </div>
+    <button type="button" class="btn stats-advanced-button" data-open-advanced-stats
+            th:if="${result != null and result.hasAdvancedGroups()}">Advanced stats</button>
+
+    <dialog id="stats-advanced-dialog" class="card stats-advanced-dialog"
+            data-section="advanced" aria-labelledby="stats-advanced-title"
+            th:if="${result != null and result.hasAdvancedGroups()}">
+        <header class="card-head">
+            <h2 id="stats-advanced-title">Advanced stats</h2>
+            <button class="icon-btn" type="button" data-close-advanced-stats title="Close">&#215;</button>
+        </header>
+        <div class="advanced-stats-grid">
+            <th:block th:each="group : ${result.advancedGroups()}">
+                <section th:replace="~{:: statGroup(${group})}"></section>
+            </th:block>
+        </div>
+    </dialog>
+</div>
+
+<section class="stat-group" th:fragment="statGroup(group)">
+    <h3 class="stat-group-title" th:text="${group.name()}">Details</h3>
+    <dl class="stat-list">
+        <div class="stat-row" th:each="row : ${group.rows()}">
+            <dt>
+                <span th:classappend="${row.tooltip() != null} ? 'stat-label-tip'"
+                      th:attr="data-tip-host=${row.tooltip() != null ? 'true' : null},tabindex=${row.tooltip() != null ? '0' : null}">
+                    <span th:text="${row.label()}">Stamina</span>
+                    <span class="talent-tip" th:if="${row.tooltip() != null}">
+                        <span class="talent-tip-text" th:text="${row.tooltip()}">Explanation</span>
+                    </span>
+                </span>
+            </dt>
+            <dd>
+                <span class="stat-value" th:if="${!#strings.isEmpty(row.primary())}"
+                      th:text="${row.primary()}">0</span>
+                <span class="stat-secondary" th:each="line : ${row.secondary()}"
+                      th:text="${line}">Extra detail</span>
+            </dd>
+        </div>
+    </dl>
+</section>
+
+</body>
+</html>

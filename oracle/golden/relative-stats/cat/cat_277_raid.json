@@ -1,0 +1,96 @@
+{
+  "model": "Cat",
+  "fixture": "cat_277_raid",
+  "relativeStats": [
+    {
+      "name": " Agility",
+      "description": "If you had 1 more Agility",
+      "baseStat": null,
+      "overallPoints": 1.60804355,
+      "subPoints": [
+        1.60804355,
+        0
+      ]
+    },
+    {
+      "name": " Armor Penetration Rating",
+      "description": "If you had 1 more Armor Penetration Rating",
+      "baseStat": null,
+      "overallPoints": 2.70117188,
+      "subPoints": [
+        2.70117188,
+        0
+      ]
+    },
+    {
+      "name": " Attack Power",
+      "description": "If you had 1 more Attack Power",
+      "baseStat": null,
+      "overallPoints": 0.772489846,
+      "subPoints": [
+        0.772489846,
+        0
+      ]
+    },
+    {
+      "name": " Crit Rating",
+      "description": "If you had 1 more Crit Rating",
+      "baseStat": null,
+      "overallPoints": 1.11523438,
+      "subPoints": [
+        1.11523438,
+        0
+      ]
+    },
+    {
+      "name": " Haste Rating",
+      "description": "If you had 1 more Haste Rating",
+      "baseStat": null,
+      "overallPoints": 1.81933594,
+      "subPoints": [
+        1.81933594,
+        0
+      ]
+    },
+    {
+      "name": " Health",
+      "description": "If you had 1 more Health",
+      "baseStat": null,
+      "overallPoints": 0.00997330621,
+      "subPoints": [
+        0,
+        0.00997330621
+      ]
+    },
+    {
+      "name": " Hit Rating",
+      "description": "If you had 1 more Hit Rating",
+      "baseStat": null,
+      "overallPoints": 2.90917969,
+      "subPoints": [
+        2.90917969,
+        0
+      ]
+    },
+    {
+      "name": " Stamina",
+      "description": "If you had 1 more Stamina",
+      "baseStat": null,
+      "overallPoints": 0.10836859,
+      "subPoints": [
+        0,
+        0.10836859
+      ]
+    },
+    {
+      "name": " Strength",
+      "description": "If you had 1 more Strength",
+      "baseStat": null,
+      "overallPoints": 1.67375648,
+      "subPoints": [
+        1.67375648,
+        0
+      ]
+    }
+  ]
+}

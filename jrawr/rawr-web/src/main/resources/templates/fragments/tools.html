@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Global data/tools hub, opened from the main bar. The individual editors replace the dialog
+     content, and their back button returns to this hub. -->
+<div class="modal-backdrop" data-modal="tools" th:fragment="toolsModal">
+    <div class="modal card tools-modal" role="dialog" aria-modal="true" aria-labelledby="tools-title">
+        <header class="modal-head">
+            <h2 id="tools-title">Tools</h2>
+            <button class="icon-btn" type="button" title="Close" aria-label="Close"
+                    data-modal-close>&#215;</button>
+        </header>
+        <div class="modal-body">
+            <div th:replace="~{:: toolsHub}"></div>
+        </div>
+    </div>
+</div>
+
+<th:block th:fragment="toolsHub">
+    <p class="hint">
+        Global data used by the item picker, comparison charts and optimizer. These editors do not
+        change the current character by themselves.
+    </p>
+
+    <h3 class="options-title">Data editors</h3>
+    <div class="tools-grid">
+        <button class="tool-card" type="button"
+                hx-get="/character/item-filters" hx-target="#modal" hx-swap="innerHTML">
+            <svg class="tool-card-icon" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                 stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M4 6h16M7 12h10M10 18h4"/>
+            </svg>
+            <span class="tool-card-title">Item filters</span>
+            <span class="tool-card-text">Relevance, item level/quality and per-model item-type
+                filters.</span>
+        </button>
+        <button class="tool-card" type="button"
+                hx-get="/character/gemming-templates" hx-target="#modal" hx-swap="innerHTML">
+            <svg class="tool-card-icon" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                 stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M6 4h12l3 5-9 11L3 9z"/>
+                <path d="M3 9h18M9 4 7 9l5 11 5-11-2-5"/>
+            </svg>
+            <span class="tool-card-title">Gemming templates</span>
+            <span class="tool-card-text">Built-in and custom socket-color templates used
+                by the optimizer and comparison charts.</span>
+        </button>
+        <button class="tool-card" type="button"
+                hx-get="/character/item-costs" hx-target="#modal" hx-swap="innerHTML">
+            <svg class="tool-card-icon" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                 stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="8"/>
+                <path d="M14.5 9.5c-.5-.6-1.4-1-2.5-1-1.5 0-2.5.7-2.5 1.7 0 2.6 5 1.2 5 3.8 0 1-1 1.8-2.5 1.8-1.1 0-2-.4-2.5-1M12 7v10"/>
+            </svg>
+            <span class="tool-card-title">Item costs</span>
+            <span class="tool-card-text">Purchase costs for the <strong>[Cost]</strong>
+                optimizer objective and requirements.</span>
+        </button>
+        <button class="tool-card" type="button"
+                hx-get="/tools/item-editor" hx-target="#modal" hx-swap="innerHTML">
+            <svg class="tool-card-icon" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                 stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M4 5h16v14H4z"/>
+                <path d="M8 9h8M8 13h5"/>
+            </svg>
+            <span class="tool-card-title">Item editor</span>
+            <span class="tool-card-text">Fetch items by ID, inspect the local cache, and refresh
+                or remove fetched items.</span>
+        </button>
+    </div>
+</th:block>
+
+</body>
+</html>

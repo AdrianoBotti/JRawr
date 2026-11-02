@@ -1,0 +1,92 @@
+JRawr
+Copyright 2026 Adriano Botti and the JRawr contributors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+Original Rawr
+-------------
+JRawr is a port of Rawr v2.3.23.0, the World of Warcraft (Wrath of the
+Lich King 3.3.5a) gear theorycrafting and optimization tool.
+
+Copyright 2008 Chadd Nervig, "HugeHoss", "Toskk", and the Rawr Developers.
+Rawr is licensed under the Apache License, Version 2.0.
+
+WotLK 3.3.5a fork and port snapshot
+-----------------------------------
+JRawr was ported from the "RAWR_WotLK_3.3.5a" fork, which updated Rawr to
+read item data from a WotLK 3.3.5a database rather than the post-Cataclysm
+Wowhead database. The fork was maintained by Magmonix
+(https://github.com/Magmonix), with Wine/Mono integration and debugging work
+by Adriano Botti.
+
+The read-only port source and the oracle tools used to produce the golden
+JSON are archived at
+https://github.com/AdrianoBotti/JRawrOriginalRawrSnapshot, tag
+`jrawr-oracle-1`. The commit used by the port headers is
+46f190bee32964cc8df5fe853d95b8a343f5aa23. The archived snapshot adds the
+required WotLK data caches and attribution files; it is otherwise the fork
+source.
+
+What JRawr changes
+------------------
+JRawr is a translation of the original engine to Java 25, not a
+line-by-line copy. The deliberate changes are:
+
+  * The calculation engine, all 20 class/spec models, the optimizer and the
+    character XML handling are ported to Java and verified with
+    golden-master tests against the original compiled binaries.
+  * The original WinForms, Silverlight and WPF user interfaces are not
+    ported. JRawr has a new Spring Boot web interface using Thymeleaf and
+    htmx.
+  * Model discovery uses an explicit registry instead of runtime
+    reflection.
+  * Game data is loaded at runtime from the original XML schemas. The data
+    caches are unchanged.
+  * The GPL-licensed Cephes special-function code in the original
+    `SpecialFunction.cs` was not ported. JRawr uses Apache Commons Math for
+    gamma, logGamma, erf, erfc and the regularized beta functions.
+  * A companion addon, JRawrCharacterExporter
+    (https://github.com/AdrianoBotti/JRawrCharacterExporter), exports the
+    active in-game character as Rawr XML.
+
+Third-party components
+----------------------
+Runtime dependencies:
+
+  * Spring Boot 4.1.1 and the Spring Framework, Apache License 2.0
+  * Apache Tomcat (embedded), Apache License 2.0
+  * Thymeleaf, Apache License 2.0
+  * Jackson, Apache License 2.0
+  * Apache Commons Math 3.6.1, Apache License 2.0
+  * SLF4J, MIT License
+  * Logback, EPL-1.0 or LGPL-2.1
+
+Browser and bundled assets:
+
+  * htmx 2.0.4, BSD Zero Clause License (loaded from unpkg at runtime)
+  * Font Awesome Free 6.7.2, CC BY 4.0 (a single `scroll` icon path)
+
+Test-only dependencies include JUnit 5, AssertJ and HtmlUnit. See
+THIRD_PARTY_NOTICES.md for links and the full list.
+
+Trademarks and game data
+------------------------
+JRawr is not affiliated with or endorsed by Blizzard Entertainment.
+World of Warcraft, Wrath of the Lich King, and related names are
+trademarks of Blizzard Entertainment. Blizzard game data, item icons and
+other game assets are the property of Blizzard Entertainment or their
+respective owners. Game data distributed with JRawr (item, enchant, buff
+and spell statistics) is included solely to make the calculator
+functional. The Apache License, Version 2.0 applies to the JRawr source
+code and documentation, not to Blizzard's game data, game client, icons or
+trademarks.

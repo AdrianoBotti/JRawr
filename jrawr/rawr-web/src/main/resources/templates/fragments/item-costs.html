@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div class="modal-backdrop" data-modal="item-costs" th:fragment="costsModal">
+    <div class="modal card costs-modal" role="dialog" aria-modal="true" aria-labelledby="costs-title">
+        <header class="modal-head">
+            <div class="modal-head-leading">
+                <button class="icon-btn" type="button" title="Back to Tools" aria-label="Back to Tools"
+                        hx-get="/tools" hx-target="#modal" hx-swap="innerHTML">&#8592;</button>
+                <h2 id="costs-title">Item costs</h2>
+            </div>
+            <button class="icon-btn" type="button" title="Close" aria-label="Close"
+                    data-modal-close>&#215;</button>
+        </header>
+        <div id="costs-panel" class="modal-body" th:fragment="costsPanel">
+            <div class="inline-error" th:if="${costError != null}" th:text="${costError}">error</div>
+            <p class="hint">
+                Costs are used by the optimizer's <strong>[Cost]</strong> calculation and requirements.
+                Search by name to set a cost on any cached item; an empty search lists items that
+                already have a cost.
+            </p>
+            <form class="costs-search" onsubmit="return false">
+                <input type="search" id="costs-search-input" name="q" hx-preserve="true"
+                       placeholder="Search items by name…"
+                       th:value="${costs.query()}" autocomplete="off"
+                       hx-get="/character/item-costs/body" hx-target="#costs-panel"
+                       hx-swap="outerHTML" hx-trigger="input changed delay:200ms"
+                       hx-include="closest form"/>
+            </form>
+            <div class="costs-rows">
+                <form class="costs-row" th:each="row : ${costs.rows()}"
+                      hx-post="/character/item-costs" hx-target="#costs-panel" hx-swap="outerHTML">
+                    <input type="hidden" name="itemId" th:value="${row.itemId()}"/>
+                    <input type="hidden" name="q" th:value="${costs.query()}"/>
+                    <span class="costs-name" th:text="${row.name()}">Item</span>
+                    <span class="hint" th:text="'ilvl ' + ${row.itemLevel()}">ilvl 0</span>
+                    <input type="number" name="cost" min="0" step="any" placeholder="0"
+                           th:value="${row.costText()}"/>
+                    <button class="btn btn-small" type="submit">Save</button>
+                </form>
+                <p class="empty-state" th:if="${#lists.isEmpty(costs.rows())}">No matching items.</p>
+            </div>
+            <p class="hint" th:if="${costs.total() > #lists.size(costs.rows())}"
+               th:text="|Showing ${#lists.size(costs.rows())} of ${costs.total()}; refine the search to see more.|">
+                Showing a subset.
+            </p>
+            <div class="form-actions">
+                <button class="btn" type="button" hx-post="/character/item-costs/reset"
+                        hx-target="#costs-panel" hx-swap="outerHTML"
+                        hx-confirm="Set every item cost to zero?">Reset all costs</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

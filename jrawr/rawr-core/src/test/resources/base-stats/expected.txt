@@ -1,0 +1,3052 @@
+== 1|Warrior|Human|Caster
+S Agility 42E20000
+S AttackPower 435C0000
+S Block 3D4CCCCD
+S BonusSpiritMultiplier 3CF5C28F
+S Defense 43C80000
+S Dodge 3D1613D3
+S Health 45FDC800
+S Intellect 42100000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02BE8C
+S Spirit 42680000
+S Stamina 431F0000
+S Strength 432E0000
+== 1|Warrior|Orc|Caster
+S Agility 42DC0000
+S AttackPower 435C0000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D1613D3
+S Health 45FDC800
+S Intellect 42040000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02BE8C
+S Spirit 42780000
+S Stamina 43210000
+S Strength 43310000
+E 0.trigger=Use duration=41700000 cooldown=42F00000 chance=3F800000 maxStack=1
+S 0.AttackPower 40C00000
+== 1|Warrior|Dwarf|Caster
+S Agility 42DA0000
+S AttackPower 435C0000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D1613D3
+S Health 45FDC800
+S Intellect 420C0000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02BE8C
+S Spirit 42680000
+S Stamina 43220000
+S Strength 43300000
+== 1|Warrior|NightElf|Caster
+S Agility 42EC0000
+S AttackPower 435C0000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D1613D3
+S Health 45FDC800
+S Intellect 42100000
+S Miss 3D8F5C29
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02BE8C
+S Spirit 426C0000
+S Stamina 431E0000
+S Strength 432B0000
+== 1|Warrior|Undead|Caster
+S Agility 42DE0000
+S AttackPower 435C0000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D1613D3
+S Health 45FDC800
+S Intellect 42080000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02BE8C
+S Spirit 42800000
+S Stamina 43290000
+S Strength 43370000
+== 1|Warrior|Tauren|Caster
+S Agility 42DA0000
+S AttackPower 435C0000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D1613D3
+S Health 46053C33
+S Intellect 41F80000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02BE8C
+S Spirit 42740000
+S Stamina 43210000
+S Strength 43330000
+== 1|Warrior|Gnome|Caster
+S Agility 42E80000
+S AttackPower 435C0000
+S Block 3D4CCCCD
+S BonusIntellectMultiplier 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D1613D3
+S Health 45FDC800
+S Intellect 42180000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02BE8C
+S Spirit 426C0000
+S Stamina 431E0000
+S Strength 43290000
+== 1|Warrior|Troll|Caster
+S Agility 42E60000
+S AttackPower 435C0000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D1613D3
+S Health 45FDC800
+S Intellect 42000000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02BE8C
+S Spirit 42700000
+S Stamina 43220000
+S Strength 43390000
+E 0.trigger=Use duration=41200000 cooldown=43340000 chance=3F800000 maxStack=1
+S 0.PhysicalHaste 3E4CCCCD
+== 1|Warrior|BloodElf|Caster
+S AttackPower 435C0000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D1613D3
+S Health 45FDC800
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02BE8C
+== 1|Warrior|Draenei|Caster
+S Agility 42DC0000
+S AttackPower 435C0000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D1613D3
+S Health 45FDC800
+S Intellect 42140000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02BE8C
+S Spirit 42740000
+S Stamina 43260000
+S Strength 43360000
+== 1|Paladin|Human|Caster
+S Agility 42B40000
+S AttackPower 43700000
+S Block 3D4CCCCD
+S BonusSpiritMultiplier 3CF5C28F
+S Defense 43C80000
+S Dodge 3D0F2064
+S Health 45D8B000
+S Intellect 42C40000
+S Mana 45895000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D05F06F
+S SpellCrit 3D08A47F
+S Spirit 42D80000
+S Stamina 430F0000
+S Strength 43170000
+== 1|Paladin|Orc|Caster
+S AttackPower 43700000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D0F2064
+S Health 45D8B000
+S Mana 45895000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D05F06F
+S SpellCrit 3D08A47F
+E 0.trigger=Use duration=41700000 cooldown=42F00000 chance=3F800000 maxStack=1
+S 0.AttackPower 40C00000
+== 1|Paladin|Dwarf|Caster
+S Agility 42AC0000
+S AttackPower 43700000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D0F2064
+S Health 45D8B000
+S Intellect 42C20000
+S Mana 45895000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D05F06F
+S SpellCrit 3D08A47F
+S Spirit 42D00000
+S Stamina 43120000
+S Strength 43190000
+== 1|Paladin|NightElf|Caster
+S AttackPower 43700000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D0F2064
+S Health 45D8B000
+S Mana 45895000
+S Miss 3D8F5C29
+S Parry 3D4CCCCD
+S PhysicalCrit 3D05F06F
+S SpellCrit 3D08A47F
+== 1|Paladin|Undead|Caster
+S AttackPower 43700000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D0F2064
+S Health 45D8B000
+S Mana 45895000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D05F06F
+S SpellCrit 3D08A47F
+== 1|Paladin|Tauren|Caster
+S AttackPower 43700000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D0F2064
+S Health 45E38599
+S Mana 45895000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D05F06F
+S SpellCrit 3D08A47F
+== 1|Paladin|Gnome|Caster
+S AttackPower 43700000
+S Block 3D4CCCCD
+S BonusIntellectMultiplier 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D0F2064
+S Health 45D8B000
+S Mana 45895000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D05F06F
+S SpellCrit 3D08A47F
+== 1|Paladin|Troll|Caster
+S AttackPower 43700000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D0F2064
+S Health 45D8B000
+S Mana 45895000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D05F06F
+S SpellCrit 3D08A47F
+E 0.trigger=Use duration=41200000 cooldown=43340000 chance=3F800000 maxStack=1
+S 0.PhysicalHaste 3E4CCCCD
+S 0.SpellHaste 3E4CCCCD
+== 1|Paladin|BloodElf|Caster
+S Agility 42B80000
+S AttackPower 43700000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D0F2064
+S Health 45D8B000
+S Intellect 42CA0000
+S Mana 45895000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D05F06F
+S SpellCrit 3D08A47F
+S Spirit 42CE0000
+S Stamina 430F0000
+S Strength 43140000
+== 1|Paladin|Draenei|Caster
+S Agility 42AE0000
+S AttackPower 43700000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D0F2064
+S Health 45D8B000
+S Intellect 42C40000
+S Mana 45895000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D05F06F
+S SpellCrit 3D08A47F
+S Spirit 42D60000
+S Stamina 430F0000
+S Strength 43180000
+== 1|Hunter|Human|Caster
+S AttackPower 430C0000
+S BonusSpiritMultiplier 3CF5C28F
+S Dodge BD290DE1
+S Mana 459DB000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BC7AACDA
+S RangedAttackPower 43160000
+S SpellCrit 3D1374BC
+== 1|Hunter|Orc|Caster
+S Agility 43320000
+S AttackPower 430C0000
+S Dodge BD290DE1
+S Health 45E4E000
+S Intellect 42AE0000
+S Mana 459DB000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BC7AACDA
+S RangedAttackPower 43160000
+S SpellCrit 3D1374BC
+S Spirit 42C80000
+S Stamina 43020000
+S Strength 429A0000
+E 0.trigger=Use duration=41700000 cooldown=42F00000 chance=3F800000 maxStack=1
+S 0.AttackPower 40C00000
+== 1|Hunter|Dwarf|Caster
+S Agility 43310000
+S AttackPower 430C0000
+S Dodge BD290DE1
+S Health 45E7A000
+S Intellect 42B20000
+S Mana 459DB000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BC7AACDA
+S RangedAttackPower 43160000
+S SpellCrit 3D1374BC
+S Spirit 42C00000
+S Stamina 43030000
+S Strength 42980000
+== 1|Hunter|NightElf|Caster
+S Agility 43380000
+S AttackPower 430C0000
+S Dodge BD290DE1
+S Health 45E4E000
+S Intellect 42B40000
+S Mana 459DB000
+S Miss 3D8F5C29
+S Parry 3D4CCCCD
+S PhysicalCrit BC7AACDA
+S RangedAttackPower 43160000
+S SpellCrit 3D1374BC
+S Spirit 42C20000
+S Stamina 42FE0000
+S Strength 428E0000
+== 1|Hunter|Undead|Caster
+S AttackPower 430C0000
+S Dodge BD290DE1
+S Mana 459DB000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BC7AACDA
+S RangedAttackPower 43160000
+S SpellCrit 3D1374BC
+== 1|Hunter|Tauren|Caster
+S Agility 43300000
+S AttackPower 430C0000
+S Dodge BD290DE1
+S Health 45F2CFFF
+S Intellect 42AA0000
+S Mana 459DB000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BC7AACDA
+S RangedAttackPower 43160000
+S SpellCrit 3D1374BC
+S Spirit 42C60000
+S Stamina 43020000
+S Strength 429E0000
+== 1|Hunter|Gnome|Caster
+S AttackPower 430C0000
+S BonusIntellectMultiplier 3D4CCCCD
+S Dodge BD290DE1
+S Mana 459DB000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BC7AACDA
+S RangedAttackPower 43160000
+S SpellCrit 3D1374BC
+== 1|Hunter|Troll|Caster
+S Agility 43370000
+S AttackPower 430C0000
+S Dodge BD290DE1
+S Health 45E4E000
+S Intellect 42AC0000
+S Mana 459DB000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BC7AACDA
+S RangedAttackPower 43160000
+S SpellCrit 3D1374BC
+S Spirit 42C40000
+S Stamina 43010000
+S Strength 42960000
+E 0.trigger=Use duration=41200000 cooldown=43340000 chance=3F800000 maxStack=1
+S 0.PhysicalHaste 3E4CCCCD
+S 0.SpellHaste 3E4CCCCD
+== 1|Hunter|BloodElf|Caster
+S Agility 43370000
+S AttackPower 430C0000
+S Dodge BD290DE1
+S Health 45E4E000
+S Intellect 42BC0000
+S Mana 459DB000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BC7AACDA
+S RangedAttackPower 43160000
+S SpellCrit 3D1374BC
+S Spirit 42C00000
+S Stamina 42FC0000
+S Strength 428E0000
+== 1|Hunter|Draenei|Caster
+S Agility 43320000
+S AttackPower 430C0000
+S Dodge BD290DE1
+S Health 45E74000
+S Intellect 42B60000
+S Mana 459DB000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BC7AACDA
+S RangedAttackPower 43160000
+S SpellCrit 3D1374BC
+S Spirit 42C60000
+S Stamina 43010000
+S Strength 42960000
+== 1|Rogue|Human|Caster
+S Agility 433D0000
+S AttackPower 430C0000
+S BonusSpiritMultiplier 3CF5C28F
+S Dodge 3CA86727
+S Health 45EDA000
+S Intellect 422C0000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BB4154CA
+S Spirit 42860000
+S Stamina 42D20000
+S Strength 42E20000
+== 1|Rogue|Orc|Caster
+S Agility 433A0000
+S AttackPower 430C0000
+S Dodge 3CA86727
+S Health 45EDA000
+S Intellect 42200000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BB4154CA
+S Spirit 428C0000
+S Stamina 42D60000
+S Strength 42E80000
+E 0.trigger=Use duration=41700000 cooldown=42F00000 chance=3F800000 maxStack=1
+S 0.AttackPower 40C00000
+== 1|Rogue|Dwarf|Caster
+S Agility 43390000
+S AttackPower 430C0000
+S Dodge 3CA86727
+S Health 45EDA000
+S Intellect 42280000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BB4154CA
+S Spirit 42840000
+S Stamina 42D80000
+S Strength 42E60000
+== 1|Rogue|NightElf|Caster
+S Agility 43420000
+S AttackPower 430C0000
+S Dodge 3CA86727
+S Health 45EDA000
+S Intellect 422C0000
+S Miss 3D8F5C29
+S Parry 3D4CCCCD
+S PhysicalCrit BB4154CA
+S Spirit 42860000
+S Stamina 42D00000
+S Strength 42DC0000
+== 1|Rogue|Undead|Caster
+S Agility 433B0000
+S AttackPower 430C0000
+S Dodge 3CA86727
+S Health 45EDA000
+S Intellect 42240000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BB4154CA
+S Spirit 42900000
+S Stamina 42D20000
+S Strength 42E00000
+== 1|Rogue|Tauren|Caster
+S AttackPower 430C0000
+S Dodge 3CA86727
+S Health 45F98199
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BB4154CA
+== 1|Rogue|Gnome|Caster
+S Agility 43400000
+S AttackPower 430C0000
+S BonusIntellectMultiplier 3D4CCCCD
+S Dodge 3CA86727
+S Health 45EDA000
+S Intellect 42380000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BB4154CA
+S Spirit 42860000
+S Stamina 42D00000
+S Strength 42D80000
+== 1|Rogue|Troll|Caster
+S Agility 433F0000
+S AttackPower 430C0000
+S Dodge 3CA86727
+S Health 45EDA000
+S Intellect 421C0000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BB4154CA
+S Spirit 42880000
+S Stamina 42D80000
+S Strength 42E40000
+E 0.trigger=Use duration=41200000 cooldown=43340000 chance=3F800000 maxStack=1
+S 0.PhysicalHaste 3E4CCCCD
+== 1|Rogue|BloodElf|Caster
+S Agility 433F0000
+S AttackPower 430C0000
+S Dodge 3CA86727
+S Health 45EDA000
+S Intellect 423C0000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BB4154CA
+S Spirit 42840000
+S Stamina 42CE0000
+S Strength 42DC0000
+== 1|Rogue|Draenei|Caster
+S AttackPower 430C0000
+S Dodge 3CA86727
+S Health 45EDA000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BB4154CA
+== 1|Priest|Human|Caster
+S Agility 424C0000
+S AttackPower C1200000
+S BonusSpiritMultiplier 3CF5C28F
+S Dodge 3D0A5ACD
+S Health 45D98000
+S Intellect 432E0000
+S Mana 45717000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CDD2F1B
+S SpellCrit 3C4B295F
+S Spirit 43350000
+S Stamina 42860000
+S Strength 422C0000
+== 1|Priest|Orc|Caster
+S AttackPower C1200000
+S Dodge 3D0A5ACD
+S Health 45D98000
+S Mana 45717000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CDD2F1B
+S SpellCrit 3C4B295F
+E 0.trigger=Use duration=41700000 cooldown=42F00000 chance=3F800000 maxStack=1
+S 0.AttackPower 40C00000
+== 1|Priest|Dwarf|Caster
+S Agility 423C0000
+S AttackPower C1200000
+S Dodge 3D0A5ACD
+S Health 45D98000
+S Intellect 43300000
+S Mana 45717000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CDD2F1B
+S SpellCrit 3C4B295F
+S Spirit 43340000
+S Stamina 428C0000
+S Strength 42340000
+== 1|Priest|NightElf|Caster
+S Agility 42600000
+S AttackPower C1200000
+S Dodge 3D0A5ACD
+S Health 45D98000
+S Intellect 432E0000
+S Mana 45717000
+S Miss 3D8F5C29
+S PhysicalCrit 3CDD2F1B
+S SpellCrit 3C4B295F
+S Spirit 43350000
+S Stamina 42840000
+S Strength 42200000
+== 1|Priest|Undead|Caster
+S Agility 42440000
+S AttackPower C1200000
+S Dodge 3D0A5ACD
+S Health 45D98000
+S Intellect 432C0000
+S Mana 45717000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CDD2F1B
+S SpellCrit 3C4B295F
+S Spirit 433A0000
+S Stamina 42880000
+S Strength 42280000
+== 1|Priest|Tauren|Caster
+S AttackPower C1200000
+S Dodge 3D0A5ACD
+S Health 45E45FFF
+S Mana 45717000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CDD2F1B
+S SpellCrit 3C4B295F
+== 1|Priest|Gnome|Caster
+S AttackPower C1200000
+S BonusIntellectMultiplier 3D4CCCCD
+S Dodge 3D0A5ACD
+S Health 45D98000
+S Mana 45717000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CDD2F1B
+S SpellCrit 3C4B295F
+== 1|Priest|Troll|Caster
+S Agility 42540000
+S AttackPower C1200000
+S Dodge 3D0A5ACD
+S Health 45D98000
+S Intellect 432A0000
+S Mana 45717000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CDD2F1B
+S SpellCrit 3C4B295F
+S Spirit 43360000
+S Stamina 42880000
+S Strength 42300000
+E 0.trigger=Use duration=41200000 cooldown=43340000 chance=3F800000 maxStack=1
+S 0.PhysicalHaste 3E4CCCCD
+S 0.SpellHaste 3E4CCCCD
+== 1|Priest|BloodElf|Caster
+S Agility 42540000
+S AttackPower C1200000
+S Dodge 3D0A5ACD
+S Health 45D98000
+S Intellect 43320000
+S Mana 45717000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CDD2F1B
+S SpellCrit 3C4B295F
+S Spirit 43340000
+S Stamina 42820000
+S Strength 42200000
+== 1|Priest|Draenei|Caster
+S Agility 42400000
+S AttackPower C1200000
+S Dodge 3D0A5ACD
+S Health 45D98000
+S Intellect 432F0000
+S Mana 45717000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CDD2F1B
+S SpellCrit 3C4B295F
+S Spirit 43370000
+S Stamina 42840000
+S Strength 42300000
+== 1|DeathKnight|Human|Caster
+S Agility 42E00000
+S AttackPower 435C0000
+S BonusSpiritMultiplier 3CF5C28F
+S Dodge 3D147AE1
+S Health 45FDC800
+S Intellect 420C0000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02A993
+S Spirit 42680000
+S Stamina 43200000
+S Strength 432F0000
+== 1|DeathKnight|Orc|Caster
+S Agility 42DA0000
+S AttackPower 435C0000
+S Dodge 3D147AE1
+S Health 45FDC800
+S Intellect 42000000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02A993
+S Spirit 42780000
+S Stamina 43220000
+S Strength 43320000
+E 0.trigger=Use duration=41700000 cooldown=42F00000 chance=3F800000 maxStack=1
+S 0.AttackPower 40C00000
+== 1|DeathKnight|Dwarf|Caster
+S Agility 42D80000
+S AttackPower 435C0000
+S Dodge 3D147AE1
+S Health 45FDC800
+S Intellect 42080000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02A993
+S Spirit 42680000
+S Stamina 43230000
+S Strength 43310000
+== 1|DeathKnight|NightElf|Caster
+S Agility 42EA0000
+S AttackPower 435C0000
+S Dodge 3D147AE1
+S Health 45FDC800
+S Intellect 420C0000
+S Miss 3D8F5C29
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02A993
+S Spirit 426C0000
+S Stamina 431F0000
+S Strength 432C0000
+== 1|DeathKnight|Undead|Caster
+S Agility 42DC0000
+S AttackPower 435C0000
+S Dodge 3D147AE1
+S Health 45FDC800
+S Intellect 42040000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02A993
+S Spirit 42800000
+S Stamina 43210000
+S Strength 432E0000
+== 1|DeathKnight|Tauren|Caster
+S Agility 42D60000
+S AttackPower 435C0000
+S Dodge 3D147AE1
+S Health 46053C33
+S Intellect 41F00000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02A993
+S Spirit 42740000
+S Stamina 43220000
+S Strength 43340000
+== 1|DeathKnight|Gnome|Caster
+S Agility 42E60000
+S AttackPower 435C0000
+S BonusIntellectMultiplier 3D4CCCCD
+S Dodge 3D147AE1
+S Health 45FDC800
+S Intellect 42140000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02A993
+S Spirit 426C0000
+S Stamina 431F0000
+S Strength 432A0000
+== 1|DeathKnight|Troll|Caster
+S Agility 42E40000
+S AttackPower 435C0000
+S Dodge 3D147AE1
+S Health 45FDC800
+S Intellect 41F80000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02A993
+S Spirit 42700000
+S Stamina 43250000
+S Strength 43300000
+E 0.trigger=Use duration=41200000 cooldown=43340000 chance=3F800000 maxStack=1
+S 0.PhysicalHaste 3E4CCCCD
+== 1|DeathKnight|BloodElf|Caster
+S Agility 42E40000
+S AttackPower 435C0000
+S Dodge 3D147AE1
+S Health 45FDC800
+S Intellect 421C0000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02A993
+S Spirit 42680000
+S Stamina 431E0000
+S Strength 432C0000
+== 1|DeathKnight|Draenei|Caster
+S Agility 42DA0000
+S AttackPower 435C0000
+S Dodge 3D147AE1
+S Health 45FDC800
+S Intellect 42100000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02A993
+S Spirit 42740000
+S Stamina 43220000
+S Strength 43300000
+== 1|Shaman|Human|Caster
+S AttackPower 430C0000
+S Block 3D4CCCCD
+S BonusSpiritMultiplier 3CF5C28F
+S Dodge 3CA9691A
+S Health 45D98000
+S Mana 45896000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CEF34D7
+S SpellCrit 3CB43958
+== 1|Shaman|Orc|Caster
+S Agility 428E0000
+S AttackPower 430C0000
+S Block 3D4CCCCD
+S Dodge 3CA9691A
+S Health 45D98000
+S Intellect 42FA0000
+S Mana 45896000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CEF34D7
+S SpellCrit 3CB43958
+S Spirit 43110000
+S Stamina 43090000
+S Strength 42F60000
+E 0.trigger=Use duration=41700000 cooldown=42F00000 chance=3F800000 maxStack=1
+S 0.AttackPower 40C00000
+S 0.SpellPower 40A00000
+== 1|Shaman|Dwarf|Caster
+S AttackPower 430C0000
+S Block 3D4CCCCD
+S Dodge 3CA9691A
+S Health 45D98000
+S Mana 45896000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CEF34D7
+S SpellCrit 3CB43958
+== 1|Shaman|NightElf|Caster
+S AttackPower 430C0000
+S Block 3D4CCCCD
+S Dodge 3CA9691A
+S Health 45D98000
+S Mana 45896000
+S Miss 3D8F5C29
+S PhysicalCrit 3CEF34D7
+S SpellCrit 3CB43958
+== 1|Shaman|Undead|Caster
+S AttackPower 430C0000
+S Block 3D4CCCCD
+S Dodge 3CA9691A
+S Health 45D98000
+S Mana 45896000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CEF34D7
+S SpellCrit 3CB43958
+== 1|Shaman|Tauren|Caster
+S Agility 428C0000
+S AttackPower 430C0000
+S Block 3D4CCCCD
+S Dodge 3CA9691A
+S Health 45E45FFF
+S Intellect 42F80000
+S Mana 45896000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CEF34D7
+S SpellCrit 3CB43958
+S Spirit 43110000
+S Stamina 43090000
+S Strength 42FA0000
+== 1|Shaman|Gnome|Caster
+S AttackPower 430C0000
+S Block 3D4CCCCD
+S BonusIntellectMultiplier 3D4CCCCD
+S Dodge 3CA9691A
+S Health 45D98000
+S Mana 45896000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CEF34D7
+S SpellCrit 3CB43958
+== 1|Shaman|Troll|Caster
+S Agility 42980000
+S AttackPower 430C0000
+S Block 3D4CCCCD
+S Dodge 3CA9691A
+S Health 45D98000
+S Intellect 42F80000
+S Mana 45896000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CEF34D7
+S SpellCrit 3CB43958
+S Spirit 43100000
+S Stamina 43090000
+S Strength 42F20000
+E 0.trigger=Use duration=41200000 cooldown=43340000 chance=3F800000 maxStack=1
+S 0.PhysicalHaste 3E4CCCCD
+S 0.SpellHaste 3E4CCCCD
+== 1|Shaman|BloodElf|Caster
+S AttackPower 430C0000
+S Block 3D4CCCCD
+S Dodge 3CA9691A
+S Health 45D98000
+S Mana 45896000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CEF34D7
+S SpellCrit 3CB43958
+== 1|Shaman|Draenei|Caster
+S Agility 428E0000
+S AttackPower 430C0000
+S Block 3D4CCCCD
+S Dodge 3CA9691A
+S Health 45D98000
+S Intellect 43000000
+S Mana 45896000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CEF34D7
+S SpellCrit 3CB43958
+S Spirit 43110000
+S Stamina 43080000
+S Strength 42F20000
+== 1|Mage|Human|Caster
+S Agility 422C0000
+S AttackPower C1200000
+S BonusSpiritMultiplier 3CF5C28F
+S Dodge 3D1438D2
+S Health 45D99800
+S Intellect 43350000
+S Mana 454C4000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CF5C28F
+S SpellCrit 3C15182B
+S Spirit 432E0000
+S Stamina 426C0000
+S Strength 42100000
+== 1|Mage|Orc|Caster
+S AttackPower C1200000
+S Dodge 3D1438D2
+S Health 45D99800
+S Mana 454C4000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CF5C28F
+S SpellCrit 3C15182B
+E 0.trigger=Use duration=41700000 cooldown=42F00000 chance=3F800000 maxStack=1
+S 0.AttackPower 40C00000
+== 1|Mage|Dwarf|Caster
+S AttackPower C1200000
+S Dodge 3D1438D2
+S Health 45D99800
+S Mana 454C4000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CF5C28F
+S SpellCrit 3C15182B
+== 1|Mage|NightElf|Caster
+S AttackPower C1200000
+S Dodge 3D1438D2
+S Health 45D99800
+S Mana 454C4000
+S Miss 3D8F5C29
+S PhysicalCrit 3CF5C28F
+S SpellCrit 3C15182B
+== 1|Mage|Undead|Caster
+S Agility 42240000
+S AttackPower C1200000
+S Dodge 3D1438D2
+S Health 45D99800
+S Intellect 43330000
+S Mana 454C4000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CF5C28F
+S SpellCrit 3C15182B
+S Spirit 43330000
+S Stamina 42700000
+S Strength 420C0000
+== 1|Mage|Tauren|Caster
+S AttackPower C1200000
+S Dodge 3D1438D2
+S Health 45E47933
+S Mana 454C4000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CF5C28F
+S SpellCrit 3C15182B
+== 1|Mage|Gnome|Caster
+S Agility 42380000
+S AttackPower C1200000
+S BonusIntellectMultiplier 3D4CCCCD
+S Dodge 3D1438D2
+S Health 45D99800
+S Intellect 43380000
+S Mana 454C4000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CF5C28F
+S SpellCrit 3C15182B
+S Spirit 432E0000
+S Stamina 42680000
+S Strength 41F80000
+== 1|Mage|Troll|Caster
+S Agility 42340000
+S AttackPower C1200000
+S Dodge 3D1438D2
+S Health 45D99800
+S Intellect 43310000
+S Mana 454C4000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CF5C28F
+S SpellCrit 3C15182B
+S Spirit 432F0000
+S Stamina 42700000
+S Strength 42140000
+E 0.trigger=Use duration=41200000 cooldown=43340000 chance=3F800000 maxStack=1
+S 0.PhysicalHaste 3E4CCCCD
+S 0.SpellHaste 3E4CCCCD
+== 1|Mage|BloodElf|Caster
+S Agility 42340000
+S AttackPower C1200000
+S Dodge 3D1438D2
+S Health 45D99800
+S Intellect 43390000
+S Mana 454C4000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CF5C28F
+S SpellCrit 3C15182B
+S Spirit 432D0000
+S Stamina 42640000
+S Strength 42040000
+== 1|Mage|Draenei|Caster
+S Agility 42200000
+S AttackPower C1200000
+S Dodge 3D1438D2
+S Health 45D99800
+S Intellect 43360000
+S Mana 454C4000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CF5C28F
+S SpellCrit 3C15182B
+S Spirit 43300000
+S Stamina 42680000
+S Strength 42140000
+== 1|Warlock|Human|Caster
+S Agility 42860000
+S AttackPower C1200000
+S BonusSpiritMultiplier 3CF5C28F
+S Dodge 3CC30F49
+S Health 45DFE000
+S Intellect 431F0000
+S Mana 45710000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CE56042
+S SpellCrit 3C8B588E
+S Spirit 43250000
+S Stamina 42B20000
+S Strength 426C0000
+== 1|Warlock|Orc|Caster
+S Agility 42800000
+S AttackPower C1200000
+S Dodge 3CC30F49
+S Health 45DFE000
+S Intellect 431C0000
+S Mana 45710000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CE56042
+S SpellCrit 3C8B588E
+S Spirit 43290000
+S Stamina 42B60000
+S Strength 42780000
+E 0.trigger=Use duration=41700000 cooldown=42F00000 chance=3F800000 maxStack=1
+S 0.SpellPower 40A00000
+== 1|Warlock|Dwarf|Caster
+S AttackPower C1200000
+S Dodge 3CC30F49
+S Health 45DFE000
+S Mana 45710000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CE56042
+S SpellCrit 3C8B588E
+== 1|Warlock|NightElf|Caster
+S AttackPower C1200000
+S Dodge 3CC30F49
+S Health 45DFE000
+S Mana 45710000
+S Miss 3D8F5C29
+S PhysicalCrit 3CE56042
+S SpellCrit 3C8B588E
+== 1|Warlock|Undead|Caster
+S Agility 42820000
+S AttackPower C1200000
+S Dodge 3CC30F49
+S Health 45DFE000
+S Intellect 431D0000
+S Mana 45710000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CE56042
+S SpellCrit 3C8B588E
+S Spirit 432B0000
+S Stamina 42B40000
+S Strength 42680000
+== 1|Warlock|Tauren|Caster
+S AttackPower C1200000
+S Dodge 3CC30F49
+S Health 45EB1199
+S Mana 45710000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CE56042
+S SpellCrit 3C8B588E
+== 1|Warlock|Gnome|Caster
+S Agility 428C0000
+S AttackPower C1200000
+S BonusIntellectMultiplier 3D4CCCCD
+S Dodge 3CC30F49
+S Health 45DFE000
+S Intellect 43220000
+S Mana 45710000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CE56042
+S SpellCrit 3C8B588E
+S Spirit 43260000
+S Stamina 42B00000
+S Strength 42580000
+== 1|Warlock|Troll|Caster
+S AttackPower C1200000
+S Dodge 3CC30F49
+S Health 45DFE000
+S Mana 45710000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CE56042
+S SpellCrit 3C8B588E
+E 0.trigger=Use duration=41200000 cooldown=43340000 chance=3F800000 maxStack=1
+S 0.PhysicalHaste 3E4CCCCD
+S 0.SpellHaste 3E4CCCCD
+== 1|Warlock|BloodElf|Caster
+S Agility 428A0000
+S AttackPower C1200000
+S Dodge 3CC30F49
+S Health 45DFE000
+S Intellect 43230000
+S Mana 45710000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CE56042
+S SpellCrit 3C8B588E
+S Spirit 43250000
+S Stamina 42AE0000
+S Strength 42600000
+== 1|Warlock|Draenei|Caster
+S AttackPower C1200000
+S Dodge 3CC30F49
+S Health 45DFE000
+S Mana 45710000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CE56042
+S SpellCrit 3C8B588E
+== 1|Druid|Human|Caster
+S AttackPower C1200000
+S BonusSpiritMultiplier 3CF5C28F
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+== 1|Druid|Human|Bear
+S AttackPower 435C0000
+S BonusSpiritMultiplier 3CF5C28F
+S BonusStaminaMultiplier 3E800000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D4CCCCD
+S SpellCrit 3C978D50
+== 1|Druid|Human|Cat
+S AttackPower 430C0000
+S BonusSpiritMultiplier 3CF5C28F
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D991BC5
+S SpellCrit 3C978D50
+== 1|Druid|Human|Moonkin
+S AttackPower C1200000
+S BonusSpiritMultiplier 3CF5C28F
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+== 1|Druid|Orc|Caster
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+E 0.trigger=Use duration=41700000 cooldown=42F00000 chance=3F800000 maxStack=1
+S 0.AttackPower 40C00000
+== 1|Druid|Orc|Bear
+S AttackPower 435C0000
+S BonusStaminaMultiplier 3E800000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D4CCCCD
+S SpellCrit 3C978D50
+E 0.trigger=Use duration=41700000 cooldown=42F00000 chance=3F800000 maxStack=1
+S 0.AttackPower 40C00000
+== 1|Druid|Orc|Cat
+S AttackPower 430C0000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D991BC5
+S SpellCrit 3C978D50
+E 0.trigger=Use duration=41700000 cooldown=42F00000 chance=3F800000 maxStack=1
+S 0.AttackPower 40C00000
+== 1|Druid|Orc|Moonkin
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+E 0.trigger=Use duration=41700000 cooldown=42F00000 chance=3F800000 maxStack=1
+S 0.AttackPower 40C00000
+== 1|Druid|Dwarf|Caster
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+== 1|Druid|Dwarf|Bear
+S AttackPower 435C0000
+S BonusStaminaMultiplier 3E800000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D4CCCCD
+S SpellCrit 3C978D50
+== 1|Druid|Dwarf|Cat
+S AttackPower 430C0000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D991BC5
+S SpellCrit 3C978D50
+== 1|Druid|Dwarf|Moonkin
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+== 1|Druid|NightElf|Caster
+S Agility 42AC0000
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Intellect 430F0000
+S Mana 455A8000
+S Miss 3D8F5C29
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+S Spirit 431F0000
+S Stamina 42C20000
+S Strength 42AA0000
+== 1|Druid|NightElf|Bear
+S Agility 42AC0000
+S AttackPower 435C0000
+S BonusStaminaMultiplier 3E800000
+S Dodge 3D64228A
+S Health 45E7C800
+S Intellect 430F0000
+S Mana 455A8000
+S Miss 3D8F5C29
+S PhysicalCrit 3D4CCCCD
+S SpellCrit 3C978D50
+S Spirit 431F0000
+S Stamina 42C20000
+S Strength 42AA0000
+== 1|Druid|NightElf|Cat
+S Agility 42AC0000
+S AttackPower 430C0000
+S Dodge 3D64228A
+S Health 45E7C800
+S Intellect 430F0000
+S Mana 455A8000
+S Miss 3D8F5C29
+S PhysicalCrit 3D991BC5
+S SpellCrit 3C978D50
+S Spirit 431F0000
+S Stamina 42C20000
+S Strength 42AA0000
+== 1|Druid|NightElf|Moonkin
+S Agility 42AC0000
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Intellect 430F0000
+S Mana 455A8000
+S Miss 3D8F5C29
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+S Spirit 431F0000
+S Stamina 42C20000
+S Strength 42AA0000
+== 1|Druid|Undead|Caster
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+== 1|Druid|Undead|Bear
+S AttackPower 435C0000
+S BonusStaminaMultiplier 3E800000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D4CCCCD
+S SpellCrit 3C978D50
+== 1|Druid|Undead|Cat
+S AttackPower 430C0000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D991BC5
+S SpellCrit 3C978D50
+== 1|Druid|Undead|Moonkin
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+== 1|Druid|Tauren|Caster
+S Agility 429A0000
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45F35ECC
+S Intellect 430C0000
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+S Spirit 43390000
+S Stamina 42C80000
+S Strength 42BC0000
+== 1|Druid|Tauren|Bear
+S Agility 429A0000
+S AttackPower 435C0000
+S BonusStaminaMultiplier 3E800000
+S Dodge 3D64228A
+S Health 45F35ECC
+S Intellect 430C0000
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D4CCCCD
+S SpellCrit 3C978D50
+S Spirit 43390000
+S Stamina 42C80000
+S Strength 42BC0000
+== 1|Druid|Tauren|Cat
+S Agility 429A0000
+S AttackPower 430C0000
+S Dodge 3D64228A
+S Health 45F35ECC
+S Intellect 430C0000
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D991BC5
+S SpellCrit 3C978D50
+S Spirit 43390000
+S Stamina 42C80000
+S Strength 42BC0000
+== 1|Druid|Tauren|Moonkin
+S Agility 429A0000
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45F35ECC
+S Intellect 430C0000
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+S Spirit 43390000
+S Stamina 42C80000
+S Strength 42BC0000
+== 1|Druid|Gnome|Caster
+S AttackPower C1200000
+S BonusIntellectMultiplier 3D4CCCCD
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+== 1|Druid|Gnome|Bear
+S AttackPower 435C0000
+S BonusIntellectMultiplier 3D4CCCCD
+S BonusStaminaMultiplier 3E800000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D4CCCCD
+S SpellCrit 3C978D50
+== 1|Druid|Gnome|Cat
+S AttackPower 430C0000
+S BonusIntellectMultiplier 3D4CCCCD
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D991BC5
+S SpellCrit 3C978D50
+== 1|Druid|Gnome|Moonkin
+S AttackPower C1200000
+S BonusIntellectMultiplier 3D4CCCCD
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+== 1|Druid|Troll|Caster
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+E 0.trigger=Use duration=41200000 cooldown=43340000 chance=3F800000 maxStack=1
+S 0.PhysicalHaste 3E4CCCCD
+S 0.SpellHaste 3E4CCCCD
+== 1|Druid|Troll|Bear
+S AttackPower 435C0000
+S BonusStaminaMultiplier 3E800000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D4CCCCD
+S SpellCrit 3C978D50
+E 0.trigger=Use duration=41200000 cooldown=43340000 chance=3F800000 maxStack=1
+S 0.PhysicalHaste 3E4CCCCD
+S 0.SpellHaste 3E4CCCCD
+== 1|Druid|Troll|Cat
+S AttackPower 430C0000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D991BC5
+S SpellCrit 3C978D50
+E 0.trigger=Use duration=41200000 cooldown=43340000 chance=3F800000 maxStack=1
+S 0.PhysicalHaste 3E4CCCCD
+S 0.SpellHaste 3E4CCCCD
+== 1|Druid|Troll|Moonkin
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+E 0.trigger=Use duration=41200000 cooldown=43340000 chance=3F800000 maxStack=1
+S 0.PhysicalHaste 3E4CCCCD
+S 0.SpellHaste 3E4CCCCD
+== 1|Druid|BloodElf|Caster
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+== 1|Druid|BloodElf|Bear
+S AttackPower 435C0000
+S BonusStaminaMultiplier 3E800000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D4CCCCD
+S SpellCrit 3C978D50
+== 1|Druid|BloodElf|Cat
+S AttackPower 430C0000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D991BC5
+S SpellCrit 3C978D50
+== 1|Druid|BloodElf|Moonkin
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+== 1|Druid|Draenei|Caster
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+== 1|Druid|Draenei|Bear
+S AttackPower 435C0000
+S BonusStaminaMultiplier 3E800000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D4CCCCD
+S SpellCrit 3C978D50
+== 1|Druid|Draenei|Cat
+S AttackPower 430C0000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D991BC5
+S SpellCrit 3C978D50
+== 1|Druid|Draenei|Moonkin
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+== 80|Warrior|Human|Caster
+S Agility 42E20000
+S AttackPower 435C0000
+S Block 3D4CCCCD
+S BonusSpiritMultiplier 3CF5C28F
+S Defense 43C80000
+S Dodge 3D1613D3
+S Health 45FDC800
+S Intellect 42100000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02BE8C
+S Spirit 42680000
+S Stamina 431F0000
+S Strength 432E0000
+== 80|Warrior|Orc|Caster
+S Agility 42DC0000
+S AttackPower 435C0000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D1613D3
+S Health 45FDC800
+S Intellect 42040000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02BE8C
+S Spirit 42780000
+S Stamina 43210000
+S Strength 43310000
+E 0.trigger=Use duration=41700000 cooldown=42F00000 chance=3F800000 maxStack=1
+S 0.AttackPower 43A10000
+== 80|Warrior|Dwarf|Caster
+S Agility 42DA0000
+S AttackPower 435C0000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D1613D3
+S Health 45FDC800
+S Intellect 420C0000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02BE8C
+S Spirit 42680000
+S Stamina 43220000
+S Strength 43300000
+== 80|Warrior|NightElf|Caster
+S Agility 42EC0000
+S AttackPower 435C0000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D1613D3
+S Health 45FDC800
+S Intellect 42100000
+S Miss 3D8F5C29
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02BE8C
+S Spirit 426C0000
+S Stamina 431E0000
+S Strength 432B0000
+== 80|Warrior|Undead|Caster
+S Agility 42DE0000
+S AttackPower 435C0000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D1613D3
+S Health 45FDC800
+S Intellect 42080000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02BE8C
+S Spirit 42800000
+S Stamina 43290000
+S Strength 43370000
+== 80|Warrior|Tauren|Caster
+S Agility 42DA0000
+S AttackPower 435C0000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D1613D3
+S Health 46053C33
+S Intellect 41F80000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02BE8C
+S Spirit 42740000
+S Stamina 43210000
+S Strength 43330000
+== 80|Warrior|Gnome|Caster
+S Agility 42E80000
+S AttackPower 435C0000
+S Block 3D4CCCCD
+S BonusIntellectMultiplier 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D1613D3
+S Health 45FDC800
+S Intellect 42180000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02BE8C
+S Spirit 426C0000
+S Stamina 431E0000
+S Strength 43290000
+== 80|Warrior|Troll|Caster
+S Agility 42E60000
+S AttackPower 435C0000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D1613D3
+S Health 45FDC800
+S Intellect 42000000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02BE8C
+S Spirit 42700000
+S Stamina 43220000
+S Strength 43390000
+E 0.trigger=Use duration=41200000 cooldown=43340000 chance=3F800000 maxStack=1
+S 0.PhysicalHaste 3E4CCCCD
+== 80|Warrior|BloodElf|Caster
+S AttackPower 435C0000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D1613D3
+S Health 45FDC800
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02BE8C
+== 80|Warrior|Draenei|Caster
+S Agility 42DC0000
+S AttackPower 435C0000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D1613D3
+S Health 45FDC800
+S Intellect 42140000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02BE8C
+S Spirit 42740000
+S Stamina 43260000
+S Strength 43360000
+== 80|Paladin|Human|Caster
+S Agility 42B40000
+S AttackPower 43700000
+S Block 3D4CCCCD
+S BonusSpiritMultiplier 3CF5C28F
+S Defense 43C80000
+S Dodge 3D0F2064
+S Health 45D8B000
+S Intellect 42C40000
+S Mana 45895000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D05F06F
+S SpellCrit 3D08A47F
+S Spirit 42D80000
+S Stamina 430F0000
+S Strength 43170000
+== 80|Paladin|Orc|Caster
+S AttackPower 43700000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D0F2064
+S Health 45D8B000
+S Mana 45895000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D05F06F
+S SpellCrit 3D08A47F
+E 0.trigger=Use duration=41700000 cooldown=42F00000 chance=3F800000 maxStack=1
+S 0.AttackPower 43A10000
+== 80|Paladin|Dwarf|Caster
+S Agility 42AC0000
+S AttackPower 43700000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D0F2064
+S Health 45D8B000
+S Intellect 42C20000
+S Mana 45895000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D05F06F
+S SpellCrit 3D08A47F
+S Spirit 42D00000
+S Stamina 43120000
+S Strength 43190000
+== 80|Paladin|NightElf|Caster
+S AttackPower 43700000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D0F2064
+S Health 45D8B000
+S Mana 45895000
+S Miss 3D8F5C29
+S Parry 3D4CCCCD
+S PhysicalCrit 3D05F06F
+S SpellCrit 3D08A47F
+== 80|Paladin|Undead|Caster
+S AttackPower 43700000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D0F2064
+S Health 45D8B000
+S Mana 45895000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D05F06F
+S SpellCrit 3D08A47F
+== 80|Paladin|Tauren|Caster
+S AttackPower 43700000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D0F2064
+S Health 45E38599
+S Mana 45895000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D05F06F
+S SpellCrit 3D08A47F
+== 80|Paladin|Gnome|Caster
+S AttackPower 43700000
+S Block 3D4CCCCD
+S BonusIntellectMultiplier 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D0F2064
+S Health 45D8B000
+S Mana 45895000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D05F06F
+S SpellCrit 3D08A47F
+== 80|Paladin|Troll|Caster
+S AttackPower 43700000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D0F2064
+S Health 45D8B000
+S Mana 45895000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D05F06F
+S SpellCrit 3D08A47F
+E 0.trigger=Use duration=41200000 cooldown=43340000 chance=3F800000 maxStack=1
+S 0.PhysicalHaste 3E4CCCCD
+S 0.SpellHaste 3E4CCCCD
+== 80|Paladin|BloodElf|Caster
+S Agility 42B80000
+S AttackPower 43700000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D0F2064
+S Health 45D8B000
+S Intellect 42CA0000
+S Mana 45895000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D05F06F
+S SpellCrit 3D08A47F
+S Spirit 42CE0000
+S Stamina 430F0000
+S Strength 43140000
+== 80|Paladin|Draenei|Caster
+S Agility 42AE0000
+S AttackPower 43700000
+S Block 3D4CCCCD
+S Defense 43C80000
+S Dodge 3D0F2064
+S Health 45D8B000
+S Intellect 42C40000
+S Mana 45895000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D05F06F
+S SpellCrit 3D08A47F
+S Spirit 42D60000
+S Stamina 430F0000
+S Strength 43180000
+== 80|Hunter|Human|Caster
+S AttackPower 430C0000
+S BonusSpiritMultiplier 3CF5C28F
+S Dodge BD290DE1
+S Mana 459DB000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BC7AACDA
+S RangedAttackPower 43160000
+S SpellCrit 3D1374BC
+== 80|Hunter|Orc|Caster
+S Agility 43320000
+S AttackPower 430C0000
+S Dodge BD290DE1
+S Health 45E4E000
+S Intellect 42AE0000
+S Mana 459DB000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BC7AACDA
+S RangedAttackPower 43160000
+S SpellCrit 3D1374BC
+S Spirit 42C80000
+S Stamina 43020000
+S Strength 429A0000
+E 0.trigger=Use duration=41700000 cooldown=42F00000 chance=3F800000 maxStack=1
+S 0.AttackPower 43A10000
+== 80|Hunter|Dwarf|Caster
+S Agility 43310000
+S AttackPower 430C0000
+S Dodge BD290DE1
+S Health 45E7A000
+S Intellect 42B20000
+S Mana 459DB000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BC7AACDA
+S RangedAttackPower 43160000
+S SpellCrit 3D1374BC
+S Spirit 42C00000
+S Stamina 43030000
+S Strength 42980000
+== 80|Hunter|NightElf|Caster
+S Agility 43380000
+S AttackPower 430C0000
+S Dodge BD290DE1
+S Health 45E4E000
+S Intellect 42B40000
+S Mana 459DB000
+S Miss 3D8F5C29
+S Parry 3D4CCCCD
+S PhysicalCrit BC7AACDA
+S RangedAttackPower 43160000
+S SpellCrit 3D1374BC
+S Spirit 42C20000
+S Stamina 42FE0000
+S Strength 428E0000
+== 80|Hunter|Undead|Caster
+S AttackPower 430C0000
+S Dodge BD290DE1
+S Mana 459DB000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BC7AACDA
+S RangedAttackPower 43160000
+S SpellCrit 3D1374BC
+== 80|Hunter|Tauren|Caster
+S Agility 43300000
+S AttackPower 430C0000
+S Dodge BD290DE1
+S Health 45F2CFFF
+S Intellect 42AA0000
+S Mana 459DB000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BC7AACDA
+S RangedAttackPower 43160000
+S SpellCrit 3D1374BC
+S Spirit 42C60000
+S Stamina 43020000
+S Strength 429E0000
+== 80|Hunter|Gnome|Caster
+S AttackPower 430C0000
+S BonusIntellectMultiplier 3D4CCCCD
+S Dodge BD290DE1
+S Mana 459DB000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BC7AACDA
+S RangedAttackPower 43160000
+S SpellCrit 3D1374BC
+== 80|Hunter|Troll|Caster
+S Agility 43370000
+S AttackPower 430C0000
+S Dodge BD290DE1
+S Health 45E4E000
+S Intellect 42AC0000
+S Mana 459DB000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BC7AACDA
+S RangedAttackPower 43160000
+S SpellCrit 3D1374BC
+S Spirit 42C40000
+S Stamina 43010000
+S Strength 42960000
+E 0.trigger=Use duration=41200000 cooldown=43340000 chance=3F800000 maxStack=1
+S 0.PhysicalHaste 3E4CCCCD
+S 0.SpellHaste 3E4CCCCD
+== 80|Hunter|BloodElf|Caster
+S Agility 43370000
+S AttackPower 430C0000
+S Dodge BD290DE1
+S Health 45E4E000
+S Intellect 42BC0000
+S Mana 459DB000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BC7AACDA
+S RangedAttackPower 43160000
+S SpellCrit 3D1374BC
+S Spirit 42C00000
+S Stamina 42FC0000
+S Strength 428E0000
+== 80|Hunter|Draenei|Caster
+S Agility 43320000
+S AttackPower 430C0000
+S Dodge BD290DE1
+S Health 45E74000
+S Intellect 42B60000
+S Mana 459DB000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BC7AACDA
+S RangedAttackPower 43160000
+S SpellCrit 3D1374BC
+S Spirit 42C60000
+S Stamina 43010000
+S Strength 42960000
+== 80|Rogue|Human|Caster
+S Agility 433D0000
+S AttackPower 430C0000
+S BonusSpiritMultiplier 3CF5C28F
+S Dodge 3CA86727
+S Health 45EDA000
+S Intellect 422C0000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BB4154CA
+S Spirit 42860000
+S Stamina 42D20000
+S Strength 42E20000
+== 80|Rogue|Orc|Caster
+S Agility 433A0000
+S AttackPower 430C0000
+S Dodge 3CA86727
+S Health 45EDA000
+S Intellect 42200000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BB4154CA
+S Spirit 428C0000
+S Stamina 42D60000
+S Strength 42E80000
+E 0.trigger=Use duration=41700000 cooldown=42F00000 chance=3F800000 maxStack=1
+S 0.AttackPower 43A10000
+== 80|Rogue|Dwarf|Caster
+S Agility 43390000
+S AttackPower 430C0000
+S Dodge 3CA86727
+S Health 45EDA000
+S Intellect 42280000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BB4154CA
+S Spirit 42840000
+S Stamina 42D80000
+S Strength 42E60000
+== 80|Rogue|NightElf|Caster
+S Agility 43420000
+S AttackPower 430C0000
+S Dodge 3CA86727
+S Health 45EDA000
+S Intellect 422C0000
+S Miss 3D8F5C29
+S Parry 3D4CCCCD
+S PhysicalCrit BB4154CA
+S Spirit 42860000
+S Stamina 42D00000
+S Strength 42DC0000
+== 80|Rogue|Undead|Caster
+S Agility 433B0000
+S AttackPower 430C0000
+S Dodge 3CA86727
+S Health 45EDA000
+S Intellect 42240000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BB4154CA
+S Spirit 42900000
+S Stamina 42D20000
+S Strength 42E00000
+== 80|Rogue|Tauren|Caster
+S AttackPower 430C0000
+S Dodge 3CA86727
+S Health 45F98199
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BB4154CA
+== 80|Rogue|Gnome|Caster
+S Agility 43400000
+S AttackPower 430C0000
+S BonusIntellectMultiplier 3D4CCCCD
+S Dodge 3CA86727
+S Health 45EDA000
+S Intellect 42380000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BB4154CA
+S Spirit 42860000
+S Stamina 42D00000
+S Strength 42D80000
+== 80|Rogue|Troll|Caster
+S Agility 433F0000
+S AttackPower 430C0000
+S Dodge 3CA86727
+S Health 45EDA000
+S Intellect 421C0000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BB4154CA
+S Spirit 42880000
+S Stamina 42D80000
+S Strength 42E40000
+E 0.trigger=Use duration=41200000 cooldown=43340000 chance=3F800000 maxStack=1
+S 0.PhysicalHaste 3E4CCCCD
+== 80|Rogue|BloodElf|Caster
+S Agility 433F0000
+S AttackPower 430C0000
+S Dodge 3CA86727
+S Health 45EDA000
+S Intellect 423C0000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BB4154CA
+S Spirit 42840000
+S Stamina 42CE0000
+S Strength 42DC0000
+== 80|Rogue|Draenei|Caster
+S AttackPower 430C0000
+S Dodge 3CA86727
+S Health 45EDA000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit BB4154CA
+== 80|Priest|Human|Caster
+S Agility 424C0000
+S AttackPower C1200000
+S BonusSpiritMultiplier 3CF5C28F
+S Dodge 3D0A5ACD
+S Health 45D98000
+S Intellect 432E0000
+S Mana 45717000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CDD2F1B
+S SpellCrit 3C4B295F
+S Spirit 43350000
+S Stamina 42860000
+S Strength 422C0000
+== 80|Priest|Orc|Caster
+S AttackPower C1200000
+S Dodge 3D0A5ACD
+S Health 45D98000
+S Mana 45717000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CDD2F1B
+S SpellCrit 3C4B295F
+E 0.trigger=Use duration=41700000 cooldown=42F00000 chance=3F800000 maxStack=1
+S 0.AttackPower 43A10000
+== 80|Priest|Dwarf|Caster
+S Agility 423C0000
+S AttackPower C1200000
+S Dodge 3D0A5ACD
+S Health 45D98000
+S Intellect 43300000
+S Mana 45717000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CDD2F1B
+S SpellCrit 3C4B295F
+S Spirit 43340000
+S Stamina 428C0000
+S Strength 42340000
+== 80|Priest|NightElf|Caster
+S Agility 42600000
+S AttackPower C1200000
+S Dodge 3D0A5ACD
+S Health 45D98000
+S Intellect 432E0000
+S Mana 45717000
+S Miss 3D8F5C29
+S PhysicalCrit 3CDD2F1B
+S SpellCrit 3C4B295F
+S Spirit 43350000
+S Stamina 42840000
+S Strength 42200000
+== 80|Priest|Undead|Caster
+S Agility 42440000
+S AttackPower C1200000
+S Dodge 3D0A5ACD
+S Health 45D98000
+S Intellect 432C0000
+S Mana 45717000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CDD2F1B
+S SpellCrit 3C4B295F
+S Spirit 433A0000
+S Stamina 42880000
+S Strength 42280000
+== 80|Priest|Tauren|Caster
+S AttackPower C1200000
+S Dodge 3D0A5ACD
+S Health 45E45FFF
+S Mana 45717000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CDD2F1B
+S SpellCrit 3C4B295F
+== 80|Priest|Gnome|Caster
+S AttackPower C1200000
+S BonusIntellectMultiplier 3D4CCCCD
+S Dodge 3D0A5ACD
+S Health 45D98000
+S Mana 45717000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CDD2F1B
+S SpellCrit 3C4B295F
+== 80|Priest|Troll|Caster
+S Agility 42540000
+S AttackPower C1200000
+S Dodge 3D0A5ACD
+S Health 45D98000
+S Intellect 432A0000
+S Mana 45717000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CDD2F1B
+S SpellCrit 3C4B295F
+S Spirit 43360000
+S Stamina 42880000
+S Strength 42300000
+E 0.trigger=Use duration=41200000 cooldown=43340000 chance=3F800000 maxStack=1
+S 0.PhysicalHaste 3E4CCCCD
+S 0.SpellHaste 3E4CCCCD
+== 80|Priest|BloodElf|Caster
+S Agility 42540000
+S AttackPower C1200000
+S Dodge 3D0A5ACD
+S Health 45D98000
+S Intellect 43320000
+S Mana 45717000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CDD2F1B
+S SpellCrit 3C4B295F
+S Spirit 43340000
+S Stamina 42820000
+S Strength 42200000
+== 80|Priest|Draenei|Caster
+S Agility 42400000
+S AttackPower C1200000
+S Dodge 3D0A5ACD
+S Health 45D98000
+S Intellect 432F0000
+S Mana 45717000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CDD2F1B
+S SpellCrit 3C4B295F
+S Spirit 43370000
+S Stamina 42840000
+S Strength 42300000
+== 80|DeathKnight|Human|Caster
+S Agility 42E00000
+S AttackPower 435C0000
+S BonusSpiritMultiplier 3CF5C28F
+S Dodge 3D147AE1
+S Health 45FDC800
+S Intellect 420C0000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02A993
+S Spirit 42680000
+S Stamina 43200000
+S Strength 432F0000
+== 80|DeathKnight|Orc|Caster
+S Agility 42DA0000
+S AttackPower 435C0000
+S Dodge 3D147AE1
+S Health 45FDC800
+S Intellect 42000000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02A993
+S Spirit 42780000
+S Stamina 43220000
+S Strength 43320000
+E 0.trigger=Use duration=41700000 cooldown=42F00000 chance=3F800000 maxStack=1
+S 0.AttackPower 43A10000
+== 80|DeathKnight|Dwarf|Caster
+S Agility 42D80000
+S AttackPower 435C0000
+S Dodge 3D147AE1
+S Health 45FDC800
+S Intellect 42080000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02A993
+S Spirit 42680000
+S Stamina 43230000
+S Strength 43310000
+== 80|DeathKnight|NightElf|Caster
+S Agility 42EA0000
+S AttackPower 435C0000
+S Dodge 3D147AE1
+S Health 45FDC800
+S Intellect 420C0000
+S Miss 3D8F5C29
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02A993
+S Spirit 426C0000
+S Stamina 431F0000
+S Strength 432C0000
+== 80|DeathKnight|Undead|Caster
+S Agility 42DC0000
+S AttackPower 435C0000
+S Dodge 3D147AE1
+S Health 45FDC800
+S Intellect 42040000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02A993
+S Spirit 42800000
+S Stamina 43210000
+S Strength 432E0000
+== 80|DeathKnight|Tauren|Caster
+S Agility 42D60000
+S AttackPower 435C0000
+S Dodge 3D147AE1
+S Health 46053C33
+S Intellect 41F00000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02A993
+S Spirit 42740000
+S Stamina 43220000
+S Strength 43340000
+== 80|DeathKnight|Gnome|Caster
+S Agility 42E60000
+S AttackPower 435C0000
+S BonusIntellectMultiplier 3D4CCCCD
+S Dodge 3D147AE1
+S Health 45FDC800
+S Intellect 42140000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02A993
+S Spirit 426C0000
+S Stamina 431F0000
+S Strength 432A0000
+== 80|DeathKnight|Troll|Caster
+S Agility 42E40000
+S AttackPower 435C0000
+S Dodge 3D147AE1
+S Health 45FDC800
+S Intellect 41F80000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02A993
+S Spirit 42700000
+S Stamina 43250000
+S Strength 43300000
+E 0.trigger=Use duration=41200000 cooldown=43340000 chance=3F800000 maxStack=1
+S 0.PhysicalHaste 3E4CCCCD
+== 80|DeathKnight|BloodElf|Caster
+S Agility 42E40000
+S AttackPower 435C0000
+S Dodge 3D147AE1
+S Health 45FDC800
+S Intellect 421C0000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02A993
+S Spirit 42680000
+S Stamina 431E0000
+S Strength 432C0000
+== 80|DeathKnight|Draenei|Caster
+S Agility 42DA0000
+S AttackPower 435C0000
+S Dodge 3D147AE1
+S Health 45FDC800
+S Intellect 42100000
+S Miss 3D4CCCCD
+S Parry 3D4CCCCD
+S PhysicalCrit 3D02A993
+S Spirit 42740000
+S Stamina 43220000
+S Strength 43300000
+== 80|Shaman|Human|Caster
+S AttackPower 430C0000
+S Block 3D4CCCCD
+S BonusSpiritMultiplier 3CF5C28F
+S Dodge 3CA9691A
+S Health 45D98000
+S Mana 45896000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CEF34D7
+S SpellCrit 3CB43958
+== 80|Shaman|Orc|Caster
+S Agility 428E0000
+S AttackPower 430C0000
+S Block 3D4CCCCD
+S Dodge 3CA9691A
+S Health 45D98000
+S Intellect 42FA0000
+S Mana 45896000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CEF34D7
+S SpellCrit 3CB43958
+S Spirit 43110000
+S Stamina 43090000
+S Strength 42F60000
+E 0.trigger=Use duration=41700000 cooldown=42F00000 chance=3F800000 maxStack=1
+S 0.AttackPower 43A10000
+S 0.SpellPower 43230000
+== 80|Shaman|Dwarf|Caster
+S AttackPower 430C0000
+S Block 3D4CCCCD
+S Dodge 3CA9691A
+S Health 45D98000
+S Mana 45896000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CEF34D7
+S SpellCrit 3CB43958
+== 80|Shaman|NightElf|Caster
+S AttackPower 430C0000
+S Block 3D4CCCCD
+S Dodge 3CA9691A
+S Health 45D98000
+S Mana 45896000
+S Miss 3D8F5C29
+S PhysicalCrit 3CEF34D7
+S SpellCrit 3CB43958
+== 80|Shaman|Undead|Caster
+S AttackPower 430C0000
+S Block 3D4CCCCD
+S Dodge 3CA9691A
+S Health 45D98000
+S Mana 45896000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CEF34D7
+S SpellCrit 3CB43958
+== 80|Shaman|Tauren|Caster
+S Agility 428C0000
+S AttackPower 430C0000
+S Block 3D4CCCCD
+S Dodge 3CA9691A
+S Health 45E45FFF
+S Intellect 42F80000
+S Mana 45896000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CEF34D7
+S SpellCrit 3CB43958
+S Spirit 43110000
+S Stamina 43090000
+S Strength 42FA0000
+== 80|Shaman|Gnome|Caster
+S AttackPower 430C0000
+S Block 3D4CCCCD
+S BonusIntellectMultiplier 3D4CCCCD
+S Dodge 3CA9691A
+S Health 45D98000
+S Mana 45896000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CEF34D7
+S SpellCrit 3CB43958
+== 80|Shaman|Troll|Caster
+S Agility 42980000
+S AttackPower 430C0000
+S Block 3D4CCCCD
+S Dodge 3CA9691A
+S Health 45D98000
+S Intellect 42F80000
+S Mana 45896000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CEF34D7
+S SpellCrit 3CB43958
+S Spirit 43100000
+S Stamina 43090000
+S Strength 42F20000
+E 0.trigger=Use duration=41200000 cooldown=43340000 chance=3F800000 maxStack=1
+S 0.PhysicalHaste 3E4CCCCD
+S 0.SpellHaste 3E4CCCCD
+== 80|Shaman|BloodElf|Caster
+S AttackPower 430C0000
+S Block 3D4CCCCD
+S Dodge 3CA9691A
+S Health 45D98000
+S Mana 45896000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CEF34D7
+S SpellCrit 3CB43958
+== 80|Shaman|Draenei|Caster
+S Agility 428E0000
+S AttackPower 430C0000
+S Block 3D4CCCCD
+S Dodge 3CA9691A
+S Health 45D98000
+S Intellect 43000000
+S Mana 45896000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CEF34D7
+S SpellCrit 3CB43958
+S Spirit 43110000
+S Stamina 43080000
+S Strength 42F20000
+== 80|Mage|Human|Caster
+S Agility 422C0000
+S AttackPower C1200000
+S BonusSpiritMultiplier 3CF5C28F
+S Dodge 3D1438D2
+S Health 45D99800
+S Intellect 43350000
+S Mana 454C4000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CF5C28F
+S SpellCrit 3C15182B
+S Spirit 432E0000
+S Stamina 426C0000
+S Strength 42100000
+== 80|Mage|Orc|Caster
+S AttackPower C1200000
+S Dodge 3D1438D2
+S Health 45D99800
+S Mana 454C4000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CF5C28F
+S SpellCrit 3C15182B
+E 0.trigger=Use duration=41700000 cooldown=42F00000 chance=3F800000 maxStack=1
+S 0.AttackPower 43A10000
+== 80|Mage|Dwarf|Caster
+S AttackPower C1200000
+S Dodge 3D1438D2
+S Health 45D99800
+S Mana 454C4000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CF5C28F
+S SpellCrit 3C15182B
+== 80|Mage|NightElf|Caster
+S AttackPower C1200000
+S Dodge 3D1438D2
+S Health 45D99800
+S Mana 454C4000
+S Miss 3D8F5C29
+S PhysicalCrit 3CF5C28F
+S SpellCrit 3C15182B
+== 80|Mage|Undead|Caster
+S Agility 42240000
+S AttackPower C1200000
+S Dodge 3D1438D2
+S Health 45D99800
+S Intellect 43330000
+S Mana 454C4000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CF5C28F
+S SpellCrit 3C15182B
+S Spirit 43330000
+S Stamina 42700000
+S Strength 420C0000
+== 80|Mage|Tauren|Caster
+S AttackPower C1200000
+S Dodge 3D1438D2
+S Health 45E47933
+S Mana 454C4000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CF5C28F
+S SpellCrit 3C15182B
+== 80|Mage|Gnome|Caster
+S Agility 42380000
+S AttackPower C1200000
+S BonusIntellectMultiplier 3D4CCCCD
+S Dodge 3D1438D2
+S Health 45D99800
+S Intellect 43380000
+S Mana 454C4000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CF5C28F
+S SpellCrit 3C15182B
+S Spirit 432E0000
+S Stamina 42680000
+S Strength 41F80000
+== 80|Mage|Troll|Caster
+S Agility 42340000
+S AttackPower C1200000
+S Dodge 3D1438D2
+S Health 45D99800
+S Intellect 43310000
+S Mana 454C4000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CF5C28F
+S SpellCrit 3C15182B
+S Spirit 432F0000
+S Stamina 42700000
+S Strength 42140000
+E 0.trigger=Use duration=41200000 cooldown=43340000 chance=3F800000 maxStack=1
+S 0.PhysicalHaste 3E4CCCCD
+S 0.SpellHaste 3E4CCCCD
+== 80|Mage|BloodElf|Caster
+S Agility 42340000
+S AttackPower C1200000
+S Dodge 3D1438D2
+S Health 45D99800
+S Intellect 43390000
+S Mana 454C4000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CF5C28F
+S SpellCrit 3C15182B
+S Spirit 432D0000
+S Stamina 42640000
+S Strength 42040000
+== 80|Mage|Draenei|Caster
+S Agility 42200000
+S AttackPower C1200000
+S Dodge 3D1438D2
+S Health 45D99800
+S Intellect 43360000
+S Mana 454C4000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CF5C28F
+S SpellCrit 3C15182B
+S Spirit 43300000
+S Stamina 42680000
+S Strength 42140000
+== 80|Warlock|Human|Caster
+S Agility 42860000
+S AttackPower C1200000
+S BonusSpiritMultiplier 3CF5C28F
+S Dodge 3CC30F49
+S Health 45DFE000
+S Intellect 431F0000
+S Mana 45710000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CE56042
+S SpellCrit 3C8B588E
+S Spirit 43250000
+S Stamina 42B20000
+S Strength 426C0000
+== 80|Warlock|Orc|Caster
+S Agility 42800000
+S AttackPower C1200000
+S Dodge 3CC30F49
+S Health 45DFE000
+S Intellect 431C0000
+S Mana 45710000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CE56042
+S SpellCrit 3C8B588E
+S Spirit 43290000
+S Stamina 42B60000
+S Strength 42780000
+E 0.trigger=Use duration=41700000 cooldown=42F00000 chance=3F800000 maxStack=1
+S 0.SpellPower 43230000
+== 80|Warlock|Dwarf|Caster
+S AttackPower C1200000
+S Dodge 3CC30F49
+S Health 45DFE000
+S Mana 45710000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CE56042
+S SpellCrit 3C8B588E
+== 80|Warlock|NightElf|Caster
+S AttackPower C1200000
+S Dodge 3CC30F49
+S Health 45DFE000
+S Mana 45710000
+S Miss 3D8F5C29
+S PhysicalCrit 3CE56042
+S SpellCrit 3C8B588E
+== 80|Warlock|Undead|Caster
+S Agility 42820000
+S AttackPower C1200000
+S Dodge 3CC30F49
+S Health 45DFE000
+S Intellect 431D0000
+S Mana 45710000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CE56042
+S SpellCrit 3C8B588E
+S Spirit 432B0000
+S Stamina 42B40000
+S Strength 42680000
+== 80|Warlock|Tauren|Caster
+S AttackPower C1200000
+S Dodge 3CC30F49
+S Health 45EB1199
+S Mana 45710000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CE56042
+S SpellCrit 3C8B588E
+== 80|Warlock|Gnome|Caster
+S Agility 428C0000
+S AttackPower C1200000
+S BonusIntellectMultiplier 3D4CCCCD
+S Dodge 3CC30F49
+S Health 45DFE000
+S Intellect 43220000
+S Mana 45710000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CE56042
+S SpellCrit 3C8B588E
+S Spirit 43260000
+S Stamina 42B00000
+S Strength 42580000
+== 80|Warlock|Troll|Caster
+S AttackPower C1200000
+S Dodge 3CC30F49
+S Health 45DFE000
+S Mana 45710000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CE56042
+S SpellCrit 3C8B588E
+E 0.trigger=Use duration=41200000 cooldown=43340000 chance=3F800000 maxStack=1
+S 0.PhysicalHaste 3E4CCCCD
+S 0.SpellHaste 3E4CCCCD
+== 80|Warlock|BloodElf|Caster
+S Agility 428A0000
+S AttackPower C1200000
+S Dodge 3CC30F49
+S Health 45DFE000
+S Intellect 43230000
+S Mana 45710000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CE56042
+S SpellCrit 3C8B588E
+S Spirit 43250000
+S Stamina 42AE0000
+S Strength 42600000
+== 80|Warlock|Draenei|Caster
+S AttackPower C1200000
+S Dodge 3CC30F49
+S Health 45DFE000
+S Mana 45710000
+S Miss 3D4CCCCD
+S PhysicalCrit 3CE56042
+S SpellCrit 3C8B588E
+== 80|Druid|Human|Caster
+S AttackPower C1200000
+S BonusSpiritMultiplier 3CF5C28F
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+== 80|Druid|Human|Bear
+S AttackPower 435C0000
+S BonusSpiritMultiplier 3CF5C28F
+S BonusStaminaMultiplier 3E800000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D4CCCCD
+S SpellCrit 3C978D50
+== 80|Druid|Human|Cat
+S AttackPower 430C0000
+S BonusSpiritMultiplier 3CF5C28F
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D991BC5
+S SpellCrit 3C978D50
+== 80|Druid|Human|Moonkin
+S AttackPower C1200000
+S BonusSpiritMultiplier 3CF5C28F
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+== 80|Druid|Orc|Caster
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+E 0.trigger=Use duration=41700000 cooldown=42F00000 chance=3F800000 maxStack=1
+S 0.AttackPower 43A10000
+== 80|Druid|Orc|Bear
+S AttackPower 435C0000
+S BonusStaminaMultiplier 3E800000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D4CCCCD
+S SpellCrit 3C978D50
+E 0.trigger=Use duration=41700000 cooldown=42F00000 chance=3F800000 maxStack=1
+S 0.AttackPower 43A10000
+== 80|Druid|Orc|Cat
+S AttackPower 430C0000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D991BC5
+S SpellCrit 3C978D50
+E 0.trigger=Use duration=41700000 cooldown=42F00000 chance=3F800000 maxStack=1
+S 0.AttackPower 43A10000
+== 80|Druid|Orc|Moonkin
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+E 0.trigger=Use duration=41700000 cooldown=42F00000 chance=3F800000 maxStack=1
+S 0.AttackPower 43A10000
+== 80|Druid|Dwarf|Caster
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+== 80|Druid|Dwarf|Bear
+S AttackPower 435C0000
+S BonusStaminaMultiplier 3E800000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D4CCCCD
+S SpellCrit 3C978D50
+== 80|Druid|Dwarf|Cat
+S AttackPower 430C0000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D991BC5
+S SpellCrit 3C978D50
+== 80|Druid|Dwarf|Moonkin
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+== 80|Druid|NightElf|Caster
+S Agility 42AC0000
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Intellect 430F0000
+S Mana 455A8000
+S Miss 3D8F5C29
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+S Spirit 431F0000
+S Stamina 42C20000
+S Strength 42AA0000
+== 80|Druid|NightElf|Bear
+S Agility 42AC0000
+S AttackPower 435C0000
+S BonusStaminaMultiplier 3E800000
+S Dodge 3D64228A
+S Health 45E7C800
+S Intellect 430F0000
+S Mana 455A8000
+S Miss 3D8F5C29
+S PhysicalCrit 3D4CCCCD
+S SpellCrit 3C978D50
+S Spirit 431F0000
+S Stamina 42C20000
+S Strength 42AA0000
+== 80|Druid|NightElf|Cat
+S Agility 42AC0000
+S AttackPower 430C0000
+S Dodge 3D64228A
+S Health 45E7C800
+S Intellect 430F0000
+S Mana 455A8000
+S Miss 3D8F5C29
+S PhysicalCrit 3D991BC5
+S SpellCrit 3C978D50
+S Spirit 431F0000
+S Stamina 42C20000
+S Strength 42AA0000
+== 80|Druid|NightElf|Moonkin
+S Agility 42AC0000
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Intellect 430F0000
+S Mana 455A8000
+S Miss 3D8F5C29
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+S Spirit 431F0000
+S Stamina 42C20000
+S Strength 42AA0000
+== 80|Druid|Undead|Caster
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+== 80|Druid|Undead|Bear
+S AttackPower 435C0000
+S BonusStaminaMultiplier 3E800000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D4CCCCD
+S SpellCrit 3C978D50
+== 80|Druid|Undead|Cat
+S AttackPower 430C0000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D991BC5
+S SpellCrit 3C978D50
+== 80|Druid|Undead|Moonkin
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+== 80|Druid|Tauren|Caster
+S Agility 429A0000
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45F35ECC
+S Intellect 430C0000
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+S Spirit 43390000
+S Stamina 42C80000
+S Strength 42BC0000
+== 80|Druid|Tauren|Bear
+S Agility 429A0000
+S AttackPower 435C0000
+S BonusStaminaMultiplier 3E800000
+S Dodge 3D64228A
+S Health 45F35ECC
+S Intellect 430C0000
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D4CCCCD
+S SpellCrit 3C978D50
+S Spirit 43390000
+S Stamina 42C80000
+S Strength 42BC0000
+== 80|Druid|Tauren|Cat
+S Agility 429A0000
+S AttackPower 430C0000
+S Dodge 3D64228A
+S Health 45F35ECC
+S Intellect 430C0000
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D991BC5
+S SpellCrit 3C978D50
+S Spirit 43390000
+S Stamina 42C80000
+S Strength 42BC0000
+== 80|Druid|Tauren|Moonkin
+S Agility 429A0000
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45F35ECC
+S Intellect 430C0000
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+S Spirit 43390000
+S Stamina 42C80000
+S Strength 42BC0000
+== 80|Druid|Gnome|Caster
+S AttackPower C1200000
+S BonusIntellectMultiplier 3D4CCCCD
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+== 80|Druid|Gnome|Bear
+S AttackPower 435C0000
+S BonusIntellectMultiplier 3D4CCCCD
+S BonusStaminaMultiplier 3E800000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D4CCCCD
+S SpellCrit 3C978D50
+== 80|Druid|Gnome|Cat
+S AttackPower 430C0000
+S BonusIntellectMultiplier 3D4CCCCD
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D991BC5
+S SpellCrit 3C978D50
+== 80|Druid|Gnome|Moonkin
+S AttackPower C1200000
+S BonusIntellectMultiplier 3D4CCCCD
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+== 80|Druid|Troll|Caster
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+E 0.trigger=Use duration=41200000 cooldown=43340000 chance=3F800000 maxStack=1
+S 0.PhysicalHaste 3E4CCCCD
+S 0.SpellHaste 3E4CCCCD
+== 80|Druid|Troll|Bear
+S AttackPower 435C0000
+S BonusStaminaMultiplier 3E800000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D4CCCCD
+S SpellCrit 3C978D50
+E 0.trigger=Use duration=41200000 cooldown=43340000 chance=3F800000 maxStack=1
+S 0.PhysicalHaste 3E4CCCCD
+S 0.SpellHaste 3E4CCCCD
+== 80|Druid|Troll|Cat
+S AttackPower 430C0000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D991BC5
+S SpellCrit 3C978D50
+E 0.trigger=Use duration=41200000 cooldown=43340000 chance=3F800000 maxStack=1
+S 0.PhysicalHaste 3E4CCCCD
+S 0.SpellHaste 3E4CCCCD
+== 80|Druid|Troll|Moonkin
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+E 0.trigger=Use duration=41200000 cooldown=43340000 chance=3F800000 maxStack=1
+S 0.PhysicalHaste 3E4CCCCD
+S 0.SpellHaste 3E4CCCCD
+== 80|Druid|BloodElf|Caster
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+== 80|Druid|BloodElf|Bear
+S AttackPower 435C0000
+S BonusStaminaMultiplier 3E800000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D4CCCCD
+S SpellCrit 3C978D50
+== 80|Druid|BloodElf|Cat
+S AttackPower 430C0000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D991BC5
+S SpellCrit 3C978D50
+== 80|Druid|BloodElf|Moonkin
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+== 80|Druid|Draenei|Caster
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50
+== 80|Druid|Draenei|Bear
+S AttackPower 435C0000
+S BonusStaminaMultiplier 3E800000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D4CCCCD
+S SpellCrit 3C978D50
+== 80|Druid|Draenei|Cat
+S AttackPower 430C0000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D991BC5
+S SpellCrit 3C978D50
+== 80|Druid|Draenei|Moonkin
+S AttackPower C1200000
+S Dodge 3D64228A
+S Health 45E7C800
+S Mana 455A8000
+S Miss 3D4CCCCD
+S PhysicalCrit 3D982A99
+S SpellCrit 3C978D50

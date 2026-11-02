@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Appearance drawer: browser-local palette and typography editor. The app stays visible behind
+     the transparent backdrop so edits can be checked live on the real UI. -->
+<div class="modal-backdrop appearance-backdrop" data-modal="appearance"
+     th:fragment="appearanceModal">
+    <div class="modal card appearance-modal" role="dialog" aria-modal="true"
+         aria-labelledby="appearance-title">
+        <header class="modal-head">
+            <h2 id="appearance-title">Appearance</h2>
+            <button class="icon-btn" type="button" title="Close" aria-label="Close" data-modal-close>&#215;</button>
+        </header>
+        <div th:replace="~{:: appearanceEditor}"></div>
+    </div>
+</div>
+
+<!-- Browser-local palette editor used by the standalone Appearance dialog. -->
+<div class="appearance-editor" data-theme-editor th:fragment="appearanceEditor">
+        <div class="appearance-pinned">
+            <p class="hint appearance-hint">
+                Changes apply instantly to the app behind this panel and are saved in this browser.
+                <span class="theme-status" data-theme-status aria-live="polite"></span>
+            </p>
+
+            <div class="theme-presets" role="group" aria-label="Theme presets">
+                <button class="theme-preset is-active" type="button" data-theme-preset="default"
+                        aria-pressed="true">Umber (default)</button>
+                <button class="theme-preset" type="button" data-theme-preset="midnight"
+                        aria-pressed="false">Midnight</button>
+                <button class="theme-preset" type="button" data-theme-preset="parchment"
+                        aria-pressed="false">Parchment</button>
+                <button class="theme-preset" type="button" data-theme-preset="contrast"
+                        aria-pressed="false">High contrast</button>
+            </div>
+
+            <div class="theme-preview" aria-hidden="true">
+                <div class="theme-preview-rail">
+                    <span class="theme-preview-brand">JRawr</span>
+                    <span class="theme-preview-nav is-active">Gear</span>
+                    <span class="theme-preview-nav">Talents</span>
+                    <span class="theme-preview-nav">Buffs</span>
+                    <span class="theme-preview-nav">Settings</span>
+                </div>
+                <div class="theme-preview-main">
+                    <div class="theme-preview-head">
+                        <span class="theme-preview-kicker">Live preview</span>
+                        <span class="theme-preview-badge">Arcane</span>
+                    </div>
+                    <strong class="theme-preview-title">Arcane Mage</strong>
+                    <p class="theme-preview-copy">
+                        Primary and <span class="theme-preview-muted">muted text</span>,
+                        <a href="#" tabindex="-1">an accent link</a> and
+                        <span class="theme-preview-chip">a chip</span>.
+                    </p>
+                    <div class="theme-preview-stats">
+                        <span><b>18,942</b> dps</span>
+                        <span class="theme-preview-success">+12.4%</span>
+                        <span class="theme-preview-warning">mana low</span>
+                    </div>
+                    <div class="theme-preview-controls">
+                        <span class="theme-preview-input">Search items…</span>
+                        <span class="btn btn-primary" tabindex="-1">Equip</span>
+                        <span class="btn" tabindex="-1">Compare</span>
+                    </div>
+                    <div class="theme-preview-chart">
+                        <i class="is-accent"></i>
+                        <i class="is-accent-2"></i>
+                        <i class="is-success"></i>
+                        <i class="is-info"></i>
+                        <i class="is-accent"></i>
+                    </div>
+                    <div class="theme-preview-quality">
+                        <span class="is-poor"></span>
+                        <span class="is-uncommon"></span>
+                        <span class="is-rare"></span>
+                        <span class="is-epic"></span>
+                        <span class="is-legendary"></span>
+                        <span class="theme-preview-danger">Danger</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-body appearance-scroll">
+            <section class="theme-library" aria-labelledby="theme-library-title">
+                <h3 class="options-title" id="theme-library-title">My themes</h3>
+                <p class="hint">
+                    Save the current palette and typography under a name, then apply it later.
+                    Themes are stored in this browser and can be overwritten by saving the same name.
+                </p>
+                <div class="theme-save-row">
+                    <label class="field">
+                        <span class="field-label">Theme name</span>
+                        <input type="text" data-theme-name maxlength="40" autocomplete="off"
+                               placeholder="e.g. Frostfire"/>
+                    </label>
+                    <button class="btn btn-primary" type="button" data-theme-save>Save current theme</button>
+                </div>
+                <p class="theme-library-status" data-theme-library-status aria-live="polite"></p>
+                <div class="theme-library-list" data-theme-library>
+                    <p class="hint theme-library-empty">No saved themes yet. Save the current palette to create one.</p>
+                </div>
+            </section>
+
+            <section class="theme-group" th:each="group : ${palette}" th:if="${!group.advanced()}"
+                     th:id="'theme-group-' + ${group.id()}"
+                     th:attr="aria-labelledby='theme-group-title-' + ${group.id()}">
+                <h3 class="options-title" th:id="'theme-group-title-' + ${group.id()}"
+                    th:text="${group.title()}">Surfaces</h3>
+                <p class="hint" th:text="${group.description()}">Application backgrounds.</p>
+                <div class="theme-grid" th:if="${group.id() != 'fonts'}">
+                    <div class="theme-token" th:each="token : ${group.tokens()}"
+                         th:if="${token.kind() == 'color'}">
+                        <input class="theme-color" type="color" th:value="${token.value()}"
+                               th:attr="data-theme-token=${token.key()},aria-label=${token.label()}"/>
+                        <span class="theme-token-copy">
+                            <span class="theme-token-label" th:text="${token.label()}">Background</span>
+                            <input class="theme-hex" type="text" th:value="${token.value()}"
+                                   spellcheck="false" autocomplete="off"
+                                   th:attr="data-theme-hex=${token.key()},aria-label=${token.label() + ' hex value'}"/>
+                        </span>
+                    </div>
+                </div>
+                <div class="theme-font-list" th:if="${group.id() == 'fonts'}">
+                    <label class="field" th:each="token : ${group.tokens()}"
+                           th:if="${token.kind() == 'font'}">
+                        <span class="field-label" th:text="${token.label()}">Body font</span>
+                        <input class="theme-font-value" type="text" th:value="${token.value()}"
+                               spellcheck="false" autocomplete="off"
+                               th:attr="data-theme-font=${token.key()}"/>
+                    </label>
+                </div>
+            </section>
+
+            <details class="advanced theme-advanced">
+                <summary>Game colours</summary>
+                <p class="hint">
+                    Item quality, class, gem and specialization colours. These normally keep the
+                    World of Warcraft palette; edit them only if you want to override it.
+                </p>
+                <section class="theme-group" th:each="group : ${palette}" th:if="${group.advanced()}"
+                         th:id="'theme-group-' + ${group.id()}"
+                         th:attr="aria-labelledby='theme-group-title-' + ${group.id()}">
+                    <h3 class="options-title" th:id="'theme-group-title-' + ${group.id()}"
+                        th:text="${group.title()}">Item quality</h3>
+                    <p class="hint" th:text="${group.description()}">Item quality colours.</p>
+                    <div class="theme-grid">
+                        <div class="theme-token" th:each="token : ${group.tokens()}">
+                            <input class="theme-color" type="color" th:value="${token.value()}"
+                                   th:attr="data-theme-token=${token.key()},aria-label=${token.label()}"/>
+                            <span class="theme-token-copy">
+                                <span class="theme-token-label" th:text="${token.label()}">Epic</span>
+                                <input class="theme-hex" type="text" th:value="${token.value()}"
+                                       spellcheck="false" autocomplete="off"
+                                       th:attr="data-theme-hex=${token.key()},aria-label=${token.label() + ' hex value'}"/>
+                            </span>
+                        </div>
+                    </div>
+                </section>
+            </details>
+
+            <div class="form-actions appearance-actions">
+                <button class="btn" type="button" data-theme-reset>Reset palette</button>
+                <button class="btn btn-primary" type="button" data-modal-close>Done</button>
+            </div>
+        </div>
+</div>
+
+</body>
+</html>

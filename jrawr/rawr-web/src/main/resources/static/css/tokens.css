@@ -1,0 +1,140 @@
+/* JRawr design tokens — modern dark, WoW-flavored. Every themed colour and font in the UI
+   resolves through one of these CSS custom properties on :root. The Appearance modal edits the
+   same keys and persists overrides to localStorage (see /js/theme.js). */
+
+:root {
+    /* Surfaces — neutral near-black charcoal with subtle layered elevation. */
+    --bg: #0f1218;
+    --bg-top: #161b23;
+    --bg-elevated: #191f28;
+    --bg-deep: #0b0e13;
+    --bg-deepest: #07090d;
+    --bg-inset: #11151b;
+    --panel: #151a21;
+    --panel-alt: #1a2029;
+    --panel-raised: #202732;
+    --card: #191f27;
+    --card-head: #212933;
+    --card-highlight: #28313c;
+    --surface-tint: #1e242d;
+    --button: #232a34;
+    --button-hover: #2d3743;
+
+    /* Text */
+    --text: #e7ecf3;
+    --text-muted: #b2bcc9;
+    --text-dim: #8892a1;
+    --text-faint: #66707d;
+    --on-accent: #221a07;
+    --on-solid: #ffffff;
+
+    /* Borders */
+    --border: #2c3541;
+    --border-soft: #222a33;
+    --border-strong: #9a833f;
+    --border-hover: #3a4552;
+    --border-deep: #1a2129;
+
+    /* Accents and status */
+    --accent: #e3b341;
+    --accent-strong: #c29026;
+    --accent-soft: color-mix(in srgb, var(--accent) 16%, transparent);
+    --accent-2: #54b3a6;
+    --accent-2-soft: color-mix(in srgb, var(--accent-2) 16%, transparent);
+    --info: #7ba3ff;
+    --info-soft: color-mix(in srgb, var(--info) 14%, transparent);
+    --warning: #e0b34a;
+    --warning-soft: color-mix(in srgb, var(--warning) 14%, transparent);
+    --danger: #e0645b;
+    --danger-soft: color-mix(in srgb, var(--danger) 14%, transparent);
+    --success: #57bb7a;
+    --success-soft: color-mix(in srgb, var(--success) 14%, transparent);
+    --highlight: #ffd100;
+    --highlight-strong: #d9a400;
+    --highlight-soft: color-mix(in srgb, var(--highlight) 14%, transparent);
+
+    --radius: 0.625rem;
+    --radius-sm: 0.4375rem;
+    --radius-pill: 999px;
+    --shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.35);
+    --shadow-sm: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.28);
+    --font-body: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --font-display: "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    --font-mono: ui-monospace, "Cascadia Code", Consolas, monospace;
+    /* Type scale (rem so it scales with the user/browser; no px-locked type). */
+    --fs-micro: 0.6875rem;
+    --fs-small: 0.75rem;
+    --fs-body: 0.875rem;
+    --fs-title: 0.9375rem;
+    --fs-heading: 1.0625rem;
+    --fs-brand: 1.125rem;
+    --fs-name: 1.375rem;
+    --fs-score: 1.875rem;
+    --fs-metric: 1.375rem;
+
+    /* Item quality (canonical WoW palette — unchanged). */
+    --q-poor: #9d9d9d;
+    --q-common: #ffffff;
+    --q-uncommon: #1eff00;
+    --q-rare: #0070dd;
+    --q-epic: #a335ee;
+    --q-legendary: #ff8000;
+    --q-artifact: #e6cc80;
+    --q-heirloom: #00ccff;
+    --q-temp: #7f7f7f;
+
+    /* Classes (canonical WoW palette — unchanged). */
+    --class-default: #8a9bb3;
+    --class-warrior: #c79c6e;
+    --class-paladin: #f58cba;
+    --class-hunter: #abd473;
+    --class-rogue: #fff569;
+    --class-priest: #f2f2f2;
+    --class-deathknight: #c41f3b;
+    --class-shaman: #0070de;
+    --class-mage: #69ccf0;
+    --class-warlock: #9482c9;
+    --class-druid: #ff7d0a;
+
+    /* Gems and sockets (canonical WoW palette — unchanged). */
+    --gem-red: #e03a3a;
+    --gem-blue: #3a78e0;
+    --gem-yellow: #e0c53a;
+    --gem-green: #39d353;
+    --gem-orange: #e08a3a;
+    --gem-purple: #a335ee;
+    --gem-meta: #d8d8d8;
+    --gem-prismatic: #f0f0fa;
+    --gem-unknown: #6b7688;
+    /* Prismatic sockets/gems: a small rainbow instead of a solid colour. */
+    --prismatic: conic-gradient(from 45deg,
+        var(--gem-red), var(--gem-yellow), var(--gem-green), var(--gem-blue), var(--gem-purple), var(--gem-red));
+
+    /* Specializations (canonical WoW palette — unchanged). */
+    --spec-arcane: #b18cff;
+    --spec-fire: #ff7a3d;
+    --spec-frost: #6fd3ff;
+    --spec-blood: #d64545;
+    --spec-unholy: #7ecb5a;
+    --spec-balance: #b18cff;
+    --spec-feral-combat: #e0a43a;
+    --spec-restoration: #55c98a;
+    --spec-beast-mastery: #9acd5a;
+    --spec-marksmanship: #7fb0ff;
+    --spec-survival: #d6b25a;
+    --spec-holy: #f0d58a;
+    --spec-protection: #7fa7c9;
+    --spec-retribution: #e06a7a;
+    --spec-discipline: #e8ecf5;
+    --spec-shadow: #a98bdf;
+    --spec-assassination: #c76a6a;
+    --spec-combat: #d6c25a;
+    --spec-subtlety: #9a8ad6;
+    --spec-elemental: #62a8ff;
+    --spec-enhancement: #d6a75a;
+    --spec-affliction: #a98bdf;
+    --spec-demonology: #9b7ad6;
+    --spec-destruction: #ff7a3d;
+    --spec-arms: #d66a5a;
+    --spec-fury: #e08a4a;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- About modal: provenance, credits, license and attribution (see the repo NOTICE). -->
+<div class="modal-backdrop" data-modal="about" th:fragment="aboutModal">
+    <div class="modal card" role="dialog" aria-modal="true" aria-labelledby="about-title">
+        <header class="modal-head">
+            <h2 id="about-title">About JRawr</h2>
+            <button class="icon-btn" type="button" title="Close" aria-label="Close" data-modal-close>&#215;</button>
+        </header>
+
+        <div class="modal-body">
+            <p>
+                <strong>JRawr 1.0.0</strong> is a port of <strong>Rawr v2.3.23.0</strong>, the World
+                of Warcraft (Wrath of the Lich King 3.3.5a) gear theorycrafting and optimization
+                tool. It rewrites the original C# (.NET) code in Java 25 and serves it as a Spring
+                Boot web application.
+            </p>
+
+            <h3 class="options-title">Original Rawr</h3>
+            <p>
+                Copyright 2008 Chadd Nervig, "HugeHoss", "Toskk", and the Rawr Developers.
+            </p>
+
+            <h3 class="options-title">WotLK 3.3.5a fork (the port source)</h3>
+            <p>
+                JRawr was ported from the <code>RAWR_WotLK_3.3.5a</code> fork, which updated Rawr to
+                pull item data from a WotLK database rather than the post-Cataclysm Wowhead database.
+                That fork was maintained by Magmonix, with Wine/Mono integration and debugging work by
+                Adriano Botti. The original source is available in the
+                <a href="https://github.com/AdrianoBotti/JRawrOriginalRawrSnapshot" rel="noopener">JRawr original Rawr snapshot</a>.
+            </p>
+
+            <h3 class="options-title">JRawr</h3>
+            <p>
+                Copyright 2026 Adriano Botti and the JRawr contributors.
+            </p>
+
+            <h3 class="options-title">Project and license</h3>
+            <p>
+                Source and issues:
+                <a href="https://github.com/AdrianoBotti/JRawr" rel="noopener">github.com/AdrianoBotti/JRawr</a>.
+                Licensed under the Apache License, Version 2.0
+                (<a href="https://www.apache.org/licenses/LICENSE-2.0" rel="noopener">the "License"</a>).
+                See the repository
+                <a href="https://github.com/AdrianoBotti/JRawr/blob/master/NOTICE" rel="noopener">NOTICE</a>
+                and
+                <a href="https://github.com/AdrianoBotti/JRawr/blob/master/THIRD_PARTY_NOTICES.md" rel="noopener">THIRD_PARTY_NOTICES.md</a>
+                for attribution and dependency licenses.
+            </p>
+
+            <h3 class="options-title">Third-party components</h3>
+            <ul class="hint-list">
+                <li>Spring Boot and the Spring Framework (Apache License 2.0)</li>
+                <li>Thymeleaf and Apache Tomcat (Apache License 2.0)</li>
+                <li>Apache Commons Math 3.6.1 (Apache License 2.0)</li>
+                <li>htmx 2.0.4 (0BSD; loaded from unpkg)</li>
+                <li>Font Awesome Free 6.7.2 (single <code>scroll</code> icon path; CC BY 4.0)</li>
+            </ul>
+
+            <h3 class="options-title">Companion addon</h3>
+            <p>
+                A World of Warcraft 3.3.5 addon,
+                <a href="https://github.com/AdrianoBotti/JRawrCharacterExporter" rel="noopener">JRawrCharacterExporter</a>,
+                exports the current in-game character as Rawr XML for import.
+            </p>
+
+            <p class="hint">
+                This project is not affiliated with or endorsed by Blizzard Entertainment. World of
+                Warcraft, Wrath of the Lich King, and related names are trademarks of Blizzard
+                Entertainment. Game data distributed in this repository (item, enchant, buff and
+                spell statistics) is the property of its respective owners and is included solely to
+                make the calculator functional.
+            </p>
+        </div>
+
+        <div class="modal-actions">
+            <button class="btn btn-primary" type="button" data-modal-close>Close</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Modal opened by the Options button next to the model picker in the header. -->
+<div class="modal-backdrop" data-modal="options" th:fragment="optionsModal">
+    <div class="modal card options-modal" role="dialog" aria-modal="true" aria-labelledby="options-title">
+        <header class="modal-head">
+            <h2 id="options-title">Model options</h2>
+            <button class="icon-btn" type="button" data-modal-close title="Close"
+                    aria-label="Close">&#215;</button>
+        </header>
+        <div id="options-panel" class="modal-body" th:fragment="optionsPanel">
+            <div th:replace="~{:: optionsBody}"></div>
+        </div>
+    </div>
+</div>
+
+<!-- htmx response: swap the inner panel and out-of-band refresh paper doll + stats. -->
+<th:block th:fragment="optionsSwap">
+    <div th:replace="~{:: optionsPanel}"></div>
+    <th:block th:replace="~{fragments/paperdoll :: paperdollOob}"></th:block>
+    <th:block th:replace="~{fragments/stats :: statsOob}"></th:block>
+</th:block>
+
+<div th:fragment="optionsBody">
+    <div class="inline-error" data-options-error="true" th:if="${optionsError != null}"
+         th:text="${optionsError}">error</div>
+
+    <div class="empty-state" data-options-hint="true"
+         th:if="${modelOptions == null or #lists.isEmpty(modelOptions.sections())}">
+        <p th:text="${modelOptions == null
+                ? 'Choose a model first to edit its options.'
+                : 'Options editing is not available for this model yet.'}">Choose a model above to edit its options.</p>
+    </div>
+
+    <form class="options-collection" th:if="${modelOptions != null and modelOptions.collection() != null}"
+          hx-post="/character/options/collection" hx-target="#options-panel" hx-swap="outerHTML">
+        <input type="hidden" name="kind" th:value="${modelOptions.collection().kind()}"/>
+        <label class="field">
+            <span class="field-label" th:text="${modelOptions.collection().title()}">Rotation</span>
+            <select name="index" onchange="this.form.requestSubmit()">
+                <option th:each="name, iter : ${modelOptions.collection().names()}"
+                        th:value="${iter.index}"
+                        th:selected="${iter.index == modelOptions.collection().selectedIndex()}"
+                        th:text="${name}">Name</option>
+            </select>
+        </label>
+        <button class="btn" type="submit" name="action" value="SELECT">Switch</button>
+        <button class="btn" type="submit" name="action" value="ADD"
+                th:if="${modelOptions.collection().canAdd()}">New</button>
+        <button class="btn" type="submit" name="action" value="DELETE"
+                th:if="${modelOptions.collection().canDelete()}"
+                hx-confirm="Delete this entry?">Delete</button>
+        <span class="hint" th:text="${modelOptions.collection().hint()}">Saved entries</span>
+    </form>
+
+    <form class="options-form" th:if="${modelOptions != null and !#lists.isEmpty(modelOptions.sections())}"
+          hx-post="/character/options" hx-target="#options-panel" hx-swap="outerHTML">
+        <input type="hidden" name="model" th:value="${modelOptions.modelName()}"/>
+
+        <div class="options-section" th:each="section : ${modelOptions.sections()}"
+             th:if="${!section.advanced()}">
+            <h3 class="options-title" th:text="${section.title()}">Fight</h3>
+            <div th:replace="~{:: optionsFields(${section})}"></div>
+        </div>
+
+        <details class="advanced" th:each="section : ${modelOptions.sections()}"
+                 th:if="${section.advanced()}">
+            <summary th:text="${section.title()}">Advanced</summary>
+            <div th:replace="~{:: optionsFields(${section})}"></div>
+        </details>
+
+        <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Apply options</button>
+            <button class="btn" type="button"
+                    hx-post="/character/options/reset" hx-target="#options-panel"
+                    hx-swap="outerHTML">Reset to defaults</button>
+        </div>
+    </form>
+</div>
+
+<div th:fragment="optionsFields(section)" class="options-fields">
+    <div class="options-row" th:each="row : ${section.rows()}">
+        <div class="field options-field" th:each="f : ${row}"
+             th:classappend="${f.inputType() == 'checkbox'} ? 'is-checkbox' : ''"
+             th:attr="data-option=${f.key()},data-default=${f.isDefault()}">
+            <span class="field-label" th:text="${f.label()}">Fight duration</span>
+            <input th:if="${f.inputType() == 'checkbox'}" type="checkbox"
+                   th:name="${f.key()}" value="true" th:checked="${f.checked()}"/>
+            <input th:if="${f.inputType() == 'number'}" type="number" step="any"
+                   th:name="${f.key()}" th:value="${f.value()}"/>
+            <input th:if="${f.inputType() == 'text'}" type="text" maxlength="500"
+                   th:name="${f.key()}" th:value="${f.value()}"/>
+            <select th:if="${f.inputType() == 'select'}" th:name="${f.key()}">
+                <option th:each="choice : ${f.choices()}" th:value="${choice}"
+                        th:selected="${choice == f.value()}" th:text="${choice}">x</option>
+            </select>
+            <span class="field-note" th:if="${f.hint() != null}">
+                <span class="hint" th:text="${f.hint()}">hint</span>
+            </span>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>OverrideProbe</Name>
+  <Realm>Test</Realm>
+  <Region>US</Region>
+  <Race>Troll</Race>
+  <Class>Mage</Class>
+  <CurrentModel>Mage</CurrentModel>
+  <EnforceMetagemRequirements>false</EnforceMetagemRequirements>
+  <CustomGemmingTemplates>
+    <GemmingTemplate>
+      <Id>tpl1</Id>
+      <Model>Mage</Model>
+      <Enabled>false</Enabled>
+      <Group>Meta</Group>
+      <RedId>40113</RedId>
+      <YellowId>40155</YellowId>
+      <BlueId>40133</BlueId>
+      <MetaId>41285</MetaId>
+      <PrismaticId>40155</PrismaticId>
+    </GemmingTemplate>
+  </CustomGemmingTemplates>
+  <GemmingTemplateOverrides>
+    <GemmingTemplate>
+      <Model>Mage</Model>
+      <Enabled>true</Enabled>
+      <Group>Meta</Group>
+      <RedId>40113</RedId>
+      <YellowId>40155</YellowId>
+      <BlueId>40133</BlueId>
+      <MetaId>41285</MetaId>
+      <PrismaticId>40155</PrismaticId>
+    </GemmingTemplate>
+  </GemmingTemplateOverrides>
+  <ItemFilterEnabledOverride>
+    <ItemFilterEnabledOverride>
+      <Name>ProbeFilter</Name>
+      <Enabled>false</Enabled>
+      <SubFilterOverride>
+        <ItemFilterEnabledOverride>
+          <Name>ProbeSub</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Other</Name>
+          <Enabled>false</Enabled>
+        </ItemFilterEnabledOverride>
+      </SubFilterOverride>
+    </ItemFilterEnabledOverride>
+    <ItemFilterEnabledOverride>
+      <Name>Other</Name>
+      <Enabled>false</Enabled>
+    </ItemFilterEnabledOverride>
+  </ItemFilterEnabledOverride>
+  <Boss>
+    <Targets />
+    <Moves />
+    <Stuns />
+    <Fears />
+    <Roots />
+    <Disarms />
+    <Name>Generic</Name>
+    <Content>T7_0</Content>
+    <Instance>None</Instance>
+    <Version>V_10N</Version>
+    <Comment>No comments have been written for this Boss.</Comment>
+    <Level>83</Level>
+    <Armor>10643</Armor>
+    <BerserkTimer>480</BerserkTimer>
+    <SpeedKillTimer>180</SpeedKillTimer>
+    <Health>1000000</Health>
+    <InBackPerc_Melee>0</InBackPerc_Melee>
+    <InBackPerc_Ranged>0</InBackPerc_Ranged>
+    <Max_Players>10</Max_Players>
+    <Min_Healers>3</Min_Healers>
+    <Min_Tanks>2</Min_Tanks>
+    <DoTs />
+    <Attacks />
+    <Resist_Physical>0</Resist_Physical>
+    <Resist_Frost>0</Resist_Frost>
+    <Resist_Fire>0</Resist_Fire>
+    <Resist_Nature>0</Resist_Nature>
+    <Resist_Arcane>0</Resist_Arcane>
+    <Resist_Shadow>0</Resist_Shadow>
+    <Resist_Holy>0</Resist_Holy>
+    <TimeBossIsInvuln>0</TimeBossIsInvuln>
+    <InBack>false</InBack>
+    <MultiTargs>false</MultiTargs>
+    <StunningTargs>false</StunningTargs>
+    <MovingTargs>false</MovingTargs>
+    <FearingTargs>false</FearingTargs>
+    <RootingTargs>false</RootingTargs>
+    <DisarmingTargs>false</DisarmingTargs>
+    <DamagingTargs>false</DamagingTargs>
+    <Under35Perc>0.1</Under35Perc>
+    <Under20Perc>0.15</Under20Perc>
+    <FilterType>Content</FilterType>
+    <Filter />
+    <BossName />
+  </Boss>
+  <WarriorTalents>0000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000</WarriorTalents>
+  <PaladinTalents>000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000</PaladinTalents>
+  <HunterTalents>000000000000000000000000000000000000000000000000000000000000000000000000000000000.000000000000000000000000000000000</HunterTalents>
+  <RogueTalents>00000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000</RogueTalents>
+  <PriestTalents>0000000000000000000000000000000000000000000000000000000000000000000000000000000000.000000000000000000000000000000000</PriestTalents>
+  <ShamanTalents>00000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000000000000000</ShamanTalents>
+  <MageTalents>00000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000</MageTalents>
+  <WarlockTalents>000000000000000000000000000000000000000000000000000000000000000000000000000000000.00000000000000000</WarlockTalents>
+  <DruidTalents>0000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000</DruidTalents>
+  <DeathKnightTalents>0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.000000000000000000000000000000000</DeathKnightTalents>
+  <CustomItemInstances />
+  <WaistBlacksmithingSocketEnabled>false</WaistBlacksmithingSocketEnabled>
+  <HandsBlacksmithingSocketEnabled>false</HandsBlacksmithingSocketEnabled>
+  <WristBlacksmithingSocketEnabled>false</WristBlacksmithingSocketEnabled>
+  <PrimaryProfession>None</PrimaryProfession>
+  <SecondaryProfession>None</SecondaryProfession>
+</Character>

@@ -1,0 +1,547 @@
+class	kind	member	arity	classification	reach	java
+Rawr.Armory	M	GetCharacter(3)	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.Armory	M	GetCharacter(4)	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.Armory	M	GetPet(3)	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.Armory	M	GetItemIdByName(1)	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.Armory	M	GetItem(1)	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.Armory	M	GetItem(2)	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.Armory	M	LoadUpgradesFromArmory(3)	UI/designer	used-shipped	
+Rawr.ArmoryPet	M	.ctor(4)	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.ArmoryPet	M	ToString(0)	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.ArmoryPet	M	GetPetByString(1)	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.ArmoryPet	M	PetFamilyToPetFamilyTree(1)	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.ArmoryPet	M	PetFamilyIdToPetFamilyName(1)	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.ArmoryPet	M	PetFamilyNameToPetFamilyId(1)	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.ArmoryPet	F	Family	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.ArmoryPet	F	Name	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.ArmoryPet	F	Spec	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.ArmoryPet	P	SpecKey	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.ArrayUtils/CompareOption	F	LessThan	equivalent (renamed)	refl	rawr.base.util.ArrayUtils.CompareOption
+Rawr.ArrayUtils/CompareOption	F	GreaterThan	dead/unreachable (IL evidence)	dead	rawr.base.util.ArrayUtils.CompareOption
+Rawr.Base.Algorithms.CalculationCache`2	M	Dispose(0)	dead/unreachable (IL evidence)	dead	rawr.base.algorithms.CalculationCache
+Rawr.Base.Algorithms.CalculationCache`2/Calculation	M	.ctor(2)	delegate (Java: functional interface)	used-shipped	rawr.base.algorithms.CalculationCache.Calculation
+Rawr.Base.Algorithms.CalculationCache`2/Calculation	M	Invoke(1)	delegate (Java: functional interface)	used-self	rawr.base.algorithms.CalculationCache.Calculation
+Rawr.Base.Algorithms.CalculationCache`2/Calculation	M	BeginInvoke(3)	delegate (Java: functional interface)	dead	rawr.base.algorithms.CalculationCache.Calculation
+Rawr.Base.Algorithms.CalculationCache`2/Calculation	M	EndInvoke(1)	delegate (Java: functional interface)	dead	rawr.base.algorithms.CalculationCache.Calculation
+Rawr.Base.ErrorBox	M	.ctor(0)	UI/designer	dead	
+Rawr.Base.ErrorBox	M	.ctor(5)	UI/designer	used-shipped	
+Rawr.Base.ErrorBox	M	.ctor(4)	UI/designer	dead	
+Rawr.Base.ErrorBox	M	.ctor(3)	UI/designer	used-shipped	
+Rawr.Base.ErrorBox	M	Show(0)	UI/designer	used-shipped	
+Rawr.Base.ErrorBox	F	Title	UI/designer	used-self	
+Rawr.Base.ErrorBox	F	Message	UI/designer	used-self	
+Rawr.Base.ErrorBox	F	Function	UI/designer	used-self	
+Rawr.Base.ErrorBox	F	Info	UI/designer	used-self	
+Rawr.Base.ErrorBox	F	StackTrace	UI/designer	used-self	
+Rawr.Base.Graph	M	.ctor(0)	UI/designer	used-shipped	
+Rawr.Base.Graph	M	SetupStatsGraph(5)	UI/designer	used-shipped	
+Rawr.Base.Graph	M	RenderStatsGraph(10)	UI/designer	used-shipped	
+Rawr.Base.Graph	M	RenderScalingGraph(12)	UI/designer	used-shipped	
+Rawr.Base.Graph	M	GetCalculationNames(0)	UI/designer	used-shipped	
+Rawr.Base.Graph	M	Dispose(1)	UI/designer	dead	
+Rawr.Base.Graph/Style	F	DpsWarr	UI/designer	dead	
+Rawr.Base.Graph/Style	F	Mage	UI/designer	dead	
+Rawr.Bosses.DG_BossAttacks	M	.ctor(0)	UI/designer	dead	
+Rawr.Bosses.DG_BossAttacks	M	Dispose(1)	UI/designer	dead	
+Rawr.Bosses.DG_BossSitChanges	M	.ctor(0)	UI/designer	dead	
+Rawr.Bosses.DG_BossSitChanges	M	.ctor(2)	UI/designer	used-shipped	
+Rawr.Bosses.DG_BossSitChanges	M	Dispose(1)	UI/designer	dead	
+Rawr.Bosses.DG_BossSitChanges	F	_TheList	UI/designer	used-self	
+Rawr.Bosses.DG_BossSitChanges	P	TheList	UI/designer	used-shipped	
+Rawr.Bosses.DG_BossSitChanges/Flags	F	Stun	UI/designer	dead	
+Rawr.Bosses.DG_BossSitChanges/Flags	F	Move	UI/designer	dead	
+Rawr.Bosses.DG_BossSitChanges/Flags	F	Root	UI/designer	dead	
+Rawr.Bosses.DG_BossSitChanges/Flags	F	Fear	UI/designer	dead	
+Rawr.Bosses.DG_BossSitChanges/Flags	F	Disarm	UI/designer	dead	
+Rawr.BossHandler	M	OnPropertyChanged(1)	UI/designer	used-self	rawr.base.bosses.BossHandler
+Rawr.BossHandler	P	DPS_SingleTarg_Melee	dead/unreachable (IL evidence)	dead	rawr.base.bosses.BossHandler
+Rawr.BossHandler	P	DPS_SingleTarg_Ranged	dead/unreachable (IL evidence)	dead	rawr.base.bosses.BossHandler
+Rawr.BossHandler	E	PropertyChanged	dead/unreachable (IL evidence)	dead	rawr.base.bosses.BossHandler
+Rawr.BossList	M	ConvertList_Move(2)	dead/unreachable (IL evidence)	dead	rawr.base.bosses.BossList
+Rawr.BossList	M	ConvertList_Stun(2)	dead/unreachable (IL evidence)	dead	rawr.base.bosses.BossList
+Rawr.BossList	M	ConvertList_Fear(2)	dead/unreachable (IL evidence)	dead	rawr.base.bosses.BossList
+Rawr.BossList	M	ConvertList_Root(2)	dead/unreachable (IL evidence)	dead	rawr.base.bosses.BossList
+Rawr.BossList	M	ConvertList_Dsrm(2)	dead/unreachable (IL evidence)	dead	rawr.base.bosses.BossList
+Rawr.BuffList	M	.ctor(0)	replaced (documented)	used-shipped	
+Rawr.BuffList	M	.ctor(1)	replaced (documented)	used-self	
+Rawr.CalculationOptionsPanelBase	M	LoadCalculationOptions(0)	UI/designer	used-self	
+Rawr.CalculationOptionsPanelBase	M	.ctor(0)	UI/designer	used-shipped	
+Rawr.CalculationOptionsPanelBase	P	Character	UI/designer	used-shipped	
+Rawr.Calculations	M	OnModelChanged(0)	UI/designer	used-self	rawr.base.calculations.Calculations
+Rawr.Calculations	M	OnModelChanging(0)	UI/designer	used-self	rawr.base.calculations.Calculations
+Rawr.Calculations	M	CreateNewCharacterCalculations(0)	dead/unreachable (IL evidence)	dead	rawr.base.calculations.Calculations
+Rawr.Calculations	M	ClearCache(0)	relocated (documented)	used-shipped	rawr.base.calculations.Calculations
+Rawr.Calculations	M	GetItemCalculations(3)	relocated (documented)	used-shipped	rawr.base.calculations.Calculations
+Rawr.Calculations	M	GetItemCalculations(3)	relocated (documented)	used-shipped	rawr.base.calculations.Calculations
+Rawr.Calculations	M	GetEnchantCalculations(4)	UI/designer	used-shipped	rawr.base.calculations.Calculations
+Rawr.Calculations	M	GetBuffCalculations(3)	UI/designer	used-shipped	rawr.base.calculations.Calculations
+Rawr.Calculations	M	GetCharacterStats(1)	dead/unreachable (IL evidence)	dead	rawr.base.calculations.Calculations
+Rawr.Calculations	M	GetItemStats(2)	relocated (documented)	used-shipped	rawr.base.calculations.Calculations
+Rawr.Calculations	M	GetCharacterStats(2)	dead/unreachable (IL evidence)	dead	rawr.base.calculations.Calculations
+Rawr.Calculations	M	GetBuffsStats(1)	dead/unreachable (IL evidence)	dead	rawr.base.calculations.Calculations
+Rawr.Calculations	M	GetCustomChartData(2)	relocated (documented)	used-shipped	rawr.base.calculations.Calculations
+Rawr.Calculations	M	RenderChart(5)	UI/designer	used-shipped	rawr.base.calculations.Calculations
+Rawr.Calculations	M	GetRelevantStats(1)	relocated (documented)	used-shipped	rawr.base.calculations.Calculations
+Rawr.Calculations	M	IsItemRelevant(1)	dead/unreachable (IL evidence)	dead	rawr.base.calculations.Calculations
+Rawr.Calculations	M	IsProfEnchantRelevant(2)	dead/unreachable (IL evidence)	dead	rawr.base.calculations.Calculations
+Rawr.Calculations	M	IsEnchantRelevant(2)	dead/unreachable (IL evidence)	dead	rawr.base.calculations.Calculations
+Rawr.Calculations	M	ValidModel(1)	relocated (documented)	used-shipped	rawr.base.calculations.Calculations
+Rawr.Calculations	P	ModelIcons	UI/designer	used-shipped	rawr.base.calculations.Calculations
+Rawr.Calculations	P	ModelClasses	UI/designer	used-shipped	rawr.base.calculations.Calculations
+Rawr.Calculations	P	SupportsMultithreading	replaced (documented)	used-shipped	rawr.base.calculations.Calculations
+Rawr.Calculations	P	CanUseAmmo	relocated (documented)	used-shipped	rawr.base.calculations.Calculations
+Rawr.Calculations	P	CharacterDisplayCalculationLabels	relocated (documented)	used-shipped	rawr.base.calculations.Calculations
+Rawr.Calculations	P	OptimizableCalculationLabels	relocated (documented)	used-shipped	rawr.base.calculations.Calculations
+Rawr.Calculations	P	CustomChartNames	relocated (documented)	used-shipped	rawr.base.calculations.Calculations
+Rawr.Calculations	P	CustomRenderedChartNames	relocated (documented)	used-shipped	rawr.base.calculations.Calculations
+Rawr.Calculations	P	SubPointNameColors	UI/designer	used-shipped	rawr.base.calculations.Calculations
+Rawr.Calculations	P	CalculationOptionsPanel	UI/designer	used-shipped	rawr.base.calculations.Calculations
+Rawr.Calculations	P	TargetClass	dead/unreachable (IL evidence)	dead	rawr.base.calculations.Calculations
+Rawr.Calculations	P	StatGraphRenderer	dead/unreachable (IL evidence)	dead	rawr.base.calculations.Calculations
+Rawr.Calculations	E	ModelChanged	UI/designer	used-shipped	rawr.base.calculations.Calculations
+Rawr.Calculations	E	ModelChanging	UI/designer	used-shipped	rawr.base.calculations.Calculations
+Rawr.Calculations/RawrModelInfoAttribute	M	.ctor(3)	UI/designer	dead	
+Rawr.Calculations/RawrModelInfoAttribute	P	Name	UI/designer	used-self	
+Rawr.Calculations/RawrModelInfoAttribute	P	IconPath	UI/designer	used-self	
+Rawr.Calculations/RawrModelInfoAttribute	P	TargetClass	UI/designer	used-self	
+Rawr.CalculationsBase	M	CreateNewCharacterCalculations(0)	dead/unreachable (IL evidence)	dead	rawr.base.calculations.CalculationsBase
+Rawr.CalculationsBase	M	GetCustomChartData(2)	relocated (documented)	used-self	rawr.base.calculations.CalculationsBase
+Rawr.CalculationsBase	M	RenderChart(5)	UI/designer	used-self	rawr.base.calculations.CalculationsBase
+Rawr.CalculationsBase	M	RenderCustomChart(5)	UI/designer	used-self	rawr.base.calculations.CalculationsBase
+Rawr.CalculationsBase	M	SetDefaults(1)	relocated (documented)	used-self	rawr.base.calculations.CalculationsBase
+Rawr.CalculationsBase	M	GetRelevantGlyphs(0)	relocated (documented)	used-shipped	rawr.base.calculations.CalculationsBase
+Rawr.CalculationsBase	M	GetRelevantStats(1)	relocated (documented)	used-shipped	rawr.base.calculations.CalculationsBase
+Rawr.CalculationsBase	M	GetEnchantCalculations(4)	UI/designer	used-self	rawr.base.calculations.CalculationsBase
+Rawr.CalculationsBase	M	RemoveConflictingBuffs(2)	relocated (documented)	used-shipped	rawr.base.calculations.CalculationsBase
+Rawr.CalculationsBase	M	GetBuffCalculations(3)	UI/designer	used-self	rawr.base.calculations.CalculationsBase
+Rawr.CalculationsBase	M	GetItemStats(2)	relocated (documented)	used-shipped	rawr.base.calculations.CalculationsBase
+Rawr.CalculationsBase	M	GetRelativeStatValues(1)	UI/designer	used-shipped	rawr.base.calculations.CalculationsBase
+Rawr.CalculationsBase	F	_statGraphRenderer	UI/designer	used-self	rawr.base.calculations.CalculationsBase
+Rawr.CalculationsBase	P	SupportsMultithreading	replaced (documented)	used-self	rawr.base.calculations.CalculationsBase
+Rawr.CalculationsBase	P	MaxDegreeOfParallelism	dead/unreachable (IL evidence)	dead	rawr.base.calculations.CalculationsBase
+Rawr.CalculationsBase	P	StatGraphRenderer	UI/designer	used-shipped	rawr.base.calculations.CalculationsBase
+Rawr.CalculationsBase	P	CustomChartNames	relocated (documented)	used-self	rawr.base.calculations.CalculationsBase
+Rawr.CalculationsBase	P	CustomRenderedChartNames	relocated (documented)	used-self	rawr.base.calculations.CalculationsBase
+Rawr.CalculationsBase	P	CalculationOptionsPanel	UI/designer	used-self	rawr.base.calculations.CalculationsBase
+Rawr.CalculationsBase	P	OptimizableCalculationLabels	relocated (documented)	used-self	rawr.base.calculations.CalculationsBase
+Rawr.Character	M	OnRaceChanged(0)	UI/designer	used-self	rawr.base.character.Character
+Rawr.Character	M	ToggleItemAvailability(2)	UI/designer	used-shipped	rawr.base.character.Character
+Rawr.Character	M	ToggleItemAvailability(2)	UI/designer	used-shipped	rawr.base.character.Character
+Rawr.Character	M	ToggleAvailableItemEnchantRestriction(2)	UI/designer	used-shipped	rawr.base.character.Character
+Rawr.Character	M	IsEnchantable(1)	dead/unreachable (IL evidence)	dead	rawr.base.character.Character
+Rawr.Character	M	IsEnchantable(1)	dead/unreachable (IL evidence)	dead	rawr.base.character.Character
+Rawr.Character	M	OnAvailableItemsChanged(0)	UI/designer	used-self	rawr.base.character.Character
+Rawr.Character	M	OnTalentChange(0)	UI/designer	used-shipped	rawr.base.character.Character
+Rawr.Character	M	OnClassChanged(0)	UI/designer	used-self	rawr.base.character.Character
+Rawr.Character	M	GetEquippedSlots(1)	dead/unreachable (IL evidence)	dead	rawr.base.character.Character
+Rawr.Character	M	SaveBuffs(1)	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	M	Load(1)	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	M	LoadFromXml(1)	serialization shim	used-self	rawr.base.character.Character
+Rawr.Character	M	LoadBuffsFromXml(1)	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	M	FromCompressedString(1)	dead/unreachable (IL evidence)	dead	rawr.base.character.Character
+Rawr.Character	F	_class	equivalent (renamed)	used-shipped	rawr.base.character.Character
+Rawr.Character	F	ArmoryPets	network/import (parked DECISIONS #30/#31/#32)	used-shipped	rawr.base.character.Character
+Rawr.Character	F	ArmoryPetsXml	network/import (parked DECISIONS #30/#31/#32)	used-shipped	rawr.base.character.Character
+Rawr.Character	F	_enforceMetagemRequirements	equivalent (renamed)	used-shipped	rawr.base.character.Character
+Rawr.Character	P	_head	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	_neck	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	_shoulders	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	_back	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	_chest	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	_shirt	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	_tabard	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	_wrist	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	_hands	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	_waist	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	_legs	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	_feet	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	_finger1	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	_finger2	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	_trinket1	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	_trinket2	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	_mainHand	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	_offHand	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	_ranged	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	_projectile	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	_projectileBag	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	SerializableWarriorTalents	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	SerializablePaladinTalents	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	SerializableHunterTalents	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	SerializableRogueTalents	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	SerializablePriestTalents	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	SerializableShamanTalents	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	SerializableMageTalents	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	SerializableWarlockTalents	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	SerializableDruidTalents	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	SerializableDeathKnightTalents	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	CurrentTalentsCata	serialization shim	used-shipped	rawr.base.character.Character
+Rawr.Character	P	RegionIndex	dead/unreachable (IL evidence)	dead	rawr.base.character.Character
+Rawr.Character	P	RaceIndex	dead/unreachable (IL evidence)	dead	rawr.base.character.Character
+Rawr.Character	P	PriProfIndex	dead/unreachable (IL evidence)	dead	rawr.base.character.Character
+Rawr.Character	P	SecProfIndex	dead/unreachable (IL evidence)	dead	rawr.base.character.Character
+Rawr.Character	P	ClassIndex	dead/unreachable (IL evidence)	dead	rawr.base.character.Character
+Rawr.Character	P	Head	equivalent accessor	used-shipped	rawr.base.character.Character
+Rawr.Character	P	Neck	equivalent accessor	used-shipped	rawr.base.character.Character
+Rawr.Character	P	Shoulders	equivalent accessor	used-shipped	rawr.base.character.Character
+Rawr.Character	P	Back	equivalent accessor	used-shipped	rawr.base.character.Character
+Rawr.Character	P	Chest	equivalent accessor	used-shipped	rawr.base.character.Character
+Rawr.Character	P	Shirt	equivalent accessor	used-shipped	rawr.base.character.Character
+Rawr.Character	P	Tabard	equivalent accessor	used-shipped	rawr.base.character.Character
+Rawr.Character	P	Wrist	equivalent accessor	used-shipped	rawr.base.character.Character
+Rawr.Character	P	Hands	equivalent accessor	used-shipped	rawr.base.character.Character
+Rawr.Character	P	Waist	equivalent accessor	used-shipped	rawr.base.character.Character
+Rawr.Character	P	Legs	equivalent accessor	used-shipped	rawr.base.character.Character
+Rawr.Character	P	Feet	equivalent accessor	used-shipped	rawr.base.character.Character
+Rawr.Character	P	Finger1	equivalent accessor	used-shipped	rawr.base.character.Character
+Rawr.Character	P	Finger2	equivalent accessor	used-shipped	rawr.base.character.Character
+Rawr.Character	P	Trinket1	equivalent accessor	used-shipped	rawr.base.character.Character
+Rawr.Character	P	Trinket2	equivalent accessor	used-shipped	rawr.base.character.Character
+Rawr.Character	P	Projectile	equivalent accessor	used-shipped	rawr.base.character.Character
+Rawr.Character	P	ProjectileBag	equivalent accessor	used-shipped	rawr.base.character.Character
+Rawr.Character	P	HeadEnchant	dead/unreachable (IL evidence)	dead	rawr.base.character.Character
+Rawr.Character	P	ShouldersEnchant	dead/unreachable (IL evidence)	dead	rawr.base.character.Character
+Rawr.Character	P	BackEnchant	equivalent accessor	used-shipped	rawr.base.character.Character
+Rawr.Character	P	ChestEnchant	dead/unreachable (IL evidence)	dead	rawr.base.character.Character
+Rawr.Character	P	WristEnchant	dead/unreachable (IL evidence)	dead	rawr.base.character.Character
+Rawr.Character	P	HandsEnchant	equivalent accessor	used-shipped	rawr.base.character.Character
+Rawr.Character	P	LegsEnchant	dead/unreachable (IL evidence)	dead	rawr.base.character.Character
+Rawr.Character	P	FeetEnchant	dead/unreachable (IL evidence)	dead	rawr.base.character.Character
+Rawr.Character	P	Finger1Enchant	dead/unreachable (IL evidence)	dead	rawr.base.character.Character
+Rawr.Character	P	Finger2Enchant	dead/unreachable (IL evidence)	dead	rawr.base.character.Character
+Rawr.Character	P	RangedEnchant	dead/unreachable (IL evidence)	dead	rawr.base.character.Character
+Rawr.Character	P	CharacterSlots	equivalent accessor	used-shipped	rawr.base.character.Character
+Rawr.Character	P	IsMetaGemActive	UI/designer	used-shipped	rawr.base.character.Character
+Rawr.Character	E	RaceChanged	UI/designer	used-shipped	rawr.base.character.Character
+Rawr.Character	E	AvailableItemsChanged	UI/designer	used-shipped	rawr.base.character.Character
+Rawr.Character	E	TalentChangedEvent	UI/designer	used-shipped	rawr.base.character.Character
+Rawr.Character	E	ClassChanged	UI/designer	used-shipped	rawr.base.character.Character
+Rawr.CommonStat	M	GetCommonStatMinimumRange(1)	replaced (documented)	used-self	
+Rawr.CommonStat	M	.ctor(0)	replaced (documented)	dead	
+Rawr.CommonStat	F	MinRange	replaced (documented)	used-self	
+Rawr.ContainerItem	M	Fill(3)	dead/unreachable (IL evidence)	dead	rawr.base.items.sources.ContainerItem
+Rawr.CraftedItem	M	Fill(3)	dead/unreachable (IL evidence)	dead	rawr.base.items.sources.CraftedItem
+Rawr.CustomControls.ExtendedToolTipCheckBox	M	.ctor(0)	UI/designer	used-shipped	
+Rawr.CustomControls.ExtendedToolTipCheckBox	M	ForceShowToolTip(0)	UI/designer	used-shipped	
+Rawr.CustomControls.ExtendedToolTipCheckBox	M	ForceHideToolTip(0)	UI/designer	used-shipped	
+Rawr.CustomControls.ExtendedToolTipCheckBox	M	Dispose(1)	UI/designer	dead	
+Rawr.CustomControls.ExtendedToolTipCheckBox	P	ToolTipText	UI/designer	used-shipped	
+Rawr.CustomControls.ExtendedToolTipLabel	M	.ctor(0)	UI/designer	used-shipped	
+Rawr.CustomControls.ExtendedToolTipLabel	M	Dispose(1)	UI/designer	dead	
+Rawr.CustomControls.ExtendedToolTipLabel	P	ToolTipText	UI/designer	used-shipped	
+Rawr.Enchant	M	FindAllEnchants(2)	dead/unreachable (IL evidence)	dead	rawr.base.items.Enchant
+Rawr.EnchantList	M	.ctor(0)	replaced (documented)	used-shipped	
+Rawr.EnumHelper	M	GetValues(0)	replaced (documented)	dead	
+Rawr.EnumHelper	M	GetValues(1)	replaced (documented)	used-shipped	
+Rawr.EnumHelper	M	GetNames(1)	replaced (documented)	dead	
+Rawr.EnumHelper	M	GetCount(1)	replaced (documented)	used-shipped	
+Rawr.Exports	M	GetLootRankURL(1)	UI/designer	used-shipped	
+Rawr.Exports	M	CopyPawnString(1)	UI/designer	used-shipped	
+Rawr.FactionItem	M	Fill(3)	dead/unreachable (IL evidence)	dead	rawr.base.items.sources.FactionItem
+Rawr.GemmingTemplate	E	PropertyChanged	dead/unreachable (IL evidence)	dead	rawr.base.items.GemmingTemplate
+Rawr.GenerateArraySerializerAttribute	M	.ctor(0)	attribute (XML/serialization metadata)	dead	
+Rawr.GenerateSerializerAttribute	M	.ctor(0)	attribute (XML/serialization metadata)	dead	
+Rawr.GlyphDataAttribute	M	.ctor(4)	attribute (XML/serialization metadata)	dead	rawr.base.talents.GlyphDataAttribute
+Rawr.GlyphDataAttribute	P	Description	attribute (XML/serialization metadata)	used-shipped	rawr.base.talents.GlyphDataAttribute
+Rawr.Item	M	ToString(0)	dead/unreachable (IL evidence)	dead	rawr.base.items.Item
+Rawr.Item	M	CompareTo(1)	dead/unreachable (IL evidence)	dead	rawr.base.items.Item
+Rawr.Item	P	EnglishName	equivalent (renamed)	used-shipped	rawr.base.items.Item
+Rawr.Item	P	SlotString	UI/designer	used-shipped	rawr.base.items.Item
+Rawr.Item	P	FactionString	UI/designer	live	rawr.base.items.Item
+Rawr.Item	P	TypeString	UI/designer	live	rawr.base.items.Item
+Rawr.Item	P	SocketColor1String	UI/designer	live	rawr.base.items.Item
+Rawr.Item	P	SocketColor2String	UI/designer	live	rawr.base.items.Item
+Rawr.Item	P	SocketColor3String	UI/designer	live	rawr.base.items.Item
+Rawr.ItemCache	M	Save(0)	replaced (documented)	used-shipped	rawr.base.items.ItemCache
+Rawr.ItemCache	M	Load(0)	dead/unreachable (IL evidence)	dead	rawr.base.items.ItemCache
+Rawr.ItemCache	M	SaveItemCost(1)	UI/designer	used-shipped	rawr.base.items.ItemCache
+Rawr.ItemCache	M	LoadItemCost(1)	UI/designer	used-shipped	rawr.base.items.ItemCache
+Rawr.ItemCache	M	ResetItemCost(0)	UI/designer	used-shipped	rawr.base.items.ItemCache
+Rawr.ItemCache	M	LoadTokenItemCost(1)	UI/designer	used-shipped	rawr.base.items.ItemCache
+Rawr.ItemCache	F	SavedFilePath	replaced (documented)	used-self	rawr.base.items.ItemCache
+Rawr.ItemCache	P	Instance	replaced (documented)	used-shipped	rawr.base.items.ItemCache
+Rawr.ItemCacheInstance	M	.ctor(0)	replaced (documented)	used-self	
+Rawr.ItemCacheInstance	M	.ctor(1)	replaced (documented)	dead	
+Rawr.ItemCacheInstance	M	InvalidateCachedStats(0)	replaced (documented)	used-self	
+Rawr.ItemCacheInstance	M	FindItemById(1)	replaced (documented)	used-self	
+Rawr.ItemCacheInstance	M	ContainsItemId(1)	replaced (documented)	used-self	
+Rawr.ItemCacheInstance	M	AddItem(1)	replaced (documented)	used-self	
+Rawr.ItemCacheInstance	M	AddItem(2)	replaced (documented)	used-self	
+Rawr.ItemCacheInstance	M	DeleteItem(1)	replaced (documented)	used-self	
+Rawr.ItemCacheInstance	M	DeleteItem(2)	replaced (documented)	used-self	
+Rawr.ItemCacheInstance	M	GetUnfilteredRelevantItems(2)	replaced (documented)	dead	
+Rawr.ItemCacheInstance	M	GetRelevantItems(2)	replaced (documented)	used-self	
+Rawr.ItemCacheInstance	M	OnItemsChanged(0)	replaced (documented)	used-self	
+Rawr.ItemCacheInstance	M	LoadItemCost(1)	replaced (documented)	used-self	
+Rawr.ItemCacheInstance	M	SaveItemCost(1)	replaced (documented)	used-self	
+Rawr.ItemCacheInstance	M	ResetItemCost(0)	replaced (documented)	used-self	
+Rawr.ItemCacheInstance	M	LoadTokenItemCost(1)	replaced (documented)	used-self	
+Rawr.ItemCacheInstance	M	AutoSetUniqueId(1)	replaced (documented)	used-self	
+Rawr.ItemCacheInstance	M	Save(0)	replaced (documented)	used-self	
+Rawr.ItemCacheInstance	M	Load(0)	replaced (documented)	used-self	
+Rawr.ItemCacheInstance	P	Items	replaced (documented)	used-self	
+Rawr.ItemCacheInstance	P	AllItems	replaced (documented)	used-self	
+Rawr.ItemCacheInstance	P	RelevantItems	replaced (documented)	used-self	
+Rawr.ItemCacheInstance	E	ItemsChanged	replaced (documented)	used-shipped	
+Rawr.ItemInstance	M	ToString(0)	dead/unreachable (IL evidence)	dead	rawr.base.items.ItemInstance
+Rawr.ItemInstance	M	LoadFromId(1)	dead/unreachable (IL evidence)	dead	rawr.base.items.ItemInstance
+Rawr.ItemInstance	M	CompareTo(1)	dead/unreachable (IL evidence)	dead	rawr.base.items.ItemInstance
+Rawr.ItemList	M	.ctor(0)	replaced (documented)	used-shipped	
+Rawr.ItemList	M	.ctor(1)	replaced (documented)	used-self	
+Rawr.ItemLocation	M	Fill(3)	dead/unreachable (IL evidence)	dead	rawr.base.items.sources.ItemLocation
+Rawr.ItemUpdater	M	.ctor(5)	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.ItemUpdater	M	AddItem(2)	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.ItemUpdater	M	FinishAdding(0)	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.ItemUpdater	M	WaitUntilDone(0)	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.ItemUpdater	P	ItemsDone	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.ItemUpdater	P	ItemsToDo	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.ItemUpdater	P	Done	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.ItemUpdater	P	Item	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.LocationFactory	M	Create(2)	network/import (parked DECISIONS #30/#31/#32)	dead	rawr.base.items.sources.LocationFactory
+Rawr.Log	M	Show(1)	UI/designer	used-self	rawr.base.util.Log
+Rawr.Optimizer.BatchOptimizer	M	OptimizeCharacterAsync(1)	equivalent (renamed)	used-self	rawr.base.batch.BatchOptimizer
+Rawr.Optimizer.BatchOptimizer	M	ComputeUpgradesAsync(1)	dead/unreachable (IL evidence)	dead	rawr.base.batch.BatchOptimizer
+Rawr.Optimizer.BatchOptimizer	M	ComputeUpgradesAsync(2)	equivalent (renamed)	used-self	rawr.base.batch.BatchOptimizer
+Rawr.Optimizer.BatchOptimizer	M	EvaluateUpgradeAsync(2)	dead/unreachable (IL evidence)	dead	rawr.base.batch.BatchOptimizer
+Rawr.Optimizer.ComputeUpgradesCompletedEventHandler	M	.ctor(2)	delegate (Java: functional interface)	used-shipped	
+Rawr.Optimizer.ComputeUpgradesCompletedEventHandler	M	Invoke(2)	delegate (Java: functional interface)	used-self	
+Rawr.Optimizer.ComputeUpgradesCompletedEventHandler	M	BeginInvoke(4)	delegate (Java: functional interface)	dead	
+Rawr.Optimizer.ComputeUpgradesCompletedEventHandler	M	EndInvoke(1)	delegate (Java: functional interface)	dead	
+Rawr.Optimizer.ComputeUpgradesProgressChangedEventHandler	M	.ctor(2)	delegate (Java: functional interface)	used-shipped	
+Rawr.Optimizer.ComputeUpgradesProgressChangedEventHandler	M	Invoke(2)	delegate (Java: functional interface)	used-self	
+Rawr.Optimizer.ComputeUpgradesProgressChangedEventHandler	M	BeginInvoke(4)	delegate (Java: functional interface)	dead	
+Rawr.Optimizer.ComputeUpgradesProgressChangedEventHandler	M	EndInvoke(1)	delegate (Java: functional interface)	dead	
+Rawr.Optimizer.EvaluateUpgradeCompletedEventHandler	M	.ctor(2)	delegate (Java: functional interface)	used-self	
+Rawr.Optimizer.EvaluateUpgradeCompletedEventHandler	M	Invoke(2)	delegate (Java: functional interface)	used-self	
+Rawr.Optimizer.EvaluateUpgradeCompletedEventHandler	M	BeginInvoke(4)	delegate (Java: functional interface)	dead	
+Rawr.Optimizer.EvaluateUpgradeCompletedEventHandler	M	EndInvoke(1)	delegate (Java: functional interface)	dead	
+Rawr.Optimizer.ItemInstanceOptimizer	M	OnOptimizeCharacterProgressChanged(1)	shim (async event surface inlined)	used-self	rawr.base.optimizer.ItemInstanceOptimizer
+Rawr.Optimizer.ItemInstanceOptimizer	M	OnOptimizeCharacterCompleted(1)	shim (async event surface inlined)	used-self	rawr.base.optimizer.ItemInstanceOptimizer
+Rawr.Optimizer.ItemInstanceOptimizer	M	OnComputeUpgradesProgressChanged(1)	shim (async event surface inlined)	used-self	rawr.base.optimizer.ItemInstanceOptimizer
+Rawr.Optimizer.ItemInstanceOptimizer	M	OnComputeUpgradesCompleted(1)	shim (async event surface inlined)	used-self	rawr.base.optimizer.ItemInstanceOptimizer
+Rawr.Optimizer.ItemInstanceOptimizer	M	OnEvaluateUpgradeProgressChanged(1)	shim (async event surface inlined)	used-self	rawr.base.optimizer.ItemInstanceOptimizer
+Rawr.Optimizer.ItemInstanceOptimizer	M	OnEvaluateUpgradeCompleted(1)	shim (async event surface inlined)	used-self	rawr.base.optimizer.ItemInstanceOptimizer
+Rawr.Optimizer.ItemInstanceOptimizer	M	OptimizeCharacterAsync(3)	shim (async event surface inlined)	used-self	rawr.base.optimizer.ItemInstanceOptimizer
+Rawr.Optimizer.ItemInstanceOptimizer	M	OptimizeCharacterAsync(5)	shim (async event surface inlined)	used-shipped	rawr.base.optimizer.ItemInstanceOptimizer
+Rawr.Optimizer.ItemInstanceOptimizer	M	ComputeUpgradesAsync(4)	dead/unreachable (IL evidence)	dead	rawr.base.optimizer.ItemInstanceOptimizer
+Rawr.Optimizer.ItemInstanceOptimizer	M	ComputeUpgradesAsync(3)	shim (async event surface inlined)	used-self	rawr.base.optimizer.ItemInstanceOptimizer
+Rawr.Optimizer.ItemInstanceOptimizer	M	ComputeUpgradesAsync(5)	shim (async event surface inlined)	used-shipped	rawr.base.optimizer.ItemInstanceOptimizer
+Rawr.Optimizer.ItemInstanceOptimizer	M	EvaluateUpgradeAsync(3)	shim (async event surface inlined)	used-self	rawr.base.optimizer.ItemInstanceOptimizer
+Rawr.Optimizer.ItemInstanceOptimizer	M	EvaluateUpgradeAsync(5)	shim (async event surface inlined)	used-self	rawr.base.optimizer.ItemInstanceOptimizer
+Rawr.Optimizer.ItemInstanceOptimizer	P	EffectiveMaxConcurrencyLevel	dead/unreachable (IL evidence)	dead	rawr.base.optimizer.ItemInstanceOptimizer
+Rawr.Optimizer.ItemInstanceOptimizer	E	OptimizeCharacterCompleted	shim (async event surface inlined)	used-shipped	rawr.base.optimizer.ItemInstanceOptimizer
+Rawr.Optimizer.ItemInstanceOptimizer	E	OptimizeCharacterProgressChanged	shim (async event surface inlined)	used-shipped	rawr.base.optimizer.ItemInstanceOptimizer
+Rawr.Optimizer.ItemInstanceOptimizer	E	ComputeUpgradesProgressChanged	shim (async event surface inlined)	used-shipped	rawr.base.optimizer.ItemInstanceOptimizer
+Rawr.Optimizer.ItemInstanceOptimizer	E	ComputeUpgradesCompleted	shim (async event surface inlined)	used-shipped	rawr.base.optimizer.ItemInstanceOptimizer
+Rawr.Optimizer.ItemInstanceOptimizer	E	EvaluateUpgradeProgressChanged	shim (async event surface inlined)	used-shipped	rawr.base.optimizer.ItemInstanceOptimizer
+Rawr.Optimizer.ItemInstanceOptimizer	E	EvaluateUpgradeCompleted	shim (async event surface inlined)	used-shipped	rawr.base.optimizer.ItemInstanceOptimizer
+Rawr.Optimizer.ItemOptimizer	M	OnOptimizeCharacterProgressChanged(1)	dead/unreachable (IL evidence)	dead	rawr.base.optimizer.ItemOptimizer
+Rawr.Optimizer.ItemOptimizer	M	OnOptimizeCharacterCompleted(1)	dead/unreachable (IL evidence)	dead	rawr.base.optimizer.ItemOptimizer
+Rawr.Optimizer.ItemOptimizer	M	OnComputeUpgradesProgressChanged(1)	dead/unreachable (IL evidence)	dead	rawr.base.optimizer.ItemOptimizer
+Rawr.Optimizer.ItemOptimizer	M	OnComputeUpgradesCompleted(1)	dead/unreachable (IL evidence)	dead	rawr.base.optimizer.ItemOptimizer
+Rawr.Optimizer.ItemOptimizer	M	OnEvaluateUpgradeProgressChanged(1)	dead/unreachable (IL evidence)	dead	rawr.base.optimizer.ItemOptimizer
+Rawr.Optimizer.ItemOptimizer	M	OnEvaluateUpgradeCompleted(1)	dead/unreachable (IL evidence)	dead	rawr.base.optimizer.ItemOptimizer
+Rawr.Optimizer.ItemOptimizer	M	OptimizeCharacterAsync(5)	dead/unreachable (IL evidence)	dead	rawr.base.optimizer.ItemOptimizer
+Rawr.Optimizer.ItemOptimizer	M	ComputeUpgradesAsync(4)	dead/unreachable (IL evidence)	dead	rawr.base.optimizer.ItemOptimizer
+Rawr.Optimizer.ItemOptimizer	M	ComputeUpgradesAsync(5)	dead/unreachable (IL evidence)	dead	rawr.base.optimizer.ItemOptimizer
+Rawr.Optimizer.ItemOptimizer	M	EvaluateUpgradeAsync(5)	dead/unreachable (IL evidence)	dead	rawr.base.optimizer.ItemOptimizer
+Rawr.Optimizer.ItemOptimizer	E	OptimizeCharacterCompleted	dead/unreachable (IL evidence)	dead	rawr.base.optimizer.ItemOptimizer
+Rawr.Optimizer.ItemOptimizer	E	OptimizeCharacterProgressChanged	dead/unreachable (IL evidence)	dead	rawr.base.optimizer.ItemOptimizer
+Rawr.Optimizer.ItemOptimizer	E	ComputeUpgradesProgressChanged	dead/unreachable (IL evidence)	dead	rawr.base.optimizer.ItemOptimizer
+Rawr.Optimizer.ItemOptimizer	E	ComputeUpgradesCompleted	dead/unreachable (IL evidence)	dead	rawr.base.optimizer.ItemOptimizer
+Rawr.Optimizer.ItemOptimizer	E	EvaluateUpgradeProgressChanged	dead/unreachable (IL evidence)	dead	rawr.base.optimizer.ItemOptimizer
+Rawr.Optimizer.ItemOptimizer	E	EvaluateUpgradeCompleted	dead/unreachable (IL evidence)	dead	rawr.base.optimizer.ItemOptimizer
+Rawr.Optimizer.OptimizeBatchCompletedEventHandler	M	.ctor(2)	delegate (Java: functional interface)	used-self	
+Rawr.Optimizer.OptimizeBatchCompletedEventHandler	M	Invoke(2)	delegate (Java: functional interface)	used-self	
+Rawr.Optimizer.OptimizeBatchCompletedEventHandler	M	BeginInvoke(4)	delegate (Java: functional interface)	dead	
+Rawr.Optimizer.OptimizeBatchCompletedEventHandler	M	EndInvoke(1)	delegate (Java: functional interface)	dead	
+Rawr.Optimizer.OptimizeCharacterCompletedEventArgs	M	.ctor(7)	shim (async event surface inlined)	used-self	
+Rawr.Optimizer.OptimizeCharacterCompletedEventArgs	P	OptimizedCharacter	shim (async event surface inlined)	used-shipped	
+Rawr.Optimizer.OptimizeCharacterCompletedEventArgs	P	CurrentCharacter	shim (async event surface inlined)	dead	
+Rawr.Optimizer.OptimizeCharacterCompletedEventArgs	P	OptimizedCharacterValue	shim (async event surface inlined)	used-shipped	
+Rawr.Optimizer.OptimizeCharacterCompletedEventArgs	P	CurrentCharacterValue	shim (async event surface inlined)	used-shipped	
+Rawr.Optimizer.OptimizeCharacterCompletedEventArgs	P	CurrentCharacterInjected	shim (async event surface inlined)	used-self	
+Rawr.Optimizer.OptimizeCharacterCompletedEventHandler	M	.ctor(2)	delegate (Java: functional interface)	used-shipped	
+Rawr.Optimizer.OptimizeCharacterCompletedEventHandler	M	Invoke(2)	delegate (Java: functional interface)	used-self	
+Rawr.Optimizer.OptimizeCharacterCompletedEventHandler	M	BeginInvoke(4)	delegate (Java: functional interface)	dead	
+Rawr.Optimizer.OptimizeCharacterCompletedEventHandler	M	EndInvoke(1)	delegate (Java: functional interface)	dead	
+Rawr.Optimizer.OptimizeCharacterProgressChangedEventHandler	M	.ctor(2)	delegate (Java: functional interface)	used-shipped	
+Rawr.Optimizer.OptimizeCharacterProgressChangedEventHandler	M	Invoke(2)	delegate (Java: functional interface)	used-self	
+Rawr.Optimizer.OptimizeCharacterProgressChangedEventHandler	M	BeginInvoke(4)	delegate (Java: functional interface)	dead	
+Rawr.Optimizer.OptimizeCharacterProgressChangedEventHandler	M	EndInvoke(1)	delegate (Java: functional interface)	dead	
+Rawr.Optimizer.OptimizerBase`3	M	ThreadPoolDirectUpgradeValuation(1)	replaced (documented)	used-self	rawr.base.optimizer.OptimizerBase
+Rawr.Optimizer.OptimizerBase`3	F	directValuationLock	replaced (documented)	used-self	rawr.base.optimizer.OptimizerBase
+Rawr.Optimizer.OptimizerBase`3	F	bestDirectIndividual	replaced (documented)	used-self	rawr.base.optimizer.OptimizerBase
+Rawr.Optimizer.OptimizerBase`3	F	bestDirectValuation	replaced (documented)	used-self	rawr.base.optimizer.OptimizerBase
+Rawr.Optimizer.OptimizerBase`3	F	bestDirectValue	replaced (documented)	used-self	rawr.base.optimizer.OptimizerBase
+Rawr.Optimizer.OptimizerBase`3	F	directValuationsComplete	replaced (documented)	used-self	rawr.base.optimizer.OptimizerBase
+Rawr.Optimizer.OptimizerBase`3	F	directValuationsIndex	replaced (documented)	used-self	rawr.base.optimizer.OptimizerBase
+Rawr.Optimizer.OptimizerBase`3	F	directValuationsSlot	replaced (documented)	used-self	rawr.base.optimizer.OptimizerBase
+Rawr.Optimizer.OptimizerBase`3	F	directValuationFoundUpgrade	replaced (documented)	used-self	rawr.base.optimizer.OptimizerBase
+Rawr.Optimizer.OptimizerBase`3	F	directValuationsList	replaced (documented)	used-self	rawr.base.optimizer.OptimizerBase
+Rawr.Optimizer.OptimizerBase`3	F	directValuationsTemplate	replaced (documented)	used-self	rawr.base.optimizer.OptimizerBase
+Rawr.Optimizer.OptimizerBase`3	F	remainingThreadsToSpawn	replaced (documented)	used-self	rawr.base.optimizer.OptimizerBase
+Rawr.Optimizer.OptimizerBase`3	F	startedThreads	replaced (documented)	used-self	rawr.base.optimizer.OptimizerBase
+Rawr.Optimizer.OptimizerBase`3	P	ThreadPoolValuation	replaced (documented)	used-self	rawr.base.optimizer.OptimizerBase
+Rawr.Optimizer.OptimizerBase`3	P	EffectiveMaxConcurrencyLevel	replaced (documented)	used-self	rawr.base.optimizer.OptimizerBase
+Rawr.Optimizer.OptimizerBase`3/GeneratorItemSelector	M	.ctor(2)	delegate (Java: functional interface)	used-self	rawr.base.optimizer.OptimizerBase.GeneratorItemSelector
+Rawr.Optimizer.OptimizerBase`3/GeneratorItemSelector	M	Invoke(2)	delegate (Java: functional interface)	used-self	rawr.base.optimizer.OptimizerBase.GeneratorItemSelector
+Rawr.Optimizer.OptimizerBase`3/GeneratorItemSelector	M	BeginInvoke(4)	delegate (Java: functional interface)	dead	rawr.base.optimizer.OptimizerBase.GeneratorItemSelector
+Rawr.Optimizer.OptimizerBase`3/GeneratorItemSelector	M	EndInvoke(1)	delegate (Java: functional interface)	dead	rawr.base.optimizer.OptimizerBase.GeneratorItemSelector
+Rawr.Optimizer.OptimizerCharacter	P	DirectUpgradeEntry	replaced (documented)	used-self	rawr.base.optimizer.OptimizerCharacter
+Rawr.OptimizerResults	M	.ctor(3)	dead/unreachable (IL evidence)	dead	
+Rawr.OptimizerResults	M	ToString(0)	dead/unreachable (IL evidence)	dead	
+Rawr.PercentageAttribute	M	.ctor(0)	attribute (XML/serialization metadata)	dead	
+Rawr.PvpItem	M	Fill(3)	dead/unreachable (IL evidence)	dead	rawr.base.items.sources.PvpItem
+Rawr.QuestItem	M	Fill(3)	dead/unreachable (IL evidence)	dead	rawr.base.items.sources.QuestItem
+Rawr.SavedBuffSet	M	Save(1)	dead/unreachable (IL evidence)	dead	rawr.base.character.SavedBuffSet
+Rawr.SavedTalentSpec	M	Save(1)	dead/unreachable (IL evidence)	dead	rawr.base.character.SavedTalentSpec
+Rawr.SavedVariablesDictionary	M	Equivalent(1)	network/import (parked DECISIONS #30/#31/#32)	dead	rawr.data.SavedVariablesDictionary
+Rawr.SavedVariablesParser	M	export(2)	network/import (parked DECISIONS #30/#31/#32)	dead	rawr.data.SavedVariablesParser
+Rawr.SavedVariablesParser/LuaTokenTypes	F	LUA_STRING	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.SavedVariablesParser/LuaTokenTypes	F	LUA_INTEGER	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.SavedVariablesParser/LuaTokenTypes	F	LUA_DOUBLE	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.SavedVariablesParser/LuaTokenTypes	F	LUA_KEYWORD	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.SavedVariablesParser/LuaTokenTypes	F	LUA_BOOLEAN	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.SavedVariablesParser/LuaTokenTypes	F	LUA_NIL	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.SavedVariablesParser/LuaTokenTypes	F	LUA_FIELD	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.SavedVariablesParser/LuaTokenTypes	F	LUA_TABLE	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.SerializableDictionary`2	M	GetSchema(0)	replaced (documented)	dead	
+Rawr.SerializableDictionary`2	M	ReadXml(1)	replaced (documented)	dead	
+Rawr.SerializableDictionary`2	M	WriteXml(1)	replaced (documented)	dead	
+Rawr.SerializableDictionary`2	M	.ctor(0)	replaced (documented)	used-shipped	
+Rawr.SpecialEffect	M	GetUptimePlot(4)	UI/designer	used-shipped	rawr.base.effects.SpecialEffect
+Rawr.SpecialFunction	M	Acosh(1)	dead/unreachable (IL evidence)	dead	rawr.base.effects.SpecialFunction
+Rawr.SpecialFunction	M	Asinh(1)	dead/unreachable (IL evidence)	dead	rawr.base.effects.SpecialFunction
+Rawr.SpecialFunction	M	Atanh(1)	dead/unreachable (IL evidence)	dead	rawr.base.effects.SpecialFunction
+Rawr.SpecialFunction	M	J0(1)	dead/unreachable (IL evidence)	dead	rawr.base.effects.SpecialFunction
+Rawr.SpecialFunction	M	J1(1)	dead/unreachable (IL evidence)	dead	rawr.base.effects.SpecialFunction
+Rawr.SpecialFunction	M	Jn(2)	dead/unreachable (IL evidence)	dead	rawr.base.effects.SpecialFunction
+Rawr.SpecialFunction	M	Y0(1)	dead/unreachable (IL evidence)	dead	rawr.base.effects.SpecialFunction
+Rawr.SpecialFunction	M	Y1(1)	dead/unreachable (IL evidence)	dead	rawr.base.effects.SpecialFunction
+Rawr.SpecialFunction	M	Yn(2)	dead/unreachable (IL evidence)	dead	rawr.base.effects.SpecialFunction
+Rawr.SpecialFunction	M	Fac(1)	dead/unreachable (IL evidence)	dead	rawr.base.effects.SpecialFunction
+Rawr.SpecialFunction	M	Fac(1)	dead/unreachable (IL evidence)	dead	rawr.base.effects.SpecialFunction
+Rawr.SpecialFunction	M	Igamc(2)	dead/unreachable (IL evidence)	dead	rawr.base.effects.SpecialFunction
+Rawr.SpecialFunction	M	Igam(2)	dead/unreachable (IL evidence)	dead	rawr.base.effects.SpecialFunction
+Rawr.SpecialFunction	M	Chisq(2)	dead/unreachable (IL evidence)	dead	rawr.base.effects.SpecialFunction
+Rawr.SpecialFunction	M	Chisqc(2)	dead/unreachable (IL evidence)	dead	rawr.base.effects.SpecialFunction
+Rawr.SpecialFunction	M	Poisson(2)	dead/unreachable (IL evidence)	dead	rawr.base.effects.SpecialFunction
+Rawr.SpecialFunction	M	Poissonc(2)	dead/unreachable (IL evidence)	dead	rawr.base.effects.SpecialFunction
+Rawr.StatFilter	M	.ctor(2)	delegate (Java: functional interface)	used-shipped	rawr.base.stats.StatFilter
+Rawr.StatFilter	M	Invoke(1)	delegate (Java: functional interface)	used-self	rawr.base.stats.StatFilter
+Rawr.StatFilter	M	BeginInvoke(3)	delegate (Java: functional interface)	dead	rawr.base.stats.StatFilter
+Rawr.StatFilter	M	EndInvoke(1)	delegate (Java: functional interface)	dead	rawr.base.stats.StatFilter
+Rawr.StatGraphRenderer	M	.ctor(0)	UI/designer	used-self	
+Rawr.StatGraphRenderer	M	Render(4)	UI/designer	used-self	
+Rawr.StatGraphRenderer	F	MinimumX	UI/designer	used-shipped	
+Rawr.StatGraphRenderer	F	MaximumX	UI/designer	used-shipped	
+Rawr.StatGraphRenderer	F	GranularityX	UI/designer	used-shipped	
+Rawr.StatGraphRenderer	F	StatX	UI/designer	used-shipped	
+Rawr.StaticDrop	M	Fill(3)	dead/unreachable (IL evidence)	dead	rawr.base.items.sources.StaticDrop
+Rawr.Stats	M	BeginUnsafe(3)	replaced (documented)	used-self	rawr.base.stats.Stats
+Rawr.Stats	M	EndUnsafe(0)	replaced (documented)	used-self	rawr.base.stats.Stats
+Rawr.Stats	M	IsPercentage(1)	replaced (documented)	used-shipped	rawr.base.stats.Stats
+Rawr.Stats	P	PropertyInfoCache	replaced (documented)	used-self	rawr.base.stats.Stats
+Rawr.Stats/SpecialEffectEnumerator	M	Dispose(0)	dead/unreachable (IL evidence)	dead	rawr.base.stats.Stats.SpecialEffectEnumerator
+Rawr.StatusMessaging/StatusErrorDelegate	M	.ctor(2)	delegate (Java: functional interface)	used-shipped	rawr.base.util.StatusMessaging.StatusErrorDelegate
+Rawr.StatusMessaging/StatusErrorDelegate	M	BeginInvoke(3)	delegate (Java: functional interface)	dead	rawr.base.util.StatusMessaging.StatusErrorDelegate
+Rawr.StatusMessaging/StatusErrorDelegate	M	EndInvoke(1)	delegate (Java: functional interface)	dead	rawr.base.util.StatusMessaging.StatusErrorDelegate
+Rawr.StatusMessaging/StatusUpdateDelegate	M	.ctor(2)	delegate (Java: functional interface)	used-shipped	rawr.base.util.StatusMessaging.StatusUpdateDelegate
+Rawr.StatusMessaging/StatusUpdateDelegate	M	BeginInvoke(3)	delegate (Java: functional interface)	dead	rawr.base.util.StatusMessaging.StatusUpdateDelegate
+Rawr.StatusMessaging/StatusUpdateDelegate	M	EndInvoke(1)	delegate (Java: functional interface)	dead	rawr.base.util.StatusMessaging.StatusUpdateDelegate
+Rawr.TalentDataAttribute	M	.ctor(9)	attribute (XML/serialization metadata)	dead	rawr.base.talents.TalentDataAttribute
+Rawr.TalentDataAttribute	P	Description	attribute (XML/serialization metadata)	used-shipped	rawr.base.talents.TalentDataAttribute
+Rawr.TalentDataAttribute	P	Icon	attribute (XML/serialization metadata)	used-shipped	rawr.base.talents.TalentDataAttribute
+Rawr.Utilities	M	Clone(1)	replaced (documented)	used-shipped	rawr.base.util.Utilities
+Rawr.Utilities/EqualityComparison`1	M	.ctor(2)	delegate (Java: functional interface)	used-shipped	rawr.base.util.Utilities.EqualityComparison
+Rawr.Utilities/EqualityComparison`1	M	BeginInvoke(4)	delegate (Java: functional interface)	dead	rawr.base.util.Utilities.EqualityComparison
+Rawr.Utilities/EqualityComparison`1	M	EndInvoke(1)	delegate (Java: functional interface)	dead	rawr.base.util.Utilities.EqualityComparison
+Rawr.Utilities/FloatValueSource	M	.ctor(2)	delegate (Java: functional interface)	dead	rawr.base.util.Utilities.FloatValueSource
+Rawr.Utilities/FloatValueSource	M	BeginInvoke(2)	delegate (Java: functional interface)	dead	rawr.base.util.Utilities.FloatValueSource
+Rawr.Utilities/FloatValueSource	M	EndInvoke(1)	delegate (Java: functional interface)	dead	rawr.base.util.Utilities.FloatValueSource
+Rawr.VendorItem	M	Fill(3)	dead/unreachable (IL evidence)	dead	rawr.base.items.sources.VendorItem
+Rawr.WebRequestWrapper	M	LogWowhead(1)	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper	M	.ctor(0)	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.WebRequestWrapper	M	GetLatestVersionString(0)	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.WebRequestWrapper	M	GetBetaVersionString(0)	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.WebRequestWrapper	M	GetRandomDidYouKnow(0)	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.WebRequestWrapper	M	GetKnownIssues(0)	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.WebRequestWrapper	M	DownloadClassTalentTree(1)	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.WebRequestWrapper	M	DownloadCharacterTalentTree(3)	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper	M	DownloadCharacterSheet(3)	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper	M	DownloadUpgrades(4)	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper	M	DownloadItemInformation(1)	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.WebRequestWrapper	M	DownloadItemToolTipSheet(1)	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.WebRequestWrapper	M	DownloadItemSearch(1)	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper	M	DownloadItemWowhead(1)	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.WebRequestWrapper	M	DownloadItemWowhead(2)	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper	M	DownloadUpgradesWowhead(2)	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper	M	DownloadQuestWowhead(1)	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper	M	DownloadItemHtmlWowhead(1)	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper	M	DownloadQuestHtmlWowhead(1)	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.WebRequestWrapper	M	DownloadItemIcon(1)	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.WebRequestWrapper	M	DownloadTalentIcon(2)	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.WebRequestWrapper	M	DownloadTalentIcon(4)	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.WebRequestWrapper	M	DownloadTempImage(0)	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.WebRequestWrapper	M	ResetFatalErrorIndicator(0)	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.WebRequestWrapper	M	DownloadItemIconAsync(1)	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.WebRequestWrapper	M	DownloadText(1)	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper	M	GetNameFromArmory(2)	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper	F	CONTENT_XML	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.WebRequestWrapper	F	CONTENT_JPG	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.WebRequestWrapper	F	CONTENT_PNG	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.WebRequestWrapper	F	CONTENT_GIF	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.WebRequestWrapper	F	NetworkSettingsProvider	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper	F	CacheSettingsProvider	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper	P	QueueFailureCount	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.WebRequestWrapper	P	RequestQueueCount	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.WebRequestWrapper	P	LastWasFatalError	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.WebRequestWrapper	P	FatalError	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.WebRequestWrapper	P	Error	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.WebRequestWrapper/ICacheSettingsProvider	P	RelativeItemImageCache	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper/ICacheSettingsProvider	P	RelativeTalentImageCache	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	MaxHttpRequests	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	UseDefaultProxySettings	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	ProxyServer	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	ProxyPort	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	ProxyUserName	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	ProxyPassword	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	ProxyDomain	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	ProxyType	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	UserAgent	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	DownloadItemInfo	network/import (parked DECISIONS #30/#31/#32)	live	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	ProxyRequiresAuthentication	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	UseDefaultAuthenticationForProxy	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	WoWItemIconURI	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	UserAgent_IE7	network/import (parked DECISIONS #30/#31/#32)	live	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	UserAgent_IE6	network/import (parked DECISIONS #30/#31/#32)	live	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	UserAgent_FireFox2	network/import (parked DECISIONS #30/#31/#32)	live	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	ClassTalentURI	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	CharacterTalentURI	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	CharacterSheetURI	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	ItemToolTipSheetURI	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	ItemUpgradeURI	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	ItemWowheadURI	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	ItemWowheadUpgradeURI	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	QuestWowheadURI	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	TalentIconURI	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	ArmoryTalentIconURI	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	ItemInfoURI	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WebRequestWrapper/INetworkSettingsProvider	P	ItemSearchURI	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.WorldDrop	M	Fill(3)	dead/unreachable (IL evidence)	dead	rawr.base.items.sources.WorldDrop
+Rawr.Wowhead	M	ProcessFile(0)	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.Wowhead	M	LoadKnownWotlkItems(0)	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.Wowhead	M	ProcessItem(1)	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.Wowhead	M	GetItem(1)	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.Wowhead	M	GetItem(2)	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.Wowhead	M	GetItem(3)	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.Wowhead	M	GetItem(2)	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.Wowhead	M	GetItem(3)	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.Wowhead	M	LoadUpgradesFromWowhead(4)	UI/designer	used-shipped	
+Rawr.Wowhead	M	ImportItemsFromWowhead(1)	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.Wowhead	M	ImportItemsFromWowhead(2)	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.Wowhead	M	GetWowheadWeightedReportURL(1)	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.Wowhead/UpgradeCancelCheck	M	.ctor(2)	network/import (parked DECISIONS #30/#31/#32)	used-shipped	
+Rawr.Wowhead/UpgradeCancelCheck	M	Invoke(0)	network/import (parked DECISIONS #30/#31/#32)	used-self	
+Rawr.Wowhead/UpgradeCancelCheck	M	BeginInvoke(2)	network/import (parked DECISIONS #30/#31/#32)	dead	
+Rawr.Wowhead/UpgradeCancelCheck	M	EndInvoke(1)	network/import (parked DECISIONS #30/#31/#32)	dead	

@@ -1,0 +1,31 @@
+# Local development material. These paths are intentionally not published: they hold the
+# agent/session docs, the read-only C# port source and local build output.
+/AGENTS.md
+/docs/dev/
+/legacy/
+
+# Build output
+.gradle/
+build/
+.jdk/
+*.class
+.idea/
+core
+core.*
+
+# Runtime character storage and local side-cars
+jrawr/characters/
+
+# Oracle and probe build output
+oracle/*/bin/
+tools/*/bin/
+*.exe
+*.dll
+
+# Python generator caches
+__pycache__/
+*.pyc
+
+# Local logs and OS files
+*.log
+.DS_Store
