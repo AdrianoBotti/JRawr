@@ -10,6 +10,9 @@ Version 1.0.1 ports the calculation engine, all 20 class/spec models, the gear o
 character editor. The original desktop, Silverlight and WPF interfaces are not ported; JRawr has a
 new browser interface.
 
+See the [User Guide](https://github.com/AdrianoBotti/JRawr/wiki) for installation, the build editor,
+charts, optimizer and troubleshooting.
+
 ## Quick start
 
 Download the archive for your platform from

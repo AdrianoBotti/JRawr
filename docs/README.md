@@ -4,6 +4,7 @@ Version **1.0.1**. Last verified 2026-11-02.
 
 | Document | Read it for |
 |---|---|
+| [User Guide](https://github.com/AdrianoBotti/JRawr/wiki) | Installation and everyday use: build editor, charts, optimizer, tools, import/export and troubleshooting |
 | [../README.md](../README.md) | Project overview, quick start, features and limitations |
 | [Architecture handbook](architecture/README.md) | How the application is put together, from HTTP request to model calculation |
 | [Development](DEVELOPMENT.md) | Build, test, run, data loading and oracle regeneration |
