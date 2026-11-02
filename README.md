@@ -6,23 +6,25 @@ JRawr is a port of **Rawr v2.3.23.0**, the World of Warcraft: Wrath of the Lich 
 gear theorycrafting and optimization tool, from C# to **Java 25**. It runs as a local Spring Boot
 web application with a Thymeleaf + htmx interface.
 
-Version 1.0.0 ports the calculation engine, all 20 class/spec models, the gear optimizer and the
+Version 1.0.1 ports the calculation engine, all 20 class/spec models, the gear optimizer and the
 character editor. The original desktop, Silverlight and WPF interfaces are not ported; JRawr has a
 new browser interface.
 
 ## Quick start
 
-1. Install Java 25 or newer (Temurin is the tested distribution).
-2. Download `JRawr-1.0.0.zip` from
-   [Releases](https://github.com/AdrianoBotti/JRawr/releases/latest) and extract it.
-3. Run the launcher:
+Download the archive for your platform from
+[Releases](https://github.com/AdrianoBotti/JRawr/releases/latest):
 
-   ```bash
-   ./jrawr.sh
-   ```
+- `JRawr-1.0.1-linux-x64.zip` or `JRawr-1.0.1-linux-x64.tar.gz` includes a Temurin JRE 25. No
+  separate Java installation is needed.
+- `JRawr-1.0.1-windows-x64.zip` includes a Temurin JRE 25. No separate Java installation is
+  needed.
+- `JRawr-1.0.1.zip` and `JRawr-1.0.1.tar.gz` are the universal archives; they require Java 25 on
+  your machine.
 
-   On Windows run `jrawr.bat`.
-4. Open <http://127.0.0.1:8080/>.
+1. Extract the archive.
+2. Run `./jrawr.sh` on Linux or `jrawr.bat` on Windows.
+3. Open <http://127.0.0.1:8080/>.
 
 The game data is bundled in `data/`. Characters, saved talent specs, item filters and item costs
 are written to the user data directory:
@@ -32,6 +34,34 @@ are written to the user data directory:
 
 The launcher binds to `127.0.0.1` by default. Use `JRAWR_ADDRESS` and `JRAWR_PORT` to change the
 address or port, and `JAVA_OPTS` for JVM options.
+
+## Java runtime
+
+The platform archives bundle Eclipse Temurin JRE 25.0.5+8 under `runtime/`. The launchers choose
+Java in this order:
+
+1. `JRAWR_JAVA`, if set.
+2. The bundled `runtime/bin/java` (or `runtime\bin\java.exe`).
+3. `JAVA_HOME/bin/java`.
+4. `java` on `PATH`.
+
+To use your own Java 25 build, point `JRAWR_JAVA` at the `java` executable:
+
+```bash
+JRAWR_JAVA=/path/to/java25/bin/java ./jrawr.sh
+```
+
+On Windows:
+
+```bat
+set JRAWR_JAVA=C:\path\to\java25\bin\java.exe
+jrawr.bat
+```
+
+You can also replace the `runtime` directory with another Java 25 runtime, or delete it to fall
+back to `JAVA_HOME` or `PATH`. The universal archive has no `runtime` and always uses your own
+Java 25. The bundled JRE is pinned in `jrawr/gradle/temurin.properties`; JRawr releases pick up JRE
+updates. Use `JRAWR_JAVA` if you need a vendor-specific or newer Java 25 build.
 
 ## Features
 
@@ -68,10 +98,14 @@ The Gradle build also produces the release archives:
 
 ```bash
 cd jrawr
-./gradlew release
+./gradlew release          # universal archives (no JRE)
+./gradlew releaseBundled   # Linux/Windows archives with Temurin JRE 25
+./gradlew releaseAll       # both
 ```
 
-The archives and their SHA-256 checksums are written to `jrawr/build/release/`.
+`releaseBundled` downloads the pinned Temurin JREs and needs `bash`, `curl`, `tar`, `unzip`, `zip`,
+`sha256sum` and `perl`; it runs on Linux in the release workflow. The archives and their SHA-256 checksums
+are written to `jrawr/build/release/`.
 
 Running the application from Gradle reads game data from `jrawr/data` and writes characters to
 `jrawr/characters` by default. Both directories can be overridden with the `jrawr.data-dir` and
@@ -108,6 +142,9 @@ See [Architecture](docs/architecture/README.md) for the engine and web design,
 - The Armory and Wowhead character importers from the original application are not ported.
 - The application is intended for one local user and does not include accounts, TLS or a database.
 - Game data is fixed at WotLK 3.3.5a. JRawr does not add new game-data updates or model features.
+- The bundled JRE is a pinned Temurin 25.0.5+8; Java security updates require a new JRawr release.
+  Use `JRAWR_JAVA` if you manage your own Java runtime. Bundled archives are provided for x64
+  Linux and Windows; other platforms can use the universal archive with Java 25.
 
 ## AI-assisted development
 

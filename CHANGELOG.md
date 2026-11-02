@@ -3,6 +3,21 @@
 All notable changes to JRawr are recorded here. The project follows a simple
 `MAJOR.MINOR.PATCH` version.
 
+## [1.0.1] - 2026-11-02
+
+Bundled Java runtime release.
+
+- Added `JRawr-1.0.1-linux-x64.zip`, `JRawr-1.0.1-linux-x64.tar.gz` and
+  `JRawr-1.0.1-windows-x64.zip`, which include Eclipse Temurin JRE 25.0.5+8 and need no separate
+  Java installation.
+- Launchers now prefer `JRAWR_JAVA`, then the bundled `runtime/`, then `JAVA_HOME`, then `java`
+  on `PATH`.
+- The universal archives remain available for users who already have Java 25.
+- The bundled JRE is pinned in `jrawr/gradle/temurin.properties`; `./gradlew releaseBundled`
+  produces the platform archives.
+- Added Temurin/OpenJDK attribution to the notices and documented the bundled runtime in the
+  README and release guide.
+
 ## [1.0.0] - 2026-11-02
 
 First public release.

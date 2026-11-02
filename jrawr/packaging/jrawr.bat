@@ -22,13 +22,19 @@ if not exist "%DATA_DIR%\ItemCache.xml" (
     exit /b 1
 )
 
-where java >nul 2>nul
-if errorlevel 1 (
-    echo Java 25 or newer is required, but java was not found on PATH. 1>&2
+set "JAVA_BIN="
+if defined JRAWR_JAVA set "JAVA_BIN=%JRAWR_JAVA%"
+if not defined JAVA_BIN if exist "%APP_DIR%\runtime\bin\java.exe" set "JAVA_BIN=%APP_DIR%\runtime\bin\java.exe"
+if not defined JAVA_BIN if defined JAVA_HOME if exist "%JAVA_HOME%\bin\java.exe" set "JAVA_BIN=%JAVA_HOME%\bin\java.exe"
+if not defined JAVA_BIN set "JAVA_BIN=java"
+
+if not "%JAVA_BIN%"=="java" if not exist "%JAVA_BIN%" (
+    echo Java executable not found: "%JAVA_BIN%" 1>&2
+    echo Set JRAWR_JAVA to a Java 25 executable, or install Java 25. 1>&2
     exit /b 1
 )
 
 if not exist "%USER_DATA_DIR%" mkdir "%USER_DATA_DIR%"
 
-java %JAVA_OPTS% -jar "%APP_DIR%\jrawr.jar" --server.address="%JRAWR_ADDRESS%" --server.port="%JRAWR_PORT%" --jrawr.data-dir="%DATA_DIR%" --jrawr.characters-dir="%USER_DATA_DIR%" --spring.thymeleaf.cache=true --spring.web.resources.cache.period=365d
+"%JAVA_BIN%" %JAVA_OPTS% -jar "%APP_DIR%\jrawr.jar" --server.address="%JRAWR_ADDRESS%" --server.port="%JRAWR_PORT%" --jrawr.data-dir="%DATA_DIR%" --jrawr.characters-dir="%USER_DATA_DIR%" --spring.thymeleaf.cache=true --spring.web.resources.cache.period=365d
 exit /b %ERRORLEVEL%

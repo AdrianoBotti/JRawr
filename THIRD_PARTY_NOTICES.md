@@ -26,6 +26,20 @@ Spring Boot brings additional Apache-2.0, MIT, EPL and BSD-style dependencies (f
 Micrometer, SnakeYAML and the Jakarta APIs). Their license files are included in the published
 dependency artifacts.
 
+## Bundled Java runtime
+
+The platform-specific archives (`JRawr-<version>-linux-x64.zip`, `JRawr-<version>-linux-x64.tar.gz`
+and `JRawr-<version>-windows-x64.zip`) include Eclipse Temurin JRE 25.0.5+8 under `runtime/`.
+Temurin is an OpenJDK distribution.
+
+- Eclipse Temurin: <https://adoptium.net/>
+- OpenJDK: <https://openjdk.org/>
+- License: GNU General Public License, version 2, with the Classpath Exception
+  (<https://openjdk.org/legal/gplv2+ce.html>)
+
+The JRE distribution's own legal files are included in the archive under `runtime/legal/`. The
+universal archives do not bundle a JRE.
+
 ## Browser and bundled assets
 
 | Component | Version | License | Notes |

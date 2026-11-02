@@ -76,6 +76,14 @@ Browser and bundled assets:
   * htmx 2.0.4, BSD Zero Clause License (loaded from unpkg at runtime)
   * Font Awesome Free 6.7.2, CC BY 4.0 (a single `scroll` icon path)
 
+Bundled Java runtime:
+
+  * The platform-specific release archives include Eclipse Temurin JRE 25.0.5+8
+    (OpenJDK), licensed under GPLv2 with the Classpath Exception. The JRE's
+    legal files are included under `runtime/legal/`. The universal archives do
+    not bundle a JRE. See THIRD_PARTY_NOTICES.md and
+    https://adoptium.net/ for details.
+
 Test-only dependencies include JUnit 5, AssertJ and HtmlUnit. See
 THIRD_PARTY_NOTICES.md for links and the full list.
 

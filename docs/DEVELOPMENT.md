@@ -148,6 +148,21 @@ mcs --version
 Wine is optional and only needed for the original Windows-only pieces. The Java build never calls
 Mono, Wine or the C# tools, and tests never call third-party services.
 
+## Release packaging
+
+```bash
+cd jrawr
+./gradlew release          # universal archives without a JRE
+./gradlew releaseBundled   # Linux/Windows archives with Temurin JRE 25
+./gradlew releaseAll       # both
+```
+
+The bundled task downloads the pinned Temurin JREs from
+`jrawr/gradle/temurin.properties` and requires `bash`, `curl`, `tar`, `unzip`, `zip`, `sha256sum` and
+`perl`. It is run on Linux in the release workflow. The launchers prefer `JRAWR_JAVA`, then
+the bundled `runtime/`, then `JAVA_HOME`, then `java` on `PATH`. See
+[Releasing](RELEASING.md) for artifact names, checksums and smoke-test steps.
+
 ## Tools
 
 `tools/` contains development probes and generators (base stats, stat conversion, special effects,
@@ -163,7 +178,8 @@ public documentation is the set listed in [docs/README.md](README.md).
 ## Troubleshooting
 
 - `Data directory ... does not contain ...`: check `jrawr.data-dir` and the required cache files.
-- Java version errors: install JDK 25 and make sure `JAVA_HOME` points at it.
+- Java version errors: install JDK 25, point `JAVA_HOME` at it, or set `JRAWR_JAVA` to the java
+  executable you want the launcher to use.
 - Port already in use: pass `--server.port=<port>` or set `JRAWR_PORT` when using the launcher.
 - Blank or missing item icons: the icon site is unreachable, or the configured icon base is wrong.
   Icons are hotlinked in the browser and are never cached by the server.

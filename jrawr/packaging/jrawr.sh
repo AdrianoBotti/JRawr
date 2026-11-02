@@ -18,24 +18,36 @@ if [ ! -f "$DATA_DIR/ItemCache.xml" ]; then
     echo "Game data was not found in $DATA_DIR." >&2
     exit 1
 fi
-if ! command -v java >/dev/null 2>&1; then
-    echo "Java 25 or newer is required, but 'java' was not found on PATH." >&2
+if [ -n "${JRAWR_JAVA:-}" ]; then
+    JAVA_BIN="$JRAWR_JAVA"
+elif [ -x "$APP_DIR/runtime/bin/java" ]; then
+    JAVA_BIN="$APP_DIR/runtime/bin/java"
+elif [ -n "${JAVA_HOME:-}" ] && [ -x "$JAVA_HOME/bin/java" ]; then
+    JAVA_BIN="$JAVA_HOME/bin/java"
+else
+    JAVA_BIN="java"
+fi
+
+if ! command -v "$JAVA_BIN" >/dev/null 2>&1; then
+    echo "Java 25 or newer is required, but no java executable was found." >&2
+    echo "Set JRAWR_JAVA to a Java 25 executable, or install Java 25." >&2
     exit 1
 fi
 
-JAVA_VERSION=$(java -version 2>&1 | awk -F '"' '/version/ { print $2; exit }')
+JAVA_VERSION=$("$JAVA_BIN" -version 2>&1 | awk -F '"' '/version/ { print $2; exit }')
 JAVA_MAJOR=${JAVA_VERSION%%.*}
 case "$JAVA_MAJOR" in
     25|2[6-9]|[3-9][0-9]) ;;
     *)
         echo "Java 25 or newer is required (found ${JAVA_VERSION:-unknown})." >&2
+        echo "Set JRAWR_JAVA to a Java 25 executable, or install Java 25." >&2
         exit 1
         ;;
 esac
 
 mkdir -p "$USER_DATA_DIR"
 
-exec java ${JAVA_OPTS:-} -jar "$APP_DIR/jrawr.jar" \
+exec "$JAVA_BIN" ${JAVA_OPTS:-} -jar "$APP_DIR/jrawr.jar" \
     --server.address="$ADDRESS" \
     --server.port="$PORT" \
     --jrawr.data-dir="$DATA_DIR" \

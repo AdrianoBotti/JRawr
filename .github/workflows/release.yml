@@ -31,7 +31,7 @@ jobs:
 
       - name: Build and package
         working-directory: jrawr
-        run: ./gradlew clean build release -Pjrawr.version="${GITHUB_REF_NAME#v}"
+        run: ./gradlew clean build release releaseBundled -Pjrawr.version="${GITHUB_REF_NAME#v}"
 
       - name: Verify archives
         working-directory: jrawr/build/release
@@ -39,6 +39,25 @@ jobs:
           sha256sum -c ./*.sha256
           unzip -l JRawr-*.zip
           tar -tzf JRawr-*.tar.gz
+
+      - name: Smoke-test bundled Linux archive
+        working-directory: jrawr
+        run: |
+          rm -rf /tmp/jrawr-smoke
+          mkdir -p /tmp/jrawr-smoke/extract /tmp/jrawr-smoke/user
+          unzip -q build/release/JRawr-*-linux-x64.zip -d /tmp/jrawr-smoke/extract
+          APP=$(find /tmp/jrawr-smoke/extract -mindepth 1 -maxdepth 1 -type d | head -1)
+          XDG_DATA_HOME=/tmp/jrawr-smoke/user JRAWR_PORT=18080 "$APP/jrawr.sh" \
+            > /tmp/jrawr-smoke/app.log 2>&1 &
+          PID=$!
+          for i in $(seq 1 40); do
+            if curl -fsS -o /dev/null http://127.0.0.1:18080/; then break; fi
+            sleep 1
+          done
+          curl -fsS -o /dev/null http://127.0.0.1:18080/
+          EXPECTED_JAVA=$(grep '^temurin.version=' gradle/temurin.properties | cut -d= -f2 | cut -d+ -f1)
+          grep -q "using Java $EXPECTED_JAVA" /tmp/jrawr-smoke/app.log
+          kill "$PID"
 
       - name: Publish GitHub release
         env:

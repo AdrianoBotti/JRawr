@@ -4,7 +4,7 @@ plugins {
 
 allprojects {
     group = 'jrawr'
-    version = providers.gradleProperty('jrawr.version').getOrElse('1.0.0')
+    version = providers.gradleProperty('jrawr.version').getOrElse('1.0.1')
 }
 
 subprojects {
@@ -172,4 +172,18 @@ tasks.register('release') {
             new File(outDir, file.name + '.sha256').text = "${hex}  ${file.name}\n"
         }
     }
+}
+
+tasks.register('releaseBundled', Exec) {
+    group = 'distribution'
+    description = 'Builds the Linux and Windows archives with a bundled Temurin JRE.'
+    dependsOn 'stageRelease'
+    workingDir = rootProject.projectDir
+    commandLine 'bash', 'packaging/build-bundled-release.sh', version.toString()
+}
+
+tasks.register('releaseAll') {
+    group = 'distribution'
+    description = 'Builds the universal and bundled release archives.'
+    dependsOn 'release', 'releaseBundled'
 }

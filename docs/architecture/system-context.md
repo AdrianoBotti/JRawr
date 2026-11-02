@@ -136,6 +136,10 @@ Item icons are hotlinked from the configured source site and are never stored lo
 is a single JVM; jobs and calculations are bounded by the process resources and the calculation
 lock described in [Cross-cutting concerns](cross-cutting.md).
 
+The platform release archives bundle Eclipse Temurin JRE 25 under `runtime/`; the universal
+archive and local builds require Java 25. The launcher selects `JRAWR_JAVA`, then the bundled
+`runtime/`, then `JAVA_HOME`, then `java` on `PATH`.
+
 ## What is intentionally outside the context
 
 - The original C# Rawr application and its UI.
