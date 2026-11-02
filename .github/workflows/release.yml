@@ -16,20 +16,18 @@ jobs:
 
     steps:
       - name: Check out
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
       - name: Set up Java 25
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: "25"
 
       - name: Set up Gradle
-        uses: gradle/actions/setup-gradle@v4
-        with:
-          build-root-directory: jrawr
+        uses: gradle/actions/setup-gradle@v5
 
       - name: Build and package
         working-directory: jrawr

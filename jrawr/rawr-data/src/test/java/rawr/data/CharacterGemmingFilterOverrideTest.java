@@ -133,7 +133,9 @@ class CharacterGemmingFilterOverrideTest {
         int end = xml.indexOf("</ItemFilterEnabledOverride>");
         assertThat(start).as("CustomGemmingTemplates in %s", xml).isGreaterThanOrEqualTo(0);
         assertThat(end).as("ItemFilterEnabledOverride in %s", xml).isGreaterThan(start);
-        return xml.substring(start, end + "</ItemFilterEnabledOverride>".length());
+        return xml.substring(start, end + "</ItemFilterEnabledOverride>".length())
+                .replace("\r\n", "\n")
+                .replace('\r', '\n');
     }
 
     private static Path resource(String name) {
