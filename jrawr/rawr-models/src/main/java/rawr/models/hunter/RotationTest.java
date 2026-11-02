@@ -42,7 +42,7 @@ class RotationTest {
         this.bossOpts = bossOpts;
         this.calculatedStats = calculatedStats;
         // 091109 Drizz: Added
-        this.calculatedStats.sequence = "Time  :Shot          :CastTime:Done   :CD Until" + System.lineSeparator();
+        this.calculatedStats.sequence = "Time  :Shot          :CastTime:Done   :CD Until" + "\n";
     }
 
     // 091109 Drizz: Added to be able to pull infor from "outside"
@@ -420,7 +420,7 @@ class RotationTest {
                         }
                         onCDUntil = thisShotInfo.timeUntilOffCd;
                     }
-                    calculatedStats.sequence += String.format(java.util.Locale.ROOT, "%6.2f:%-13s : %7.3f:%7.3f:%7.3f", currentTime, thisShot, timeUsed, castEnd, onCDUntil) + System.lineSeparator();
+                    calculatedStats.sequence += String.format(java.util.Locale.ROOT, "%6.2f:%-13s : %7.3f:%7.3f:%7.3f", currentTime, thisShot, timeUsed, castEnd, onCDUntil) + "\n";
                 }
 
                 // Set L&L Timer after Black Arrow/Immolation Trap was used

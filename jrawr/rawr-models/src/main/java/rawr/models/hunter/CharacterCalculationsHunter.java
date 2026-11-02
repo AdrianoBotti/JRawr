@@ -370,8 +370,8 @@ public class CharacterCalculationsHunter extends CharacterCalculationsBase {
         dictValues.put("Hit",
                 HunterFormat.percentCustom(StatConversion.getHitFromRating(this.basicStats.getHitRating()), 2, 2) + " : " + HunterFormat.netFloatToString(this.basicStats.getHitRating()) + "*"
                         + HunterFormat.percentCustom(hitPercBonus, 1, 2) + " : From Other Bonuses"
-                        + System.lineSeparator() + HunterFormat.percentCustom(hitPercent + hitPercBonus, 1, 2) + " : Total Hit % Bonus"
-                        + System.lineSeparator() + System.lineSeparator() + "Ranged Cap: "
+                        + "\n" + HunterFormat.percentCustom(hitPercent + hitPercBonus, 1, 2) + " : Total Hit % Bonus"
+                        + "\n" + "\n" + "Ranged Cap: "
                         + (sec2lastNumA1 > 0 ? "You can free " + rawr.base.util.NetFormat.fixed(sec2lastNumA1, 0) + " Rating"
                                 : "You need " + rawr.base.util.NetFormat.fixed(sec2lastNumA1 * -1, 0) + " more Rating"));
         dictValues.put("Crit", HunterFormat.percentCustom(critRateOverall, 2, 2) + " : " + HunterFormat.netFloatToString(this.basicStats.getCritRating()) + "*Includes:"

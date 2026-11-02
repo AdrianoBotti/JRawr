@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -72,12 +71,7 @@ class StatConversionGoldenTest {
     private static List<String> readLines(String resource) throws Exception {
         try (InputStream in = StatConversionGoldenTest.class.getClassLoader().getResourceAsStream(resource)) {
             assertThat(in).as("test resource %s", resource).isNotNull();
-            List<String> lines = new ArrayList<String>(
-                    Arrays.asList(new String(in.readAllBytes(), StandardCharsets.UTF_8).split("\n", -1)));
-            if (!lines.isEmpty() && lines.get(lines.size() - 1).isEmpty()) {
-                lines.remove(lines.size() - 1);
-            }
-            return lines;
+            return new String(in.readAllBytes(), StandardCharsets.UTF_8).lines().toList();
         }
     }
 }

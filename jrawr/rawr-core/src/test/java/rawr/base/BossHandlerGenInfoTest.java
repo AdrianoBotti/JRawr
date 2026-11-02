@@ -113,12 +113,7 @@ class BossHandlerGenInfoTest {
     private static List<String> readLines(String resource) throws Exception {
         try (InputStream in = BossHandlerGenInfoTest.class.getClassLoader().getResourceAsStream(resource)) {
             assertThat(in).as("resource %s", resource).isNotNull();
-            List<String> lines = new java.util.ArrayList<String>(
-                    List.of(new String(in.readAllBytes(), StandardCharsets.UTF_8).split("\n", -1)));
-            while (!lines.isEmpty() && lines.get(lines.size() - 1).isEmpty()) {
-                lines.remove(lines.size() - 1);
-            }
-            return lines;
+            return new String(in.readAllBytes(), StandardCharsets.UTF_8).lines().toList();
         }
     }
 }

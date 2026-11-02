@@ -120,11 +120,7 @@ class CoreFormatProbeTest {
     private static List<String> readLines(String resource) throws Exception {
         try (InputStream in = CoreFormatProbeTest.class.getClassLoader().getResourceAsStream(resource)) {
             assertThat(in).as("resource %s", resource).isNotNull();
-            List<String> lines = new ArrayList<String>(List.of(new String(in.readAllBytes(), StandardCharsets.UTF_8).split("\n", -1)));
-            while (!lines.isEmpty() && lines.get(lines.size() - 1).isEmpty()) {
-                lines.remove(lines.size() - 1);
-            }
-            return lines;
+            return new String(in.readAllBytes(), StandardCharsets.UTF_8).lines().toList();
         }
     }
 }

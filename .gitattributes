@@ -1,0 +1,7 @@
+# Keep text files in the canonical LF form on every platform. The golden-master
+# resources are compared line by line and must not gain CRLF on Windows.
+* text=auto eol=lf
+
+# Windows launchers are the exception: cmd.exe is happiest with CRLF.
+*.bat text eol=crlf
+*.cmd text eol=crlf

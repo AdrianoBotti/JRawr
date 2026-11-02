@@ -495,7 +495,7 @@ class SolverBase {
     }
 }
 
-class solverShadow extends SolverBase {
+class SolverShadowCore extends SolverBase {
     // Models Full Rotation
     private float shadowHitChance;
 
@@ -927,7 +927,7 @@ class solverShadow extends SolverBase {
         return wait;
     }
 
-    public solverShadow(Stats BasicStats, Character character) {
+    public SolverShadowCore(Stats BasicStats, Character character) {
         super(BasicStats, character);
         setSpellPriority(new ArrayList<Spell>(getCalcOpts().getSpellPriority().size()));
         float baseMana = BaseStats.getBaseStats(character).getMana();
@@ -1363,22 +1363,22 @@ class solverShadow extends SolverBase {
 }
 
 class SolverShadow extends SolverBase {
-    // A wrapper for solverShadow to handle haste properly.
+    // A wrapper for SolverShadowCore to handle haste properly.
     public static class SolverInfo {
-        private solverShadow solver;
+        private SolverShadowCore solver;
 
-        public solverShadow getSolver() {
+        public SolverShadowCore getSolver() {
             return solver;
         }
 
-        public void setSolver(solverShadow value) {
+        public void setSolver(SolverShadowCore value) {
             solver = value;
         }
 
         private float duration;
         private float interval;
 
-        public SolverInfo(solverShadow solver, float duration, float interval) {
+        public SolverInfo(SolverShadowCore solver, float duration, float interval) {
             this.solver = solver;
             this.duration = duration;
             this.interval = interval;
@@ -1398,7 +1398,7 @@ class SolverShadow extends SolverBase {
     public SolverShadow(Stats BasicStats, Character character) {
         super(BasicStats, character);
         SolverInfo ssi;
-        ssi = new SolverInfo(new solverShadow(BasicStats, character), 0f, 0f);
+        ssi = new SolverInfo(new SolverShadowCore(BasicStats, character), 0f, 0f);
         ssInfo.add(ssi);
         setName(ssi.getSolver().getName());
 
@@ -1424,7 +1424,7 @@ class SolverShadow extends SolverBase {
                             * (1f + StatConversion.getSpellHasteFromRating(statsHasteUse.getHasteRating()))
                             * (1f + se.getStats().getSpellHaste())
                             - 1f);
-                    ssi = new SolverInfo(new solverShadow(statsHasteUse, character), se.getDuration(), se.getCooldown());
+                    ssi = new SolverInfo(new SolverShadowCore(statsHasteUse, character), se.getDuration(), se.getCooldown());
                     ssInfo.add(ssi);
                 } else if (se.getTrigger() == Trigger.SpellCast ||
                         se.getTrigger() == Trigger.SpellHit ||
@@ -1443,7 +1443,7 @@ class SolverShadow extends SolverBase {
                         cooldown += 10f;
                     else
                         cooldown += 15f;
-                    ssi = new SolverInfo(new solverShadow(statsHasteProc, character), se.getDuration(), cooldown);
+                    ssi = new SolverInfo(new SolverShadowCore(statsHasteProc, character), se.getDuration(), cooldown);
                     ssInfo.add(ssi);
                 }
             }
