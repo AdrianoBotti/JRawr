@@ -4,6 +4,11 @@ on:
   push:
     tags:
       - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag to build, for example v1.0.1"
+        required: true
 
 permissions:
   contents: write
@@ -19,6 +24,18 @@ jobs:
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref }}
+
+      - name: Resolve release tag
+        id: release
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            TAG="${{ inputs.tag }}"
+          else
+            TAG="${GITHUB_REF_NAME}"
+          fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "version=${TAG#v}" >> "$GITHUB_OUTPUT"
 
       - name: Set up Java 25
         uses: actions/setup-java@v5
@@ -31,14 +48,14 @@ jobs:
 
       - name: Build and package
         working-directory: jrawr
-        run: ./gradlew clean build release releaseBundled -Pjrawr.version="${GITHUB_REF_NAME#v}"
+        run: ./gradlew clean build release releaseBundled -Pjrawr.version="${{ steps.release.outputs.version }}"
 
       - name: Verify archives
         working-directory: jrawr/build/release
         run: |
           sha256sum -c ./*.sha256
-          unzip -l JRawr-*.zip
-          tar -tzf JRawr-*.tar.gz
+          for archive in JRawr-*.zip; do unzip -l "$archive"; done
+          for archive in JRawr-*.tar.gz; do tar -tzf "$archive"; done
 
       - name: Smoke-test bundled Linux archive
         working-directory: jrawr
@@ -63,10 +80,10 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "$GITHUB_REF_NAME" \
+          gh release create "${{ steps.release.outputs.tag }}" \
             jrawr/build/release/JRawr-*.zip \
             jrawr/build/release/JRawr-*.zip.sha256 \
             jrawr/build/release/JRawr-*.tar.gz \
             jrawr/build/release/JRawr-*.tar.gz.sha256 \
-            --title "JRawr ${GITHUB_REF_NAME#v}" \
+            --title "JRawr ${{ steps.release.outputs.version }}" \
             --generate-notes
