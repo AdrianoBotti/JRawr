@@ -13,6 +13,8 @@ new browser interface.
 See the [User Guide](https://github.com/AdrianoBotti/JRawr/wiki) for installation, the build editor,
 charts, optimizer and troubleshooting.
 
+![JRawr build editor](docs/images/build-gear.png)
+
 ## Quick start
 
 Download the archive for your platform from

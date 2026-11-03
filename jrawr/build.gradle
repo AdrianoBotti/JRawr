@@ -89,6 +89,7 @@ tasks.register('stageRelease', Sync) {
         include 'docs/DEVELOPMENT.md'
         include 'docs/RELEASING.md'
         include 'docs/LEGAL.md'
+        include 'docs/images/**'
         include 'docs/architecture/**'
     }
     from(rootProject.file('data')) {
