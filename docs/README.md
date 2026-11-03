@@ -1,6 +1,6 @@
 # JRawr documentation
 
-Version **1.0.1**. Last verified 2026-11-02.
+Version **1.0.2**. Last verified 2026-11-03.
 
 | Document | Read it for |
 |---|---|

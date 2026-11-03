@@ -4,7 +4,7 @@ plugins {
 
 allprojects {
     group = 'jrawr'
-    version = providers.gradleProperty('jrawr.version').getOrElse('1.0.1')
+    version = providers.gradleProperty('jrawr.version').getOrElse('1.0.2')
 }
 
 subprojects {

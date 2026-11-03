@@ -1,7 +1,7 @@
 # Releasing
 
 JRawr releases are built by the Gradle wrapper and published from a Git tag. The version is
-`1.0.1` by default and can be overridden with the `jrawr.version` Gradle property.
+`1.0.2` by default and can be overridden with the `jrawr.version` Gradle property.
 
 ## Requirements
 
@@ -31,21 +31,21 @@ For a version other than the default:
 The archives and checksums are written to `jrawr/build/release/`:
 
 ```
-JRawr-1.0.1.zip
-JRawr-1.0.1.zip.sha256
-JRawr-1.0.1.tar.gz
-JRawr-1.0.1.tar.gz.sha256
-JRawr-1.0.1-linux-x64.zip
-JRawr-1.0.1-linux-x64.zip.sha256
-JRawr-1.0.1-linux-x64.tar.gz
-JRawr-1.0.1-linux-x64.tar.gz.sha256
-JRawr-1.0.1-windows-x64.zip
-JRawr-1.0.1-windows-x64.zip.sha256
+JRawr-1.0.2.zip
+JRawr-1.0.2.zip.sha256
+JRawr-1.0.2.tar.gz
+JRawr-1.0.2.tar.gz.sha256
+JRawr-1.0.2-linux-x64.zip
+JRawr-1.0.2-linux-x64.zip.sha256
+JRawr-1.0.2-linux-x64.tar.gz
+JRawr-1.0.2-linux-x64.tar.gz.sha256
+JRawr-1.0.2-windows-x64.zip
+JRawr-1.0.2-windows-x64.zip.sha256
 ```
 
 The universal archives contain `jrawr.jar`, both launchers, `data/`, `docs/`, `README.md`,
 `CHANGELOG.md`, `LICENSE`, `NOTICE` and `THIRD_PARTY_NOTICES.md` under a top-level
-`JRawr-1.0.1/` directory.
+`JRawr-1.0.2/` directory.
 
 The bundled archives use the same layout plus a `runtime/` directory with the Temurin JRE. The
 Linux archive contains `jrawr.sh`; the Windows archive contains `jrawr.bat`. The executable jar
@@ -72,9 +72,9 @@ is Eclipse Temurin 25.0.5+8 (OpenJDK), GPLv2 with the Classpath Exception. See
 1. Inspect the archives:
 
    ```bash
-   unzip -l jrawr/build/release/JRawr-1.0.1.zip
-   unzip -l jrawr/build/release/JRawr-1.0.1-linux-x64.zip
-   unzip -l jrawr/build/release/JRawr-1.0.1-windows-x64.zip
+   unzip -l jrawr/build/release/JRawr-1.0.2.zip
+   unzip -l jrawr/build/release/JRawr-1.0.2-linux-x64.zip
+   unzip -l jrawr/build/release/JRawr-1.0.2-windows-x64.zip
    ```
 
 2. Check every checksum:
@@ -89,10 +89,10 @@ is Eclipse Temurin 25.0.5+8 (OpenJDK), GPLv2 with the Classpath Exception. See
 
    ```bash
    mkdir -p /tmp/jrawr-smoke
-   unzip -q jrawr/build/release/JRawr-1.0.1-linux-x64.zip -d /tmp/jrawr-smoke
+   unzip -q jrawr/build/release/JRawr-1.0.2-linux-x64.zip -d /tmp/jrawr-smoke
    cd /tmp
    JRAWR_PORT=18080 XDG_DATA_HOME=/tmp/jrawr-smoke/user \
-     /tmp/jrawr-smoke/JRawr-1.0.1-linux-x64/jrawr.sh
+     /tmp/jrawr-smoke/JRawr-1.0.2-linux-x64/jrawr.sh
    ```
 
    Open <http://127.0.0.1:18080/>. Confirm the data loads, a character can be imported and the
@@ -104,7 +104,7 @@ is Eclipse Temurin 25.0.5+8 (OpenJDK), GPLv2 with the Classpath Exception. See
 
    ```bash
    JRAWR_JAVA=/path/to/your/java25/bin/java \
-     /tmp/jrawr-smoke/JRawr-1.0.1-linux-x64/jrawr.sh
+     /tmp/jrawr-smoke/JRawr-1.0.2-linux-x64/jrawr.sh
    ```
 
 5. Confirm the Windows archive contains `runtime/bin/java.exe` and `jrawr.bat` but no `jrawr.sh`,
@@ -127,8 +127,8 @@ is Eclipse Temurin 25.0.5+8 (OpenJDK), GPLv2 with the Classpath Exception. See
 Create the release with:
 
 ```bash
-git tag -a v1.0.1 -m "JRawr 1.0.1"
-git push origin v1.0.1
+git tag -a v1.0.2 -m "JRawr 1.0.2"
+git push origin v1.0.2
 ```
 
 Do not move or reuse a published tag. If a release is wrong, publish a new patch version.

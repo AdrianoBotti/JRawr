@@ -5,7 +5,7 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-VERSION="${1:-1.0.1}"
+VERSION="${1:-1.0.2}"
 PROPS="$ROOT/gradle/temurin.properties"
 STAGE="$ROOT/build/release-stage/JRawr-$VERSION"
 WORK="$ROOT/build/bundled"

@@ -3,7 +3,7 @@
 All notable changes to JRawr are recorded here. The project follows a simple
 `MAJOR.MINOR.PATCH` version.
 
-## [Unreleased]
+## [1.0.2] - 2026-11-03
 
 ### Web application
 

@@ -6,7 +6,7 @@ JRawr is a port of **Rawr v2.3.23.0**, the World of Warcraft: Wrath of the Lich 
 gear theorycrafting and optimization tool, from C# to **Java 25**. It runs as a local Spring Boot
 web application with a Thymeleaf + htmx interface.
 
-Version 1.0.1 ports the calculation engine, all 20 class/spec models, the gear optimizer and the
+Version 1.0.2 ports the calculation engine, all 20 class/spec models, the gear optimizer and the
 character editor. The original desktop, Silverlight and WPF interfaces are not ported; JRawr has a
 new browser interface.
 
@@ -18,11 +18,11 @@ charts, optimizer and troubleshooting.
 Download the archive for your platform from
 [Releases](https://github.com/AdrianoBotti/JRawr/releases/latest):
 
-- `JRawr-1.0.1-linux-x64.zip` or `JRawr-1.0.1-linux-x64.tar.gz` includes a Temurin JRE 25. No
+- `JRawr-1.0.2-linux-x64.zip` or `JRawr-1.0.2-linux-x64.tar.gz` includes a Temurin JRE 25. No
   separate Java installation is needed.
-- `JRawr-1.0.1-windows-x64.zip` includes a Temurin JRE 25. No separate Java installation is
+- `JRawr-1.0.2-windows-x64.zip` includes a Temurin JRE 25. No separate Java installation is
   needed.
-- `JRawr-1.0.1.zip` and `JRawr-1.0.1.tar.gz` are the universal archives; they require Java 25 on
+- `JRawr-1.0.2.zip` and `JRawr-1.0.2.tar.gz` are the universal archives; they require Java 25 on
   your machine.
 
 1. Extract the archive.
