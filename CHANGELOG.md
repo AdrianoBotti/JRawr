@@ -3,6 +3,16 @@
 All notable changes to JRawr are recorded here. The project follows a simple
 `MAJOR.MINOR.PATCH` version.
 
+## [Unreleased]
+
+### Web application
+
+- Fixed paper-doll, stats, set-bonus and chart layouts at narrow and short viewport sizes.
+- Chart candidate lists now scroll inside the charts card, and item tooltips remain correctly
+  positioned.
+- Multiple active set bonuses are shown as one clearly aligned chip per set.
+- Topbar action labels collapse to icons on narrow windows.
+
 ## [1.0.1] - 2026-11-02
 
 Bundled Java runtime release.

@@ -67,11 +67,13 @@
                 </div>
                 <div class="gear-sets-inline" th:if="${gearSummary.hasSets()}">
                     <span class="gear-sets-title">Set bonuses</span>
-                    <span class="gear-set" th:each="set : ${gearSummary.sets()}">
-                        <span class="gear-set-name" th:text="${set.name()}">Tier 10</span>
-                        <span class="gear-set-pieces" th:text="|${set.pieces()} pieces|">4 pieces</span>
-                        <span class="gear-set-bonus" th:each="bonus : ${set.activeBonuses()}"
-                              th:text="${bonus}">4-piece</span>
+                    <span class="gear-sets-list">
+                        <span class="gear-set" th:each="set : ${gearSummary.sets()}">
+                            <span class="gear-set-name" th:text="${set.name()}">Tier 10</span>
+                            <span class="gear-set-pieces" th:text="|${set.pieces()} pieces|">4 pieces</span>
+                            <span class="gear-set-bonus" th:each="bonus : ${set.activeBonuses()}"
+                                  th:text="${bonus}">4-piece</span>
+                        </span>
                     </span>
                 </div>
                 <span class="hint gear-sets-empty" th:unless="${gearSummary.hasSets()}">No set bonuses active.</span>

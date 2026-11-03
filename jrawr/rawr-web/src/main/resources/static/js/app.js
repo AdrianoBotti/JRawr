@@ -339,20 +339,43 @@ document.addEventListener('keydown', function (event) {
         var gap = 0.75 * rem;
         var edge = 0.5 * rem;
         var width = Math.min(20 * rem, window.innerWidth - rem);
+
+        // .charts-card uses layout containment to keep its clipped candidate rows out of the
+        // document height. That makes the card the containing block for its fixed tooltips, so
+        // position them in the card's coordinate space and clamp them to its visible box.
+        var card = tip.offsetParent;
+        var containedByCard = card && card.classList && card.classList.contains('charts-card');
+        var boundsLeft = 0;
+        var boundsTop = 0;
+        var boundsRight = window.innerWidth;
+        var boundsBottom = window.innerHeight;
+        if (containedByCard) {
+            var cardRect = card.getBoundingClientRect();
+            var cardStyle = window.getComputedStyle(card);
+            boundsLeft = cardRect.left + (parseFloat(cardStyle.borderLeftWidth) || 0);
+            boundsTop = cardRect.top + (parseFloat(cardStyle.borderTopWidth) || 0);
+            boundsRight = cardRect.right - (parseFloat(cardStyle.borderRightWidth) || 0);
+            boundsBottom = cardRect.bottom - (parseFloat(cardStyle.borderBottomWidth) || 0);
+        }
+
         var left = rect.right + gap;
-        if (left + width > window.innerWidth - edge) {
+        if (left + width > boundsRight - edge) {
             left = rect.left - width - gap;
         }
-        if (left < edge) {
-            left = edge;
+        if (left < boundsLeft + edge) {
+            left = boundsLeft + edge;
         }
         var height = tip.getBoundingClientRect().height;
         var top = rect.top;
-        if (height > 0 && top + height > window.innerHeight - edge) {
+        if (height > 0 && top + height > boundsBottom - edge) {
             var above = rect.top - height - edge;
-            top = above >= edge ? above : Math.max(edge, window.innerHeight - height - edge);
-        } else if (height === 0 && top + 5 * rem > window.innerHeight) {
-            top = Math.max(edge, window.innerHeight - 16.25 * rem);
+            top = above >= boundsTop + edge ? above : Math.max(boundsTop + edge, boundsBottom - height - edge);
+        } else if (height === 0 && top + 5 * rem > boundsBottom) {
+            top = Math.max(boundsTop + edge, boundsBottom - 16.25 * rem);
+        }
+        if (containedByCard) {
+            left -= boundsLeft;
+            top -= boundsTop;
         }
         tip.style.position = 'fixed';
         tip.style.left = left + 'px';

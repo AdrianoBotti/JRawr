@@ -225,20 +225,11 @@
         width: 14.75rem;
         padding: 0.75rem 0.5rem;
     }
-
-    .layout {
-        margin-left: 14.75rem;
-        padding: 0.75rem 0.625rem;
-    }
 }
 
 @media (max-width: 900px) {
     .side-rail {
         width: 13.75rem;
-    }
-
-    .layout {
-        margin-left: 13.75rem;
     }
 }
 
@@ -289,14 +280,8 @@
         position: static;
     }
 
-    .charts-card {
-        max-height: none;
-    }
-
-    .compare-rows {
-        overflow: visible;
-    }
-
+    /* Keep the charts card viewport-bounded with its own row scroller at every width. Letting
+       the rows expand here used to clip them while still inflating the document height. */
     .charts-maximize {
         display: none;
     }
@@ -457,7 +442,9 @@
 .doll {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, 1fr);
-    grid-template-rows: minmax(0, 8fr) minmax(0, 1fr);
+    /* Normal document flow: the gear rows size to their slots. The wide one-screen shell
+       overrides this with flexible rows once there is a definite viewport height to fill. */
+    grid-template-rows: auto auto;
     gap: 0.25rem;
     flex: 1 1 auto;
     min-height: 0;
@@ -532,7 +519,10 @@
     flex-direction: column;
     overflow: visible;
     min-width: 0;
-    min-height: 0;
+    /* .slot is a size container, so its contents do not contribute to its intrinsic height.
+       A readable minimum keeps the normal-flow doll from collapsing; the wide shell relaxes it
+       and scrolls the gear pane instead when the viewport is short. */
+    min-height: 5rem;
     max-width: 100%;
     border: 0.0625rem solid var(--border-soft);
     border-radius: var(--radius-sm);
@@ -4283,6 +4273,7 @@ body:has(.modal-root .modal-backdrop) .menu-panel {
 
 .gear-metric {
     display: flex;
+    flex: none;
     align-items: baseline;
     gap: 0.5rem;
 }
@@ -4292,6 +4283,7 @@ body:has(.modal-root .modal-backdrop) .menu-panel {
     font-size: var(--fs-micro);
     letter-spacing: 0.0437rem;
     text-transform: uppercase;
+    white-space: nowrap;
 }
 
 .gear-metric-value {
@@ -4309,18 +4301,29 @@ body:has(.modal-root .modal-backdrop) .menu-panel {
 
 .gear-sets-inline {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     gap: 0.375rem 0.625rem;
+    min-width: 0;
     margin-left: auto;
 }
 
+/* One set per row, in the same chip format used when only one set is active. */
+.gear-sets-list {
+    display: grid;
+    justify-items: start;
+    gap: 0.375rem;
+    min-width: 0;
+}
+
 .gear-sets-title {
+    flex: none;
     color: var(--text-dim);
     font-size: var(--fs-micro);
     font-weight: 600;
     letter-spacing: 0.0437rem;
     text-transform: uppercase;
+    white-space: nowrap;
 }
 
 .gear-sets-empty {
@@ -4355,6 +4358,20 @@ body:has(.modal-root .modal-backdrop) .menu-panel {
     border-radius: 999px;
     color: var(--success);
     font-size: var(--fs-micro);
+}
+
+/* On very narrow windows the metric and set list get their own rows so the set chips keep their
+   natural width instead of wrapping internally. */
+@media (max-width: 600px) {
+    .gear-summary-row {
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+
+    .gear-sets-inline {
+        flex-basis: 100%;
+        margin-left: 0;
+    }
 }
 
 .paperdoll .tab-panel {
@@ -4423,6 +4440,7 @@ body:has(.modal-root .modal-backdrop) .menu-panel {
 @media (max-width: 1160px) {
     .doll {
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        grid-template-rows: auto auto auto;
     }
 
     .doll-left {
@@ -4435,20 +4453,63 @@ body:has(.modal-root .modal-backdrop) .menu-panel {
         grid-row: 1;
     }
 
-    .doll-center {
+    .doll-bottom {
         grid-column: 1 / -1;
         grid-row: 2;
     }
 
-    .doll-bottom {
+    .doll-center {
         grid-column: 1 / -1;
         grid-row: 3;
+    }
+
+    /* The stats panel is no longer the centre cell of a definite-height row: let it size the
+       row naturally and cap its list so a model with many rows does not make the page enormous. */
+    .gear-stats #stats-panel {
+        position: static;
+    }
+
+    .gear-stats #stats-panel > div {
+        height: auto;
+    }
+
+    .gear-stats #stats-panel .stats-scroll {
+        max-height: 46vh;
+    }
+
+    /* Use the full-width stats row for two compact columns of stat groups instead of one very
+       wide label/value list. The groups stay together and the panel takes half the height. */
+    .gear-stats #stats-panel .stats-section {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: start;
+        gap: 0.75rem 1rem;
+    }
+
+    .gear-stats #stats-panel .stats-section-title {
+        grid-column: 1 / -1;
+        margin-bottom: 0;
+    }
+
+    .gear-stats #stats-panel .stats-section .stat-group {
+        margin-top: 0;
+        padding: 0.625rem 0.75rem;
+        border: 0.0625rem solid var(--border-soft);
+        border-radius: var(--radius-sm);
+        background: color-mix(in srgb, var(--text) 2%, transparent);
+    }
+}
+
+@media (max-width: 700px) {
+    .gear-stats #stats-panel .stats-section {
+        grid-template-columns: minmax(0, 1fr);
     }
 }
 
 @media (max-width: 860px) {
     .doll {
         grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
     }
 
     .doll-left {
@@ -4461,15 +4522,36 @@ body:has(.modal-root .modal-backdrop) .menu-panel {
         grid-row: 2;
     }
 
-    .doll-center {
-        grid-column: 1;
-        grid-row: 3;
-    }
-
     .doll-bottom {
         grid-column: 1;
-        grid-row: 4;
+        grid-row: 3;
         grid-template-columns: 1fr;
+    }
+
+    .doll-center {
+        grid-column: 1;
+        grid-row: 4;
+    }
+}
+
+/* Wide one-screen shell: keep the build and charts panes side by side and let the doll fill the
+   available height. Slots keep a compact-but-readable minimum, so when browser chrome leaves too
+   little room the gear tab scrolls instead of squeezing slot contents into overlapping rows. */
+@media (min-width: 1900px) {
+    .slot {
+        min-height: 3.5rem;
+    }
+
+    .doll {
+        flex: 1 0 auto;
+        grid-template-rows: minmax(0, 8fr) minmax(0, 1fr);
+        /* Eight slots plus the weapon row and the gaps between them. */
+        min-height: calc(9 * 3.5rem + 8 * 0.25rem);
+    }
+
+    .paperdoll .tab-panel[data-paperdoll-panel="gear"]:not([hidden]) {
+        overflow-x: hidden;
+        overflow-y: auto;
     }
 }
 
@@ -4637,6 +4719,10 @@ body:has(.modal-root .modal-backdrop) .menu-panel {
     max-height: calc(100vh - 1.5rem);
     overflow: hidden;
     padding: 0;
+    /* The candidate rows are clipped by the card but still have layout positions; without
+       containment those positions inflate the page height and leave a long blank scroll area.
+       This also makes the card the containing block for its fixed-position item tooltips. */
+    contain: layout;
 }
 
 .charts-card-head {
@@ -7922,6 +8008,37 @@ body:has(.modal-root .modal-backdrop) .menu-panel {
     top: calc(100% + 0.5rem);
     left: auto;
     right: 0;
+}
+
+/* The action labels are the first thing to go on narrow windows; the icon buttons keep their
+   title/aria-label. Below that, drop the brand subtitle and character status as well. */
+@media (max-width: 760px) {
+    .topbar {
+        gap: 0.5rem;
+        padding: 0 0.5rem;
+    }
+
+    .topbar-label {
+        display: none;
+    }
+
+    .topbar-btn {
+        padding: 0.4375rem 0.5rem;
+    }
+}
+
+@media (max-width: 560px) {
+    .topbar-brand-sub {
+        display: none;
+    }
+
+    .topbar-status {
+        display: none;
+    }
+
+    .mode-tab {
+        padding: 0.3125rem 0.625rem;
+    }
 }
 
 /* ------------------------------------------------------------- build card header (identity + advanced) */
